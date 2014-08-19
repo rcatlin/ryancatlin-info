@@ -1,0 +1,2 @@
+myproject:
+    resource: "@MainBundle/Resources/config/routing.yml"
