@@ -2,6 +2,7 @@
 
 namespace MyProject\Bundle\MainBundle\Controller;
 
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -10,12 +11,12 @@ class MainController extends Controller
 {
     /**
      * @Route("/", name="index")
+     * @Template("MainBundle::index.html.twig")
      */
     public function indexAction()
     {
-        return new Response(
-            'Hello, galaxy!',
-            200
+        return array(
+            'message' => 'Hello, universe!'
         );
     }
 
