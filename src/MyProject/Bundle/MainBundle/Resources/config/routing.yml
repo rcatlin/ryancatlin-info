@@ -1,4 +1,4 @@
-_index:
-    path: /
-    defaults:
-        _controller: MainBundle:Main:index
+# _index:
+#     path: /
+#     defaults:
+#         _controller: MainBundle:Main:index
