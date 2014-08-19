@@ -13,6 +13,23 @@ class MainController extends Controller
      */
     public function indexAction()
     {
-        return new Response('Hello, galaxy!', 200);
+        return new Response(
+            'Hello, galaxy!',
+            200
+        );
+    }
+
+    /**
+     * @Route("/hello/{name}", name="hello")
+     */
+    public function helloAction($name)
+    {
+        return new Response(
+            sprintf(
+                'Hello there, %s!',
+                ucfirst($name)
+            ),
+            200
+        );
     }
 }
