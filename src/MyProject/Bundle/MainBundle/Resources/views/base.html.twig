@@ -4,6 +4,14 @@
         {% block head %}
             <title>{% block title %}Ryan Catlin{% endblock %}</title>
         {% endblock %}
+        {% stylesheets 
+            'assets/bootstrap/dist/css/bootstrap.min.css'
+            'assets/bootstrap/dist/css/bootstrap-theme.min.css'
+            output='css/compiled/main.css'
+            filter='cssrewrite'
+         %}
+            <link rel="stylesheet" href="{{ asset_url }}" />
+        {% endstylesheets %}
     </head>
     <body>
         {% include 'MainBundle::menu.html.twig' %}
