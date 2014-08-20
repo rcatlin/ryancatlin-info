@@ -9,3 +9,12 @@
 /vendor/
 /bin/
 /composer.phar
+
+# Assetic
+/web/assets
+
+# NPM
+node_modules
+
+# Bower components
+web/components

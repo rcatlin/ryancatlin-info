@@ -16,7 +16,7 @@ class MainController extends Controller
     public function indexAction()
     {
         return array(
-            'message' => 'Hello, universe!'
+            'message' => 'Hello, universe! We are still in progress.'
         );
     }
 

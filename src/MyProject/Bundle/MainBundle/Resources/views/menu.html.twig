@@ -1,17 +1,46 @@
 {% set route = app.request.attributes.get('_route') %}
-<ul>
-    <li>
-        {% if route == 'index' %}
-            <strong>Index</strong>
-        {% else %}
-            <a href="{{ path('index') }}">Index</a>
-        {% endif %}
-    </li>
-    <li>
-        {% if route == 'about' %}
-            <strong>About</strong>
-        {% else %}
-            <a href="{{ path('about') }}">About</a>
-        {% endif %}
-    </li>
-</ul>
+
+<nav class="navbar navbar-default" role="navigation">
+
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <!-- <a class="navbar-brand" href="#">Menu</a> -->
+        </div>
+
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+
+                {% if route == 'index' %}
+                    <li class="active">
+                        <a href="#">Index</a>
+                    </li>
+                {% else %}
+                    <li>
+                        <a href="{{ path('index') }}">Index</a>
+                    </li>
+                {% endif %}
+
+
+                {% if route == 'about' %}
+                    <li class="active">
+                        <a href="#">About</a>
+                    </li>
+                {% else %}
+                    <li>
+                        <a href="{{ path('about') }}">About</a>
+                    </li>
+                {% endif %}
+
+            </ul>
+        </div>
+    </div>
+</nav>

@@ -4,18 +4,35 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>{% block title %}Ryan Catlin{% endblock %}</title>
         {% stylesheets 
-            'assets/bootstrap/dist/css/bootstrap.min.css'
-            'assets/bootstrap/dist/css/bootstrap-theme.min.css'
-            output='css/compiled/main.css'
+            'components/bootstrap/dist/css/bootstrap.css'
+            'components/bootstrap/dist/css/bootstrap-theme.css'
+            'css/styles.css'
             filter='cssrewrite'
+            combine=true
+            output='js/compiled/all.css'
          %}
             <link rel="stylesheet" href="{{ asset_url }}" />
         {% endstylesheets %}
+        {% javascripts
+            'components/jquery/dist/jquery.js'
+            'components/bootstrap/dist/js/*'
+            combine=true
+            output='css/compiled/all.js'
+        %}
+            <script type="text/javascript" src="{{ asset_url }}"></script>
+        {% endjavascripts %}
     </head>
     <body>
+        <div class="jumbotron">
+            <h2>
+                Ryan Catlin <small>code and shark enthusiast</small>
+            </h2>
+        </div>
         {% include 'MainBundle::menu.html.twig' %}
 
-        {% block content %}
-        {% endblock %}
+        <div class="container-fluid">
+            {% block content %}
+            {% endblock %}
+        </div>
     </body>
 <html>
