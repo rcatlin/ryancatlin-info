@@ -3,20 +3,26 @@
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>{% block title %}Ryan Catlin{% endblock %}</title>
-        {% stylesheets 
-            'components/bootstrap/dist/css/bootstrap.css'
-            'components/bootstrap/dist/css/bootstrap-theme.css'
-            'css/styles.css'
-            filter='cssrewrite'
-         %}
-            <link rel="stylesheet" href="{{ asset_url }}" />
-        {% endstylesheets %}
-        {% javascripts
-            'components/jquery/dist/jquery.js'
-            'components/bootstrap/dist/js/*'
-        %}
-            <script type="text/javascript" src="{{ asset_url }}"></script>
-        {% endjavascripts %}
+        {% block stylesheets %}
+            {% stylesheets 
+                'components/bootstrap/dist/css/bootstrap.min.css'
+                'components/bootstrap/dist/css/bootstrap-theme.min.css'
+                '@MainBundle/Resources/css/styles.css'
+                filter='cssrewrite'
+                output="css/compiled/all.css"
+             %}
+                <link rel="stylesheet" href="{{ asset_url }}" />
+            {% endstylesheets %}
+        {% endblock %}
+        {% block javascripts %}
+            {% javascripts
+                'components/jquery/dist/jquery.js'
+                'components/bootstrap/js/*'
+                output="js/compiled/all.js"
+            %}
+                <script type="text/javascript" src="{{ asset_url }}"></script>
+            {% endjavascripts %}
+        {% endblock %}
     </head>
     <body>
         <div class="jumbotron">

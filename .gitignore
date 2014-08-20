@@ -2,6 +2,8 @@
 
 /web/bundles/
 /app/bootstrap.php.cache
+
+# Application cache
 /app/cache/*
 /app/config/parameters.yml
 /app/logs/*
@@ -13,7 +15,8 @@
 /composer.phar
 
 # Assetic
-/web/assets
+/web/css
+/web/js
 
 # NPM
 node_modules
