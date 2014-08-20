@@ -6,7 +6,9 @@
         {% endblock %}
     </head>
     <body>
-        {% block body %}
+        {% include 'MainBundle::menu.html.twig' %}
+
+        {% block content %}
         {% endblock %}
     </body>
 <html>

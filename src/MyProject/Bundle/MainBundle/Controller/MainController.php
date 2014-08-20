@@ -5,6 +5,7 @@ namespace MyProject\Bundle\MainBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 class MainController extends Controller
@@ -32,5 +33,14 @@ class MainController extends Controller
             ),
             200
         );
+    }
+
+    /**
+     * @Route("/about", name="about")
+     * @Template("MainBundle::about.html.twig")
+     */
+    public function aboutAction()
+    {
+        return array();
     }
 }
