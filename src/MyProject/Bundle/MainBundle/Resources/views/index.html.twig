@@ -1,5 +1,7 @@
 {% extends 'MainBundle::base.html.twig' %}
 
+{% block title %}{{ parent() }} - Dubious{% endblock %}
+
 {% block body %}
     <p>
         {% if message is defined %}
