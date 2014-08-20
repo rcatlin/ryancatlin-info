@@ -8,7 +8,6 @@
             'components/bootstrap/dist/css/bootstrap-theme.css'
             'css/styles.css'
             filter='cssrewrite'
-            combine=true
             output='js/compiled/all.css'
          %}
             <link rel="stylesheet" href="{{ asset_url }}" />
@@ -16,8 +15,7 @@
         {% javascripts
             'components/jquery/dist/jquery.js'
             'components/bootstrap/dist/js/*'
-            combine=true
-            output='css/compiled/all.js'
+            output='js/compiled/all.js'
         %}
             <script type="text/javascript" src="{{ asset_url }}"></script>
         {% endjavascripts %}
