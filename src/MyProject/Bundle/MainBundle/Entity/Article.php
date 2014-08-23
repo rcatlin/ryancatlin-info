@@ -2,6 +2,7 @@
 
 namespace MyProject\Bundle\MainBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -9,6 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="MyProject\Bundle\MainBundle\Entity\ArticleRepository")
+ * @ORM\HasLifecycleCallbacks
  */
 class Article
 {
@@ -24,7 +26,7 @@ class Article
     /**
      * @var string
      *
-     * @ORM\Column(name="slug", type="string", length=100)
+     * @ORM\Column(name="slug", type="string", length=100, unique=true)
      */
     private $slug;
 
@@ -39,6 +41,7 @@ class Article
      * @var \DateTime
      *
      * @ORM\Column(name="createdAt", type="datetimetz")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $createdAt;
 
@@ -46,6 +49,7 @@ class Article
      * @var \DateTime
      *
      * @ORM\Column(name="updatedAt", type="datetimetz")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $updatedAt;
 
@@ -68,6 +72,7 @@ class Article
         $now = new \DateTime();
         $this->setCreatedAt($now);
         $this->setUpdatedAt($now);
+        $this->tags = new ArrayCollection();
     }
 
     /**
@@ -198,5 +203,14 @@ class Article
     public function getTags()
     {
         return $this->tags;
+    }
+
+
+    /**
+     * @ORM\PreUpdate
+     */
+    public function preUpdateUpdatedAt()
+    {
+        $this->updatedAt = new \DateTime();
     }
 }
