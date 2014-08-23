@@ -22,7 +22,8 @@
         "sensio/framework-extra-bundle": "~3.0",
         "incenteev/composer-parameter-handler": "~2.0",
         "symfony/config": "2.6.*@dev",
-        "symfony/yaml": "2.6.*@dev"
+        "symfony/yaml": "2.6.*@dev",
+        "friendsofsymfony/user-bundle": "~2.0@dev"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3",
