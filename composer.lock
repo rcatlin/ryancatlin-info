@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "ad67c23b8ede68e36a5dff97742547d2",
+    "hash": "04a54871219e0f37ae7f2485216f8f91",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -1181,6 +1181,54 @@
             "time": "2013-05-16 05:32:23"
         },
         {
+            "name": "symfony/config",
+            "version": "dev-master",
+            "target-dir": "Symfony/Component/Config",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/Config.git",
+                "reference": "08942167943e0690e302c1c53ce86134c9387e25"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/Config/zipball/08942167943e0690e302c1c53ce86134c9387e25",
+                "reference": "08942167943e0690e302c1c53ce86134c9387e25",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3",
+                "symfony/filesystem": "~2.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.6-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Symfony\\Component\\Config\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://symfony.com/contributors"
+                },
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                }
+            ],
+            "description": "Symfony Config Component",
+            "homepage": "http://symfony.com",
+            "time": "2014-08-05 09:07:51"
+        },
+        {
             "name": "symfony/icu",
             "version": "v1.0.1",
             "target-dir": "Symfony/Component/Icu",
@@ -1458,6 +1506,53 @@
             "time": "2014-08-06 07:03:01"
         },
         {
+            "name": "symfony/yaml",
+            "version": "dev-master",
+            "target-dir": "Symfony/Component/Yaml",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/Yaml.git",
+                "reference": "d84b97a12046b2c34e8457626b9f2b72dec0c183"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/Yaml/zipball/d84b97a12046b2c34e8457626b9f2b72dec0c183",
+                "reference": "d84b97a12046b2c34e8457626b9f2b72dec0c183",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.6-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Symfony\\Component\\Yaml\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://symfony.com/contributors"
+                },
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                }
+            ],
+            "description": "Symfony Yaml Component",
+            "homepage": "http://symfony.com",
+            "time": "2014-08-05 09:07:51"
+        },
+        {
             "name": "twig/extensions",
             "version": "v1.1.0",
             "source": {
@@ -1570,12 +1665,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/fabpot/PHP-CS-Fixer.git",
-                "reference": "5909e4d1734e15d8e07df32499ebf7cd89a1f723"
+                "reference": "307dadc4e2041e7cfe12d700817857a85da9f851"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fabpot/PHP-CS-Fixer/zipball/5909e4d1734e15d8e07df32499ebf7cd89a1f723",
-                "reference": "5909e4d1734e15d8e07df32499ebf7cd89a1f723",
+                "url": "https://api.github.com/repos/fabpot/PHP-CS-Fixer/zipball/307dadc4e2041e7cfe12d700817857a85da9f851",
+                "reference": "307dadc4e2041e7cfe12d700817857a85da9f851",
                 "shasum": ""
             },
             "require": {
@@ -1611,7 +1706,7 @@
                 }
             ],
             "description": "A script to automatically fix Symfony Coding Standard",
-            "time": "2014-08-20 12:49:49"
+            "time": "2014-08-22 20:13:31"
         },
         {
             "name": "sebastian/diff",
@@ -1719,6 +1814,8 @@
     ],
     "minimum-stability": "stable",
     "stability-flags": {
+        "symfony/config": 20,
+        "symfony/yaml": 20,
         "fabpot/php-cs-fixer": 20
     },
     "prefer-stable": false,

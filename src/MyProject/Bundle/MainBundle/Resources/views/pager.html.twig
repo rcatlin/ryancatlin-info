@@ -1,0 +1,23 @@
+<ul class="pager">
+
+    {% if count <= 0 %}
+        <li class="previous disabled">
+            <a href="#">&larr; Previous</a>
+        </li>
+    {% else %}
+        <li class="previous">
+            <a href="{{ path('index', {'p': page + 1}) }}">&larr; Previous</a>
+        </li>
+    {% endif %}
+
+    {% if page <= 0 %}
+        <li class="next disabled">
+            <a href="#">Next &rarr;</a>
+        </li>
+    {% else %}
+        <li class="next">
+            <a href="{{ path('index', {'p': page - 1}) }}">Next &rarr;</a>
+        </li>
+    {% endif %}
+    
+</ul>

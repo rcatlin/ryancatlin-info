@@ -5,32 +5,34 @@ namespace MyProject\Bundle\MainBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
-class MainController extends Controller
+class MainController extends MainBundleController
 {
+    CONST LIMIT = 10;
+
     /**
      * @Route("/", name="index")
      * @Template("MainBundle::index.html.twig")
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
-        return array(
-            'message' => 'Hello, universe! We are still in progress.'
-        );
-    }
+        // Get page query parameter
+        $page = ($request->query->has('p')) ? $request->query->get('p') : 0;
 
-    /**
-     * @Route("/hello/{name}", name="hello")
-     */
-    public function helloAction($name)
-    {
-        return new Response(
-            sprintf(
-                'Hello there, %s!',
-                ucfirst($name)
-            ),
-            200
+        // Get Articles
+        $articles = $this->getArticleRepository()
+            ->findArticles(
+                $page * self::LIMIT,
+                self::LIMIT
+            )
+        ;
+
+        // Pass variables to template
+        return array(
+            'articles' => $articles,
+            'page' => $page
         );
     }
 

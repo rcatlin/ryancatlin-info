@@ -1,0 +1,7 @@
+# services:
+#     article.repository:
+#         class: MyProject\Bundle\MainBundle\Entity\ArticleRepository
+#         factory-service: doctrine.orm.entity_manager
+#         factory-method: getRepository
+#         arguments:
+#             - MyProject\Bundle\MainBundle\Entity\Article

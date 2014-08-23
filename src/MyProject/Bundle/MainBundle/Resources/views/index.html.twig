@@ -3,9 +3,19 @@
 {% block title %}{{ parent() }} - Dubious{% endblock %}
 
 {% block content %}
-    <p>
-        {% if message is defined %}
-            {{ message }}
-        {% endif %}
-    </p>
+    
+    {% set count = articles|length %}
+    {% if articles is not defined or count <= 0 %}
+        <div class="panel panel-default">
+            <div class="panel-body">
+                There is nothing to see here. 
+            </div>
+        </div>
+    {% else %}
+        {% for article in articles %}
+            {% include 'MainBundle::article.html.twig' with {article: article} %}
+        {% endfor %}
+    {% endif %}
+
+    {% include 'MainBundle::pager.html.twig' with {page: page, count: count} %}
 {% endblock %}
