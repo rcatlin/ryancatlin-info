@@ -3,6 +3,7 @@
 namespace MyProject\Bundle\MainBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\DataTransformer\DateTimeToStringTransformer;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
@@ -17,10 +18,26 @@ class ArticleType extends AbstractType
         $builder
             ->add('slug')
             ->add('title')
-            ->add('createdAt')
-            ->add('updatedAt')
+            ->add(
+                $builder->create(
+                    'createdAt',
+                    'hidden'
+                )
+                ->addViewTransformer(new DateTimeToStringTransformer())
+            )
+            ->add(
+                $builder->create(
+                    'updatedAt',
+                    'hidden'
+                )
+                ->addViewTransformer(new DateTimeToStringTransformer())
+            )
             ->add('content')
-            ->add('tags')
+            ->add(
+                'tags',
+                null,
+                array('required' => false)
+            )
         ;
     }
     
