@@ -194,4 +194,9 @@ class Article
     {
         return $this->content;
     }
+
+    public function getTags()
+    {
+        return $this->tags;
+    }
 }

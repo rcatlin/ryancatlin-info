@@ -1,4 +1,0 @@
-# _index:
-#     path: /
-#     defaults:
-#         _controller: MainBundle:Main:index

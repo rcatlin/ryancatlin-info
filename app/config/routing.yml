@@ -1,3 +1,7 @@
 myproject:
     resource: "@MainBundle/Controller/MainController.php"
     type: annotation
+
+articles:
+    resource: "@MainBundle/Resources/config/routing/article.yml"
+    prefix: articles/
