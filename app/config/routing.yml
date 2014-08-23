@@ -26,3 +26,7 @@ myproject:
 articles:
     resource: "@MainBundle/Resources/config/routing/article.yml"
     prefix: /articles
+
+login:
+    resource: "@MainBundle/Controller/LoginController.php"
+    type: annotation

@@ -21,7 +21,7 @@ class MainBundleController extends Controller
      */
     public function getDefaultEntityManager()
     {
-        return $this->container->get(
+        return $this->get(
             'doctrine.orm.default_entity_manager'
         );
     }
