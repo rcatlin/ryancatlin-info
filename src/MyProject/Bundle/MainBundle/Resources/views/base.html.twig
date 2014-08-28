@@ -26,13 +26,15 @@
         {% endblock %}
     </head>
     <body>
+        
+        {% include 'MainBundle::menu.html.twig' %}
+        
         <div class="jumbotron">
             <h2>
                 Ryan Catlin 
                 <br /><small>code and shark enthusiast</small>
             </h2>
         </div>
-        {% include 'MainBundle::menu.html.twig' %}
 
         <div class="container-fluid">
             {% block content %}
