@@ -14,12 +14,14 @@
 /bin/
 /composer.phar
 
-# Assetic
-/web/css
-/web/js
-
 # NPM
 node_modules
 
 # Bower components
-web/components
+bower_components/
+
+# Grunt generated directories
+web/js
+web/css
+web/fonts
+web/assets

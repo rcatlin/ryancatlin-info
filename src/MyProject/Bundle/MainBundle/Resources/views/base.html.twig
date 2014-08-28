@@ -4,26 +4,38 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>{% block title %}Ryan Catlin{% endblock %}</title>
+
         {% block stylesheets %}
-            {% stylesheets 
-                'components/bootstrap/dist/css/bootstrap.min.css'
-                'components/bootstrap/dist/css/bootstrap-theme.min.css'
-                '@MainBundle/Resources/css/styles.css'
-                filter='cssrewrite'
-                output="css/compiled/all.css"
-             %}
-                <link rel="stylesheet" href="{{ asset_url }}" />
-            {% endstylesheets %}
+            {% if app.debug %}
+                <link href="{{ asset('assets/css/bootstrap.min.css') }}" type="text/css" rel="stylesheet" />
+                <link href="{{ asset('assets/css/bootstrap-theme.min.css') }}" type="text/css" rel="stylesheet" />
+            {% else %}
+                {% stylesheets 
+                    'assets/css/bootstrap.min.css'
+                    'assets/css/bootstrap-theme.min.css'
+                    filter='cssrewrite'
+                    output="css/compiled/all.css"
+                 %}
+                    <link rel="stylesheet" href="{{ asset_url }}" />
+                {% endstylesheets %}
+            {% endif %}
         {% endblock %}
+
         {% block javascripts %}
-            {% javascripts
-                'components/jquery/dist/jquery.js'
-                'components/bootstrap/js/*'
-                output="js/compiled/all.js"
-            %}
-                <script type="text/javascript" src="{{ asset_url }}"></script>
-            {% endjavascripts %}
+            {% if app.debug %}
+                <script type="text/javascript" src="{{ asset('assets/js/jquery.min.js') }}"></script>
+                <script type="text/javascript" src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
+            {% else %}
+                {% javascripts
+                    'assets/js/jquery.min.js'
+                    'assets/js/bootstrap.min.js'
+                    output="js/compiled/all.js"
+                %}
+                    <script type="text/javascript" src="{{ asset_url }}"></script>
+                {% endjavascripts %}
+            {% endif %}
         {% endblock %}
+
     </head>
     <body>
         
