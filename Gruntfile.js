@@ -15,7 +15,8 @@ module.exports = function (grunt) {
             stylesheets: {
                 files: {
                     'css/bootstrap.min.css': 'bootstrap/dist/css/bootstrap.min.css',
-                    'css/bootstrap-theme.min.css': 'bootstrap/dist/css/bootstrap-theme.min.css'
+                    'css/bootstrap-theme.min.css': 'bootstrap/dist/css/bootstrap-theme.min.css',
+                    'css/main.css':'../src/MyProject/Bundle/MainBundle/Resources/public/css/main.css'
                 }
             },
             fonts: {
@@ -23,9 +24,18 @@ module.exports = function (grunt) {
                     'fonts': 'bootstrap/dist/fonts'
                 }
             }
+        },
+        copy: {
+            images: {
+                expand: true,
+                cwd: 'src/MyProject/Bundle/MainBundle/Resources/public/images',
+                src: '*',
+                dest: 'web/assets/images/'
+            }
         }
     });
 
     grunt.loadNpmTasks('grunt-bowercopy');
-    grunt.registerTask('default', ['bowercopy']);
+    grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.registerTask('default', ['bowercopy', 'copy']);
 }

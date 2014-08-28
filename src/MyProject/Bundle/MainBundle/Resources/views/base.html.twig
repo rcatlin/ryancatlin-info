@@ -9,10 +9,12 @@
             {% if app.debug %}
                 <link href="{{ asset('assets/css/bootstrap.min.css') }}" type="text/css" rel="stylesheet" />
                 <link href="{{ asset('assets/css/bootstrap-theme.min.css') }}" type="text/css" rel="stylesheet" />
+                <link href="{{ asset('assets/css/main.css') }}" text="text/css" rel="stylesheet" />
             {% else %}
                 {% stylesheets 
                     'assets/css/bootstrap.min.css'
                     'assets/css/bootstrap-theme.min.css'
+                    'assets/css/main.css'
                     filter='cssrewrite'
                     output="css/compiled/all.css"
                  %}
@@ -42,10 +44,10 @@
         {% include 'MainBundle::menu.html.twig' %}
         
         <div class="jumbotron">
-            <h2>
-                Ryan Catlin 
-                <br /><small>code and shark enthusiast</small>
-            </h2>
+            <div class="container">
+                <h2>Ryan Catlin</h2>
+                <p>code and shark enthusiast</p>
+            </div>
         </div>
 
         <div class="container-fluid">
