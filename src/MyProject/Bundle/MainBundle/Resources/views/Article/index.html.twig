@@ -1,9 +1,9 @@
-{% extends '::base.html.twig' %}
+{% extends 'MainBundle::base.html.twig' %}
 
-{% block body -%}
+{% block content -%}
     <h1>Article list</h1>
 
-    <table class="records_list">
+    <table class="table table-striped records_list">
         <thead>
             <tr>
                 <th>Id</th>
@@ -23,27 +23,19 @@
                 <td>{{ entity.title }}</td>
                 <td>{{ entity.createdAt|date('m/d/y g:ia') }}</td>
                 <td>{{ entity.updatedAt|date('m/d/y g:ia') }}</td>
-                <td>{{ entity.content }}</td>
+                <td>{{ entity.content|slice(0,100) }}</td>
                 <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('article_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('article_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
-                </ul>
+                <div class="btn-group">
+                    <a class="btn btn-primary btn-sm" href="{{ path('article_show', { 'id': entity.id }) }}">show</a>
+                    <a class="btn btn-info btn-sm" href="{{ path('article_edit', { 'id': entity.id }) }}">edit</a>
+                </div>
                 </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-        <ul>
-        <li>
-            <a href="{{ path('article_new') }}">
-                Create a new entry
-            </a>
-        </li>
-    </ul>
-    {% endblock %}
+    <div class="btn-group">
+        <a class="btn btn-success" href="{{ path('article_new') }}">Create a new entry</a>
+    </div>
+{% endblock %}

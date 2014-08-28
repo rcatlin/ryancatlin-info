@@ -1,0 +1,29 @@
+{{ form_errors(form) }}
+
+{{ form_start(form, {'attr': {'role': 'form'}}) }}
+
+<div class="form-group">
+    {{ form_label(form.slug) }}
+    {{ form_widget(form.slug, {'attr': {'class': 'form-control'}}) }}
+</div>
+
+<div class="form-group">
+    {{ form_label(form.title) }}
+    {{ form_widget(form.title, {'attr': {'class': 'form-control'}}) }}
+</div>
+
+<div class="form-group">
+    {{ form_label(form.content) }}
+    {{ form_widget(form.content, {'attr': {'class': 'form-control'}}) }}
+</div>
+
+<div class="form-group">
+    {{ form_label(form.tags) }}
+    {{ form_widget(form.tags, {'attr': {'class': 'form-control'}}) }}
+</div>
+
+<div class="form-group">
+    {{ form_widget(form.submit, {'attr': {'class': 'btn btn-primary'}}) }}
+</div>
+
+{{ form_end(form) }}

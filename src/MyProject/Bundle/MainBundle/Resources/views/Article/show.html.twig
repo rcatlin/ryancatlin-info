@@ -1,6 +1,6 @@
-{% extends '::base.html.twig' %}
+{% extends 'MainBundle::base.html.twig' %}
 
-{% block body -%}
+{% block content -%}
     <h1>Article</h1>
 
     <table class="record_properties">
@@ -32,17 +32,17 @@
         </tbody>
     </table>
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('article') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <a href="{{ path('article_edit', { 'id': entity.id }) }}">
-            Edit
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+    <div class="record_actions btn-group">
+        <a class="btn btn-default" href="{{ path('article_edit', { 'id': entity.id }) }}">Edit</a>
+    </div>
+    
+    {{ form(delete_form) }}
+    
+
+    <ul class="record_actions pager">
+        <li class="previous">
+            <a href="{{ path('article') }}">&larr; Back to the list</a>
+        </li>
+    </ul>
+
 {% endblock %}
