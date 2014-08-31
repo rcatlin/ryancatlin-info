@@ -23,10 +23,10 @@
         "incenteev/composer-parameter-handler": "~2.0",
         "symfony/config": "2.6.*@dev",
         "symfony/yaml": "2.6.*@dev",
-        "friendsofsymfony/user-bundle": "~2.0@dev"
+        "friendsofsymfony/user-bundle": "~2.0@dev",
+        "sensio/generator-bundle": "~2.3"
     },
     "require-dev": {
-        "sensio/generator-bundle": "~2.3",
         "fabpot/php-cs-fixer": "dev-master"
     },
     "scripts": {
