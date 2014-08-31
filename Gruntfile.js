@@ -18,7 +18,7 @@ module.exports = function (grunt) {
                 files: {
                     'css/bootstrap.min.css': 'bootstrap/dist/css/bootstrap.min.css',
                     'css/bootstrap-theme.min.css': 'bootstrap/dist/css/bootstrap-theme.min.css',
-                    'css/font-awesome.css': 'fontawesome/css/font-awesome.min.css',
+                    'css/font-awesome.min.css': 'fontawesome/css/font-awesome.min.css',
                     'css/summernote.css': 'summernote/dist/summernote.css',
                     'css/main.css':'../src/MyProject/Bundle/MainBundle/Resources/public/css/main.css',
                 }
