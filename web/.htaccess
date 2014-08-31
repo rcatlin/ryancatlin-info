@@ -39,6 +39,10 @@ DirectoryIndex app.php
 
     # Rewrite all other queries to the front controller.
     RewriteRule .? %{ENV:BASE}/app.php [L]
+
+    # Redirect to be naked
+    RewriteCond %{HTTP_HOST} ^www\.ryancatlin\.info [NC]
+    RewriteRule ^(.*)$ http://ryancatlin.info/$1 [L,R=301]
 </IfModule>
 
 <IfModule !mod_rewrite.c>
