@@ -17,6 +17,7 @@ class ArticleRepository extends EntityRepository
         return $this->createQueryBuilder('MainBundle:Article')
             ->setFirstResult($offset)
             ->setMaxResults($limit)
+            ->orderBy('MainBundle:Article.createdAt', 'DESC')
             ->getQuery()
             ->getArrayResult()
         ;
