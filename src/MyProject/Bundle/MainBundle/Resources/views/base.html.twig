@@ -59,5 +59,9 @@
             {% block content %}
             {% endblock %}
         </div>
+
+        {% block google_analytics %}
+            {% include 'MainBundle::google_analytics.html.twig' %}
+        {% endblock %}
     </body>
 <html>
