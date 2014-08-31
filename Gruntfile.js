@@ -9,19 +9,26 @@ module.exports = function (grunt) {
             scripts: {
                 files: {
                     'js/jquery.min.js': 'jquery/dist/jquery.min.js',
-                    'js/bootstrap.min.js': 'bootstrap/dist/js/bootstrap.min.js'
+                    'js/bootstrap.min.js': 'bootstrap/dist/js/bootstrap.min.js',
+                    'js/summernote.min.js': 'summernote/dist/summernote.min.js',
+                    'js/ready.min.js': 'domready/ready.min.js'
                 }
             },
             stylesheets: {
                 files: {
                     'css/bootstrap.min.css': 'bootstrap/dist/css/bootstrap.min.css',
                     'css/bootstrap-theme.min.css': 'bootstrap/dist/css/bootstrap-theme.min.css',
-                    'css/main.css':'../src/MyProject/Bundle/MainBundle/Resources/public/css/main.css'
+                    'css/font-awesome.css': 'fontawesome/css/font-awesome.min.css',
+                    'css/summernote.css': 'summernote/dist/summernote.css',
+                    'css/main.css':'../src/MyProject/Bundle/MainBundle/Resources/public/css/main.css',
                 }
             },
             fonts: {
                 files: {
-                    'fonts': 'bootstrap/dist/fonts'
+                    'fonts': [
+                        'bootstrap/dist/fonts',
+                        'fontawesome/fonts'
+                    ],
                 }
             }
         },

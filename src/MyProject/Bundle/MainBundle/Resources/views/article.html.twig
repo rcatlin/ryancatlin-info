@@ -6,7 +6,7 @@
         </h4>
     </div>
     <div class="panel-body">
-        {{ article.content }}
+        {{ article.content|raw }}
     </div>
     {% if article.tags is defined %}
         <div class="panel-footer">

@@ -3,6 +3,7 @@
 namespace MyProject\Bundle\MainBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -27,6 +28,9 @@ class Article
      * @var string
      *
      * @ORM\Column(name="slug", type="string", length=100, unique=true)
+     * @Assert\Regex(
+     *     pattern = "/^[0-9a-zA-Z\-\_]+$/"
+     * )
      */
     private $slug;
 

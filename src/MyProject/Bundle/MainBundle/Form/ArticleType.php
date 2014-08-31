@@ -32,11 +32,25 @@ class ArticleType extends AbstractType
                 )
                 ->addViewTransformer(new DateTimeToStringTransformer())
             )
-            ->add('content')
+            ->add(
+                'prettyContent',
+                'textarea',
+                array(
+                    'required' => false,
+                    'mapped' => false,
+                    'label' => 'Content' // False Content Input
+                )
+            )
             ->add(
                 'tags',
                 null,
                 array('required' => false)
+            )
+            ->add(
+                $builder->create(
+                    'content',
+                    'hidden'
+                )
             )
         ;
     }
@@ -56,6 +70,6 @@ class ArticleType extends AbstractType
      */
     public function getName()
     {
-        return 'myproject_bundle_mainbundle_article';
+        return 'article';
     }
 }

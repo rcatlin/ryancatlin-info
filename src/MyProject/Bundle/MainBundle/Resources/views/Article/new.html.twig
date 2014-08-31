@@ -1,5 +1,33 @@
 {% extends 'MainBundle::base.html.twig' %}
 
+{% block stylesheets %}
+    {{ parent() }}
+
+    {% if app.debug %}
+        <link href="{{ asset('assets/css/summernote.css') }}" type="text/css" rel="stylesheet" />
+    {% else %}
+        {% stylesheets 
+            'assets/css/summernote.css'
+         %}
+            <link rel="stylesheet" href="{{ asset_url }}" />
+        {% endstylesheets %}
+    {% endif %}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    {% if app.debug %}
+        <script type="text/javascript" src="{{ asset('assets/js/summernote.min.js') }}"></script>
+    {% else %}
+        {% javascripts
+            'assets/js/summernote.min.js'
+        %}
+            <script type="text/javascript" src="{{ asset_url }}"></script>
+        {% endjavascripts %}
+    {% endif %}
+{% endblock %}
+
 {% block content -%}
     <h1>Article creation</h1>
 
@@ -10,4 +38,37 @@
             <a href="{{ path('article') }}">&larr; Back to the list</a>
         </li>
     </ul>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var submitted = false;
+            var code = null;
+            var srcCodeSelector = '.note-editable';
+            var destCodeSelector = '#article_content';
+
+            // Handle form submission
+            $('form').on('submit', function (e) {
+                if (!submitted) {
+                    e.preventDefault();
+
+                    var codeSrc = $(srcCodeSelector);
+                    var codeDest = $(destCodeSelector);
+
+                    var code = codeSrc.code();
+                    codeDest.val(code);
+
+                    submitted = true;
+
+                    $('form').trigger('submit');
+                }
+            });
+
+            // Setup Summernote
+            $('textarea').summernote({
+                height: 300
+            });
+        });
+
+    </script>
+
 {% endblock %}

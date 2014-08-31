@@ -13,8 +13,9 @@
 </div>
 
 <div class="form-group">
-    {{ form_label(form.content) }}
-    {{ form_widget(form.content, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.content) }}
+    {{ form_label(form.prettyContent) }}
+    {{ form_widget(form.prettyContent,{'attr': {'class': 'form-control'}}) }}
 </div>
 
 <div class="form-group">
