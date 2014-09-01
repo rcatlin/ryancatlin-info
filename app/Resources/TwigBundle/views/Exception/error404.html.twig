@@ -1,0 +1,33 @@
+{% extends 'MainBundle::base.html.twig' %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="col-xs-12 text-center">
+            <h2>Woops.</h2>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12 text-center">
+            <h3>This page doesn't exist.</h3>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12 text-center">
+            <img class="img-thumbnail" src="{{ asset('assets/images/tanner.jpg') }}" alt="Whaaaat?" />
+        </div>
+    </div>
+
+    <div class="row">&nbsp;</div>
+
+    <div class="row">
+        <div class="col-xs-12 text-center">
+            <a href="{{ path('index') }}">
+                <i class="fa fa-home"></i>
+                Index
+            </a>
+        </div>
+    </div>
+{% endblock %}
