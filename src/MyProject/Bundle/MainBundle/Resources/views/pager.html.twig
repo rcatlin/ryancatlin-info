@@ -16,7 +16,11 @@
         </li>
     {% else %}
         <li class="next">
-            <a href="{{ path('index', {'p': page - 1}) }}">Next &rarr;</a>
+            {% if page == 1 %}
+                <a href="{{ path('index') }}">Next &rarr;</a>
+            {% else %}
+                <a href="{{ path('index', {'p': page - 1}) }}">Next &rarr;</a>
+            {% endif %}
         </li>
     {% endif %}
     
