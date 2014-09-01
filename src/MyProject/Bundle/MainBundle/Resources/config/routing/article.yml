@@ -1,4 +1,4 @@
-article:
+articles:
     path:     /
     defaults: { _controller: "MainBundle:Article:index" }
 

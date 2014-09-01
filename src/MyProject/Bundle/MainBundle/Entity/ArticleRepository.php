@@ -12,14 +12,38 @@ use Doctrine\ORM\EntityRepository;
  */
 class ArticleRepository extends EntityRepository
 {
-    public function findArticles($offset, $limit)
+    public function findAll($order = 'DESC')
     {
-        return $this->createQueryBuilder('MainBundle:Article')
-            ->setFirstResult($offset)
-            ->setMaxResults($limit)
-            ->orderBy('MainBundle:Article.createdAt', 'DESC')
+        return $this->createQueryBuilder('a')
+            ->orderBy('a.createdAt', $order)
             ->getQuery()
             ->getArrayResult()
+        ;
+    }
+
+    public function findArticles($offset, $limit, $order = 'DESC')
+    {
+        return $this->createQueryBuilder('a')
+            ->setFirstResult($offset)
+            ->setMaxResults($limit)
+            ->orderBy('a.createdAt', $order)
+            ->getQuery()
+            ->getArrayResult()
+        ;
+    }
+
+    public function findBySlug($slug)
+    {
+        $qb = $this->createQueryBuilder('a');
+
+        $eq = $qb->expr()->eq(
+            'a.slug', 
+            sprintf("'%s'", $slug)
+        );
+
+        return $qb->where($eq)
+            ->getQuery()
+            ->getSingleResult()
         ;
     }
 }

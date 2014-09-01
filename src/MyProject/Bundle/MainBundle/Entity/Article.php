@@ -10,7 +10,14 @@ use Doctrine\ORM\Mapping as ORM;
  * Article
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="MyProject\Bundle\MainBundle\Entity\ArticleRepository")
+ * @ORM\Entity(
+ *     repositoryClass="MyProject\Bundle\MainBundle\Entity\ArticleRepository"
+ * )
+ * @ORM\Table(
+ *     indexes={
+ *         @ORM\Index(name="slug_idx", columns={"slug"})
+ *     }
+ * )
  * @ORM\HasLifecycleCallbacks
  */
 class Article

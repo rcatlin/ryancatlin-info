@@ -44,4 +44,19 @@ class MainController extends MainBundleController
     {
         return array();
     }
+
+    /**
+     * @Route("/article/{slug}", name="article")
+     * @Template("MainBundle::article.html.twig")
+     */
+    public function articleAction($slug)
+    {
+        $article = $this->getArticleRepository()
+            ->findBySlug($slug)
+        ;
+
+        return array(
+            'article' => $article
+        );
+    }
 }

@@ -1,16 +1,5 @@
-<div class="panel panel-default">
-    <div class="panel-heading">
-        <h4>
-            {{ article.title }}
-            <small>{{ article.createdAt|date('M-j-y g:ia') }}</small>
-        </h4>
-    </div>
-    <div class="panel-body">
-        {{ article.content|raw }}
-    </div>
-    {% if article.tags is defined %}
-        <div class="panel-footer">
-            {{ article.tags|join(',') }}
-        </div>
-    {% endif %}
-</div>
+{% extends 'MainBundle::base.html.twig' %}
+
+{% block content %}
+    {% include 'MainBundle::Article/view.html.twig' with {article: article} %}
+{% endblock %}

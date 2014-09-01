@@ -13,7 +13,7 @@
         </div>
     {% else %}
         {% for article in articles %}
-            {% include 'MainBundle::article.html.twig' with {article: article} %}
+            {% include 'MainBundle::Article/view.html.twig' with {article: article} %}
         {% endfor %}
     {% endif %}
 
