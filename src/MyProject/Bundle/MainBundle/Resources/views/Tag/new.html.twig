@@ -1,0 +1,13 @@
+{% extends 'MainBundle::base.html.twig' %}
+
+{% block content -%}
+    <h1>Tag creation</h1>
+
+    {% include 'MainBundle::Tag/form.html.twig' with {'form': form} %}
+
+    <ul class="record_actions pager">
+        <li class="previous">
+            <a href="{{ path('tags') }}">&larr; Back to the list</a>
+        </li>
+    </ul>
+{% endblock %}

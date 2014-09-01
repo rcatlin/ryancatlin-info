@@ -26,6 +26,10 @@ articles:
     resource: "@MainBundle/Resources/config/routing/article.yml"
     prefix: /articles
 
+tags:
+    resource: "@MainBundle/Controller/TagController.php"
+    type: annotation
+
 login:
     resource: "@MainBundle/Controller/LoginController.php"
     type: annotation

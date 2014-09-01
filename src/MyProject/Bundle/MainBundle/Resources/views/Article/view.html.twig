@@ -14,8 +14,11 @@
         <a href="{{ path('article', {'slug': article.slug}) }}">
             <i class="fa fa-link"></i>
         </a>
-        {% if article.tags is defined %}
-            {{ article.tags|join(',') }}
+        {% if article.tags is defined and article.tags|length > 0 %}
+            <span class="label label-default">
+                <span class="fa fa-tag"></span>
+                {{ article.tags|join(',') }}
+            </span>
         {% endif %}
     </div>
 </div>

@@ -1,0 +1,10 @@
+{{ form_errors(form) }}
+
+{{ form_start(form, {'attr': {'role': 'form'}}) }}
+
+<div class="form-group">
+    {{ form_label(form.name) }}
+    {{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
+</div>
+
+{{ form_end(form) }}

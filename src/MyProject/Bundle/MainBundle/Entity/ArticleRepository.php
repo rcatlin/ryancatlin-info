@@ -17,7 +17,7 @@ class ArticleRepository extends EntityRepository
         return $this->createQueryBuilder('a')
             ->orderBy('a.createdAt', $order)
             ->getQuery()
-            ->getArrayResult()
+            ->execute()
         ;
     }
 
@@ -28,7 +28,7 @@ class ArticleRepository extends EntityRepository
             ->setMaxResults($limit)
             ->orderBy('a.createdAt', $order)
             ->getQuery()
-            ->getArrayResult()
+            ->execute()
         ;
     }
 

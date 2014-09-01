@@ -41,22 +41,7 @@
                 {% endif %}
 
                 {% if is_granted('ROLE_USER') %}
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            Hello, {{ app.user.username }}<span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li>
-                                <a href="{{ path('articles') }}">Articles</a>
-                            </li>
-                            <li>
-                                <a href="{{ path('article_new') }}">New Article</a>
-                            </li>
-                            <li>
-                                <a href="{{ path('fos_user_security_logout') }}">Logout</a>
-                            </li>
-                        </ul>
-                    </li>
+                   {% include 'MainBundle::admin_menu.html.twig' %}
                 {% endif %}
             </ul>
         </div>
