@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "7f6fab557de9682aa2cc0dbac39db02a",
+    "hash": "eb521f5a082c00d422c9ce1157e319f7",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -1087,6 +1087,56 @@
             "time": "2014-05-22 23:27:44"
         },
         {
+            "name": "sensio/generator-bundle",
+            "version": "v2.3.5",
+            "target-dir": "Sensio/Bundle/GeneratorBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sensiolabs/SensioGeneratorBundle.git",
+                "reference": "8b7a33aa3d22388443b6de0b0cf184122e9f60d2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sensiolabs/SensioGeneratorBundle/zipball/8b7a33aa3d22388443b6de0b0cf184122e9f60d2",
+                "reference": "8b7a33aa3d22388443b6de0b0cf184122e9f60d2",
+                "shasum": ""
+            },
+            "require": {
+                "symfony/console": "~2.0",
+                "symfony/framework-bundle": "~2.2"
+            },
+            "require-dev": {
+                "doctrine/orm": "~2.2,>=2.2.3",
+                "symfony/doctrine-bridge": "~2.2",
+                "twig/twig": "~1.11"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.3.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Sensio\\Bundle\\GeneratorBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com",
+                    "homepage": "http://fabien.potencier.org",
+                    "role": "Lead Developer"
+                }
+            ],
+            "description": "This bundle generates code for you",
+            "time": "2014-04-28 14:01:06"
+        },
+        {
             "name": "sensiolabs/security-checker",
             "version": "v2.0.0",
             "source": {
@@ -1827,38 +1877,36 @@
             "time": "2013-08-03 16:46:33"
         },
         {
-            "name": "sensio/generator-bundle",
-            "version": "v2.3.5",
-            "target-dir": "Sensio/Bundle/GeneratorBundle",
+            "name": "webfactory/exceptions-bundle",
+            "version": "4.0.2",
             "source": {
                 "type": "git",
-                "url": "https://github.com/sensiolabs/SensioGeneratorBundle.git",
-                "reference": "8b7a33aa3d22388443b6de0b0cf184122e9f60d2"
+                "url": "https://github.com/webfactory/exceptions-bundle.git",
+                "reference": "f4bd90e2948a9bd932197eae491675078a8a6477"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs/SensioGeneratorBundle/zipball/8b7a33aa3d22388443b6de0b0cf184122e9f60d2",
-                "reference": "8b7a33aa3d22388443b6de0b0cf184122e9f60d2",
+                "url": "https://api.github.com/repos/webfactory/exceptions-bundle/zipball/f4bd90e2948a9bd932197eae491675078a8a6477",
+                "reference": "f4bd90e2948a9bd932197eae491675078a8a6477",
                 "shasum": ""
             },
             "require": {
-                "symfony/console": "~2.0",
-                "symfony/framework-bundle": "~2.2"
+                "symfony/twig-bundle": "~2.2"
             },
             "require-dev": {
-                "doctrine/orm": "~2.2,>=2.2.3",
-                "symfony/doctrine-bridge": "~2.2",
-                "twig/twig": "~1.11"
+                "phpunit/phpunit": "~4.0",
+                "sensio/framework-extra-bundle": "~2.2",
+                "symfony/framework-bundle": "~2.2"
             },
-            "type": "symfony-bundle",
+            "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.3.x-dev"
+                    "dev-default": "3.1.x-dev"
                 }
             },
             "autoload": {
-                "psr-0": {
-                    "Sensio\\Bundle\\GeneratorBundle": ""
+                "psr-4": {
+                    "Webfactory\\Bundle\\ExceptionsBundle\\": ""
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -1867,14 +1915,15 @@
             ],
             "authors": [
                 {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com",
-                    "homepage": "http://fabien.potencier.org",
-                    "role": "Lead Developer"
+                    "name": "webfactory GmbH",
+                    "email": "info@webfactory.de",
+                    "homepage": "http://www.webfactory.de",
+                    "role": "Developer"
                 }
             ],
-            "description": "This bundle generates code for you",
-            "time": "2014-04-28 14:01:06"
+            "description": "A simple controller to display error pages during development plus some building blocks for more user-friendly error pages.",
+            "homepage": "http://inside.webfactory.de/de/blog/symfony2-exception-handling-and-custom-error-pages-explained.html",
+            "time": "2014-08-17 20:06:52"
         }
     ],
     "aliases": [
@@ -1885,7 +1934,8 @@
         "symfony/config": 20,
         "symfony/yaml": 20,
         "friendsofsymfony/user-bundle": 20,
-        "fabpot/php-cs-fixer": 20
+        "fabpot/php-cs-fixer": 20,
+        "webfactory/exceptions-bundle": 0
     },
     "prefer-stable": false,
     "platform": {
