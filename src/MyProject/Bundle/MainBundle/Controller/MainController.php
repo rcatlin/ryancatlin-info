@@ -4,13 +4,12 @@ namespace MyProject\Bundle\MainBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 class MainController extends MainBundleController
 {
-    CONST LIMIT = 10;
+    const LIMIT = 10;
 
     /**
      * @Route("/", name="index")
@@ -57,6 +56,30 @@ class MainController extends MainBundleController
 
         return array(
             'article' => $article
+        );
+    }
+
+    /**
+     * @Route("/tag/{name}", name="articles_by_tag")
+     * @Template("MainBundle::index.html.twig")
+     */
+    public function articlesByTagAction(Request $request, $name)
+    {
+        $tag = $this->getTagRepository()->findOneByName($name);
+
+        $page = $request->query->has('p') ? $request->query->get('q') : 0;
+
+        $articles = $this->getArticleRepository()
+            ->findByTag(
+                $tag,
+                $page * self::LIMIT,
+                self::LIMIT
+            )
+        ;
+
+        return array(
+            'articles' => $articles,
+            'page' => $page
         );
     }
 }

@@ -15,10 +15,12 @@
             <i class="fa fa-link"></i>
         </a>
         {% if article.tags is defined and article.tags|length > 0 %}
-            <span class="label label-default">
-                <span class="fa fa-tag"></span>
-                {{ article.tags|join(',') }}
-            </span>
+            {% for tag in article.tags %}
+                <a class="label label-default" href="{{ path('articles_by_tag', {name: tag.name} ) }}">
+                        <span class="fa fa-tag"></span>
+                        {{ tag.name }}
+                </a>
+            {% endfor %}
         {% endif %}
     </div>
 </div>

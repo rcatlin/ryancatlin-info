@@ -12,4 +12,21 @@ use Doctrine\ORM\EntityRepository;
  */
 class TagRepository extends EntityRepository
 {
+    public function findOneByName($name)
+    {
+        $qb = $this->createQueryBuilder('t');
+
+        $eq = $qb->expr()->eq(
+            't.name',
+            sprintf(
+                "'%s'",
+                $name
+            )
+        );
+
+        return $qb->where($eq)
+            ->getQuery()
+            ->getSingleResult()
+        ;
+    }
 }

@@ -37,13 +37,35 @@ class ArticleRepository extends EntityRepository
         $qb = $this->createQueryBuilder('a');
 
         $eq = $qb->expr()->eq(
-            'a.slug', 
+            'a.slug',
             sprintf("'%s'", $slug)
         );
 
         return $qb->where($eq)
             ->getQuery()
             ->getSingleResult()
+        ;
+    }
+
+    public function findByTag(Tag $tag, $offset, $limit, $order = 'DESC')
+    {
+        $qb = $this->createQueryBuilder('a')
+            ->join('a.tags', 't')
+        ;
+
+        $in = $qb->expr()->in(
+            't.id',
+            array(
+                $tag->getId()
+            )
+        );
+
+        return $qb->where($in)
+            ->setFirstResult($offset)
+            ->setMaxResults($limit)
+            ->orderBy('a.createdAt', $order)
+            ->getQuery()
+            ->execute()
         ;
     }
 }
