@@ -28,6 +28,16 @@
                 <th>Content</th>
                 <td>{{ entity.content }}</td>
             </tr>
+            <tr>
+                <th>Active</th>
+                <td>
+                    {% if entity.active %}
+                        <span class="badge glyphicon glyphicon-ok"></span>
+                    {% else %}
+                        <span class="badge glyphicon glyphicon-remove"></span>
+                    {% endif %}
+                </td>
+            </tr>
         </tbody>
     </table>
 

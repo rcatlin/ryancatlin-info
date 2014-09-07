@@ -21,9 +21,16 @@ class ArticleRepository extends EntityRepository
         ;
     }
 
-    public function findArticles($offset, $limit, $order = 'DESC')
+    public function findAllActiveArticles($offset, $limit, $order = 'DESC')
     {
-        return $this->createQueryBuilder('a')
+        $qb = $this->createQueryBuilder('a');
+
+        $eq = $qb->expr()->eq(
+            'a.active',
+            '1'
+        );
+
+        return $qb->where($eq)
             ->setFirstResult($offset)
             ->setMaxResults($limit)
             ->orderBy('a.createdAt', $order)
@@ -32,35 +39,50 @@ class ArticleRepository extends EntityRepository
         ;
     }
 
-    public function findBySlug($slug)
+    public function findActiveBySlug($slug)
     {
         $qb = $this->createQueryBuilder('a');
 
-        $eq = $qb->expr()->eq(
-            'a.slug',
-            sprintf("'%s'", $slug)
-        );
+        $slug = $qb->expr()
+            ->eq(
+                'a.slug',
+                sprintf("'%s'", $slug)
+            )
+        ;
+        $active = $qb->expr()
+            ->eq(
+                'a.active',
+                '1'
+            )
+        ;
 
-        return $qb->where($eq)
+        return $qb->where($slug)
+            ->andWhere($active)
             ->getQuery()
             ->getSingleResult()
         ;
     }
 
-    public function findByTag(Tag $tag, $offset, $limit, $order = 'DESC')
+    public function findActiveByTag(Tag $tag, $offset, $limit, $order = 'DESC')
     {
         $qb = $this->createQueryBuilder('a')
             ->join('a.tags', 't')
         ;
 
-        $in = $qb->expr()->in(
+        $id = $qb->expr()->in(
             't.id',
             array(
                 $tag->getId()
             )
         );
 
-        return $qb->where($in)
+        $active = $qb->expr()->eq(
+            'a.active',
+            '1'
+        );
+
+        return $qb->where($id)
+            ->andWhere($active)
             ->setFirstResult($offset)
             ->setMaxResults($limit)
             ->orderBy('a.createdAt', $order)

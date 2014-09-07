@@ -11,13 +11,20 @@ class ArticleType extends AbstractType
 {
         /**
      * @param FormBuilderInterface $builder
-     * @param array $options
+     * @param array                $options
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
             ->add('slug')
             ->add('title')
+            ->add(
+                'active',
+                'checkbox',
+                array(
+                    'required' => false
+                )
+            )
             ->add(
                 $builder->create(
                     'createdAt',
@@ -54,7 +61,7 @@ class ArticleType extends AbstractType
             )
         ;
     }
-    
+
     /**
      * @param OptionsResolverInterface $resolver
      */

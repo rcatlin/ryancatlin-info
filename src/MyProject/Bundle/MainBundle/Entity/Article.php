@@ -15,7 +15,8 @@ use Doctrine\ORM\Mapping as ORM;
  * )
  * @ORM\Table(
  *     indexes={
- *         @ORM\Index(name="slug_idx", columns={"slug"})
+ *         @ORM\Index(name="slug_idx", columns={"slug"}),
+ *         @ORM\Index(name="active_idx", columns={"active"})
  *     }
  * )
  * @ORM\HasLifecycleCallbacks
@@ -73,10 +74,17 @@ class Article
 
     /**
      * @var array
-     * 
+     *
      * @ORM\ManyToMany(targetEntity="Tag")
      */
     protected $tags;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(type="boolean")
+     */
+    protected $active;
 
     public function __construct()
     {
@@ -89,7 +97,7 @@ class Article
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -99,7 +107,7 @@ class Article
     /**
      * Set slug
      *
-     * @param string $slug
+     * @param  string  $slug
      * @return Article
      */
     public function setSlug($slug)
@@ -112,7 +120,7 @@ class Article
     /**
      * Get slug
      *
-     * @return string 
+     * @return string
      */
     public function getSlug()
     {
@@ -122,7 +130,7 @@ class Article
     /**
      * Set title
      *
-     * @param string $title
+     * @param  string  $title
      * @return Article
      */
     public function setTitle($title)
@@ -135,7 +143,7 @@ class Article
     /**
      * Get title
      *
-     * @return string 
+     * @return string
      */
     public function getTitle()
     {
@@ -145,7 +153,7 @@ class Article
     /**
      * Set createdAt
      *
-     * @param \DateTime $createdAt
+     * @param  \DateTime $createdAt
      * @return Article
      */
     public function setCreatedAt($createdAt)
@@ -158,7 +166,7 @@ class Article
     /**
      * Get createdAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -168,7 +176,7 @@ class Article
     /**
      * Set updatedAt
      *
-     * @param \DateTime $updatedAt
+     * @param  \DateTime $updatedAt
      * @return Article
      */
     public function setUpdatedAt($updatedAt)
@@ -181,7 +189,7 @@ class Article
     /**
      * Get updatedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdatedAt()
     {
@@ -191,7 +199,7 @@ class Article
     /**
      * Set content
      *
-     * @param string $content
+     * @param  string  $content
      * @return Article
      */
     public function setContent($content)
@@ -204,7 +212,7 @@ class Article
     /**
      * Get content
      *
-     * @return string 
+     * @return string
      */
     public function getContent()
     {
@@ -216,6 +224,25 @@ class Article
         return $this->tags;
     }
 
+    /**
+     * Get active
+     *
+     * @return boolean
+     */
+    public function getActive()
+    {
+        return $this->active;
+    }
+
+    /**
+     * Set active
+     *
+     * @param boolean $active
+     */
+    public function setActive($active)
+    {
+        $this->active = $active;
+    }
 
     /**
      * @ORM\PreUpdate

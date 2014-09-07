@@ -22,7 +22,7 @@ class MainController extends MainBundleController
 
         // Get Articles
         $articles = $this->getArticleRepository()
-            ->findArticles(
+            ->findAllActiveArticles(
                 $page * self::LIMIT,
                 self::LIMIT
             )
@@ -51,7 +51,7 @@ class MainController extends MainBundleController
     public function articleAction($slug)
     {
         $article = $this->getArticleRepository()
-            ->findBySlug($slug)
+            ->findActiveBySlug($slug)
         ;
 
         return array(
@@ -70,7 +70,7 @@ class MainController extends MainBundleController
         $page = $request->query->has('p') ? $request->query->get('q') : 0;
 
         $articles = $this->getArticleRepository()
-            ->findByTag(
+            ->findActiveByTag(
                 $tag,
                 $page * self::LIMIT,
                 self::LIMIT

@@ -11,6 +11,7 @@
                 <th>Created</th>
                 <th>Updated</th>
                 <th>Preview</th>
+                <th>Active</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -24,10 +25,21 @@
                 <td>{{ entity.updatedAt|date('m/d/y g:ia') }}</td>
                 <td>{{ entity.content|striptags|raw|slice(0,50) }}</td>
                 <td>
-                <div class="btn-group">
-                    <a class="btn btn-primary btn-sm" href="{{ path('article_show', { 'id': entity.id }) }}">show</a>
-                    <a class="btn btn-info btn-sm" href="{{ path('article_edit', { 'id': entity.id }) }}">edit</a>
-                </div>
+                    {% if entity.active %}
+                        <span class="label label-success">
+                            <span class="glyphicon glyphicon-ok"></span>
+                        </span>
+                    {% else %}
+                        <span class="label label-danger">
+                             <span class="glyphicon glyphicon-remove"></span>
+                        </span>
+                    {% endif %}
+                </td>
+                <td>
+                    <div class="btn-group">
+                        <a class="btn btn-primary btn-sm" href="{{ path('article_show', { 'id': entity.id }) }}">show</a>
+                        <a class="btn btn-info btn-sm" href="{{ path('article_edit', { 'id': entity.id }) }}">edit</a>
+                    </div>
                 </td>
             </tr>
         {% endfor %}
