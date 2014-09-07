@@ -79,3 +79,16 @@ fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: main
     user_class: MyProject\Bundle\MainBundle\Entity\User
+
+knp_gaufrette:
+    adapters:
+        s3_assets:
+            amazon_s3:
+                amazon_s3_id: "aws_s3.client"
+                bucket_name: "%amazon_s3_bucket_name%"
+                options:
+                    directory: "%amazon_s3_bucket_directory%"
+        local_assets:
+            local:
+                directory: %kernel.root_dir%/../web/assets
+                create: true

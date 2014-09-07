@@ -23,3 +23,9 @@ monolog:
             level: debug
         console:
             type:  console
+
+
+knp_gaufrette:
+    filesystems:
+        asset_fs:
+            adapter: s3_assets

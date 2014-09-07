@@ -34,3 +34,8 @@ assetic:
 
 #swiftmailer:
 #    delivery_address: me@example.com
+
+knp_gaufrette:
+    filesystems:
+        asset_fs:
+            adapter: local_assets
