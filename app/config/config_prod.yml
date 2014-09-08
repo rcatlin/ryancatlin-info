@@ -1,7 +1,10 @@
 imports:
     - { resource: config.yml }
 
-#framework:
+framework:
+    assets_base_urls:
+        http: "s3.amazonaws.com/%amazon_s3_bucket_name%"
+        ssl:  "s3.amazonaws.com/%amazon_s3_bucket_name%"
 #    validation:
 #        cache: apc
 
@@ -31,7 +34,4 @@ knp_gaufrette:
             adapter: s3_assets
 
 assetic:
-    write_to: "s3://%amazon_s3_key%:%amazon_s3_secret%@%amazon_s3_bucket_name%"
-    assets_base_urls:
-        http: "s3.amazonaws.com/%amazon_s3_bucket_name%"
-        ssl:  "s3.amazonaws.com/%amazon_s3_bucket_name%"
+    write_to: "%amazon_s3_bucket_name%.s3.amazonaws.com"
