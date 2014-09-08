@@ -33,5 +33,4 @@ knp_gaufrette:
             adapter: s3_assets
 
 assetic:
-    read_from: "%amazon_s3_bucket_name%.s3.amazonaws.com"
-    write_to: "%amazon_s3_bucket_name%.s3.amazonaws.com"
+    write_to: "s3://%amazon_s3_bucket_name%/assets"
