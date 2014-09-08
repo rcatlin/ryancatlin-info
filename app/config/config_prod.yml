@@ -3,7 +3,8 @@ imports:
 
 framework:
     templating:
-        assets_base_urls: ["http://s3.amazonaws.com/%amazon_s3_bucket_name%"]
+        assets_base_urls: 
+            - //s3.amazonaws.com/%amazon_s3_bucket_name%
 #    validation:
 #        cache: apc
 
@@ -31,6 +32,10 @@ knp_gaufrette:
     filesystems:
         asset_fs:
             adapter: s3_assets
+    stream_wrapper:
+        protocol: s3
+        filesystems:
+            - asset_fs
 
 assetic:
     write_to: "s3://%amazon_s3_bucket_name%/assets"
