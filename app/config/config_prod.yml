@@ -27,15 +27,19 @@ monolog:
         console:
             type:  console
 
-
 knp_gaufrette:
+    adapters:
+        s3_assets:
+            aws_s3:
+                service_id: 'aws_s3.client'
+                bucket_name: "%amazon_s3_bucket_name%"
     filesystems:
-        asset_fs:
+        rcinfo:
             adapter: s3_assets
     stream_wrapper:
         protocol: s3
         filesystems:
-            - asset_fs
+            - rcinfo
 
 assetic:
-    write_to: "s3://%amazon_s3_bucket_name%/assets"
+    write_to: s3://%amazon_s3_bucket_name%/%amazon_s3_bucket_directory%

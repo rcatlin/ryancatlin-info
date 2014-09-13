@@ -25,3 +25,5 @@ web/js
 web/css
 web/fonts
 web/assets
+
+web/app_test.php

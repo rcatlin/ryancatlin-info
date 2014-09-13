@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "e2d6d4d40c4cf8dc30e1088263060d8c",
+    "hash": "2f2423ddd0c57cdea00c8da6e202dbfb",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -821,12 +821,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfSymfony/FOSUserBundle.git",
-                "reference": "094bea6f318fbb067db3ddf6d26a62af0bf13442"
+                "reference": "7001669bccb3fcedfc1c5411ecb2157715e92dd6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSUserBundle/zipball/094bea6f318fbb067db3ddf6d26a62af0bf13442",
-                "reference": "094bea6f318fbb067db3ddf6d26a62af0bf13442",
+                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSUserBundle/zipball/7001669bccb3fcedfc1c5411ecb2157715e92dd6",
+                "reference": "7001669bccb3fcedfc1c5411ecb2157715e92dd6",
                 "shasum": ""
             },
             "require": {
@@ -880,7 +880,7 @@
             "keywords": [
                 "User management"
             ],
-            "time": "2014-08-23 11:32:38"
+            "time": "2014-09-12 11:18:14"
         },
         {
             "name": "guzzle/guzzle",
@@ -2200,12 +2200,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/fabpot/PHP-CS-Fixer.git",
-                "reference": "62f003ec529a77777ea459fc94d40fb27ddddc7f"
+                "reference": "3c7a394bfa8fbbc8c5c3903222f95a78b8bab96a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fabpot/PHP-CS-Fixer/zipball/62f003ec529a77777ea459fc94d40fb27ddddc7f",
-                "reference": "62f003ec529a77777ea459fc94d40fb27ddddc7f",
+                "url": "https://api.github.com/repos/fabpot/PHP-CS-Fixer/zipball/3c7a394bfa8fbbc8c5c3903222f95a78b8bab96a",
+                "reference": "3c7a394bfa8fbbc8c5c3903222f95a78b8bab96a",
                 "shasum": ""
             },
             "require": {
@@ -2241,7 +2241,7 @@
                 }
             ],
             "description": "A script to automatically fix Symfony Coding Standard",
-            "time": "2014-09-07 21:30:34"
+            "time": "2014-09-13 15:03:56"
         },
         {
             "name": "sebastian/diff",

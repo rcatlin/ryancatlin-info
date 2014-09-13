@@ -29,13 +29,18 @@ monolog:
         #    type:   chromephp
         #    level:  info
 
+knp_gaufrette:
+    adapters:
+        local_assets:
+            local:
+                directory: %kernel.root_dir%/../web/assets
+                create: true
+    filesystems:
+        rcinfo:
+            adapter: local_assets
+
 assetic:
     use_controller: "%use_assetic_controller%"
 
 #swiftmailer:
 #    delivery_address: me@example.com
-
-knp_gaufrette:
-    filesystems:
-        asset_fs:
-            adapter: local_assets
