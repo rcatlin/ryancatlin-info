@@ -1,6 +1,7 @@
 module.exports = function (grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
+        aws: grunt.file.readJSON('bin/aws-key.json'),
         bowercopy: {
             options: {
                 srcPrefix: 'bower_components',
@@ -39,10 +40,30 @@ module.exports = function (grunt) {
                 src: '*',
                 dest: 'web/assets/images/'
             }
+        },
+        s3: {
+            options: {
+                key: '<%= aws.key %>',
+                secret: '<%= aws.secret %>',
+                access: 'public-read'
+            },
+            production: {
+                options: {
+                    bucket: '<%= aws.bucket %>'
+                },
+                upload: [
+                    {
+                        src: 'web/assets/images/*',
+                        dest: 'assets/images/'
+                    }
+                ]
+            }
         }
     });
 
     grunt.loadNpmTasks('grunt-bowercopy');
     grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-s3');
     grunt.registerTask('default', ['bowercopy', 'copy']);
+    // grunt.registerTask('syncImages', ['aws_s3:production']);
 }
