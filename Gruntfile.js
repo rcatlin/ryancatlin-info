@@ -59,5 +59,4 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-aws');
     grunt.registerTask('default', ['bowercopy', 'copy']);
-    // grunt.registerTask('syncImages', ['aws_s3:production']);
 }
