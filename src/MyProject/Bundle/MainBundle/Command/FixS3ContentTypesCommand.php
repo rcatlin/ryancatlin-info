@@ -70,7 +70,7 @@ class FixS3ContentTypesCommand extends ContainerAwareCommand
 
         $output->writeln(
             sprintf(
-                'Iterating of all objects in bucket <comment>%s</comment>',
+                'Iterating over all objects in bucket <comment>%s</comment>',
                 $bucket
             )
         );
