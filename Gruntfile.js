@@ -43,27 +43,21 @@ module.exports = function (grunt) {
         },
         s3: {
             options: {
-                key: '<%= aws.key %>',
-                secret: '<%= aws.secret %>',
-                access: 'public-read'
+                accessKeyId: '<%= aws.key %>',
+                secretAccessKey: '<%= aws.secret %>',
+                bucket: '<%= aws.bucket %>'
             },
-            production: {
-                options: {
-                    bucket: '<%= aws.bucket %>'
-                },
-                upload: [
-                    {
-                        src: 'web/assets/images/*',
-                        dest: 'assets/images/'
-                    }
-                ]
+            images: {
+                cwd: 'web/assets/images/',
+                src: '*',
+                dest: 'assets/images/'
             }
         }
     });
 
     grunt.loadNpmTasks('grunt-bowercopy');
     grunt.loadNpmTasks('grunt-contrib-copy');
-    grunt.loadNpmTasks('grunt-s3');
+    grunt.loadNpmTasks('grunt-aws');
     grunt.registerTask('default', ['bowercopy', 'copy']);
     // grunt.registerTask('syncImages', ['aws_s3:production']);
 }
