@@ -7,16 +7,16 @@
 
         {% block stylesheets %}
             {% if app.debug %}
-                <link href="{{ asset('assets/css/bootstrap.min.css') }}" type="text/css" rel="stylesheet" />
-                <link href="{{ asset('assets/css/bootstrap-theme.min.css') }}" type="text/css" rel="stylesheet" />
-                <link href="{{ asset('assets/css/font-awesome.min.css') }}" type="text/css" rel="stylesheet" />
-                <link href="{{ asset('assets/css/main.css') }}" text="text/css" rel="stylesheet" />
+                <link href="{{ asset('css/bootstrap.min.css') }}" type="text/css" rel="stylesheet" />
+                <link href="{{ asset('css/bootstrap-theme.min.css') }}" type="text/css" rel="stylesheet" />
+                <link href="{{ asset('css/font-awesome.min.css') }}" type="text/css" rel="stylesheet" />
+                <link href="{{ asset('css/main.css') }}" text="text/css" rel="stylesheet" />
             {% else %}
                 {% stylesheets 
-                    'assets/css/bootstrap.min.css'
-                    'assets/css/bootstrap-theme.min.css'
-                    'assets/css/font-awesome.min.css'
-                    'assets/css/main.css'
+                    'css/bootstrap.min.css'
+                    'css/bootstrap-theme.min.css'
+                    'css/font-awesome.min.css'
+                    'css/main.css'
                     filter='cssrewrite'
                     output="css/compiled/all.css"
                  %}
@@ -27,14 +27,14 @@
 
         {% block javascripts %}
             {% if app.debug %}
-                <script type="text/javascript" src="{{ asset('assets/js/jquery.min.js') }}"></script>
-                <script type="text/javascript" src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
-                <script type="text/javascript" src="{{ asset('assets/js/ready.min.js') }}"></script>
+                <script type="text/javascript" src="{{ asset('js/jquery.min.js') }}"></script>
+                <script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
+                <script type="text/javascript" src="{{ asset('js/ready.min.js') }}"></script>
             {% else %}
                 {% javascripts
-                    'assets/js/jquery.min.js'
-                    'assets/js/bootstrap.min.js'
-                    'assets/js/ready.min.js'
+                    'js/jquery.min.js'
+                    'js/bootstrap.min.js'
+                    'js/ready.min.js'
                     output="js/compiled/all.js"
                 %}
                     <script type="text/javascript" src="{{ asset_url }}"></script>
