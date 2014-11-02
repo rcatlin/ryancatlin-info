@@ -3,10 +3,10 @@
     {{ parent() }}
 
     {% if app.debug %}
-        <link href="{{ asset('assets/css/summernote.css') }}" type="text/css" rel="stylesheet" />
+        <link href="{{ asset('css/summernote.css') }}" type="text/css" rel="stylesheet" />
     {% else %}
         {% stylesheets 
-            'assets/css/summernote.css'
+            'css/summernote.css'
          %}
             <link rel="stylesheet" href="{{ asset_url }}" />
         {% endstylesheets %}
@@ -17,10 +17,10 @@
     {{ parent() }}
 
     {% if app.debug %}
-        <script type="text/javascript" src="{{ asset('assets/js/summernote.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('js/summernote.min.js') }}"></script>
     {% else %}
         {% javascripts
-            'assets/js/summernote.min.js'
+            'js/summernote.min.js'
         %}
             <script type="text/javascript" src="{{ asset_url }}"></script>
         {% endjavascripts %}
