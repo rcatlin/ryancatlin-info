@@ -21,22 +21,22 @@
 
                 {% if route == 'index' %}
                     <li class="active">
-                        <a href="#">Main</a>
+                        <a class="fa fa-home" href="#">Main</a>
                     </li>
                 {% else %}
                     <li>
-                        <a href="{{ path('index') }}">Main</a>
+                        <a class="fa fa-home" href="{{ path('index') }}">Main</a>
                     </li>
                 {% endif %}
 
 
                 {% if route == 'about' %}
                     <li class="active">
-                        <a href="#">About</a>
+                        <a class="fa fa-info-circle" href="#">About</a>
                     </li>
                 {% else %}
                     <li>
-                        <a href="{{ path('about') }}">About</a>
+                        <a class="fa fa-info-circle" href="{{ path('about') }}">About</a>
                     </li>
                 {% endif %}
 
