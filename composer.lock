@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "fcccacb4fcd7b5321eb04b94a8bbc5d1",
+    "hash": "4c6a430b4fda6f8e4ad93ecd3a061505",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -1896,24 +1896,26 @@
     "packages-dev": [
         {
             "name": "fabpot/php-cs-fixer",
-            "version": "dev-master",
+            "version": "v1.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/fabpot/PHP-CS-Fixer.git",
-                "reference": "307dadc4e2041e7cfe12d700817857a85da9f851"
+                "url": "https://github.com/FriendsOfPHP/PHP-CS-Fixer.git",
+                "reference": "ca95dbf448807420c0d78d447c250263c71080cf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fabpot/PHP-CS-Fixer/zipball/307dadc4e2041e7cfe12d700817857a85da9f851",
-                "reference": "307dadc4e2041e7cfe12d700817857a85da9f851",
+                "url": "https://api.github.com/repos/FriendsOfPHP/PHP-CS-Fixer/zipball/ca95dbf448807420c0d78d447c250263c71080cf",
+                "reference": "ca95dbf448807420c0d78d447c250263c71080cf",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.6",
-                "sebastian/diff": "1.1.*",
+                "sebastian/diff": "~1.1",
                 "symfony/console": "~2.1",
+                "symfony/event-dispatcher": "~2.1",
                 "symfony/filesystem": "~2.1",
                 "symfony/finder": "~2.1",
+                "symfony/process": "~2.3",
                 "symfony/stopwatch": "~2.5"
             },
             "bin": [
@@ -1922,12 +1924,12 @@
             "type": "application",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "0.5.x-dev"
+                    "dev-master": "1.0-dev"
                 }
             },
             "autoload": {
-                "psr-0": {
-                    "Symfony\\CS": "."
+                "psr-4": {
+                    "Symfony\\CS\\": "Symfony/CS/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -1941,7 +1943,7 @@
                 }
             ],
             "description": "A script to automatically fix Symfony Coding Standard",
-            "time": "2014-08-22 20:13:31"
+            "time": "2014-11-12 19:31:29"
         },
         {
             "name": "sebastian/diff",
@@ -2043,9 +2045,7 @@
             "time": "2014-08-17 20:06:52"
         }
     ],
-    "aliases": [
-
-    ],
+    "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
         "symfony/config": 20,
@@ -2060,7 +2060,5 @@
     "platform": {
         "php": ">=5.3.3"
     },
-    "platform-dev": [
-
-    ]
+    "platform-dev": []
 }
