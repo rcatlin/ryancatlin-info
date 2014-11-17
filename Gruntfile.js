@@ -36,7 +36,7 @@ module.exports = function (grunt) {
             images: {
                 expand: true,
                 cwd: 'web/bundles/main/images',
-                src: '*',
+                src: '**',
                 dest: 'web/images/'
             }
         }
