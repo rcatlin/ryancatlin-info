@@ -19,6 +19,8 @@ FROM
     MainBundle:Article a
 WHERE
     :tid MEMBER OF a.tags
+    AND
+    a.active=1
 EOF;
 
     const ARTICLE_COUNT_QUERY = <<< EOF
@@ -26,6 +28,8 @@ SELECT
     COUNT(a.id)
 FROM
     MainBundle:Article a
+WHERE
+    a.active=1
 EOF;
 
     public function findAll($order = 'DESC')
@@ -132,7 +136,7 @@ EOF;
         ;
     }
 
-    public function getTotalCount()
+    public function getActiveTotalCount()
     {
         return $this->getEntityManager()
             ->createQuery(
@@ -142,7 +146,7 @@ EOF;
         ;
     }
 
-    public function getTotalCountByTag(Tag $tag = null)
+    public function getActiveTotalCountByTag(Tag $tag = null)
     {
         return $this->getEntityManager()
             ->createQuery(
