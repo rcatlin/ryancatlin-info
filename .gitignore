@@ -25,3 +25,7 @@ web/js
 web/css
 web/fonts
 web/images
+
+
+# Assembled Assets
+web/assets
