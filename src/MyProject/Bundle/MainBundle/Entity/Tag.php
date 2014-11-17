@@ -28,11 +28,10 @@ class Tag
      */
     private $name;
 
-
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -42,7 +41,7 @@ class Tag
     /**
      * Set name
      *
-     * @param string $name
+     * @param  string $name
      * @return Tag
      */
     public function setName($name)
@@ -55,7 +54,7 @@ class Tag
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -63,7 +62,7 @@ class Tag
     }
 
     /**
-     * @return string 
+     * @return string
      */
     public function __toString()
     {

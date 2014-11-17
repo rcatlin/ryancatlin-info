@@ -9,20 +9,20 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class ArticleType extends AbstractType
 {
-        /**
+    /**
      * @param FormBuilderInterface $builder
      * @param array                $options
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('slug')
+            ->add('slug',)
             ->add('title')
             ->add(
                 'active',
                 'checkbox',
                 array(
-                    'required' => false
+                    'required' => false,
                 )
             )
             ->add(
@@ -45,7 +45,7 @@ class ArticleType extends AbstractType
                 array(
                     'required' => false,
                     'mapped' => false,
-                    'label' => 'Content' // False Content Input
+                    'label' => 'Content', // False Content Input
                 )
             )
             ->add(
@@ -68,7 +68,7 @@ class ArticleType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'MyProject\Bundle\MainBundle\Entity\Article'
+            'data_class' => 'MyProject\Bundle\MainBundle\Entity\Article',
         ));
     }
 

@@ -72,7 +72,7 @@ class ArticleRepository extends EntityRepository
         $id = $qb->expr()->in(
             't.id',
             array(
-                $tag->getId()
+                $tag->getId(),
             )
         );
 

@@ -3,7 +3,7 @@
 {% block title %}{{ parent() }}{% endblock %}
 
 {% block content %}
-    
+
     {% set count = articles|length %}
     {% if articles is not defined or count <= 0 %}
         <div class="panel panel-default">

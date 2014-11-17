@@ -46,7 +46,7 @@ class LoginController extends SecurityController
     }
 
     /**
-     * @param string $path
+     * @param  string                                            $path
      * @return Symfony\Component\HttpFoundation\RedirectResponse
      */
     protected function redirect($route)

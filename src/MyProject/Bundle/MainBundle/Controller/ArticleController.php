@@ -14,7 +14,6 @@ use MyProject\Bundle\MainBundle\Form\ArticleType;
  */
 class ArticleController extends Controller
 {
-
     /**
      * Lists all Article entities.
      *
@@ -181,6 +180,7 @@ class ArticleController extends Controller
             'delete_form' => $deleteForm->createView(),
         ));
     }
+
     /**
      * Deletes a Article entity.
      *

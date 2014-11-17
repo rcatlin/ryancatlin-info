@@ -17,7 +17,6 @@ use MyProject\Bundle\MainBundle\Form\TagType;
  */
 class TagController extends Controller
 {
-
     /**
      * Lists all Tag entities.
      *

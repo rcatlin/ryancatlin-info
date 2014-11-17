@@ -31,7 +31,7 @@ class MainController extends MainBundleController
         // Pass variables to template
         return array(
             'articles' => $articles,
-            'page' => $page
+            'page' => $page,
         );
     }
 
@@ -55,7 +55,7 @@ class MainController extends MainBundleController
         ;
 
         return array(
-            'article' => $article
+            'article' => $article,
         );
     }
 
@@ -79,7 +79,7 @@ class MainController extends MainBundleController
 
         return array(
             'articles' => $articles,
-            'page' => $page
+            'page' => $page,
         );
     }
 }
