@@ -10,7 +10,6 @@
                 <th>Title</th>
                 <th>Created</th>
                 <th>Updated</th>
-                <th>Preview</th>
                 <th>Active</th>
                 <th>Actions</th>
             </tr>
@@ -23,7 +22,6 @@
                 <td>{{ entity.title }}</td>
                 <td>{{ entity.createdAt|date('m/d/y g:ia') }}</td>
                 <td>{{ entity.updatedAt|date('m/d/y g:ia') }}</td>
-                <td>{{ entity.content|striptags|raw|slice(0,50) }}</td>
                 <td>
                     {% if entity.active %}
                         <span class="label label-success">
