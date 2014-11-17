@@ -60,6 +60,45 @@ class MainController extends MainBundleController
     }
 
     /**
+     * @Route("articles", name="article_list")
+     * @Template("MainBundle::article_list.html.twig")
+     */
+    public function listArticlesAction(Request $request)
+    {
+        $limit = 10;
+        $page = $request->query->has('p') ? $request->query->get('p') : 0;
+        $count = $this->getDefaultEntityManager()
+            ->createQuery(
+                'SELECT COUNT(a.id) from MainBundle:Article a'
+            )
+            ->getSingleScalarResult()
+        ;
+        if ($count <= $limit) {
+            $numPages = 1;
+        } else {
+            $numPages = intval(
+                ceil(
+                    $count / $limit
+                )
+            );
+        }
+
+        $articles = $this->getArticleRepository()
+            ->findTitles(
+                $page * 10,
+                10
+            );
+        ;
+
+        return array(
+            'articles' => $articles,
+            'page' => $page,
+            'numPages' => $numPages,
+            'count' => $count,
+        );
+    }
+
+    /**
      * @Route("/tag/{name}", name="articles_by_tag")
      * @Template("MainBundle::index.html.twig")
      */

@@ -21,7 +21,7 @@ class ArticleRepository extends EntityRepository
         ;
     }
 
-    public function findAllActiveArticles($offset, $limit, $order = 'DESC')
+    public function findAllActiveArticles($offset, $limit = 5, $order = 'DESC')
     {
         $qb = $this->createQueryBuilder('a');
 
@@ -63,7 +63,7 @@ class ArticleRepository extends EntityRepository
         ;
     }
 
-    public function findActiveByTag(Tag $tag, $offset, $limit, $order = 'DESC')
+    public function findActiveByTag(Tag $tag, $offset = 0, $limit = 5, $order = 'DESC')
     {
         $qb = $this->createQueryBuilder('a')
             ->join('a.tags', 't')
@@ -83,6 +83,31 @@ class ArticleRepository extends EntityRepository
 
         return $qb->where($id)
             ->andWhere($active)
+            ->setFirstResult($offset)
+            ->setMaxResults($limit)
+            ->orderBy('a.createdAt', $order)
+            ->getQuery()
+            ->execute()
+        ;
+    }
+
+    public function findTitles($offset = 0, $limit = 10, $order = 'DESC')
+    {
+        $qb = $this->createQueryBuilder('a')
+            ->select(
+                'a.id',
+                'a.title',
+                'a.slug',
+                'a.createdAt'
+            )
+        ;
+
+        $active = $qb->expr()->eq(
+            'a.active',
+            '1'
+        );
+
+        return $qb->where($active)
             ->setFirstResult($offset)
             ->setMaxResults($limit)
             ->orderBy('a.createdAt', $order)

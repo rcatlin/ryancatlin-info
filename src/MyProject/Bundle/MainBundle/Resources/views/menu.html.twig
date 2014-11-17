@@ -18,7 +18,7 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-navbar-collapse-1">
             <ul class="nav navbar-nav">
-
+                {# MAIN #}
                 {% if route == 'index' %}
                     <li class="active">
                         <a class="fa fa-home" href="#">&nbsp;Main</a>
@@ -29,7 +29,18 @@
                     </li>
                 {% endif %}
 
+                {# ARTICLES #}
+                {% if route == 'article_list' %}
+                    <li class="active">
+                        <a class="fa fa-newspaper-o" href="#">&nbsp;Articles</a>
+                    </li>
+                {% else %}
+                    <li>
+                        <a class="fa fa-newspaper-o" href="{{ path('article_list') }}">&nbsp;Articles</a>
+                    </li>
+                {% endif %}
 
+                {# ABOUT #}
                 {% if route == 'about' %}
                     <li class="active">
                         <a class="fa fa-info-circle" href="#">&nbsp;About</a>
@@ -40,6 +51,7 @@
                     </li>
                 {% endif %}
 
+                {# ADMIN #}
                 {% if is_granted('ROLE_USER') %}
                    {% include 'MainBundle::admin_menu.html.twig' %}
                 {% endif %}

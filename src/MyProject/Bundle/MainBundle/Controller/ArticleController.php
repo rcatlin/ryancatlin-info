@@ -28,6 +28,7 @@ class ArticleController extends Controller
             'entities' => $entities,
         ));
     }
+
     /**
      * Creates a new Article entity.
      *
