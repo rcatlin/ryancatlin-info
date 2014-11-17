@@ -32,9 +32,13 @@
                 <th>Active</th>
                 <td>
                     {% if entity.active %}
-                        <span class="badge glyphicon glyphicon-ok"></span>
+                        <span class="label label-success">
+                            <span class="glyphicon glyphicon-ok"></span>
+                        </span>
                     {% else %}
-                        <span class="badge glyphicon glyphicon-remove"></span>
+                        <span class="label label-danger">
+                             <span class="glyphicon glyphicon-remove"></span>
+                        </span>
                     {% endif %}
                 </td>
             </tr>
@@ -42,7 +46,13 @@
     </table>
 
     <div class="record_actions btn-group">
-        <a class="btn btn-default" href="{{ path('article_edit', { 'id': entity.id }) }}">Edit</a>
+        <a class="btn btn-primary" href="{{ path('article_edit', { 'id': entity.id }) }}">Edit</a>
+        {{ form_widget(
+            delete_form.submit, {
+                'attr': {
+                    'class': 'btn btn-danger'
+                }
+        } ) }}
     </div>
 
     {{ form(delete_form) }}
