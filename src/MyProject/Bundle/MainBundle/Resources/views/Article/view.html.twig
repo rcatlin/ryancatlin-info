@@ -1,26 +1,32 @@
-<div class="panel panel-default">
-    <div class="panel-heading">
-        <h4>
-            {{ article.title }}
-            <small>
-                {{ article.createdAt|date('M-j-y g:ia') }}
-            </small>
-        </h4>
-    </div>
-    <div class="panel-body">
-        {{ article.content|raw }}
-    </div>
-    <div class="panel-footer">
-        <a href="{{ path('article', {'slug': article.slug}) }}">
-            <i class="fa fa-link"></i>
-        </a>
-        {% if article.tags is defined and article.tags|length > 0 %}
-            {% for tag in article.tags %}
-                <a class="label label-default" href="{{ path('articles_by_tag', {name: tag.name} ) }}">
-                        <span class="fa fa-tag"></span>
-                        {{ tag.name }}
-                </a>
-            {% endfor %}
-        {% endif %}
-    </div>
+
+<div class="panel-heading text-center">
+    <h1>
+        {{ article.title }}
+        <br />
+        <small>
+            {{ article.createdAt|date('M jS, Y', 'America/New_York') }}
+        </small>
+    </h1>
 </div>
+
+<p class="text-center">
+    {% if article.tags is defined and article.tags|length > 0 %}
+        {% for tag in article.tags %}
+            <a href="{{ path('articles_by_tag', {name: tag.name} ) }}">#{{ tag.name }}</a>&nbsp;
+        {% endfor %}
+    {% endif %}
+
+    <a href="{{ path('article', {'slug': article.slug}) }}">
+        <i class="fa fa-link"></i>
+    </a>
+</p>
+
+<hr />
+
+<p>
+    {{ article.content|raw }}
+</p>
+
+<p>&nbsp;</p>
+
+<hr />
