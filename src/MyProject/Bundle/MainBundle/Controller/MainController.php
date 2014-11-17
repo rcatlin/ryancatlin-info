@@ -3,13 +3,12 @@
 namespace MyProject\Bundle\MainBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 class MainController extends MainBundleController
 {
-    const LIMIT = 10;
+    const LIMIT = 5;
 
     /**
      * @Route("/", name="index")
@@ -18,12 +17,14 @@ class MainController extends MainBundleController
     public function indexAction(Request $request)
     {
         // Get page query parameter
-        $page = ($request->query->has('p')) ? $request->query->get('p') : 0;
+        $page = ($request->query->has('p')) ? $request->query->get('p') : 1;
+        $totalCount = ($this->getArticleRepository()->getTotalCount());
+        $numPages = $this->getNumPagesFromCount($totalCount, self::LIMIT);
 
         // Get Articles
         $articles = $this->getArticleRepository()
             ->findAllActiveArticles(
-                $page * self::LIMIT,
+                ($page - 1) * self::LIMIT,
                 self::LIMIT
             )
         ;
@@ -32,6 +33,7 @@ class MainController extends MainBundleController
         return array(
             'articles' => $articles,
             'page' => $page,
+            'numPages' => $numPages,
         );
     }
 
@@ -66,29 +68,16 @@ class MainController extends MainBundleController
     public function listArticlesAction(Request $request)
     {
         $limit = 10;
-        $page = $request->query->has('p') ? $request->query->get('p') : 0;
-        $count = $this->getDefaultEntityManager()
-            ->createQuery(
-                'SELECT COUNT(a.id) from MainBundle:Article a'
-            )
-            ->getSingleScalarResult()
-        ;
-        if ($count <= $limit) {
-            $numPages = 1;
-        } else {
-            $numPages = intval(
-                ceil(
-                    $count / $limit
-                )
-            );
-        }
+        $page = $request->query->has('p') ? $request->query->get('p') : 1;
+
+        $count = $this->getArticleRepository()->getTotalCount();
+        $numPages = $this->getNumPagesFromCount($count, 10);
 
         $articles = $this->getArticleRepository()
             ->findTitles(
-                $page * 10,
+                ($page - 1) * 10,
                 10
             );
-        ;
 
         return array(
             'articles' => $articles,
@@ -106,12 +95,21 @@ class MainController extends MainBundleController
     {
         $tag = $this->getTagRepository()->findOneByName($name);
 
-        $page = $request->query->has('p') ? $request->query->get('q') : 0;
+        $page = $request->query->has('p') ? $request->query->get('q') : 1;
+
+        if ($tag != null) {
+            $numPages = $this->getNumPagesFromCount(
+                $this->getArticleRepository()->getTotalCountByTag($tag),
+                self::LIMIT
+            );
+        } else {
+            $numPages = 0;
+        }
 
         $articles = $this->getArticleRepository()
             ->findActiveByTag(
                 $tag,
-                $page * self::LIMIT,
+                ($page - 1) * self::LIMIT,
                 self::LIMIT
             )
         ;
@@ -119,6 +117,18 @@ class MainController extends MainBundleController
         return array(
             'articles' => $articles,
             'page' => $page,
+            'numPages' => $numPages,
+        );
+    }
+
+    protected function getNumPagesFromCount($count, $limit)
+    {
+        if ($count < $limit) {
+            return 1;
+        }
+
+        return intval(
+            ceil($count / $limit)
         );
     }
 }

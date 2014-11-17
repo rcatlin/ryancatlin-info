@@ -12,6 +12,22 @@ use Doctrine\ORM\EntityRepository;
  */
 class ArticleRepository extends EntityRepository
 {
+    const TAG_COUNT_QUERY = <<< EOF
+SELECT
+    COUNT(a.id)
+FROM
+    MainBundle:Article a
+WHERE
+    :tid MEMBER OF a.tags
+EOF;
+
+    const ARTICLE_COUNT_QUERY = <<< EOF
+SELECT
+    COUNT(a.id)
+FROM
+    MainBundle:Article a
+EOF;
+
     public function findAll($order = 'DESC')
     {
         return $this->createQueryBuilder('a')
@@ -113,6 +129,27 @@ class ArticleRepository extends EntityRepository
             ->orderBy('a.createdAt', $order)
             ->getQuery()
             ->execute()
+        ;
+    }
+
+    public function getTotalCount()
+    {
+        return $this->getEntityManager()
+            ->createQuery(
+                self::ARTICLE_COUNT_QUERY
+            )
+            ->getSingleScalarResult()
+        ;
+    }
+
+    public function getTotalCountByTag(Tag $tag = null)
+    {
+        return $this->getEntityManager()
+            ->createQuery(
+                    self::TAG_COUNT_QUERY
+            )
+            ->setParameter('tid', $tag->getId())
+            ->getSingleScalarResult()
         ;
     }
 }

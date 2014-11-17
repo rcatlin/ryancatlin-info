@@ -1,26 +1,14 @@
 <ul class="pager">
 
-    {% if count <= 0 %}
-        <li class="previous disabled">
-            <a href="#">&larr; Previous</a>
-        </li>
-    {% else %}
+    {% if page > 1 %}
         <li class="previous">
-            <a href="{{ path('index', {'p': page + 1}) }}">&larr; Previous</a>
+            <a href="{{ path('index', {'p': page - 1}) }}">&larr; Previous</a>
         </li>
     {% endif %}
 
-    {% if page <= 0 %}
-        <li class="next disabled">
-            <a href="#">Next &rarr;</a>
-        </li>
-    {% else %}
+    {% if page < numPages %}
         <li class="next">
-            {% if page == 1 %}
-                <a href="{{ path('index') }}">Next &rarr;</a>
-            {% else %}
-                <a href="{{ path('index', {'p': page - 1}) }}">Next &rarr;</a>
-            {% endif %}
+            <a href="{{ path('index', {'p': page + 1}) }}">Next &rarr;</a>
         </li>
     {% endif %}
 

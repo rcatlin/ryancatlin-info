@@ -17,5 +17,8 @@
         {% endfor %}
     {% endif %}
 
-    {% include 'MainBundle::pager.html.twig' with {page: page, count: count} %}
+    {% include 'MainBundle::pager.html.twig' with {
+        page: page,
+        numPages: numPages
+    } %}
 {% endblock %}
