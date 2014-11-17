@@ -1,6 +1,6 @@
 <?php
 
-namespace MyProject\Bundle\MainBundle\Form;
+namespace MyProject\Bundle\AdminBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\DataTransformer\DateTimeToStringTransformer;

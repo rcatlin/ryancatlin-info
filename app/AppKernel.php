@@ -20,6 +20,7 @@ class AppKernel extends Kernel
             new Sensio\Bundle\DistributionBundle\SensioDistributionBundle(),
             new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle(),
             new MyProject\Bundle\MainBundle\MainBundle(),
+            new MyProject\Bundle\AdminBundle\AdminBundle(),
             new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
         );
 

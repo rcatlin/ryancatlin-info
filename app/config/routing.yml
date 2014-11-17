@@ -17,17 +17,34 @@ fos_user_change_password:
     resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
     prefix: /profile
 
-
-myproject:
-    resource: "@MainBundle/Controller/MainController.php"
-    type: annotation
-
-articles:
-    resource: "@MainBundle/Resources/config/routing/article.yml"
-    prefix: /articles
+#AdminBundle
+articles_admin:
+    resource: "@AdminBundle/Resources/config/routing/article.yml"
+    prefix: /admin/articles
 
 tags:
-    resource: "@MainBundle/Controller/TagController.php"
+    resource: "@AdminBundle/Controller/TagController.php"
+    type: annotation
+
+tag_create_admin:
+    resource: "@AdminBundle/Controller/TagCreateController.php"
+    type: annotation
+
+tag_delete_admin:
+    resource: "@AdminBundle/Controller/TagDeleteController.php"
+    type: annotation
+
+tag_edit_admin:
+    resource: "@AdminBundle/Controller/TagEditController.php"
+    type: annotation
+
+tag_show_admin:
+    resource: "@AdminBundle/Controller/TagShowController.php"
+    type: annotation
+
+# MainBundle
+myproject:
+    resource: "@MainBundle/Controller/MainController.php"
     type: annotation
 
 login:
