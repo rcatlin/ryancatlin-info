@@ -11,18 +11,16 @@ class BaseController extends Controller
      */
     protected function getDefaultEntityManager()
     {
-        return $this->get(
-            'doctrine.orm.default_entity_manager'
-        );
+        return $this->get('doctrine.orm.default_entity_manager');
     }
 
     protected function getArticleRepository()
     {
-        return $this->getDefaultEntityManager()->getRepository('MainBundle:Article');
+        return $this->get('article.repository');
     }
 
     protected function getTagRepository()
     {
-        return $this->getDefaultEntityManager()->getRepository('MainBundle:Tag');
+        return $this->get('tag.repository');
     }
 }
