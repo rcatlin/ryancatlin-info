@@ -6,6 +6,7 @@
     "autoload": {
         "psr-0": { 
             "MyProject": "src/",
+            "MyProject\\Tests": "tests/",
             "SymfonyStandard": "app/"
         }
     },
@@ -30,7 +31,8 @@
     },
     "require-dev": {
         "fabpot/php-cs-fixer": "1.0.*@dev",
-        "webfactory/exceptions-bundle": "@stable"
+        "webfactory/exceptions-bundle": "@stable",
+        "phpunit/phpunit": "4.0.*"
     },
     "scripts": {
         "post-root-package-install": [
