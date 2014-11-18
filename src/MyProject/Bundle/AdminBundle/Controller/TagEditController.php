@@ -90,8 +90,8 @@ class TagEditController extends BaseController
                 'action' => $this->generateUrl(
                     'tags_update',
                     array(
-                        'id' => $entity->getId()
-
+                        'id' => $entity->getId(),
+                    )
                 ),
                 'method' => 'PUT',
             )
