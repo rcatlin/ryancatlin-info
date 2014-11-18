@@ -7,7 +7,6 @@ use MyProject\Bundle\MainBundle\Entity\Article;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -15,7 +14,7 @@ use Symfony\Component\HttpFoundation\Request;
  *
  * @Route("/admin/articles")
  */
-class ArticleEditController extends Controller
+class ArticleEditController extends BaseController
 {
     /**
      * Displays a form to edit an existing Article entity.
@@ -26,9 +25,7 @@ class ArticleEditController extends Controller
      */
     public function editAction($id)
     {
-        $em = $this->getDoctrine()->getManager();
-
-        $entity = $em->getRepository('MainBundle:Article')->find($id);
+        $entity = $this->getArticleRepository()->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Article entity.');
@@ -52,9 +49,7 @@ class ArticleEditController extends Controller
      */
     public function updateAction(Request $request, $id)
     {
-        $em = $this->getDoctrine()->getManager();
-
-        $entity = $em->getRepository('MainBundle:Article')->find($id);
+        $entity = $this->getArticleRepository()->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Article entity.');
@@ -65,6 +60,7 @@ class ArticleEditController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
+            $em = $this->getDefaultEntityManager();
             $em->flush();
 
             return $this->redirect(

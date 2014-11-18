@@ -5,14 +5,13 @@ namespace MyProject\Bundle\AdminBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 /**
  * Tag controller.
  *
  * @Route("/admin/tags")
  */
-class TagController extends Controller
+class TagController extends BaseController
 {
     /**
      * Lists all Tag entities.
@@ -23,9 +22,7 @@ class TagController extends Controller
      */
     public function indexAction()
     {
-        $em = $this->getDoctrine()->getManager();
-
-        $entities = $em->getRepository('MainBundle:Tag')->findAll();
+        $entities = $this->getTagRepository()->findAll();
 
         return array(
             'entities' => $entities,

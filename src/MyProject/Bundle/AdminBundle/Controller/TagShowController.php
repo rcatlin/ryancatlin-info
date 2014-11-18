@@ -5,14 +5,13 @@ namespace MyProject\Bundle\AdminBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 /**
  * Tag controller.
  *
  * @Route("/tags")
  */
-class TagShowController extends Controller
+class TagShowController extends BaseController
 {
     /**
      * Finds and displays a Tag entity.
@@ -23,9 +22,7 @@ class TagShowController extends Controller
      */
     public function showAction($id)
     {
-        $em = $this->getDoctrine()->getManager();
-
-        $entity = $em->getRepository('MainBundle:Tag')->find($id);
+        $entity = $this->getTagRepository()->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Tag entity.');
@@ -49,9 +46,18 @@ class TagShowController extends Controller
     private function createDeleteForm($id)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('article_delete', array('id' => $id)))
+            ->setAction(
+                $this->generateUrl(
+                    'article_delete',
+                    array('id' => $id)
+                )
+            )
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
+            ->add(
+                'submit',
+                'submit',
+                array('label' => 'Delete')
+            )
             ->getForm()
         ;
     }

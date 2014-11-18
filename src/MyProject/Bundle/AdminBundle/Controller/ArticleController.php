@@ -6,14 +6,13 @@ use MyProject\Bundle\MainBundle\Entity\Article;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 /**
  * Article controller.
  *
  * @Route("/admin/articles")
  */
-class ArticleController extends Controller
+class ArticleController extends BaseController
 {
     /**
      * Lists all Article entities.
@@ -24,9 +23,7 @@ class ArticleController extends Controller
      */
     public function indexAction()
     {
-        $em = $this->getDoctrine()->getManager();
-
-        $entities = $em->getRepository('MainBundle:Article')->findAll();
+        $entities = $this->getArticleRepository()->findAll();
 
         return array(
             'entities' => $entities,

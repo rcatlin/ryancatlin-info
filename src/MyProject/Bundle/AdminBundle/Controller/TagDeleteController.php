@@ -4,7 +4,6 @@ namespace MyProject\Bundle\AdminBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -12,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
  *
  * @Route("/admin/tags")
  */
-class TagDeleteController extends Controller
+class TagDeleteController extends BaseController
 {
     /**
      * Deletes a Tag entity.
@@ -26,8 +25,8 @@ class TagDeleteController extends Controller
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('MainBundle:Tag')->find($id);
+            $em = $this->getDefaultEntityManager();
+            $entity = $this->getTagRepository()->find($id);
 
             if (!$entity) {
                 throw $this->createNotFoundException('Unable to find Tag entity.');
@@ -50,9 +49,18 @@ class TagDeleteController extends Controller
     private function createDeleteForm($id)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('tags_delete', array('id' => $id)))
+            ->setAction(
+                $this->generateUrl(
+                    'tags_delete',
+                    array('id' => $id)
+                )
+            )
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
+            ->add(
+                'submit',
+                'submit',
+                array('label' => 'Delete')
+            )
             ->getForm()
         ;
     }

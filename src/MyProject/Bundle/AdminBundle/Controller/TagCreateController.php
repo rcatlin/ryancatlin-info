@@ -7,7 +7,6 @@ use MyProject\Bundle\MainBundle\Entity\Tag;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -15,7 +14,7 @@ use Symfony\Component\HttpFoundation\Request;
  *
  * @Route("/admin/tags")
  */
-class TagCreateController extends Controller
+class TagCreateController extends BaseController
 {
     /**
      * Displays a form to create a new Tag entity.
@@ -49,7 +48,7 @@ class TagCreateController extends Controller
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
+            $em = $this->getDefaultEntityManager();
             $em->persist($entity);
             $em->flush();
 

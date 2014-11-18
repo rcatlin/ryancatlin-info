@@ -4,7 +4,6 @@ namespace MyProject\Bundle\AdminBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -12,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
  *
  * @Route("/admin/articles")
  */
-class ArticleDeleteController extends Controller
+class ArticleDeleteController extends BaseController
 {
     /**
      * Deletes a Article entity.
@@ -25,10 +24,10 @@ class ArticleDeleteController extends Controller
         $form = $this->createDeleteForm($id);
         $form->handleRequest($request);
 
-        $em = $this->getDoctrine()->getManager();
-        $entity = $em->getRepository('MainBundle:Article')->find($id);
+        $entity = $this->getArticleRepository()->find($id);
 
         if ($form->isValid() && $entity !== null) {
+            $em = $this->getDefaultEntityManager();
             if (!$entity) {
                 throw $this->createNotFoundException('Unable to find Article entity.');
             }

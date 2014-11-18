@@ -7,7 +7,6 @@ use MyProject\Bundle\MainBundle\Entity\Article;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -15,7 +14,7 @@ use Symfony\Component\HttpFoundation\Request;
  *
  * @Route("/admin/articles")
  */
-class ArticleCreateController extends Controller
+class ArticleCreateController extends BaseController
 {
     /**
      * Creates a new Article entity.
@@ -31,7 +30,7 @@ class ArticleCreateController extends Controller
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
+            $em = $this->getDefaultEntityManager();
             $em->persist($entity);
             $em->flush();
 
