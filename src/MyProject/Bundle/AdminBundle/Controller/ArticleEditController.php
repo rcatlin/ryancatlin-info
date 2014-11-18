@@ -4,14 +4,25 @@ namespace MyProject\Bundle\AdminBundle\Controller;
 
 use MyProject\Bundle\AdminBundle\Form\ArticleType;
 use MyProject\Bundle\MainBundle\Entity\Article;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
+/**
+ * Edit an Article Controller
+ *
+ * @Route("/admin/articles")
+ */
 class ArticleEditController extends Controller
 {
     /**
      * Displays a form to edit an existing Article entity.
      *
+     * @Route("/{id}/edit", name="article_edit")
+     * @Method("GET")
+     * @Template("AdminBundle:Article:edit.html.twig")
      */
     public function editAction($id)
     {
@@ -26,19 +37,18 @@ class ArticleEditController extends Controller
         $editForm = $this->createEditForm($entity);
         $deleteForm = $this->createDeleteForm($id);
 
-        return $this->render(
-            'AdminBundle:Article:edit.html.twig',
-            array(
-                'entity'      => $entity,
-                'edit_form'   => $editForm->createView(),
-                'delete_form' => $deleteForm->createView(),
-            )
+        return array(
+            'entity'      => $entity,
+            'edit_form'   => $editForm->createView(),
+            'delete_form' => $deleteForm->createView(),
         );
     }
 
     /**
      * Edits an existing Article entity.
      *
+     * @Route("/{id}/update", name="article_update")
+     * @Method({"POST","PUT"})
      */
     public function updateAction(Request $request, $id)
     {
@@ -84,13 +94,17 @@ class ArticleEditController extends Controller
     */
     private function createEditForm(Article $entity)
     {
-        $form = $this->createForm(new ArticleType(), $entity, array(
-            'action' => $this->generateUrl(
-                'article_update',
-                array('id' => $entity->getId())
-            ),
-            'method' => 'PUT',
-        ));
+        $form = $this->createForm(
+            new ArticleType(),
+            $entity,
+            array(
+                'action' => $this->generateUrl(
+                    'article_update',
+                    array('id' => $entity->getId())
+                ),
+                'method' => 'PUT',
+            )
+        );
 
         $form->add(
             'submit',
@@ -111,9 +125,18 @@ class ArticleEditController extends Controller
     private function createDeleteForm($id)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('article_delete', array('id' => $id)))
+            ->setAction(
+                $this->generateUrl(
+                    'article_delete',
+                    array('id' => $id)
+                )
+            )
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
+            ->add(
+                'submit',
+                'submit',
+                array('label' => 'Delete')
+            )
             ->getForm()
         ;
     }

@@ -1,0 +1,19 @@
+tags_admin:
+    resource: "@AdminBundle/Controller/TagController.php"
+    type: annotation
+
+tag_create_admin:
+    resource: "@AdminBundle/Controller/TagCreateController.php"
+    type: annotation
+
+tag_delete_admin:
+    resource: "@AdminBundle/Controller/TagDeleteController.php"
+    type: annotation
+
+tag_edit_admin:
+    resource: "@AdminBundle/Controller/TagEditController.php"
+    type: annotation
+
+tag_show_admin:
+    resource: "@AdminBundle/Controller/TagShowController.php"
+    type: annotation

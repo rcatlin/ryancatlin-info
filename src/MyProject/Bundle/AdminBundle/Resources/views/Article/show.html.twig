@@ -45,17 +45,18 @@
         </tbody>
     </table>
 
-    <div class="record_actions btn-group">
-        <a class="btn btn-primary" href="{{ path('article_edit', { 'id': entity.id }) }}">Edit</a>
-        {{ form_widget(
-            delete_form.submit, {
-                'attr': {
-                    'class': 'btn btn-danger'
-                }
-        } ) }}
-    </div>
+    {{ form_start(delete_form) }}
+        <div class="record_actions btn-group">
+            <a class="btn btn-primary" href="{{ path('article_edit', { 'id': entity.id }) }}">Edit</a>
+            {{ form_widget(
+                delete_form.submit, {
+                    'attr': {
+                        'class': 'btn btn-danger'
+                    }
+            } ) }}
+        </div>
+    {{ form_end(delete_form) }}
 
-    {{ form(delete_form) }}
 
 
     <ul class="record_actions pager">

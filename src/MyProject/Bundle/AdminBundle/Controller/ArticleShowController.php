@@ -2,13 +2,24 @@
 
 namespace MyProject\Bundle\AdminBundle\Controller;
 
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
+/**
+ * Show an Article Controller
+ *
+ * @Route("/admin/articles")
+ */
 class ArticleShowController extends Controller
 {
     /**
      * Finds and displays a Article entity.
      *
+     * @Route("/{id}/show", name="article_show")
+     * @Method("GET")
+     * @Template("AdminBundle:Article:show.html.twig")
      */
     public function showAction($id)
     {
@@ -22,12 +33,9 @@ class ArticleShowController extends Controller
 
         $deleteForm = $this->createDeleteForm($id);
 
-        return $this->render(
-            'AdminBundle:Article:show.html.twig',
-            array(
-                'entity'      => $entity,
-                'delete_form' => $deleteForm->createView(),
-            )
+        return array(
+            'entity'      => $entity,
+            'delete_form' => $deleteForm->createView(),
         );
     }
 
@@ -41,9 +49,18 @@ class ArticleShowController extends Controller
     private function createDeleteForm($id)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('article_delete', array('id' => $id)))
+            ->setAction(
+                $this->generateUrl(
+                    'article_delete',
+                    array('id' => $id)
+                )
+            )
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
+            ->add(
+                'submit',
+                'submit',
+                array('label' => 'Delete')
+            )
             ->getForm()
         ;
     }
