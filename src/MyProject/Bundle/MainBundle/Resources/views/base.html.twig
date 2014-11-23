@@ -6,41 +6,13 @@
         <title>{% block title %}Ryan Catlin{% endblock %}</title>
 
         {% block stylesheets %}
-            {% if app.debug %}
-                <link href="{{ asset('css/bootstrap.min.css') }}" type="text/css" rel="stylesheet" />
-                <link href="{{ asset('css/bootstrap-theme.min.css') }}" type="text/css" rel="stylesheet" />
-                <link href="{{ asset('css/font-awesome.min.css') }}" type="text/css" rel="stylesheet" />
-                <link href="{{ asset('css/main.css') }}" text="text/css" rel="stylesheet" />
-            {% else %}
-                {% stylesheets
-                    'css/bootstrap.min.css'
-                    'css/bootstrap-theme.min.css'
-                    'css/font-awesome.min.css'
-                    'css/main.css'
-                    filter='cssrewrite'
-                    output="css/compiled/all.css"
-                 %}
-                    <link rel="stylesheet" href="{{ asset_url }}" />
-                {% endstylesheets %}
-            {% endif %}
+            {% include 'MainBundle::_stylesheets.html.twig' %}
         {% endblock %}
 
         {% block javascripts %}
-            {% if app.debug %}
-                <script type="text/javascript" src="{{ asset('js/jquery.min.js') }}"></script>
-                <script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
-                <script type="text/javascript" src="{{ asset('js/ready.min.js') }}"></script>
-            {% else %}
-                {% javascripts
-                    'js/jquery.min.js'
-                    'js/bootstrap.min.js'
-                    'js/ready.min.js'
-                    output="js/compiled/all.js"
-                %}
-                    <script type="text/javascript" src="{{ asset_url }}"></script>
-                {% endjavascripts %}
-            {% endif %}
+            {% include 'MainBundle::_javascripts.html.twig' %}
         {% endblock %}
+
         {% include 'MainBundle::favicon.html.twig' %}
     </head>
     <body>

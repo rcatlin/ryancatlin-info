@@ -1,0 +1,14 @@
+{% if app.debug %}
+    <script type="text/javascript" src="{{ asset('js/jquery.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/ready.min.js') }}"></script>
+{% else %}
+    {% javascripts
+        'js/jquery.min.js'
+        'js/bootstrap.min.js'
+        'js/ready.min.js'
+        output="js/compiled/all.js"
+    %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endif %}
