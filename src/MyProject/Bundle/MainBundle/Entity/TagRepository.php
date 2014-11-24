@@ -12,6 +12,17 @@ use Doctrine\ORM\EntityRepository;
  */
 class TagRepository extends EntityRepository
 {
+    public function findAllNames()
+    {
+        return $this->createQueryBuilder('t')
+            ->select(
+                array('t.name')
+            )
+            ->getQuery()
+            ->execute()
+        ;
+    }
+
     public function findOneByName($name)
     {
         $qb = $this->createQueryBuilder('t');

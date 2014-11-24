@@ -1,0 +1,3 @@
+api_tag:
+    resource: "@APIBundle/Controller/TagController.php"
+    type: annotation

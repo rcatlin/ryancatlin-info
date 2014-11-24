@@ -24,6 +24,10 @@ articles_admin:
 tags_admin:
     resource: "@AdminBundle/Resources/config/routing/tag.yml"
 
+#APIBundle
+api_tag:
+    resource: "@APIBundle/Resources/config/routing/tag.yml"
+
 # MainBundle
 myproject:
     resource: "@MainBundle/Controller/MainController.php"

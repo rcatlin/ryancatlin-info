@@ -33,7 +33,7 @@ twig:
 assetic:
     debug:          "%kernel.debug%"
     use_controller: false
-    bundles:        [ MainBundle, AdminBundle ]
+    bundles:        [ MainBundle, AdminBundle, APIBundle ]
     #java: /usr/bin/java
     filters:
         cssrewrite: ~
