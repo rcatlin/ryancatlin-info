@@ -17,6 +17,7 @@
   "dependencies": {
     "bootstrap": "3.2.0",
     "summernote": "0.5.8",
-    "domready": "1.0.6"
+    "domready": "1.0.6",
+    "highlightjs": "7.3.0"
   }
 }
