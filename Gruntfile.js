@@ -12,7 +12,8 @@ module.exports = function (grunt) {
                     'js/bootstrap.min.js': 'bootstrap/dist/js/bootstrap.min.js',
                     'js/summernote.min.js': 'summernote/dist/summernote.min.js',
                     'js/ready.min.js': 'domready/ready.min.js',
-                    'js/highlight.pack.js': 'highlightjs/highlight.pack.js'
+                    'js/highlight.pack.js': 'highlightjs/highlight.pack.js',
+                    'js/typeahead.jquery.min.js': 'typeahead.js/dist/typeahead.jquery.min.js'
                 }
             },
             stylesheets: {

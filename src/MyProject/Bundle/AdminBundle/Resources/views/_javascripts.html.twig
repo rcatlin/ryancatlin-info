@@ -1,0 +1,7 @@
+{% if app.debug %}
+    <script type="text/javascript" src="{{ asset('js/typeahead.jquery.min.js') }}"></script>
+{% else %}
+    {% javascripts 'js/typeahead.jquery.min.js' %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts%}
+{% endif %}
