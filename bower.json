@@ -19,6 +19,6 @@
     "summernote": "0.5.8",
     "domready": "1.0.6",
     "highlightjs": "7.3.0",
-    "typeahead.js": "0.10.5"
+    "jquery-ui": "~1.11.2"
   }
 }

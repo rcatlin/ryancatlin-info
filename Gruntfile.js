@@ -13,7 +13,8 @@ module.exports = function (grunt) {
                     'js/summernote.min.js': 'summernote/dist/summernote.min.js',
                     'js/ready.min.js': 'domready/ready.min.js',
                     'js/highlight.pack.js': 'highlightjs/highlight.pack.js',
-                    'js/typeahead.jquery.min.js': 'typeahead.js/dist/typeahead.jquery.min.js'
+                    'js/jquery-ui/ui/': 'jquery-ui/ui/minified/*.js',
+                    'js/tag_autocomplete.js': '../src/MyProject/Bundle/AdminBundle/Resources/public/js/tag_autocomplete.js'
                 }
             },
             stylesheets: {
@@ -23,7 +24,8 @@ module.exports = function (grunt) {
                     'css/font-awesome.min.css': 'fontawesome/css/font-awesome.min.css',
                     'css/summernote.css': 'summernote/dist/summernote.css',
                     'css/main.css':'../src/MyProject/Bundle/MainBundle/Resources/public/css/main.css',
-                    'css/highlightjs': 'highlightjs/styles/*.css'
+                    'css/highlightjs': 'highlightjs/styles/*.css',
+                    'css/jquery-ui/themes/ui-lightness/': 'jquery-ui/themes/ui-lightness/*'
                 }
             },
             fonts: {

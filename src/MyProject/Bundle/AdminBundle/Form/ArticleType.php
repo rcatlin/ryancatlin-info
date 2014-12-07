@@ -49,9 +49,30 @@ class ArticleType extends AbstractType
                 )
             )
             ->add(
+                'tags_autocomplete',
+                'text',
+                array(
+                    'required' => false,
+                    'mapped' => false,
+                )
+            )
+            ->add(
                 'tags',
-                null,
-                array('required' => false)
+                'entity',
+                array(
+                    'class' => 'MainBundle:Tag',
+                    'multiple' => true,
+                    'expanded' => true,
+                    'required' => false,
+                )
+            )
+            ->add(
+                'new_tags',
+                'hidden',
+                array(
+                    'required' => false,
+                    'mapped' => false,
+                )
             )
             ->add(
                 $builder->create(
