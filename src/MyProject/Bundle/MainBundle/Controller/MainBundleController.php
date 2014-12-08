@@ -38,9 +38,7 @@ class MainBundleController extends Controller
      */
     public function getArticleRepository()
     {
-        return $this->getDefaultEntityManager()
-            ->getRepository('MainBundle:Article')
-        ;
+        return $this->get('article.repository');
     }
 
     /**
@@ -48,9 +46,7 @@ class MainBundleController extends Controller
      */
     public function getTagRepository()
     {
-        return $this->getDefaultEntityManager()
-            ->getRepository('MainBundle:Tag')
-        ;
+        return $this->get('tag.repository');
     }
 
     /**

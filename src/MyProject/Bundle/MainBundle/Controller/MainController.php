@@ -9,6 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class MainController extends MainBundleController
 {
     const LIMIT = 5;
+    const TITLES_LIMIT = 10;
 
     /**
      * @Route("/", name="index")
@@ -44,7 +45,7 @@ class MainController extends MainBundleController
      * @Route("/about", name="about")
      * @Template("MainBundle::about.html.twig")
      */
-    public function aboutAction()
+    public function aboutAction(Request $request)
     {
         return array();
     }
@@ -53,7 +54,7 @@ class MainController extends MainBundleController
      * @Route("/article/{slug}", name="article")
      * @Template("MainBundle::article.html.twig")
      */
-    public function articleAction($slug)
+    public function articleAction(Request $request, $slug)
     {
         $article = $this->getArticleRepository()
             ->findActiveBySlug($slug)
@@ -82,7 +83,7 @@ class MainController extends MainBundleController
 
         $articles = $this->getArticleRepository()
             ->findTitles(
-                ($page - 1) * 10,
+                ($page - 1) * self::TITLES_LIMIT,
                 10
             );
 
