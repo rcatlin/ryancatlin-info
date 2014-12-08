@@ -373,16 +373,17 @@ $(document).ready(
                         var elem = $('#' + labelId);
                         var tagId = elem.val();
                         
-                        if (elem && elem.checked) {
+                        if (elem && elem.prop('checked')) {
                             tag_ac.tagData['active'][tagId] = tagName;
                         } else {
                             tag_ac.tagData['inactive'][tagId] = tagName;
                             tag_ac.addToDataSourceSet(tagId, tagName);
                         }
 
-                        // Add Active tags to tag area
-                        tag_ac.refreshTags();
                     }
+                    
+                    // Add Active tags to tag area
+                    tag_ac.refreshTags();
                 }
 
                 tag_ac.bindAutocompleteFormSubmission();
