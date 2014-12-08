@@ -335,7 +335,10 @@ $(document).ready(
                 var tagName = button.data('tag-name');
 
                 if (tagType == 'active') {
+                    tag_ac.uncheckActiveTag(tagId);
+
                     tag_ac.tagData['inactive'][tagId] = tagName;
+                    
                     // Re-evaluate data source set for autocompletions
                     tag_ac.evaluateDataSourceSet();
                 } else if (tagType == 'new') {
@@ -359,6 +362,10 @@ $(document).ready(
                 var $tagCheckbox = $articleTags.find('#article_tags_' + tagId).first();
                 $tagCheckbox.attr('checked', 'checked');
             },
+            uncheckActiveTag: function (tagId) {
+                var $tagCheckbox = $articleTags.find('#article_tags_' + tagId).first();
+                $tagCheckbox.removeAttr('checked');
+            },
 
             init: function () {
                 if ($labels.length > 0) {
@@ -381,7 +388,7 @@ $(document).ready(
                         }
 
                     }
-                    
+
                     // Add Active tags to tag area
                     tag_ac.refreshTags();
                 }
