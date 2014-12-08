@@ -18,6 +18,11 @@ class MainController extends MainBundleController
     {
         // Get page query parameter
         $page = ($request->query->has('p')) ? $request->query->get('p') : 1;
+
+        if ($page <= 0) {
+            return $this->redirectToRoute('index');
+        }
+
         $totalCount = ($this->getArticleRepository()->getActiveTotalCount());
         $numPages = $this->getNumPagesFromCount($totalCount, self::LIMIT);
 
@@ -70,6 +75,10 @@ class MainController extends MainBundleController
         $limit = 10;
         $page = $request->query->has('p') ? $request->query->get('p') : 1;
 
+        if ($page <= 0) {
+            $this->redirectToRoute('article_list');
+        }
+
         $count = $this->getArticleRepository()->getActiveTotalCount();
         $numPages = $this->getNumPagesFromCount($count, 10);
 
@@ -96,6 +105,10 @@ class MainController extends MainBundleController
         $tag = $this->getTagRepository()->findOneByName($name);
 
         $page = $request->query->has('p') ? $request->query->get('q') : 1;
+
+        if ($page <= 0) {
+            $this->redirectToRoute('articles_by_tag');
+        }
 
         if ($tag != null) {
             $numPages = $this->getNumPagesFromCount(
