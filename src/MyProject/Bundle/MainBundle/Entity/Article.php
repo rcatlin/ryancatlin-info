@@ -73,7 +73,7 @@ class Article
     private $content;
 
     /**
-     * @var array
+     * @var ArrayCollection
      *
      * @ORM\ManyToMany(targetEntity="Tag")
      */
@@ -222,6 +222,13 @@ class Article
     public function getTags()
     {
         return $this->tags;
+    }
+
+    public function addTags(array $tags)
+    {
+        foreach ($tags as $tag) {
+            $this->tags->add($tag);
+        }
     }
 
     /**

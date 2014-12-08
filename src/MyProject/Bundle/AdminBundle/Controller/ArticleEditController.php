@@ -61,6 +61,22 @@ class ArticleEditController extends BaseController
 
         if ($editForm->isValid()) {
             $em = $this->getDefaultEntityManager();
+
+            // Get new tags
+            $newTags = $editForm->get('new_tags')->getData();
+
+            if (!empty($newTags)) {
+                // Persist the new tags
+                foreach ($newTags as $tag) {
+                    $em->persist($tag);
+                }
+
+                // Add tags to article
+                if ($newTags !== null) {
+                    $entity->addTags($newTags);
+                }
+            }
+
             $em->flush();
 
             return $this->redirect(

@@ -2,6 +2,7 @@
 
 namespace MyProject\Bundle\AdminBundle\Form;
 
+use MyProject\Bundle\AdminBundle\Form\DataTransformer\NewTagsTransformer;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\DataTransformer\DateTimeToStringTransformer;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -49,9 +50,32 @@ class ArticleType extends AbstractType
                 )
             )
             ->add(
+                'tags_autocomplete',
+                'text',
+                array(
+                    'required' => false,
+                    'mapped' => false,
+                )
+            )
+            ->add(
                 'tags',
-                null,
-                array('required' => false)
+                'entity',
+                array(
+                    'class' => 'MainBundle:Tag',
+                    'multiple' => true,
+                    'expanded' => true,
+                    'required' => false,
+                )
+            )
+            ->add(
+                $builder->create(
+                    'new_tags',
+                    'hidden',
+                    array(
+                        'required' => false,
+                        'mapped' => false,
+                    )
+                )->addModelTransformer(new NewTagsTransformer())
             )
             ->add(
                 $builder->create(
@@ -67,9 +91,13 @@ class ArticleType extends AbstractType
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
-        $resolver->setDefaults(array(
-            'data_class' => 'MyProject\Bundle\MainBundle\Entity\Article',
-        ));
+        $resolver
+            ->setDefaults(
+                array(
+                    'data_class' => 'MyProject\Bundle\MainBundle\Entity\Article',
+                )
+            )
+        ;
     }
 
     /**

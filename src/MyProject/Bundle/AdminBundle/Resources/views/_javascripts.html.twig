@@ -1,0 +1,8 @@
+{#
+{% if app.debug %}
+{% else %}
+    {% javascripts '' %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts%}
+{% endif %}
+#}
