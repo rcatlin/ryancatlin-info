@@ -16,9 +16,7 @@ class MainController extends MainBundleController
      */
     public function indexAction(Request $request)
     {
-        // Get page query parameter
-        $page = ($request->query->has('p')) ? $request->query->get('p') : 1;
-
+        $page = $this->getRequestPage($request);
         if ($page <= 0) {
             return $this->redirectToRoute('index');
         }
@@ -73,8 +71,8 @@ class MainController extends MainBundleController
     public function listArticlesAction(Request $request)
     {
         $limit = 10;
-        $page = $request->query->has('p') ? $request->query->get('p') : 1;
 
+        $page = $this->getRequestPage($request);
         if ($page <= 0) {
             $this->redirectToRoute('article_list');
         }
@@ -104,10 +102,9 @@ class MainController extends MainBundleController
     {
         $tag = $this->getTagRepository()->findOneByName($name);
 
-        $page = $request->query->has('p') ? $request->query->get('q') : 1;
-
+        $page = $this->getRequestPage($request);
         if ($page <= 0) {
-            $this->redirectToRoute('articles_by_tag');
+            return $this->redirectToRoute('articles_by_tag', array('name' => $name));
         }
 
         if ($tag != null) {
@@ -132,6 +129,15 @@ class MainController extends MainBundleController
             'page' => $page,
             'numPages' => $numPages,
         );
+    }
+
+    protected function getRequestPage(Request $request)
+    {
+        if (!$request->query->has('p')) {
+            return 1;
+        }
+
+        return $request->query->get('p');
     }
 
     protected function getNumPagesFromCount($count, $limit)
