@@ -31,6 +31,23 @@ class ArticleCreateController extends BaseController
 
         if ($form->isValid()) {
             $em = $this->getDefaultEntityManager();
+
+            // Get new tags
+            $newTags = $form->get('new_tags')->getData();
+
+            if (!empty($newTags)) {
+                // Persist the new tags
+                foreach ($newTags as $tag) {
+                    $em->persist($tag);
+                }
+
+                // Add tags to article
+                if ($newTags !== null) {
+                    $entity->addTags($newTags);
+                }
+            }
+
+            // Persist article
             $em->persist($entity);
             $em->flush();
 

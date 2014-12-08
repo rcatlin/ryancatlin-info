@@ -58,6 +58,11 @@ $(document).ready(
 
                 tag_ac.bindTagButtonClicks();
             },
+            refreshNewTags: function () {
+                $newTags.val(
+                    tag_ac.tagData['new'].join(',')
+                );
+            },
             evaluateDataSourceSet: function () {
                 // Clear data source set by setting as empty array
                 tag_ac.dataSourceSet = [];
@@ -174,6 +179,7 @@ $(document).ready(
                                     tag_ac.tagData['new'].push(tagName);
                                     tag_ac.appendTag('new', undefined, tagName);
                                     tag_ac.clearAutocompleteText();
+                                    tag_ac.refreshNewTags();
                                 }
                             }
                         }
@@ -220,6 +226,9 @@ $(document).ready(
 
                 // Add to active tags area
                 tag_ac.appendTag('active', tagId, tagName);
+
+                // Check active tag in article_tags
+                tag_ac.checkActiveTag(tagId);
 
                 // Reset source set
                 tag_ac.evaluateDataSourceSet();
@@ -334,6 +343,7 @@ $(document).ready(
 
                     if (newKey !== undefined) {
                         delete tag_ac.tagData['new'][newKey];
+                        tag_ac.refreshNewTags();
                     }
                 }
 
@@ -344,6 +354,10 @@ $(document).ready(
                 if (buttons.length <= 0) {
                     $activeTags.html(tag_ac.emptyActiveTagsText);
                 }
+            },
+            checkActiveTag: function (tagId) {
+                var $tagCheckbox = $articleTags.find('#article_tags_' + tagId).first();
+                $tagCheckbox.attr('checked', 'checked');
             },
 
             init: function () {
