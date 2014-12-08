@@ -92,6 +92,7 @@ class Article
         $this->setCreatedAt($now);
         $this->setUpdatedAt($now);
         $this->tags = new ArrayCollection();
+        $this->active = false;
     }
 
     /**
@@ -156,7 +157,7 @@ class Article
      * @param  \DateTime $createdAt
      * @return Article
      */
-    public function setCreatedAt($createdAt)
+    public function setCreatedAt(\DateTime $createdAt)
     {
         $this->createdAt = $createdAt;
 
@@ -179,7 +180,7 @@ class Article
      * @param  \DateTime $updatedAt
      * @return Article
      */
-    public function setUpdatedAt($updatedAt)
+    public function setUpdatedAt(\DateTime $updatedAt)
     {
         $this->updatedAt = $updatedAt;
 
