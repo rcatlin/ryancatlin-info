@@ -1,8 +1,9 @@
 <?php
 
-namespace MyProject\Tests\Bundle\MainBundle;
+namespace MyProject\Tests\Bundle\MainBundle\Controller;
 
 use MyProject\Bundle\MainBundle\Controller\MainController;
+use MyProject\Tests\Bundle\MainBundle\MainBundleTestCase;
 use Symfony\Component\DependencyInjection\Container;
 use Symfony\Component\HttpFoundation\Request;
 
