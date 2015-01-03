@@ -33,7 +33,8 @@ class ArticleCreateController extends BaseController
             $em = $this->getDefaultEntityManager();
 
             // Get new tags
-            $newTags = $form->get('new_tags')->getData();
+            $newTagsData = $form->get('new_tags')->getData();
+            $newTags = $newTagsData->toArray();
 
             if (!empty($newTags)) {
                 // Persist the new tags
