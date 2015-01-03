@@ -86,16 +86,18 @@ class NewTagsTransformer implements DataTransformerInterface
     {
         $self = $this;
 
-        return $this->createArrayCollection(
-            array_map(
-                function ($name) use ($self) {
-                    return $self->createNewTag(
-                        trim($name)
-                    );
-                },
-                explode(',', $str)
-            )
-        );
+        $tags = array();
+        foreach (explode(',', $str) as $name) {
+            $name = trim($name);
+
+            if ($name === '') {
+                continue;
+            }
+
+            $tags[] = $self->createNewTag($name);
+        }
+
+        return $this->createArrayCollection($tags);
     }
 
     /**
