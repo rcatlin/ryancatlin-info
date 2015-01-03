@@ -28,6 +28,13 @@ class Tag
      */
     private $name;
 
+    public function __construct($name = null)
+    {
+        if ($name !== null) {
+            $this->name = $name;
+        }
+    }
+
     /**
      * Get id
      *
