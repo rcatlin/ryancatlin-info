@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/rcatlin/ryancatlin-info.svg?branch=master)](https://travis-ci.org/rcatlin/ryancatlin-info.svg?branch=master)
+
 Ryan Catlin Info (Personal Site)
 ========================
 
