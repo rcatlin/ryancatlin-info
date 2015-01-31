@@ -65,7 +65,7 @@ class ArticleEditController extends BaseController
             // Get new tags
             $newTags = $editForm->get('new_tags')->getData();
 
-            if (!empty($newTags)) {
+            if ($newTags->count() > 0) {
                 // Persist the new tags
                 foreach ($newTags as $tag) {
                     $em->persist($tag);
@@ -81,7 +81,7 @@ class ArticleEditController extends BaseController
 
             return $this->redirect(
                 $this->generateUrl(
-                    'article_edit',
+                    'article_show',
                     array('id' => $id)
                 )
             );
