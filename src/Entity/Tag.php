@@ -1,6 +1,6 @@
 <?php
 
-namespace MyProject\Bundle\MainBundle\Entity;
+namespace RCatlin\Blog\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Tag
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="MyProject\Bundle\MainBundle\Entity\TagRepository")
+ * @ORM\Entity(repositoryClass="RCatlin\Blog\Repository\TagRepository")
  */
 class Tag
 {
