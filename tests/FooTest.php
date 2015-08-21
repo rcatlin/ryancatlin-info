@@ -1,6 +1,5 @@
 <?php
 
-use RCatlin\Blog\Tests;
 
 class FooTest extends \PHPUnit_Framework_TestCase
 {

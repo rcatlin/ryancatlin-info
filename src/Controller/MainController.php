@@ -13,14 +13,15 @@ use Refinery29\Piston\Router\Routes\Routeable;
 class MainController implements Routeable
 {
     /**
-     * @param Request $request
-     * @param Response $response
-     * @param array $vars
+     * @param  Request  $request
+     * @param  Response $response
+     * @param  array    $vars
      * @return Response
      */
     public function index(Request $request, Response $response, array $vars = [])
     {
         $response->setContent("Hello, world.");
+
         return $response;
     }
 }
