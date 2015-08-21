@@ -2,7 +2,6 @@
 
 namespace RCatlin\Blog\Decorator;
 
-use Kayladnls\Seesaw\Seesaw;
 use RCatlin\Blog\Controller\MainController;
 use Refinery29\Piston\Decorator;
 use Refinery29\Piston\Piston;
@@ -23,7 +22,8 @@ class RouteDecorator implements Decorator
     /**
      * @param Piston $app
      */
-    public function __construct(Piston $app) {
+    public function __construct(Piston $app)
+    {
         $this->app = $app;
     }
 
@@ -33,7 +33,7 @@ class RouteDecorator implements Decorator
     public function register()
     {
         $group = new RouteGroup([
-            Route::get('/', MainController::class . '::index'),
+            Route::get('/', MainController::class.'::index'),
         ]);
 
         $this->app->addRouteGroup($group);
