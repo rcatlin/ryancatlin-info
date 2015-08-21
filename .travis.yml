@@ -14,4 +14,4 @@ install:
     - composer install
 
 script: 
-    - ./bin/phpunit tests/
+    - make test
