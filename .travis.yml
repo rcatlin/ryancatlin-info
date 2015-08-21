@@ -12,6 +12,7 @@ before_install:
 
 install: 
     - composer install
+    - cp .env.test .env
 
 script: 
     - make test
