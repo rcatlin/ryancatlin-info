@@ -22,19 +22,12 @@
         "symfony/console": "^2.7",
         "refinery29/piston": "^0.4.0",
         "league/fractal": "^0.12.0",
-        "filp/whoops": "^1.1"
+        "filp/whoops": "^1.1",
+        "phpunit/phpunit": "4.*"
     },
     "require-dev": {
         "fabpot/php-cs-fixer": "1.0.*@dev",
-        "phpunit/phpunit": "4.0.*",
         "phpspec/phpspec": "^2.2"
     },
-    "config": {
-        "bin-dir": "bin"
-    },
-    "extra": {
-        "incenteev-parameters": {
-            "file": "app/config/parameters.yml"
-        }
-    }
+    "bin": ["vendor/bin"]
 }
