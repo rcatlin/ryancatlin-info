@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . '/vendor/autoload.php';
+require_once __DIR__.'/vendor/autoload.php';
 
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Tools\Setup;
@@ -22,7 +22,7 @@ $conn = \Doctrine\DBAL\DriverManager::getConnection([
     'driver' => getenv('DATABASE_DRIVER'),
 ]);
 
-$config = Setup::createAnnotationMetadataConfiguration([__DIR__ . '/src/Entity'], getenv('IS_PROD'), null, null, false);
+$config = Setup::createAnnotationMetadataConfiguration([__DIR__.'/src/Entity'], getenv('IS_PROD'), null, null, false);
 
 $entityManager = EntityManager::create($conn, $config);
 
