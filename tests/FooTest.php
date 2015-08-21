@@ -1,6 +1,5 @@
 <?php
 
-use MyProject\Tests;
 
 class FooTest extends \PHPUnit_Framework_TestCase
 {

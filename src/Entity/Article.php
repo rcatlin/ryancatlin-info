@@ -1,9 +1,8 @@
 <?php
 
-namespace MyProject\Bundle\MainBundle\Entity;
+namespace RCatlin\Blog\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -11,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table()
  * @ORM\Entity(
- *     repositoryClass="MyProject\Bundle\MainBundle\Entity\ArticleRepository"
+ *     repositoryClass="RCatlin\Blog\Repository\ArticleRepository"
  * )
  * @ORM\Table(
  *     indexes={
@@ -36,9 +35,6 @@ class Article
      * @var string
      *
      * @ORM\Column(name="slug", type="string", length=100, unique=true)
-     * @Assert\Regex(
-     *     pattern = "/^[0-9a-zA-Z\-\_]+$/"
-     * )
      */
     private $slug;
 

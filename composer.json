@@ -4,10 +4,9 @@
     "type": "project",
     "description": "My personal site.",
     "autoload": {
-        "psr-0": { 
-            "MyProject": "src/",
-            "MyProject\\Tests": "tests/",
-            "SymfonyStandard": "app/"
+        "psr-4": {
+            "RCatlin\\Blog\\": "src/",
+            "RCatlin\\Blog\\Tests\\": "tests/"
         }
     },
     "require": {
