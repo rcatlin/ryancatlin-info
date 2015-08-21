@@ -1,6 +1,6 @@
 <?php
 
-namespace MyProject\Bundle\MainBundle\Entity;
+namespace RCatlin\Blog\Repository;
 
 use Doctrine\ORM\EntityRepository;
 
