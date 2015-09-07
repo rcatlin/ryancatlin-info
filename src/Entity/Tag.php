@@ -28,11 +28,9 @@ class Tag
      */
     private $name;
 
-    public function __construct($name = null)
+    public function __construct($name)
     {
-        if ($name !== null) {
-            $this->name = $name;
-        }
+        $this->name = $name;
     }
 
     /**
