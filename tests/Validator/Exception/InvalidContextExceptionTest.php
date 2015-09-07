@@ -8,7 +8,6 @@ class InvalidContextExceptionTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @expectedException RCatlin\Blog\Validator\Exception\InvalidContextException
-     * @expectedExceptionMessage Invalid Validator Context
      *
      * @throws InvalidContextException
      */
