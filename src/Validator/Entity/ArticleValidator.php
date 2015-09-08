@@ -38,7 +38,7 @@ class ArticleValidator extends AbstractValidator
     protected function addId($allowEmpty = false, $required = true)
     {
         return $this->getChain('id', null, $required, $allowEmpty)
-            ->alpha()
+            ->integer()
         ;
     }
 
