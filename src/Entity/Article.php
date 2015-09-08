@@ -29,21 +29,21 @@ class Article
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="slug", type="string", length=100, unique=true)
      */
-    private $slug;
+    protected $slug;
 
     /**
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=255)
      */
-    private $title;
+    protected $title;
 
     /**
      * @var \DateTime
@@ -51,7 +51,7 @@ class Article
      * @ORM\Column(name="createdAt", type="datetimetz")
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $createdAt;
+    protected $createdAt;
 
     /**
      * @var \DateTime
@@ -59,14 +59,14 @@ class Article
      * @ORM\Column(name="updatedAt", type="datetimetz")
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $updatedAt;
+    protected $updatedAt;
 
     /**
      * @var string
      *
      * @ORM\Column(name="content", type="text")
      */
-    private $content;
+    protected $content;
 
     /**
      * @var ArrayCollection
@@ -84,9 +84,10 @@ class Article
 
     public function __construct()
     {
-        $now = new \DateTime();
-        $this->setCreatedAt($now);
-        $this->setUpdatedAt($now);
+        $now = $this->getCurrentDateTime();
+
+        $this->createdAt = $now;
+        $this->updatedAt = $now;
         $this->tags = new ArrayCollection();
         $this->active = false;
     }
@@ -105,6 +106,7 @@ class Article
      * Set slug
      *
      * @param  string  $slug
+     * 
      * @return Article
      */
     public function setSlug($slug)
@@ -128,6 +130,7 @@ class Article
      * Set title
      *
      * @param  string  $title
+     *
      * @return Article
      */
     public function setTitle($title)
@@ -148,19 +151,6 @@ class Article
     }
 
     /**
-     * Set createdAt
-     *
-     * @param  \DateTime $createdAt
-     * @return Article
-     */
-    public function setCreatedAt(\DateTime $createdAt)
-    {
-        $this->createdAt = $createdAt;
-
-        return $this;
-    }
-
-    /**
      * Get createdAt
      *
      * @return \DateTime
@@ -171,16 +161,11 @@ class Article
     }
 
     /**
-     * Set updatedAt
-     *
-     * @param  \DateTime $updatedAt
      * @return Article
      */
-    public function setUpdatedAt(\DateTime $updatedAt)
+    public function updateUpdatedAt()
     {
-        $this->updatedAt = $updatedAt;
-
-        return $this;
+        $this->updatedAt = $this->getCurrentDateTime();
     }
 
     /**
@@ -216,11 +201,17 @@ class Article
         return $this->content;
     }
 
+    /**
+     * @return ArrayCollection
+     */
     public function getTags()
     {
         return $this->tags;
     }
 
+    /**
+     * @param array $tags
+     */
     public function addTags(array $tags)
     {
         foreach ($tags as $tag) {
@@ -254,5 +245,13 @@ class Article
     public function preUpdateUpdatedAt()
     {
         $this->updatedAt = new \DateTime();
+    }
+
+    /**
+     * @return \DateTime
+     */
+    protected function getCurrentDateTime()
+    {
+        return new \DateTime();
     }
 }
