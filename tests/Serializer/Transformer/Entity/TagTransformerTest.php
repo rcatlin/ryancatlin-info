@@ -16,7 +16,7 @@ class TagTransformerTest extends \PHPUnit_Framework_TestCase
         $name = $this->getFaker()->word;
 
         $tag = new Entity\Tag($name);
-        
+
         $reflection = new \ReflectionObject($tag);
         $property = $reflection->getProperty('id');
         $property->setAccessible(true);
