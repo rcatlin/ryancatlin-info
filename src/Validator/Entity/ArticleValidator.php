@@ -35,6 +35,12 @@ class ArticleValidator extends AbstractValidator
         throw new InvalidContextException;
     }
 
+    /**
+     * @param bool|false $allowEmpty
+     * @param bool|true $required
+     *
+     * @return $this
+     */
     protected function addId($allowEmpty = false, $required = true)
     {
         return $this->getChain('id', null, $required, $allowEmpty)
@@ -42,6 +48,12 @@ class ArticleValidator extends AbstractValidator
         ;
     }
 
+    /**
+     * @param bool|false $allowEmpty
+     * @param bool|true $required
+     *
+     * @return $this
+     */
     protected function addSlug($allowEmpty = false, $required = true)
     {
         return $this->getChain('slug', null, $required, $allowEmpty)
@@ -50,6 +62,12 @@ class ArticleValidator extends AbstractValidator
         ;
     }
 
+    /**
+     * @param bool|false $allowEmpty
+     * @param bool|true $required
+     *
+     * @return $this
+     */
     protected function addTitle($allowEmpty = false, $required = true)
     {
         return $this->getChain('title', null, $required, $allowEmpty)
@@ -58,11 +76,23 @@ class ArticleValidator extends AbstractValidator
     }
 
 
+    /**
+     * @param bool|false $allowEmpty
+     * @param bool|true $required
+     *
+     * @return \RCatlin\Blog\Validator\CustomChain
+     */
     protected function addContent($allowEmpty = false, $required = true)
     {
         return $this->getChain('content', null, $required, $allowEmpty);
     }
 
+    /**
+     * @param bool|false $allowEmpty
+     * @param bool|true $required
+     *
+     * @return $this
+     */
     protected function addTags($allowEmpty = false, $required = true)
     {
         return $this->getChain('tags', null, $required, $allowEmpty)
@@ -70,6 +100,12 @@ class ArticleValidator extends AbstractValidator
         ;
     }
 
+    /**
+     * @param bool|false $allowEmpty
+     * @param bool|true $required
+     *
+     * @return $this
+     */
     protected function addActive($allowEmpty = false, $required = true)
     {
         return $this->getChain('active', null, $required, $allowEmpty)

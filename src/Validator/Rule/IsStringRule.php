@@ -16,6 +16,9 @@ class IsStringRule extends Rule
         return is_string($value);
     }
 
+    /**
+     * @return array
+     */
     protected function getMessageParameters()
     {
         return array_merge(self::getMessageParameters(),

@@ -28,6 +28,12 @@ class TagValidator extends AbstractValidator
         throw new InvalidContextException;
     }
 
+    /**
+     * @param bool|false $allowEmpty
+     * @param bool|true $required
+     *
+     * @return $this
+     */
     protected function addId($allowEmpty = false, $required = true)
     {
         return $this->getChain('id', null, $required, $allowEmpty)
@@ -35,6 +41,12 @@ class TagValidator extends AbstractValidator
         ;
     }
 
+    /**
+     * @param bool|false $allowEmpty
+     * @param bool|true $required
+     *
+     * @return $this
+     */
     protected function addName($allowEmpty = false, $required = true)
     {
         return $this->getChain('name', null, $required, $allowEmpty)

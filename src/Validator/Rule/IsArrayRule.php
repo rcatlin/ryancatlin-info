@@ -16,6 +16,9 @@ class IsArrayRule extends Rule
         return is_array($value);
     }
 
+    /**
+     * @return array
+     */
     protected function getMessageParameters()
     {
         return array_merge(self::getMessageParameters(),
