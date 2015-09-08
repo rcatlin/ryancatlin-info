@@ -30,11 +30,15 @@ class TagValidator extends AbstractValidator
 
     protected function addId($allowEmpty = false, $required = true)
     {
-        return $this->getChain('id', null, $required, $allowEmpty);
+        return $this->getChain('id', null, $required, $allowEmpty)
+            ->numeric()
+        ;
     }
 
     protected function addName($allowEmpty = false, $required = true)
     {
-        return $this->getchain('name', null, $required, $allowEmpty);
+        return $this->getChain('name', null, $required, $allowEmpty)
+            ->isString()
+        ;
     }
 }
