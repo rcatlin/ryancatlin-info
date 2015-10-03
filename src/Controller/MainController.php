@@ -16,9 +16,10 @@ class MainController implements Routeable
     use RenderResponse;
 
     /**
-     * @param  Request  $request
-     * @param  Response $response
-     * @param  array    $vars
+     * @param Request  $request
+     * @param Response $response
+     * @param array    $vars
+     *
      * @return Response
      */
     public function index(Request $request, Response $response, array $vars = [])
