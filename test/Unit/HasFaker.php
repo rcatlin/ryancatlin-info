@@ -1,6 +1,6 @@
 <?php
 
-namespace RCatlin\Blog\Tests;
+namespace RCatlin\Blog\Test\Unit;
 
 use Faker\Factory;
 

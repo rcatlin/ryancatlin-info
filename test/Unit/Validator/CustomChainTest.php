@@ -1,8 +1,8 @@
 <?php
 
-namespace RCatlin\Blog\Tests\Validator;
+namespace RCatlin\Blog\Test\Unit\Validator;
 
-use RCatlin\Blog\Tests\HasFaker;
+use RCatlin\Blog\Test\Unit\HasFaker;
 use RCatlin\Blog\Validator\CustomChain;
 use RCatlin\Blog\Validator\Rule;
 

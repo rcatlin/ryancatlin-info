@@ -6,7 +6,7 @@
     "autoload": {
         "psr-4": {
             "RCatlin\\Blog\\": "src/",
-            "RCatlin\\Blog\\Tests\\": "tests/"
+            "RCatlin\\Blog\\Test\\": "test/"
         }
     },
     "require": {

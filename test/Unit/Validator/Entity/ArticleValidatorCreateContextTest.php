@@ -1,8 +1,8 @@
 <?php
 
-namespace RCatlin\Blog\Tests\Validator\Entity;
+namespace RCatlin\Blog\Test\Unit\Validator\Entity;
 
-use RCatlin\Blog\Tests\HasFaker;
+use RCatlin\Blog\Test\Unit\HasFaker;
 use RCatlin\Blog\Validator\Context;
 use RCatlin\Blog\Validator\Entity\ArticleValidator;
 

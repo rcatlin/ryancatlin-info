@@ -1,6 +1,6 @@
 <?php
 
-namespace RCatlin\Blog\Tests\Controller;
+namespace RCatlin\Blog\Test\Unit\Controller;
 
 use RCatlin\Blog\Controller\MainController;
 use Refinery29\Piston\Http\Request;

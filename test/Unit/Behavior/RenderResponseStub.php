@@ -1,6 +1,6 @@
 <?php
 
-namespace RCatlin\Blog\Tests\Behavior;
+namespace RCatlin\Blog\Test\Unit\Behavior;
 
 use RCatlin\Blog\Behavior\RenderResponse;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace RCatlin\Blog\Tests\Validator;
+namespace RCatlin\Blog\Test\Unit\Validator;
 
 use RCatlin\Blog\Validator\Context;
 

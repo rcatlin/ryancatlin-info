@@ -1,6 +1,6 @@
 <?php
 
-namespace RCatlin\Blog\Tests\Behavior;
+namespace RCatlin\Blog\Test\Unit\Behavior;
 
 use Refinery29\Piston\Http\Response;
 use Symfony\Component\HttpFoundation\Response as SymfonyResponse;
