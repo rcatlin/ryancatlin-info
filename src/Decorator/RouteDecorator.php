@@ -2,10 +2,10 @@
 
 namespace RCatlin\Blog\Decorator;
 
+use Kayladnls\Seesaw\Route;
 use RCatlin\Blog\Controller\MainController;
 use Refinery29\Piston\Decorator;
 use Refinery29\Piston\Piston;
-use Refinery29\Piston\Router\Routes\Route;
 use Refinery29\Piston\Router\Routes\RouteGroup;
 
 /**
