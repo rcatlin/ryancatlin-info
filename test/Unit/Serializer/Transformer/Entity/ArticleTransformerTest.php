@@ -1,11 +1,11 @@
 <?php
 
-namespace RCatlin\Blog\Tests\Serializer\Transformer\Entity;
+namespace RCatlin\Blog\Test\Unit\Serializer\Transformer\Entity;
 
 use RCatlin\Blog\Entity;
 use RCatlin\Blog\Serializer\Transformer\DateTimeTransformer;
 use RCatlin\Blog\Serializer\Transformer\Entity\ArticleTransformer;
-use RCatlin\Blog\Tests\HasFaker;
+use RCatlin\Blog\Test\Unit\HasFaker;
 
 class ArticleTransformerTest extends \PHPUnit_Framework_TestCase
 {

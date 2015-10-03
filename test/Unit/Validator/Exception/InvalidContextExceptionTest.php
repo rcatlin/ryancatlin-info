@@ -1,6 +1,6 @@
 <?php
 
-namespace RCatlin\Blog\Tests\Validator\Exception;
+namespace RCatlin\Blog\Test\Unit\Validator\Exception;
 
 use RCatlin\Blog\Validator\Exception\InvalidContextException;
 
