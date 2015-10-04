@@ -14,8 +14,15 @@ class DateTimeTransformer extends TransformerAbstract
      *
      * @return array
      */
-    public function transform(\DateTime $datetime)
+    public function transform(\DateTime $datetime = null)
     {
+        if ($datetime === null) {
+            return [
+                'timestamp' => null,
+                'formatted' => null,
+            ];
+        }
+
         return [
             'timestamp' => $datetime->getTimestamp(),
             'formatted' => $datetime->format(self::FORMAT),

@@ -1,10 +1,9 @@
 <?php
 
-namespace RCatlin\Blog\Test\Unit\Serializer\Transformer\Entity;
+namespace RCatlin\Blog\test\Unit\Serializer\Transformer\Entity;
 
 use RCatlin\Blog\Entity;
-use RCatlin\Blog\Serializer\Transformer\DateTimeTransformer;
-use RCatlin\Blog\Serializer\Transformer\Entity\ArticleTransformer;
+use RCatlin\Blog\Serializer\Transformer;
 use RCatlin\Blog\Test\Unit\HasFaker;
 
 class ArticleTransformerTest extends \PHPUnit_Framework_TestCase
@@ -15,69 +14,48 @@ class ArticleTransformerTest extends \PHPUnit_Framework_TestCase
     {
         $faker = $this->getFaker();
 
-        $id = $faker->randomNumber();
         $slug = $faker->word;
         $title = $faker->sentence();
         $content = $faker->paragraph();
         $active = $faker->boolean();
 
-        $now = new \DateTime();
-
         // Create and setup the first Tag
         $firstTagName = $faker->word;
-        $firstTagId = $faker->randomNumber();
-        $firstTag = new Entity\Tag($firstTagName);
-        $reflection = new \ReflectionObject($firstTag);
-        $property = $reflection->getProperty('id');
-        $property->setAccessible(true);
-        $property->setValue($firstTag, $firstTagId);
+        $firstTag = Entity\Tag::fromValues($firstTagName);
 
         // Create and setup the second Tag
         $secondTagName = $faker->word;
-        $secondTagId = $faker->randomNumber();
-        $secondTag = new Entity\Tag($secondTagName);
-        $reflection = new \ReflectionObject($firstTag);
-        $property = $reflection->getProperty('id');
-        $property->setAccessible(true);
-        $property->setValue($secondTag, $secondTagId);
-
-        // Create and setup the Article
-        $article = new ArticleStub($now);
-        $reflection = new \ReflectionObject($article);
-        $property = $reflection->getProperty('id');
-        $property->setAccessible(true);
-        $property->setValue($article, $id);
+        $secondTag = Entity\Tag::fromValues($secondTagName);
 
         // Add Tags to Article
-        $article->setSlug($slug);
-        $article->setTitle($title);
-        $article->setContent($content);
-        $article->addTags([$firstTag, $secondTag]);
-        $article->setActive($active);
+        $article = Entity\Article::fromValues($slug, $title, $content, [$firstTag, $secondTag], $active);
 
-        $transformer = new ArticleTransformer();
+        $transformer = new Transformer\Entity\ArticleTransformer(
+            new Transformer\Entity\TagTransformer(),
+            new Transformer\DateTimeTransformer()
+        );
 
         $this->assertSame(
             [
-                'id' => $id,
+                'id' => null,
                 'slug' => $slug,
                 'title' => $title,
-                'created_at' => $now->format(DateTimeTransformer::FORMAT),
-                'updated_at' => $now->format(DateTimeTransformer::FORMAT),
+                'created_at' => null,
+                'updated_at' => null,
                 'content' => $content,
                 'tags' => [
-                    $firstTagId => [
-                        'id' => $firstTagId,
+                    [
+                        'id' => null,
                         'name' => $firstTagName,
                     ],
-                    $secondTagId => [
-                        'id' => $secondTagId,
+                    [
+                        'id' => null,
                         'name' => $secondTagName,
                     ],
                 ],
                 'active' => $active,
             ],
-            $transformer->transformer($article)
+            $transformer->transform($article)
         );
     }
 }

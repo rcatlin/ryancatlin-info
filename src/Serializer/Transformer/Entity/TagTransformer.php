@@ -15,8 +15,8 @@ class TagTransformer extends TransformerAbstract
     public function transform(Entity\Tag $tag)
     {
         return [
-            'id' => (int) $tag->getId(),
-            'name' => (string) $tag->getName(),
+            'id' => $tag->getId(),
+            'name' => $tag->getName(),
         ];
     }
 }

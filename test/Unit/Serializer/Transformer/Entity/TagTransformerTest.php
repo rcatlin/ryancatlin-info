@@ -1,6 +1,6 @@
 <?php
 
-namespace RCatlin\Blog\Test\Unit\Serializer\Transformer\Entity;
+namespace RCatlin\Blog\test\Unit\Serializer\Transformer\Entity;
 
 use RCatlin\Blog\Entity;
 use RCatlin\Blog\Serializer\Transformer\Entity\TagTransformer;
@@ -12,21 +12,15 @@ class TagTransformerTest extends \PHPUnit_Framework_TestCase
 
     public function testTransform()
     {
-        $id = $this->getFaker()->randomNumber();
         $name = $this->getFaker()->word;
 
-        $tag = new Entity\Tag($name);
-
-        $reflection = new \ReflectionObject($tag);
-        $property = $reflection->getProperty('id');
-        $property->setAccessible(true);
-        $property->setValue($tag, $id);
+        $tag = Entity\Tag::fromValues($name);
 
         $transformer = new TagTransformer();
 
         $this->assertSame(
             [
-                'id' => $id,
+                'id' => null,
                 'name' => $name,
             ],
             $transformer->transform($tag)
