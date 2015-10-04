@@ -1,32 +1,43 @@
 <?php
 
-namespace MyProject\Tests\Bundle\MainBundle\Entity;
+namespace RCatlin\Blog\test\Unit\Entity;
 
-use MyProject\Tests\Bundle\MainBundle\MainBundleTestCase;
-use MyProject\Bundle\MainBundle\Entity\Tag;
+use RCatlin\Blog\Entity;
+use RCatlin\Blog\Test\Unit\BuildsMocks;
+use RCatlin\Blog\Test\Unit\HasFaker;
 
-class TagTest extends MainBundleTestCase
+class TagTest extends \PHPUnit_Framework_TestCase
 {
-    public function testSettersAndGetters()
+    use BuildsMocks;
+    use HasFaker;
+
+    public function testFromValues()
     {
-        $name = 'tag name';
+        $name = $this->getFaker()->word;
 
-        // Create test object
-        $tag = new Tag();
+        $tag = Entity\Tag::fromValues($name);
 
-        $tag->setName($name);
+        $this->assertSame($name, $tag->getName());
+    }
 
-        // Assertions
-        $this->assertNull($tag->getId());
+    public function testSetAndGetName()
+    {
+        $tag = $this->createTag();
 
-        $this->assertEquals(
-            $name,
-            $tag->getName()
-        );
+        $word = $this->getFaker()->word;
 
-        $this->assertEquals(
-            $name,
-            (string) $tag
-        );
+        $tag->setName($word);
+
+        $this->assertSame($word, $tag->getName());
+    }
+
+    /**
+     * @return Entity\Tag
+     */
+    private function createTag()
+    {
+        $name = $this->getFaker()->name;
+
+        return Entity\Tag::fromValues($name);
     }
 }

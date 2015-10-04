@@ -1,81 +1,126 @@
 <?php
 
-namespace MyProject\Tests\Bundle\MainBundle\Entity;
+namespace RCatlin\Blog\test\Unit\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use MyProject\Bundle\MainBundle\Entity\Article;
-use MyProject\Tests\Bundle\MainBundle\MainBundleTestCase;
+use RCatlin\Blog\Entity;
+use RCatlin\Blog\Test\Unit\BuildsMocks;
+use RCatlin\Blog\Test\Unit\HasFaker;
 
-class ArticleTest extends MainBundleTestCase
+class ArticleTest extends \PHPUnit_Framework_TestCase
 {
-    public function testSettersAndGettings()
+    use BuildsMocks;
+    use HasFaker;
+
+    public function testFromValues()
     {
-        $date = new \DateTime();
-        $date->setTimestamp(1234567890);
+        $faker = $this->getFaker();
 
-        // Create test object
-        $article = new Article();
+        $tag = $this->getMockTag();
 
-        // Id
-        $this->assertNull($article->getId());
+        $slug = $faker->word;
+        $title = $faker->sentence;
+        $content = $faker->paragraph;
+        $tags = [$tag];
+        $active = $faker->boolean();
 
-        // Slug
-        $article->setSlug('article slug');
-        $this->assertEquals(
-            'article slug',
-            $article->getSlug()
-        );
+        $article = Entity\Article::fromValues($slug, $title, $content, $tags, $active);
 
-        // Title
-        $article->setTitle('Grandiose Title');
-        $this->assertEquals(
-            'Grandiose Title',
-            $article->getTitle()
-        );
+        $this->assertSame($slug, $article->getSlug());
+        $this->assertSame($title, $article->getTitle());
+        $this->assertSame($content, $article->getContent());
+        $this->assertSame(1, $article->getTags()->count());
+        $this->assertSame($tag, $article->getTags()->first());
+        $this->assertSame($active, $article->getActive());
+    }
 
-        // CreatedAt
-        $this->assertNotNull($article->getCreatedAt());
-        $article->setCreatedAt($date);
-        $this->assertEquals(
-            1234567890,
-            $article->getCreatedAt()->getTimestamp()
-        );
+    public function testSetAndGetSlug()
+    {
+        $article = $this->createArticle();
 
-        // UpdatedAt
-        $this->assertNotNull($article->getUpdatedAt());
-        $article->setUpdatedAt($date);
-        $this->assertEquals(
-            1234567890,
-            $article->getUpdatedAt()->getTimestamp()
-        );
+        $slug = $this->getFaker()->word;
+        $article->setSlug($slug);
 
-        // Content
-        $article->setContent('Spectacular show of content.');
-        $this->assertEquals(
-            'Spectacular show of content.',
-            $article->getContent()
-        );
+        $this->assertSame($slug, $article->getSlug());
+    }
 
-        // Tags
-        $this->assertTrue($article->getTags() instanceof ArrayCollection);
-        $this->assertEquals(// initially empty
-            0,
-            $article->getTags()->count()
-        );
-        $article->addTags(array('2'));
-        $this->assertEquals(
-            array('2'),
-            $article->getTags()->toArray()
-        );
-        $article->addTags(array('6', '0'));
-        $this->assertEquals(
-            array('2', '6', '0'),
-            $article->getTags()->toArray()
-        );
+    public function testSetAndGetTitle()
+    {
+        $article = $this->createArticle();
 
-        // Active
-        $this->assertFalse($article->getActive());
-        $article->setActive(true);
-        $this->assertTrue($article->getActive());
+        $title = $this->getFaker()->sentence;
+        $article->setTitle($title);
+
+        $this->assertSame($title, $article->getTitle());
+    }
+
+    public function testSetAndGetContent()
+    {
+        $article = $this->createArticle();
+
+        $content = $this->getFaker()->paragraph;
+        $article->setContent($content);
+
+        $this->assertSame($content, $article->getContent());
+    }
+
+    public function testAddAndGetTag()
+    {
+        $article = $this->createArticle();
+
+        $tag = $this->getMockTag();
+        $article->addTag($tag);
+
+        $this->assertSame($tag, $article->getTags()->first());
+    }
+
+    public function testSetAndGetTags()
+    {
+        $article = $this->createArticle();
+
+        $tag0 = $this->getMockTag();
+        $tag1 = $this->getMockTag();
+        $tags = [$tag0, $tag1];
+
+        $article->setTags($tags);
+
+        $articleTags = $article->getTags();
+
+        $this->assertTrue($articleTags->contains($tag0));
+        $this->assertTrue($articleTags->contains($tag1));
+    }
+
+    public function testSetAndGetActive()
+    {
+        $article = $this->createArticle();
+
+        $active = $this->getFaker()->boolean();
+
+        $article->setActive($active);
+
+        $this->assertSame($active, $article->getActive());
+    }
+
+    /**
+     * @return Entity\Article
+     */
+    private function createArticle()
+    {
+        $faker = $this->getFaker();
+
+        $slug = $faker->word;
+        $title = $faker->sentence;
+        $content = $faker->paragraph;
+        $tags = [];
+        $active = $faker->boolean();
+
+        return Entity\Article::fromValues($slug, $title, $content, $tags, $active);
+    }
+
+    /**
+     * @return \PHPUnit_Framework_MockObject_MockObject|Entity\Tag
+     */
+    private function getMockTag()
+    {
+        return $this->buildMock(Entity\Tag::class);
     }
 }

@@ -2,6 +2,7 @@
 
 namespace RCatlin\Blog\Entity;
 
+use Assert\Assertion;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -82,14 +83,60 @@ class Article
      */
     protected $active;
 
-    public function __construct()
-    {
-        $now = $this->getCurrentDateTime();
+    /**
+     * @param null       $slug
+     * @param null       $title
+     * @param null       $content
+     * @param array      $tags
+     * @param bool|false $active
+     */
+    private function __construct(
+        $slug = null,
+        $title = null,
+        $content = null,
+        array $tags = [],
+        $active = false
+    ) {
+        Assertion::string($slug);
+        Assertion::string($title);
+        Assertion::string($content);
+        Assertion::boolean($active);
 
-        $this->createdAt = $now;
-        $this->updatedAt = $now;
+        $this->slug = $slug;
+        $this->title = $title;
+        $this->content = $content;
+        $this->active = $active;
         $this->tags = new ArrayCollection();
-        $this->active = false;
+
+        foreach ($tags as $tag) {
+            $this->addTag($tag);
+        }
+    }
+
+    /**
+     * @param $slug
+     * @param $title
+     * @param $content
+     * @param array $tags
+     * @param $active
+     *
+     * @return Article
+     */
+    public static function fromValues($slug, $title, $content, array $tags, $active)
+    {
+        return new Article($slug, $title, $content, $tags, $active);
+    }
+
+    /**
+     * @ORM\PrePersist()
+     */
+    public function updateCreatedAt()
+    {
+        if ($this->createdAt !== null) {
+            return;
+        }
+
+        $this->createdAt = $this->getCurrentDateTime();
     }
 
     /**
@@ -105,8 +152,8 @@ class Article
     /**
      * Set slug
      *
-     * @param  string  $slug
-     * 
+     * @param string $slug
+     *
      * @return Article
      */
     public function setSlug($slug)
@@ -129,7 +176,7 @@ class Article
     /**
      * Set title
      *
-     * @param  string  $title
+     * @param string $title
      *
      * @return Article
      */
@@ -158,14 +205,6 @@ class Article
     public function getCreatedAt()
     {
         return $this->createdAt;
-    }
-
-    /**
-     * @return Article
-     */
-    public function updateUpdatedAt()
-    {
-        $this->updatedAt = $this->getCurrentDateTime();
     }
 
     /**
@@ -212,11 +251,23 @@ class Article
     /**
      * @param array $tags
      */
-    public function addTags(array $tags)
+    public function setTags(array $tags)
     {
         foreach ($tags as $tag) {
-            $this->tags->add($tag);
+            $this->addTag($tag);
         }
+
+        return $this;
+    }
+
+    /**
+     * @param Tag $tag
+     */
+    public function addTag(Tag $tag)
+    {
+        $this->tags->add($tag);
+
+        return $this;
     }
 
     /**
@@ -237,6 +288,8 @@ class Article
     public function setActive($active)
     {
         $this->active = $active;
+
+        return $this;
     }
 
     /**
