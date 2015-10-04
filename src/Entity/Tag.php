@@ -2,6 +2,7 @@
 
 namespace RCatlin\Blog\Entity;
 
+use Assert\Assertion;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -28,9 +29,20 @@ class Tag
      */
     private $name;
 
-    public function __construct($name)
+    private function __construct($name)
     {
+        Assertion::string($name);
+
         $this->name = $name;
+    }
+
+    /**
+     * @param $name
+     * @return Tag
+     */
+    public static function fromValues($name)
+    {
+        return new Tag($name);
     }
 
     /**
