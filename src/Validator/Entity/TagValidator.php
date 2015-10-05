@@ -4,27 +4,21 @@ namespace RCatlin\Blog\Validator\Entity;
 
 use RCatlin\Blog\Validator\AbstractValidator;
 use RCatlin\Blog\Validator\Context;
-use RCatlin\Blog\Validator\Exception\InvalidContextException;
 
 class TagValidator extends AbstractValidator
 {
-    /**
-     * Setup required/optional values.
-     */
-    protected function setup()
+    public function __construct()
     {
-        if ($this->context === Context::CREATE) {
-            $this->addName();
+        parent::__construct();
 
-            return;
-        } elseif ($this->context === Context::UPDATE) {
+        $this->context(Context::CREATE, function () {
+            $this->addName();
+        });
+
+        $this->context(Context::UPDATE, function () {
             $this->addId();
             $this->addName();
-
-            return;
-        }
-
-        throw new InvalidContextException();
+        });
     }
 
     /**

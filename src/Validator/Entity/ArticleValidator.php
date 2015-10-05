@@ -4,35 +4,29 @@ namespace RCatlin\Blog\Validator\Entity;
 
 use RCatlin\Blog\Validator\AbstractValidator;
 use RCatlin\Blog\Validator\Context;
-use RCatlin\Blog\Validator\Exception\InvalidContextException;
 
 class ArticleValidator extends AbstractValidator
 {
-    /**
-     * @throws InvalidContextException
-     */
-    protected function setup()
+    public function __construct()
     {
-        if ($this->context === Context::CREATE) {
+        parent::__construct();
+
+        $this->context(Context::CREATE, function () {
             $this->addSlug();
             $this->addTitle();
             $this->addContent(true);
             $this->addTags(true);
             $this->addActive(true, false);
+        });
 
-            return;
-        } elseif ($this->context == Context::UPDATE) {
+        $this->context(Context::UPDATE, function () {
             $this->addId();
             $this->addSlug(false, false);
             $this->addTitle(false, false);
             $this->addContent(true, false);
             $this->addTags(true, false);
             $this->addActive(false, false);
-
-            return;
-        }
-
-        throw new InvalidContextException();
+        });
     }
 
     /**
