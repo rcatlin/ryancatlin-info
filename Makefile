@@ -1,4 +1,4 @@
-.PHONY: test composer cs
+.PHONY: test composer cs migrate
 
 composer:
 	composer validate
@@ -9,4 +9,8 @@ cs: composer
 
 test: composer
 	vendor/bin/phpunit test --colors --debug --verbose
+
+# See https://github.com/doctrine/DoctrineORMModule/issues/361 as to why '-n' flag is included
+migrate:
+	./console migrations:migrate -n
 
