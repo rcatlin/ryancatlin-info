@@ -13,6 +13,7 @@ $whoops->register();
 
 $app = new Piston($container);
 
+$app->addMiddleware(new Middleware\Route\Api());
 $app->addMiddleware(new Middleware\Route\Main());
 
 $app->launch();
