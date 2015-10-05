@@ -27,4 +27,12 @@ trait RenderError
 
         return $response;
     }
+
+    public function renderValidationError(Response $response, array $errors)
+    {
+        $response->setStatusCode(400);
+        $response->setResult(ResourceFactory::result(['errors' => $errors]));
+
+        return $response;
+    }
 }
