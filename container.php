@@ -6,6 +6,8 @@ use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Tools\Setup;
 use Dotenv\Dotenv;
 use League\Container\Container;
+use RCatlin\Blog\Entity;
+use RCatlin\Blog\Repository;
 
 // Create our container
 $container = new Container();
@@ -27,7 +29,13 @@ $config = Setup::createAnnotationMetadataConfiguration([__DIR__ . '/src/Entity']
 $entityManager = EntityManager::create($conn, $config);
 
 // Add Services to Container
-$container->add(EntityManager::class, $entityManager);
-$container->add(Dotenv::class, $dotenv);
+$container->singleton(EntityManager::class, $entityManager);
+$container->singleton(Dotenv::class, $dotenv);
+$container->singleton(Repository\TagRepository::class, function () use ($container) {
+    /** @var EntityManager $em */
+    $em = $container->get(EntityManager::class);
+
+    return $em->getRepository(Entity\Tag::class);
+});
 
 return $container;
