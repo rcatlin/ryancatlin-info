@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "125aa714b880004729f66d9b74c3e4d8",
+    "hash": "ceb7604787d18ebe0f119b09683f77aa",
     "packages": [
         {
             "name": "beberlei/assert",
@@ -1299,26 +1299,31 @@
         },
         {
             "name": "particle/validator",
-            "version": "v1.0.5",
+            "version": "v2.0.0-alpha.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/particle-php/Validator.git",
-                "reference": "0c130530f8df02f4fe293902cbb0d54672f86500"
+                "reference": "1a42dbee41959ba17c390c756b4f0de0f23ea12d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/particle-php/Validator/zipball/0c130530f8df02f4fe293902cbb0d54672f86500",
-                "reference": "0c130530f8df02f4fe293902cbb0d54672f86500",
+                "url": "https://api.github.com/repos/particle-php/Validator/zipball/1a42dbee41959ba17c390c756b4f0de0f23ea12d",
+                "reference": "1a42dbee41959ba17c390c756b4f0de0f23ea12d",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.2"
+                "php": ">=5.4"
             },
             "require-dev": {
                 "phpunit/phpunit": "~4.0",
                 "squizlabs/php_codesniffer": "2.*"
             },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0-dev"
+                }
+            },
             "autoload": {
                 "psr-4": {
                     "Particle\\Validator\\": "src/"
@@ -1335,7 +1340,9 @@
                     "role": "developer"
                 },
                 {
-                    "name": "Rick van der Staaij"
+                    "name": "Rick van der Staaij",
+                    "homepage": "http://rickvanderstaaij.nl",
+                    "role": "Developer"
                 }
             ],
             "description": "Flexible and highly usable validation library with no dependencies.",
@@ -1344,7 +1351,7 @@
                 "validation",
                 "validator"
             ],
-            "time": "2015-06-30 12:10:20"
+            "time": "2015-09-23 07:36:32"
         },
         {
             "name": "phpdocumentor/reflection-docblock",
@@ -3170,6 +3177,7 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "doctrine/migrations": 20,
+        "particle/validator": 15,
         "league/route": 20,
         "fabpot/php-cs-fixer": 20
     },
