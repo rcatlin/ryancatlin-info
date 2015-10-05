@@ -9,7 +9,7 @@ use Symfony\Component\Console\Helper\HelperSet;
 /* @var Container */
 $container = require 'container.php';
 
-/* @var EntityManager */
+/* @var EntityManager $em */
 $em = $container->get(EntityManager::class);
 
 return new HelperSet([
