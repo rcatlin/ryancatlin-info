@@ -10,12 +10,12 @@ php:
 before_install:
     - composer self-update
 
-install: 
-    - composer install
+install:
     - cp .env.test .env
 
-script: 
+script:
     - make test
+    - vendor/bin/php-cs-fixer fix --config-file=.php_cs --verbose --diff --dry-run
 
 cache:
     directories:
