@@ -1,6 +1,6 @@
 <?php
 
-namespace RCatlin\Blog\test\Unit\Serializer\Transformer\Entity;
+namespace RCatlin\Blog\Test\Unit\Serializer\Transformer\Entity;
 
 use RCatlin\Blog\Entity;
 use RCatlin\Blog\Serializer\Transformer;

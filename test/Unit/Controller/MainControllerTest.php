@@ -1,6 +1,6 @@
 <?php
 
-namespace RCatlin\Blog\test\Unit\Controller;
+namespace RCatlin\Blog\Test\Unit\Controller;
 
 use RCatlin\Blog\Controller\MainController;
 use RCatlin\Blog\Test\Unit\ReadsResponseContent;
