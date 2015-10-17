@@ -7,7 +7,9 @@ use Doctrine\ORM\Tools\Setup;
 use Dotenv\Dotenv;
 use League\Container\Container;
 use RCatlin\Blog\Entity;
+use RCatlin\Blog\Middleware;
 use RCatlin\Blog\ServiceProvider;
+use Refinery29\Piston\Piston;
 
 // Create our container
 $container = new Container();
@@ -27,6 +29,16 @@ $conn = \Doctrine\DBAL\DriverManager::getConnection([
 $config = Setup::createAnnotationMetadataConfiguration([__DIR__ . '/src/Entity'], getenv('IS_PROD'), null, null, false);
 
 $entityManager = EntityManager::create($conn, $config);
+
+$container->share(Piston::class, function () use ($container) {
+    $app = new Piston($container);
+
+    $app->addMiddleware(new Middleware\Route\Api())
+        ->addMiddleware(new Middleware\Route\Main())
+    ;
+
+    return $app;
+});
 
 // Add Services to Container
 $container->share(EntityManager::class, $entityManager);
