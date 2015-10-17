@@ -43,8 +43,8 @@ abstract class AbstractValidator extends Validator
     /**
      * @param string $key
      * @param string $name
-     * @param bool $required
-     * @param bool $allowEmpty
+     * @param bool   $required
+     * @param bool   $allowEmpty
      *
      * @return CustomChain
      */
@@ -56,8 +56,8 @@ abstract class AbstractValidator extends Validator
     /**
      * @param string $key
      * @param string $name
-     * @param bool $required
-     * @param bool $allowEmpty
+     * @param bool   $required
+     * @param bool   $allowEmpty
      *
      * @return CustomChain
      */

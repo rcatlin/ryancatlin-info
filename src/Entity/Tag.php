@@ -14,7 +14,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Tag
 {
     /**
-     * @var integer
+     * @var int
      *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
@@ -38,6 +38,7 @@ class Tag
 
     /**
      * @param $name
+     *
      * @return Tag
      */
     public static function fromValues($name)
@@ -48,7 +49,7 @@ class Tag
     /**
      * Get id
      *
-     * @return integer
+     * @return int
      */
     public function getId()
     {
@@ -58,7 +59,8 @@ class Tag
     /**
      * Set name
      *
-     * @param  string $name
+     * @param string $name
+     *
      * @return Tag
      */
     public function setName($name)

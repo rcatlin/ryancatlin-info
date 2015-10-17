@@ -21,7 +21,7 @@ class Main implements StageInterface
         /** @var Piston $subject */
         $subject = $payload->getSubject();
 
-        $subject->get('/', Controller\MainController::class.'::index');
+        $subject->get('/', Controller\MainController::class . '::index');
 
         return $payload;
     }

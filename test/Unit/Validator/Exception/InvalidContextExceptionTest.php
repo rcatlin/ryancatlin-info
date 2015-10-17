@@ -13,6 +13,6 @@ class InvalidContextExceptionTest extends \PHPUnit_Framework_TestCase
      */
     public function testCanThrowException()
     {
-        throw new InvalidContextException;
+        throw new InvalidContextException();
     }
 }

@@ -1,7 +1,10 @@
 <?php
 
 $config = new Refinery29\CS\Config\Refinery29();
-$config->getFinder()->in(__DIR__);
+$config->getFinder()
+    ->exclude(['_tests', 'app', 'bower_components', 'node_modules', 'web']) // Remove/reduce after Refactor
+    ->in(__DIR__)
+;
 
 $cacheDir = getenv('TRAVIS') ? getenv('HOME') . '/.php-cs-fixer' : __DIR__;
 

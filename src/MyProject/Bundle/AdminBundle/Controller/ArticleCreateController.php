@@ -55,15 +55,15 @@ class ArticleCreateController extends BaseController
             return $this->redirect(
                 $this->generateUrl(
                     'article_show',
-                    array('id' => $entity->getId())
+                    ['id' => $entity->getId()]
                 )
             );
         }
 
-        return array(
+        return [
             'entity' => $entity,
-            'form'   => $form->createView(),
-        );
+            'form' => $form->createView(),
+        ];
     }
 
     /**
@@ -76,14 +76,14 @@ class ArticleCreateController extends BaseController
     public function newAction()
     {
         $entity = new Article();
-        $form   = $this->createCreateForm($entity);
+        $form = $this->createCreateForm($entity);
 
         return $this->render(
             'AdminBundle:Article:new.html.twig',
-            array(
+            [
                 'entity' => $entity,
-                'form'   => $form->createView(),
-            )
+                'form' => $form->createView(),
+            ]
         );
     }
 
@@ -99,16 +99,16 @@ class ArticleCreateController extends BaseController
         $form = $this->createForm(
             new ArticleType(),
             $entity,
-            array(
+            [
                 'action' => $this->generateUrl('article_create'),
                 'method' => 'POST',
-            )
+            ]
         );
 
         $form->add(
             'submit',
             'submit',
-            array('label' => 'Create')
+            ['label' => 'Create']
         );
 
         return $form;

@@ -13,7 +13,7 @@ class IsArrayRuleTest extends \PHPUnit_Framework_TestCase
     {
         $rule = new Rule\IsArrayRule();
 
-        $this->assertTrue($rule->validate(array()));
+        $this->assertTrue($rule->validate([]));
     }
 
     public function testValidateIsFalse()
