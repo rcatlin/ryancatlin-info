@@ -3,15 +3,10 @@
 namespace RCatlin\Blog\Controller;
 
 use RCatlin\Blog\Behavior\RenderResponse;
-use Refinery29\Piston\Http\Request;
-use Refinery29\Piston\Http\Response;
-use Refinery29\Piston\Router\Routes\Routeable;
+use Refinery29\Piston\Request;
+use Refinery29\Piston\Response;
 
-/**
- * Class MainController
- * @package RCatlin\Blog\Controller
- */
-class MainController implements Routeable
+class MainController
 {
     use RenderResponse;
 

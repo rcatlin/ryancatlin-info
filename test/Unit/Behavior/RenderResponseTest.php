@@ -2,21 +2,27 @@
 
 namespace RCatlin\Blog\Test\Unit\Behavior;
 
-use Refinery29\Piston\Http\Response;
-use Symfony\Component\HttpFoundation\Response as SymfonyResponse;
+use RCatlin\Blog\Test\Unit\ReadsResponseContent;
+use Refinery29\Piston\Response;
 
 class RenderResponseTest extends \PHPUnit_Framework_TestCase
 {
+    use ReadsResponseContent;
+
     public function testRenderResult()
     {
         $responseStub = new RenderResponseStub();
 
-        $response = new Response(new SymfonyResponse());
         $data = ['the-result'];
 
-        $result = $responseStub->renderResult($response, $data);
+        $response = $responseStub->renderResult(new Response(), $data);
 
-        $this->assertInstanceOf(Response::class, $result);
-        $this->assertSame('{"result":["the-result"]}', $result->getContent());
+        $this->assertInstanceOf(Response::class, $response);
+        $this->assertSame(
+            json_encode([
+                'result' => $data,
+            ]),
+            $this->readResponseContent($response)
+        );
     }
 }

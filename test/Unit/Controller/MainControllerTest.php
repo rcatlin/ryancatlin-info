@@ -3,23 +3,28 @@
 namespace RCatlin\Blog\Test\Unit\Controller;
 
 use RCatlin\Blog\Controller\MainController;
-use Refinery29\Piston\Http\Request;
-use Refinery29\Piston\Http\Response;
-use Symfony\Component\HttpFoundation\Response as SymfonyResponse;
+use RCatlin\Blog\Test\Unit\ReadsResponseContent;
+use Refinery29\Piston\Request;
+use Refinery29\Piston\Response;
 
 class MainControllerTest extends \PHPUnit_Framework_TestCase
 {
+    use ReadsResponseContent;
+
     public function testIndex()
     {
         $controller = new MainController();
 
-        $response = $controller->index(
-            new Request(),
-            new Response(
-                new SymfonyResponse()
-            )
-        );
+        $response = $controller->index(new Request(), new Response());
 
-        $this->assertSame('{"result":{"message":"Hello, world."}}', $response->getContent());
+        $this->assertInstanceOf(Response::class, $response);
+        $this->assertSame(
+            json_encode([
+                'result' => [
+                    'message' => 'Hello, world.',
+                ],
+            ]),
+            $this->readResponseContent($response)
+        );
     }
 }

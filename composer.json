@@ -5,7 +5,11 @@
     "description": "My personal site.",
     "autoload": {
         "psr-4": {
-            "RCatlin\\Blog\\": "src/",
+            "RCatlin\\Blog\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
             "RCatlin\\Blog\\Test\\": "test/"
         }
     },
@@ -19,17 +23,19 @@
         "swiftmailer/swiftmailer": "^5.4",
         "vlucas/phpdotenv": "^2.0",
         "symfony/console": "^2.7",
-        "refinery29/piston": "0.6.*",
+        "refinery29/piston": "1.2.*",
         "league/fractal": "^0.12.0",
         "filp/whoops": "^1.1",
         "phpunit/phpunit": "4.*",
         "particle/validator": "^1.0",
         "fzaninotto/faker": "^1.5",
-        "beberlei/assert": "^2.4"
+        "beberlei/assert": "^2.4",
+        "league/route": "dev-develop"
     },
     "require-dev": {
-        "fabpot/php-cs-fixer": "1.0.*@dev",
-        "phpspec/phpspec": "^2.2"
+        "fabpot/php-cs-fixer": "2.0.*@dev",
+        "phpspec/phpspec": "^2.2",
+        "refinery29/php-cs-fixer-config": "^0.2.3"
     },
     "bin": ["vendor/bin"]
 }

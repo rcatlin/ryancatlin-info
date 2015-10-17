@@ -1,6 +1,6 @@
 <?php
 
-namespace RCatlin\Blog\test\Unit\Entity;
+namespace RCatlin\Blog\Test\Unit\Entity;
 
 use RCatlin\Blog\Entity;
 use RCatlin\Blog\Test\Unit\BuildsMocks;
