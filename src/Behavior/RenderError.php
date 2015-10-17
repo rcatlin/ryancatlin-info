@@ -4,7 +4,7 @@ namespace RCatlin\Blog\Behavior;
 
 use Assert\Assertion;
 use Refinery29\ApiOutput\Resource\ResourceFactory;
-use Refinery29\Piston\Http\Response;
+use Refinery29\Piston\Response;
 
 trait RenderError
 {
