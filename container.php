@@ -29,9 +29,9 @@ $config = Setup::createAnnotationMetadataConfiguration([__DIR__ . '/src/Entity']
 $entityManager = EntityManager::create($conn, $config);
 
 // Add Services to Container
-$container->singleton(EntityManager::class, $entityManager);
-$container->singleton(Dotenv::class, $dotenv);
-$container->singleton(Repository\TagRepository::class, function () use ($container) {
+$container->share(EntityManager::class, $entityManager);
+$container->share(Dotenv::class, $dotenv);
+$container->share(Repository\TagRepository::class, function () use ($container) {
     /** @var EntityManager $em */
     $em = $container->get(EntityManager::class);
 
