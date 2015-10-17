@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "f1aeca2569bcd26234846ffa8f591ac3",
+    "hash": "125aa714b880004729f66d9b74c3e4d8",
     "packages": [
         {
             "name": "beberlei/assert",
@@ -2751,27 +2751,31 @@
     "packages-dev": [
         {
             "name": "fabpot/php-cs-fixer",
-            "version": "v1.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfPHP/PHP-CS-Fixer.git",
-                "reference": "ca95dbf448807420c0d78d447c250263c71080cf"
+                "reference": "03a4316be7956507763a7ff36ae14a26cba1b918"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfPHP/PHP-CS-Fixer/zipball/ca95dbf448807420c0d78d447c250263c71080cf",
-                "reference": "ca95dbf448807420c0d78d447c250263c71080cf",
+                "url": "https://api.github.com/repos/FriendsOfPHP/PHP-CS-Fixer/zipball/03a4316be7956507763a7ff36ae14a26cba1b918",
+                "reference": "03a4316be7956507763a7ff36ae14a26cba1b918",
                 "shasum": ""
             },
             "require": {
+                "ext-tokenizer": "*",
                 "php": ">=5.3.6",
                 "sebastian/diff": "~1.1",
-                "symfony/console": "~2.1",
+                "symfony/console": "~2.3",
                 "symfony/event-dispatcher": "~2.1",
                 "symfony/filesystem": "~2.1",
                 "symfony/finder": "~2.1",
                 "symfony/process": "~2.3",
                 "symfony/stopwatch": "~2.5"
+            },
+            "require-dev": {
+                "satooshi/php-coveralls": "0.7.*@dev"
             },
             "bin": [
                 "php-cs-fixer"
@@ -2779,7 +2783,7 @@
             "type": "application",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0-dev"
+                    "dev-master": "2.0-dev"
                 }
             },
             "autoload": {
@@ -2793,12 +2797,16 @@
             ],
             "authors": [
                 {
+                    "name": "Dariusz Rumiński",
+                    "email": "dariusz.ruminski@gmail.com"
+                },
+                {
                     "name": "Fabien Potencier",
                     "email": "fabien@symfony.com"
                 }
             ],
-            "description": "A script to automatically fix Symfony Coding Standard",
-            "time": "2014-11-12 19:31:29"
+            "description": "A tool to automatically fix PHP code style",
+            "time": "2015-10-15 20:08:30"
         },
         {
             "name": "phpspec/php-diff",
@@ -2910,6 +2918,47 @@
                 "tests"
             ],
             "time": "2015-09-07 07:07:37"
+        },
+        {
+            "name": "refinery29/php-cs-fixer-config",
+            "version": "0.2.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/refinery29/php-cs-fixer-config.git",
+                "reference": "020446105f57cf027b4ccbde6b3fd1089ea3228f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/refinery29/php-cs-fixer-config/zipball/020446105f57cf027b4ccbde6b3fd1089ea3228f",
+                "reference": "020446105f57cf027b4ccbde6b3fd1089ea3228f",
+                "shasum": ""
+            },
+            "require": {
+                "fabpot/php-cs-fixer": "2.0.*-dev",
+                "php": ">=5.4"
+            },
+            "require-dev": {
+                "codeclimate/php-test-reporter": "0.2.0",
+                "phpunit/phpunit": "^4.8.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Refinery29\\CS\\Config\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Andreas Möller",
+                    "email": "andreas.moller@refinery29.com"
+                }
+            ],
+            "description": "Provides a configuration for fabpot/php-cs-fixer, used within Refinery29.",
+            "time": "2015-10-02 09:33:03"
         },
         {
             "name": "symfony/event-dispatcher",

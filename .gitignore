@@ -1,6 +1,7 @@
 .env
 .idea
 *.DS_Store
+.php_cs.cache
 
 /web/bundles/
 /app/bootstrap.php.cache
