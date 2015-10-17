@@ -7,7 +7,7 @@ use Doctrine\ORM\Tools\Setup;
 use Dotenv\Dotenv;
 use League\Container\Container;
 use RCatlin\Blog\Entity;
-use RCatlin\Blog\Repository;
+use RCatlin\Blog\ServiceProvider;
 
 // Create our container
 $container = new Container();
@@ -31,11 +31,10 @@ $entityManager = EntityManager::create($conn, $config);
 // Add Services to Container
 $container->share(EntityManager::class, $entityManager);
 $container->share(Dotenv::class, $dotenv);
-$container->share(Repository\TagRepository::class, function () use ($container) {
-    /** @var EntityManager $em */
-    $em = $container->get(EntityManager::class);
 
-    return $em->getRepository(Entity\Tag::class);
-});
+$container->addServiceProvider(new ServiceProvider\ControllerServiceProvider());
+$container->addServiceProvider(new ServiceProvider\RepositoryServiceProvider());
+$container->addServiceProvider(new ServiceProvider\TransformerServiceProvider());
+$container->addServiceProvider(new ServiceProvider\ValidatorServiceProvider());
 
 return $container;
