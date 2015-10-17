@@ -10,7 +10,6 @@ use RCatlin\Blog\Controller;
 
 class Api implements StageInterface
 {
-
     /**
      * Process the payload.
      *
@@ -24,6 +23,7 @@ class Api implements StageInterface
         $subject = $payload->getSubject();
 
         $subject->group('api', function (RouteGroup $group) {
+            $group->get('status', Controller\Api\StatusController::class . '::get');
             $group->get('tags/{id:number}', Controller\Api\TagController::class . '::get');
             $group->post('tags', Controller\Api\TagController::class . '::create');
         });
