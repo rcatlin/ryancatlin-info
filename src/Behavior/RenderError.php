@@ -12,8 +12,12 @@ trait RenderError
     {
         Assertion::string($message);
 
-        $response->setStatusCode(404);
-        $response->setResult(ResourceFactory::result(['message' => $message]));
+        $response = $response->setStatusCode(404);
+        $response->setErrors(
+            ResourceFactory::errorCollection([
+                ResourceFactory::error($message, 0)
+            ])
+        );
 
         return $response;
     }
@@ -22,16 +26,26 @@ trait RenderError
     {
         Assertion::string($message);
 
-        $response->setStatusCode(400);
-        $response->setResult(ResourceFactory::result(['message' => $message]));
+        $response = $response->setStatusCode(400);
+        $response->setErrors(
+            ResourceFactory::errorCollection([
+                ResourceFactory::error($message, 0),
+            ])
+        );
 
         return $response;
     }
 
     public function renderValidationError(Response $response, array $errors)
     {
-        $response->setStatusCode(400);
-        $response->setResult(ResourceFactory::result(['errors' => $errors]));
+        $response = $response->setStatusCode(400);
+
+        $errors = [];
+        foreach ($errors as $error) {
+            $errors[] = ResourceFactory::error($error, 0);
+        }
+
+        $response->setErrors(ResourceFactory::errorCollection($errors));
 
         return $response;
     }
