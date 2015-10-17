@@ -19,13 +19,14 @@
         "swiftmailer/swiftmailer": "^5.4",
         "vlucas/phpdotenv": "^2.0",
         "symfony/console": "^2.7",
-        "refinery29/piston": "0.6.*",
+        "refinery29/piston": "1.2.*",
         "league/fractal": "^0.12.0",
         "filp/whoops": "^1.1",
         "phpunit/phpunit": "4.*",
         "particle/validator": "^1.0",
         "fzaninotto/faker": "^1.5",
-        "beberlei/assert": "^2.4"
+        "beberlei/assert": "^2.4",
+        "league/route": "dev-develop"
     },
     "require-dev": {
         "fabpot/php-cs-fixer": "1.0.*@dev",
