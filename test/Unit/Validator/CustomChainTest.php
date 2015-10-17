@@ -28,7 +28,6 @@ class CustomChainTest extends \PHPUnit_Framework_TestCase
         $property->setAccessible(true);
         $rules = $property->getValue($result);
 
-
         $hasRule = false;
         foreach ($rules as $rule) {
             if (!$this->isInstanceOf(Rule\IsArrayRule::class, $rule)) {

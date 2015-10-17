@@ -16,7 +16,7 @@ class TagRepository extends EntityRepository
     {
         return $this->createQueryBuilder('t')
             ->select(
-                array('t.name')
+                ['t.name']
             )
             ->getQuery()
             ->execute()

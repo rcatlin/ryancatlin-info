@@ -32,12 +32,12 @@ class ArticleValidator extends AbstractValidator
             return;
         }
 
-        throw new InvalidContextException;
+        throw new InvalidContextException();
     }
 
     /**
      * @param bool|false $allowEmpty
-     * @param bool|true $required
+     * @param bool|true  $required
      *
      * @return $this
      */
@@ -50,7 +50,7 @@ class ArticleValidator extends AbstractValidator
 
     /**
      * @param bool|false $allowEmpty
-     * @param bool|true $required
+     * @param bool|true  $required
      *
      * @return $this
      */
@@ -64,7 +64,7 @@ class ArticleValidator extends AbstractValidator
 
     /**
      * @param bool|false $allowEmpty
-     * @param bool|true $required
+     * @param bool|true  $required
      *
      * @return $this
      */
@@ -75,10 +75,9 @@ class ArticleValidator extends AbstractValidator
         ;
     }
 
-
     /**
      * @param bool|false $allowEmpty
-     * @param bool|true $required
+     * @param bool|true  $required
      *
      * @return \RCatlin\Blog\Validator\CustomChain
      */
@@ -89,7 +88,7 @@ class ArticleValidator extends AbstractValidator
 
     /**
      * @param bool|false $allowEmpty
-     * @param bool|true $required
+     * @param bool|true  $required
      *
      * @return $this
      */
@@ -102,7 +101,7 @@ class ArticleValidator extends AbstractValidator
 
     /**
      * @param bool|false $allowEmpty
-     * @param bool|true $required
+     * @param bool|true  $required
      *
      * @return $this
      */

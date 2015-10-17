@@ -26,12 +26,12 @@ class TagCreateController extends BaseController
     public function newAction()
     {
         $entity = new Tag();
-        $form   = $this->createCreateForm($entity);
+        $form = $this->createCreateForm($entity);
 
-        return array(
+        return [
             'entity' => $entity,
-            'form'   => $form->createView(),
-        );
+            'form' => $form->createView(),
+        ];
     }
 
     /**
@@ -55,17 +55,17 @@ class TagCreateController extends BaseController
             return $this->redirect(
                 $this->generateUrl(
                     'tags_show',
-                    array(
+                    [
                         'id' => $entity->getId(),
-                    )
+                    ]
                 )
             );
         }
 
-        return array(
+        return [
             'entity' => $entity,
-            'form'   => $form->createView(),
-        );
+            'form' => $form->createView(),
+        ];
     }
 
     /**
@@ -80,16 +80,16 @@ class TagCreateController extends BaseController
         $form = $this->createForm(
             new TagType(),
             $entity,
-            array(
+            [
                 'action' => $this->generateUrl('tags_create'),
                 'method' => 'POST',
-            )
+            ]
         );
 
         $form->add(
             'submit',
             'submit',
-            array('label' => 'Create')
+            ['label' => 'Create']
         );
 
         return $form;

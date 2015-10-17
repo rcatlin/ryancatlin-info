@@ -20,7 +20,7 @@ class MainController
     public function index(Request $request, Response $response, array $vars = [])
     {
         return $this->renderResult($response, [
-            'message' => 'Hello, world.'
+            'message' => 'Hello, world.',
         ]);
     }
 }

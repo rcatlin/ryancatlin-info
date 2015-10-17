@@ -24,7 +24,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Article
 {
     /**
-     * @var integer
+     * @var int
      *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
@@ -77,7 +77,7 @@ class Article
     protected $tags;
 
     /**
-     * @var boolean
+     * @var bool
      *
      * @ORM\Column(type="boolean")
      */
@@ -142,7 +142,7 @@ class Article
     /**
      * Get id
      *
-     * @return integer
+     * @return int
      */
     public function getId()
     {
@@ -220,7 +220,8 @@ class Article
     /**
      * Set content
      *
-     * @param  string  $content
+     * @param string $content
+     *
      * @return Article
      */
     public function setContent($content)
@@ -273,7 +274,7 @@ class Article
     /**
      * Get active
      *
-     * @return boolean
+     * @return bool
      */
     public function getActive()
     {
@@ -283,7 +284,7 @@ class Article
     /**
      * Set active
      *
-     * @param boolean $active
+     * @param bool $active
      */
     public function setActive($active)
     {

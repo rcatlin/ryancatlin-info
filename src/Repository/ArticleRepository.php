@@ -91,9 +91,9 @@ EOF;
 
         $id = $qb->expr()->in(
             't.id',
-            array(
+            [
                 $tag->getId(),
-            )
+            ]
         );
 
         $active = $qb->expr()->eq(

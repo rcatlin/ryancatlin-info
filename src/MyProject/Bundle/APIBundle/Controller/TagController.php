@@ -23,7 +23,7 @@ class TagController extends BaseController
         $tags = $this->getTagRepository()->findAllNames();
 
         if (!$tags || empty($tags)) {
-            return $this->returnJson(array());
+            return $this->returnJson([]);
         }
 
         return $this->returnJson(

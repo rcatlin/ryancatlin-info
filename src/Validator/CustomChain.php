@@ -3,7 +3,6 @@
 namespace RCatlin\Blog\Validator;
 
 use Particle\Validator\Chain;
-use RCatlin\Blog\Validator\Rule;
 
 class CustomChain extends Chain
 {

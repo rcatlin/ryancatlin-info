@@ -8,7 +8,6 @@ use RCatlin\Blog\Validator\Exception\InvalidContextException;
 
 class TagValidator extends AbstractValidator
 {
-
     /**
      * Setup required/optional values.
      */
@@ -25,12 +24,12 @@ class TagValidator extends AbstractValidator
             return;
         }
 
-        throw new InvalidContextException;
+        throw new InvalidContextException();
     }
 
     /**
      * @param bool|false $allowEmpty
-     * @param bool|true $required
+     * @param bool|true  $required
      *
      * @return $this
      */
@@ -43,7 +42,7 @@ class TagValidator extends AbstractValidator
 
     /**
      * @param bool|false $allowEmpty
-     * @param bool|true $required
+     * @param bool|true  $required
      *
      * @return $this
      */

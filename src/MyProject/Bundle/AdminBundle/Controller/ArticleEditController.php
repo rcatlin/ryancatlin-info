@@ -34,11 +34,11 @@ class ArticleEditController extends BaseController
         $editForm = $this->createEditForm($entity);
         $deleteForm = $this->createDeleteForm($id);
 
-        return array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
+        return [
+            'entity' => $entity,
+            'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
-        );
+        ];
     }
 
     /**
@@ -82,46 +82,46 @@ class ArticleEditController extends BaseController
             return $this->redirect(
                 $this->generateUrl(
                     'article_show',
-                    array('id' => $id)
+                    ['id' => $id]
                 )
             );
         }
 
         return $this->render(
             'AdminBundle:Article:edit.html.twig',
-            array(
-                'entity'      => $entity,
-                'edit_form'   => $editForm->createView(),
+            [
+                'entity' => $entity,
+                'edit_form' => $editForm->createView(),
                 'delete_form' => $deleteForm->createView(),
-            )
+            ]
         );
     }
 
     /**
-    * Creates a form to edit a Article entity.
-    *
-    * @param Article $entity The entity
-    *
-    * @return \Symfony\Component\Form\Form The form
-    */
+     * Creates a form to edit a Article entity.
+     *
+     * @param Article $entity The entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
     private function createEditForm(Article $entity)
     {
         $form = $this->createForm(
             new ArticleType(),
             $entity,
-            array(
+            [
                 'action' => $this->generateUrl(
                     'article_update',
-                    array('id' => $entity->getId())
+                    ['id' => $entity->getId()]
                 ),
                 'method' => 'PUT',
-            )
+            ]
         );
 
         $form->add(
             'submit',
             'submit',
-            array('label' => 'Update')
+            ['label' => 'Update']
         );
 
         return $form;
@@ -140,14 +140,14 @@ class ArticleEditController extends BaseController
             ->setAction(
                 $this->generateUrl(
                     'article_delete',
-                    array('id' => $id)
+                    ['id' => $id]
                 )
             )
             ->setMethod('DELETE')
             ->add(
                 'submit',
                 'submit',
-                array('label' => 'Delete')
+                ['label' => 'Delete']
             )
             ->getForm()
         ;
