@@ -13,6 +13,9 @@ before_install:
 install:
     - cp .env.test .env
 
+before_script:
+    - mkdir -p "$HOME/.php-cs-fixer"
+
 script:
     - make test
     - vendor/bin/php-cs-fixer fix --config-file=.php_cs --verbose --diff --dry-run
@@ -20,4 +23,5 @@ script:
 cache:
     directories:
         - $HOME/.composer/cache
+        - $HOME/.php-cs-fixer
 
