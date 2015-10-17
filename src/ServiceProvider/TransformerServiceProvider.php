@@ -8,6 +8,15 @@ use RCatlin\Blog\Serializer\Transformer;
 class TransformerServiceProvider extends AbstractServiceProvider
 {
     /**
+     * @var array
+     */
+    protected $provides = [
+        Transformer\DateTimeTransformer::class,
+        Transformer\Entity\ArticleTransformer::class,
+        Transformer\Entity\TagTransformer::class,
+    ];
+
+    /**
      * {inheritDoc}
      */
     public function register()

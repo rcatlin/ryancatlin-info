@@ -8,6 +8,14 @@ use RCatlin\Blog\Validator;
 class ValidatorServiceProvider extends AbstractServiceProvider
 {
     /**
+     * @var array
+     */
+    protected $provides = [
+        Validator\Entity\ArticleValidator::class,
+        Validator\Entity\TagValidator::class,
+    ];
+
+    /**
      * {inheritDoc}
      */
     public function register()

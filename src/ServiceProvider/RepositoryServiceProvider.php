@@ -10,15 +10,22 @@ use RCatlin\Blog\Repository;
 class RepositoryServiceProvider extends AbstractServiceProvider
 {
     /**
+     * @var array
+     */
+    protected $provides = [
+        Repository\TagRepository::class,
+    ];
+
+    /**
      * {inheritDoc}
      */
     public function register()
     {
         $container = $this->getContainer();
 
-        $container->share(Repository\TagRepository::class, function () {
+        $container->share(Repository\TagRepository::class, function () use ($container) {
             /** @var EntityManager $em */
-            $em = $this->getContainer()->get(EntityManager::class);
+            $em = $container->get(EntityManager::class);
 
             return $em->getRepository(Entity\Tag::class);
         });
