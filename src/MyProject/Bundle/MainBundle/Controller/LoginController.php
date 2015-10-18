@@ -23,7 +23,7 @@ class LoginController extends SecurityController
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     protected function renderLogin(array $data)
     {
@@ -46,7 +46,8 @@ class LoginController extends SecurityController
     }
 
     /**
-     * @param  string                                            $path
+     * @param string $path
+     *
      * @return Symfony\Component\HttpFoundation\RedirectResponse
      */
     protected function redirect($route)
@@ -55,7 +56,7 @@ class LoginController extends SecurityController
 
         $url = $router->generate(
             $route,
-            array(),
+            [],
             UrlGeneratorInterface::ABSOLUTE_URL
         );
 
