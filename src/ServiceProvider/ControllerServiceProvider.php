@@ -2,10 +2,11 @@
 
 namespace RCatlin\Blog\ServiceProvider;
 
+use Doctrine\ORM\EntityManager;
 use League\Container\ServiceProvider\AbstractServiceProvider;
 use RCatlin\Blog\Controller;
 use RCatlin\Blog\Repository;
-use RCatlin\Blog\Serializer\Transformer;
+use RCatlin\Blog\Serializer;
 use RCatlin\Blog\Validator;
 
 class ControllerServiceProvider extends AbstractServiceProvider
@@ -29,8 +30,9 @@ class ControllerServiceProvider extends AbstractServiceProvider
         $container->share(Controller\Api\StatusController::class);
 
         $container->share(Controller\Api\TagController::class)
+            ->withArgument(EntityManager::class)
+            ->withArgument(Serializer\ScopeBuilder::class)
             ->withArgument(Repository\TagRepository::class)
-            ->withArgument(Transformer\Entity\TagTransformer::class)
             ->withArgument(Validator\Entity\TagValidator::class)
         ;
 

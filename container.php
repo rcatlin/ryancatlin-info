@@ -45,8 +45,10 @@ $container->share(EntityManager::class, $entityManager);
 $container->share(Dotenv::class, $dotenv);
 
 $container->addServiceProvider(new ServiceProvider\ControllerServiceProvider());
+$container->addServiceProvider(new ServiceProvider\FractalManagerServiceProvider());
 $container->addServiceProvider(new ServiceProvider\RepositoryServiceProvider());
-$container->addServiceProvider(new ServiceProvider\TransformerServiceProvider());
+$container->addServiceProvider(new ServiceProvider\SerializerServiceProvider());
+$container->addServiceProvider(new ServiceProvider\TransformerContainerServiceProvider());
 $container->addServiceProvider(new ServiceProvider\ValidatorServiceProvider());
 
 return $container;
