@@ -20,5 +20,5 @@ ratings:
   - "**.module"
   - "**.inc"
 
-exclude_paths: ['_tests/8', 'web/*']
+exclude_paths: ['_tests/*', 'web/*']
 
