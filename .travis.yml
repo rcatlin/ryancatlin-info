@@ -35,3 +35,7 @@ cache:
         - $HOME/.composer/cache
         - $HOME/.php-cs-fixer
 
+addons:
+    code_climate:
+        repo_token: 1422e98c79dacf023e1a5710276ea033865b2884de913e957976f8da173d3ce5
+
