@@ -1,0 +1,24 @@
+languages:
+  PHP: true
+
+engines:
+  eslint:
+    enabled: true
+  csslint:
+    enabled: true
+  phpcodesniffer:
+    enabled: true
+  phpmd:
+    enabled: true
+
+ratings:
+  paths:
+  - "**.js"
+  - "**.jsx"
+  - "**.css"
+  - "**.php"
+  - "**.module"
+  - "**.inc"
+
+exclude_paths: ['_tests/*', 'web/*']
+
