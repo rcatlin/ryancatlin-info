@@ -2,18 +2,31 @@
 
 namespace RCatlin\Blog\Controller\Api;
 
+use Doctrine\ORM\EntityManager;
+use League\Fractal\Scope;
 use RCatlin\Blog\Behavior;
 use RCatlin\Blog\Entity;
 use RCatlin\Blog\Repository;
-use RCatlin\Blog\Serializer\Transformer;
-use Refinery29\Piston\Http\Request;
-use Refinery29\Piston\Http\Response;
-use Refinery29\Piston\Router\Routes\Routeable;
+use RCatlin\Blog\Serializer;
+use RCatlin\Blog\Validator;
+use RCatlin\Blog\Validator\Context;
+use Refinery29\Piston\Request;
+use Refinery29\Piston\Response;
 
-class TagController implements Routeable
+class TagController
 {
     use Behavior\RenderError;
     use Behavior\RenderResponse;
+
+    /**
+     * @var EntityManager
+     */
+    private $entityManager;
+
+    /**
+     * @var Serializer\ScopeBuilder
+     */
+    private $scopeBuilder;
 
     /**
      * @var Repository\TagRepository
@@ -21,19 +34,26 @@ class TagController implements Routeable
     private $tagRepository;
 
     /**
-     * @var Transformer\Entity\TagTransformer
+     * @var Validator\Entity\TagValidator
      */
-    private $tagTransformer;
+    private $tagValidator;
 
     /**
+     * @param EntityManager $entityManager
+     * @param Serializer\ScopeBuilder $scopeBuilder
      * @param Repository\TagRepository $tagRepository
+     * @param Validator\Entity\TagValidator $tagValidator
      */
     public function __construct(
+        EntityManager $entityManager,
+        Serializer\ScopeBuilder $scopeBuilder,
         Repository\TagRepository $tagRepository,
-        Transformer\Entity\TagTransformer $tagTransformer
+        Validator\Entity\TagValidator $tagValidator
     ) {
+        $this->entityManager = $entityManager;
+        $this->scopeBuilder = $scopeBuilder;
         $this->tagRepository = $tagRepository;
-        $this->tagTransformer = $tagTransformer;
+        $this->tagValidator = $tagValidator;
     }
 
     /**
@@ -43,7 +63,7 @@ class TagController implements Routeable
      *
      * @return Response
      */
-    public function get(Response $response, Request $request, array $vars = [])
+    public function get(Request $request, Response $response, array $vars = [])
     {
         if (!isset($vars['id'])) {
             return $this->renderBadRequest($response, 'Missing required id parameter');
@@ -64,7 +84,58 @@ class TagController implements Routeable
 
         return $this->renderResult(
             $response,
-            $this->tagTransformer->transform($tag)
+            $this->getTagScope($tag)->toArray()
         );
+    }
+
+    /**
+     * @param Response $response
+     * @param Request  $request
+     *
+     * @return Response
+     */
+    public function create(Request $request, Response $response, array $vars = [])
+    {
+        $content = $request->getBody()->getContents();
+
+        try {
+            $decodedContent = json_decode($content, true);
+        } catch (\Exception $e) {
+            $decodedContent = null;
+        }
+
+        if ($decodedContent === null) {
+            return $this->renderBadRequest($response, 'Invalid JSON.');
+        }
+
+        $validationResult = $this->tagValidator->validate($decodedContent, Context::CREATE);
+
+        if ($validationResult->isNotValid()) {
+            return $this->renderValidationErrors($response, $validationResult->getMessages());
+        }
+
+        $tag = Entity\Tag::fromArray($decodedContent);
+
+        try {
+            $this->entityManager->persist($tag);
+            $this->entityManager->flush();
+        } catch (\Exception $e) {
+            return $this->renderServerError($response, $e->getMessage());
+        }
+
+        return $this->renderResult(
+            $response,
+            $this->getTagScope($tag)->toArray()
+        );
+    }
+
+    /**
+     * @param Entity\Tag $tag
+     *
+     * @return Scope
+     */
+    private function getTagScope(Entity\Tag $tag)
+    {
+        return $this->scopeBuilder->buildItem(Entity\Tag::class, $tag);
     }
 }
