@@ -33,6 +33,7 @@ class RepositoryServiceProviderTest extends AbstractServiceProviderTest
     {
         return [
             [Repository\TagRepository::class, Repository\TagRepository::class],
+            [Repository\ArticleRepository::class, Repository\ArticleRepository::class],
         ];
     }
 }
