@@ -17,6 +17,17 @@ class TagTest extends \PHPUnit_Framework_TestCase
 
         $tag = Entity\Tag::fromValues($name);
 
+        $this->assertInstanceOf(Entity\Tag::class, $tag);
+        $this->assertSame($name, $tag->getName());
+    }
+
+    public function testFromArray()
+    {
+        $name = $this->getFaker()->word;
+
+        $tag = Entity\Tag::fromArray(['name' => $name]);
+
+        $this->assertInstanceOf(Entity\Tag::class, $tag);
         $this->assertSame($name, $tag->getName());
     }
 

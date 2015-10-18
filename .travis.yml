@@ -11,7 +11,7 @@ before_install:
     - composer self-update
 
 install:
-    - cp .env.test .env
+    - make setup
 
 before_script:
     - mkdir -p "$HOME/.php-cs-fixer"

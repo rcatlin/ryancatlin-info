@@ -12,12 +12,11 @@ class ArticleValidatorUpdateContextTest extends \PHPUnit_Framework_TestCase
 
     public function testIsValid()
     {
-        $validator = new ArticleValidator(
-            Context::UPDATE,
-            $this->getAllValues()
-        );
+        $validator = new ArticleValidator();
 
-        $this->assertTrue($validator->isValid());
+        $validationResult = $validator->validate($this->getAllValues(), Context::UPDATE);
+
+        $this->assertTrue($validationResult->isValid());
     }
 
     public function testSlugIsOptional()
@@ -25,12 +24,11 @@ class ArticleValidatorUpdateContextTest extends \PHPUnit_Framework_TestCase
         $values = $this->getAllValues();
         unset($values['slug']);
 
-        $validator = new ArticleValidator(
-            Context::UPDATE,
-            $values
-        );
+        $validator = new ArticleValidator();
 
-        $this->assertTrue($validator->isValid());
+        $validationResult = $validator->validate($values, Context::UPDATE);
+
+        $this->assertTrue($validationResult->isValid());
     }
 
     public function testSlugCannotBeEmpty()
@@ -38,12 +36,11 @@ class ArticleValidatorUpdateContextTest extends \PHPUnit_Framework_TestCase
         $values = $this->getAllValues();
         $values['slug'] = '';
 
-        $validator = new ArticleValidator(
-            Context::UPDATE,
-            $values
-        );
+        $validator = new ArticleValidator();
 
-        $this->assertFalse($validator->isValid());
+        $validationResult = $validator->validate($values, Context::UPDATE);
+
+        $this->assertFalse($validationResult->isValid());
     }
 
     public function testTitleIsOptional()
@@ -51,12 +48,11 @@ class ArticleValidatorUpdateContextTest extends \PHPUnit_Framework_TestCase
         $values = $this->getAllValues();
         unset($values['title']);
 
-        $validator = new ArticleValidator(
-            Context::UPDATE,
-            $values
-        );
+        $validator = new ArticleValidator();
 
-        $this->assertTrue($validator->isValid());
+        $validationResult = $validator->validate($values, Context::UPDATE);
+
+        $this->assertTrue($validationResult->isValid());
     }
 
     public function testTitleCannotBeEmpty()
@@ -64,12 +60,11 @@ class ArticleValidatorUpdateContextTest extends \PHPUnit_Framework_TestCase
         $values = $this->getAllValues();
         $values['title'] = '';
 
-        $validator = new ArticleValidator(
-            Context::UPDATE,
-            $values
-        );
+        $validator = new ArticleValidator();
 
-        $this->assertFalse($validator->isValid());
+        $validationResult = $validator->validate($values, Context::UPDATE);
+
+        $this->assertFalse($validationResult->isValid());
     }
 
     public function testContentIsOptional()
@@ -77,12 +72,11 @@ class ArticleValidatorUpdateContextTest extends \PHPUnit_Framework_TestCase
         $values = $this->getAllValues();
         unset($values['content']);
 
-        $validator = new ArticleValidator(
-            Context::UPDATE,
-            $values
-        );
+        $validator = new ArticleValidator();
 
-        $this->assertTrue($validator->isValid());
+        $validationResult = $validator->validate($values, Context::UPDATE);
+
+        $this->assertTrue($validationResult->isValid());
     }
 
     public function testContentCanBeEmpty()
@@ -90,12 +84,11 @@ class ArticleValidatorUpdateContextTest extends \PHPUnit_Framework_TestCase
         $values = $this->getAllValues();
         $values['content'] = '';
 
-        $validator = new ArticleValidator(
-            Context::UPDATE,
-            $values
-        );
+        $validator = new ArticleValidator();
 
-        $this->assertTrue($validator->isValid());
+        $validationResult = $validator->validate($values, Context::UPDATE);
+
+        $this->assertTrue($validationResult->isValid());
     }
 
     public function testTagsIsOptiona()
@@ -103,12 +96,11 @@ class ArticleValidatorUpdateContextTest extends \PHPUnit_Framework_TestCase
         $values = $this->getAllValues();
         unset($values['tags']);
 
-        $validator = new ArticleValidator(
-            Context::UPDATE,
-            $values
-        );
+        $validator = new ArticleValidator();
 
-        $this->assertTrue($validator->isValid());
+        $validationResult = $validator->validate($values, Context::UPDATE);
+
+        $this->assertTrue($validationResult->isValid());
     }
 
     public function testTagsCanBeEmptry()
@@ -116,12 +108,11 @@ class ArticleValidatorUpdateContextTest extends \PHPUnit_Framework_TestCase
         $values = $this->getAllValues();
         $values['tags'] = [];
 
-        $validator = new ArticleValidator(
-            Context::UPDATE,
-            $values
-        );
+        $validator = new ArticleValidator();
 
-        $this->assertTrue($validator->isValid());
+        $validationResult = $validator->validate($values, Context::UPDATE);
+
+        $this->assertTrue($validationResult->isValid());
     }
 
     public function testActiveIsOptional()
@@ -129,12 +120,11 @@ class ArticleValidatorUpdateContextTest extends \PHPUnit_Framework_TestCase
         $values = $this->getAllValues();
         unset($values['active']);
 
-        $validator = new ArticleValidator(
-            Context::UPDATE,
-            $values
-        );
+        $validator = new ArticleValidator();
 
-        $this->assertTrue($validator->isValid());
+        $validationResult = $validator->validate($values, Context::UPDATE);
+
+        $this->assertTrue($validationResult->isValid());
     }
 
     public function testActiveCannotBeEmpty()
@@ -142,12 +132,11 @@ class ArticleValidatorUpdateContextTest extends \PHPUnit_Framework_TestCase
         $values = $this->getAllValues();
         $values['slug'] = null;
 
-        $validator = new ArticleValidator(
-            Context::UPDATE,
-            $values
-        );
+        $validator = new ArticleValidator();
 
-        $this->assertFalse($validator->isValid());
+        $validationResult = $validator->validate($values, Context::UPDATE);
+
+        $this->assertFalse($validationResult->isValid());
     }
 
     private function getAllValues()

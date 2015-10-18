@@ -47,6 +47,20 @@ class Tag
     }
 
     /**
+     * @param array $values
+     *
+     * @return Tag
+     */
+    public static function fromArray(array $values)
+    {
+        if (!isset($values['name'])) {
+            throw new \InvalidArgumentException('Missing name value.');
+        }
+
+        return self::fromValues($values['name']);
+    }
+
+    /**
      * Get id
      *
      * @return int
