@@ -2,10 +2,17 @@ language: php
 
 sudo: false
 
-php:
-    - 5.5
-    - 5.6
-    - hhvm
+matrix:
+    fast_finish: true
+    include:
+        - php: 5.5
+        - php: 5.6
+          env: COLLECT_COVERAGE=true
+        - php: 7
+        - php: hhvm
+    allow_failures:
+        - php: 7
+        - php: hhvm
 
 before_install:
     - composer self-update
@@ -19,6 +26,9 @@ before_script:
 script:
     - make test
     - vendor/bin/php-cs-fixer fix --config-file=.php_cs --verbose --diff --dry-run
+
+after_script:
+    - if [[ "$TRAVIS_PULL_REQUEST" == "false" && "$TRAVIS_BRANCH" == "refactor" && "$COLLECT_COVERAGE" == "true" ]]; then bin/test-reporter; fi
 
 cache:
     directories:
