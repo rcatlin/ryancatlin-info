@@ -22,9 +22,9 @@ class ArticleType extends AbstractType
             ->add(
                 'active',
                 'checkbox',
-                array(
+                [
                     'required' => false,
-                )
+                ]
             )
             ->add(
                 $builder->create(
@@ -43,38 +43,38 @@ class ArticleType extends AbstractType
             ->add(
                 'prettyContent',
                 'textarea',
-                array(
+                [
                     'required' => false,
                     'mapped' => false,
                     'label' => 'Content', // False Content Input
-                )
+                ]
             )
             ->add(
                 'tags_autocomplete',
                 'text',
-                array(
+                [
                     'required' => false,
                     'mapped' => false,
-                )
+                ]
             )
             ->add(
                 'tags',
                 'entity',
-                array(
+                [
                     'class' => 'MainBundle:Tag',
                     'multiple' => true,
                     'expanded' => true,
                     'required' => false,
-                )
+                ]
             )
             ->add(
                 $builder->create(
                     'new_tags',
                     'hidden',
-                    array(
+                    [
                         'required' => false,
                         'mapped' => false,
-                    )
+                    ]
                 )->addModelTransformer(new NewTagsTransformer())
             )
             ->add(
@@ -93,9 +93,9 @@ class ArticleType extends AbstractType
     {
         $resolver
             ->setDefaults(
-                array(
+                [
                     'data_class' => 'MyProject\Bundle\MainBundle\Entity\Article',
-                )
+                ]
             )
         ;
     }
