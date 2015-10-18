@@ -3,6 +3,7 @@
 namespace RCatlin\Blog\Behavior;
 
 use Assert\Assertion;
+use Refinery29\ApiOutput\Resource\Error\ErrorCollection;
 use Refinery29\ApiOutput\Resource\ResourceFactory;
 use Refinery29\Piston\Response;
 
@@ -12,40 +13,45 @@ trait RenderError
     {
         Assertion::string($message);
 
-        $response = $response->setStatusCode(404);
-        $response->setErrors(
-            ResourceFactory::errorCollection([
-                ResourceFactory::error($message, 0)
-            ])
-        );
-
-        return $response;
+        return $this->renderErrors($response, 404, ResourceFactory::errorCollection([
+            ResourceFactory::error($message, 0)
+        ]));
     }
 
     public function renderBadRequest(Response $response, $message)
     {
         Assertion::string($message);
 
-        $response = $response->setStatusCode(400);
-        $response->setErrors(
-            ResourceFactory::errorCollection([
-                ResourceFactory::error($message, 0),
-            ])
-        );
-
-        return $response;
+        return $this->renderErrors($response, 400, ResourceFactory::errorCollection([
+            ResourceFactory::error($message, 0),
+        ]));
     }
 
-    public function renderValidationError(Response $response, array $errors)
+    public function renderValidationErrors(Response $response, array $validationErrors)
     {
-        $response = $response->setStatusCode(400);
-
         $errors = [];
-        foreach ($errors as $error) {
-            $errors[] = ResourceFactory::error($error, 0);
+        foreach ($validationErrors as $code => $title) {
+            $errors[] = ResourceFactory::error($title, 0);
         }
 
-        $response->setErrors(ResourceFactory::errorCollection($errors));
+        return $this->renderErrors($response, 400, ResourceFactory::errorCollection($errors));
+    }
+
+    public function renderServerError(Response $response, $message)
+    {
+        Assertion::string($message);
+
+        return $this->renderErrors($response, 500, ResourceFactory::errorCollection([
+            ResourceFactory::error($message, 0)
+        ]));
+    }
+
+    private function renderErrors(Response $response, $statusCode, ErrorCollection $errors)
+    {
+        Assertion::integer($statusCode);
+
+        $response = $response->setStatusCode($statusCode);
+        $response->setErrors($errors);
 
         return $response;
     }
