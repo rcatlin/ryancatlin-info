@@ -3,7 +3,6 @@
 namespace RCatlin\Blog\Test\Integration\ServiceProvider;
 
 use Doctrine\ORM\EntityManager;
-use League\Container\Container;
 use RCatlin\Blog\ServiceProvider;
 
 class EntityManagerServiceProviderTest extends AbstractServiceProviderTest
@@ -32,7 +31,7 @@ class EntityManagerServiceProviderTest extends AbstractServiceProviderTest
     public function providesDataProvider()
     {
         return [
-            [EntityManager::class, EntityManager::class]
+            [EntityManager::class, EntityManager::class],
         ];
     }
 }

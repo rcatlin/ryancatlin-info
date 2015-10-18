@@ -58,7 +58,7 @@ class EntityManagerServiceProvider extends AbstractServiceProvider
      * @param string $host
      * @param string $driver
      * @param string $entityDir
-     * @param mixed $isProd
+     * @param mixed  $isProd
      */
     public function __construct($dbName, $user, $password, $host, $driver, $entityDir, $isProd = false)
     {

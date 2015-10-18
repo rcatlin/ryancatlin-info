@@ -3,8 +3,8 @@
 namespace RCatlin\Blog\ServiceProvider;
 
 use League\Container\ServiceProvider\AbstractServiceProvider;
-use Refinery29\Piston\Piston;
 use RCatlin\Blog\Middleware;
+use Refinery29\Piston\Piston;
 
 class PistonServiceProvider extends AbstractServiceProvider
 {

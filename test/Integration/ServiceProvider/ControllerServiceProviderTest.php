@@ -2,8 +2,6 @@
 
 namespace RCatlin\Blog\Test\Integration\ServiceProvider;
 
-use Assert\Assertion;
-use League\Container\Container;
 use RCatlin\Blog\Controller;
 use RCatlin\Blog\ServiceProvider;
 

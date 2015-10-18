@@ -2,8 +2,8 @@
 
 namespace RCatlin\Blog\Test\Integration\ServiceProvider;
 
-use Refinery29\Piston\Piston;
 use RCatlin\Blog\ServiceProvider;
+use Refinery29\Piston\Piston;
 
 class PistonServiceProviderTest extends AbstractServiceProviderTest
 {

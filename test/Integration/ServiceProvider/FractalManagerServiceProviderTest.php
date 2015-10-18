@@ -2,7 +2,6 @@
 
 namespace RCatlin\Blog\Test\Integration\ServiceProvider;
 
-use League\Container\Container;
 use League\Fractal\Manager;
 use RCatlin\Blog\ServiceProvider;
 
@@ -24,7 +23,7 @@ class FractalManagerServiceProviderTest extends AbstractServiceProviderTest
     public function providesDataProvider()
     {
         return [
-            [Manager::class, Manager::class]
+            [Manager::class, Manager::class],
         ];
     }
 }
