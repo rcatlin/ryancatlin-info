@@ -19,6 +19,7 @@ before_install:
 
 install:
     - make setup
+    - make migrate
 
 before_script:
     - mkdir -p "$HOME/.php-cs-fixer"
