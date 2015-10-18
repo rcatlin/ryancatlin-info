@@ -31,6 +31,8 @@ trait RenderError
     {
         $errors = [];
         foreach ($validationErrors as $code => $title) {
+            Assertion::integer($code);
+            Assertion::string($title);
             $errors[] = ResourceFactory::error($title, 0);
         }
 
