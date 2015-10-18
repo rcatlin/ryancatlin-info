@@ -18,7 +18,7 @@ class ScopeBuilder
     private $resourceFactory;
 
     /**
-     * @param Manager $manager
+     * @param Manager                $manager
      * @param FractalResourceFactory $resourceFactory
      */
     public function __construct(Manager $manager, FractalResourceFactory $resourceFactory)

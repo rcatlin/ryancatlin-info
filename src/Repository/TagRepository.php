@@ -24,10 +24,10 @@ class TagRepository extends EntityRepository
     /**
      * @param string $name
      *
-     * @return Entity\Tag|null
-     *
      * @throws \Doctrine\ORM\NoResultException
      * @throws \Doctrine\ORM\NonUniqueResultException
+     *
+     * @return Entity\Tag|null
      */
     public function findOneByName($name)
     {

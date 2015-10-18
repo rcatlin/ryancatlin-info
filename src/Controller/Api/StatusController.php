@@ -11,9 +11,9 @@ class StatusController
     use RenderResponse;
 
     /**
-     * @param Request $request
+     * @param Request  $request
      * @param Response $response
-     * @param array $vars
+     * @param array    $vars
      *
      * @return Response
      */

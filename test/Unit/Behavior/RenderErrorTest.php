@@ -68,7 +68,7 @@ class RenderErrorTest extends \PHPUnit_Framework_TestCase
      */
     public function testRenderBadRequestRequiresStringMessage()
     {
-        $this->renderBadRequest(new Response, $this->getFaker()->randomNumber());
+        $this->renderBadRequest(new Response(), $this->getFaker()->randomNumber());
     }
 
     public function testRenderValidationErrors()

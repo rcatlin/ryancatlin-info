@@ -14,7 +14,7 @@ trait RenderError
         Assertion::string($message);
 
         return $this->renderErrors($response, 404, ResourceFactory::errorCollection([
-            ResourceFactory::error($message, 0)
+            ResourceFactory::error($message, 0),
         ]));
     }
 
@@ -44,7 +44,7 @@ trait RenderError
         Assertion::string($message);
 
         return $this->renderErrors($response, 500, ResourceFactory::errorCollection([
-            ResourceFactory::error($message, 0)
+            ResourceFactory::error($message, 0),
         ]));
     }
 

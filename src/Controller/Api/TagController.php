@@ -39,9 +39,9 @@ class TagController
     private $tagValidator;
 
     /**
-     * @param EntityManager $entityManager
-     * @param Serializer\ScopeBuilder $scopeBuilder
-     * @param Repository\TagRepository $tagRepository
+     * @param EntityManager                 $entityManager
+     * @param Serializer\ScopeBuilder       $scopeBuilder
+     * @param Repository\TagRepository      $tagRepository
      * @param Validator\Entity\TagValidator $tagValidator
      */
     public function __construct(

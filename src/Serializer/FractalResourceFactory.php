@@ -39,7 +39,7 @@ class FractalResourceFactory
     }
 
     /**
-     * @param string $entityClass
+     * @param string   $entityClass
      * @param object[] $entities
      *
      * @return Resource\Collection
