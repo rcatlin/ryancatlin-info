@@ -28,7 +28,7 @@ script:
     - vendor/bin/php-cs-fixer fix --config-file=.php_cs --verbose --diff --dry-run
 
 after_script:
-    - if [[ "$TRAVIS_PULL_REQUEST" == "false" && "$TRAVIS_BRANCH" == "refactor" && "$COLLECT_COVERAGE" == "true" ]]; then bin/test-reporter; fi
+    - if [[ "$TRAVIS_PULL_REQUEST" == "false" && "$TRAVIS_BRANCH" == "master" && "$COLLECT_COVERAGE" == "true" ]]; then bin/test-reporter; fi
 
 cache:
     directories:
