@@ -12,32 +12,28 @@ class TagValidatorCreateContextTest extends \PHPUnit_Framework_TestCase
 
     public function testIsValid()
     {
-        $validator = new TagValidator(
-            Context::CREATE,
-            $this->getAllValues()
-        );
+        $validator = new TagValidator();
+        $validationResult = $validator->validate($this->getAllValues(), Context::CREATE);
 
-        $this->assertTrue($validator->isValid());
+        $this->assertTrue($validationResult->isValid());
     }
 
     public function testRequiresTag()
     {
-        $validator = new TagValidator(
-            Context::CREATE,
-            []
-        );
+        $validator = new TagValidator();
 
-        $this->assertFalse($validator->isValid());
+        $validationResult = $validator->validate([], Context::CREATE);
+
+        $this->assertFalse($validationResult->isValid());
     }
 
     public function testNameCannotBeEmpty()
     {
-        $validator = new TagValidator(
-            Context::CREATE,
-            ['name' => '']
-        );
+        $validator = new TagValidator();
 
-        $this->assertFalse($validator->isValid());
+        $validationResult = $validator->validate(['name' => ''], Context::CREATE);
+
+        $this->assertFalse($validationResult->isValid());
     }
 
     private function getAllValues()

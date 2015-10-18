@@ -12,12 +12,11 @@ class TagValidatorUpdateContextTest extends \PHPUnit_Framework_TestCase
 
     public function testIsValid()
     {
-        $validator = new TagValidator(
-            Context::UPDATE,
-            $this->getAllValues()
-        );
+        $validator = new TagValidator();
 
-        $this->assertTrue($validator->isValid());
+        $validationResult = $validator->validate($this->getAllValues(), Context::UPDATE);
+
+        $this->assertTrue($validationResult->isValid());
     }
 
     public function testRequiresId()
@@ -25,12 +24,11 @@ class TagValidatorUpdateContextTest extends \PHPUnit_Framework_TestCase
         $values = $this->getAllValues();
         unset($values['id']);
 
-        $validator = new TagValidator(
-            Context::UPDATE,
-            $values
-        );
+        $validator = new TagValidator();
 
-        $this->assertFalse($validator->isValid());
+        $validationResult = $validator->validate($values, Context::UPDATE);
+
+        $this->assertFalse($validationResult->isValid());
     }
 
     public function testIdCannotBeEmpty()
@@ -38,12 +36,11 @@ class TagValidatorUpdateContextTest extends \PHPUnit_Framework_TestCase
         $values = $this->getAllValues();
         $values['id'] = null;
 
-        $validator = new TagValidator(
-            Context::UPDATE,
-            $values
-        );
+        $validator = new TagValidator();
 
-        $this->assertFalse($validator->isValid());
+        $validationResult = $validator->validate($values, Context::UPDATE);
+
+        $this->assertFalse($validationResult->isValid());
     }
 
     public function testIdMustBeAnInteger()
@@ -51,12 +48,11 @@ class TagValidatorUpdateContextTest extends \PHPUnit_Framework_TestCase
         $values = $this->getAllValues();
         $values['id'] = $this->getFaker()->word;
 
-        $validator = new TagValidator(
-            Context::UPDATE,
-            $values
-        );
+        $validator = new TagValidator();
 
-        $this->assertFalse($validator->isValid());
+        $validationResult = $validator->validate($values, Context::UPDATE);
+
+        $this->assertFalse($validationResult->isValid());
     }
 
     public function testRequiresName()
@@ -64,12 +60,11 @@ class TagValidatorUpdateContextTest extends \PHPUnit_Framework_TestCase
         $values = $this->getAllValues();
         unset($values['name']);
 
-        $validator = new TagValidator(
-            Context::UPDATE,
-            $values
-        );
+        $validator = new TagValidator();
 
-        $this->assertFalse($validator->isValid());
+        $validationResult = $validator->validate($values, Context::UPDATE);
+
+        $this->assertFalse($validationResult->isValid());
     }
 
     public function testNameCannotBeEmpty()
@@ -77,12 +72,11 @@ class TagValidatorUpdateContextTest extends \PHPUnit_Framework_TestCase
         $values = $this->getAllValues();
         $values['name'] = '';
 
-        $validator = new TagValidator(
-            Context::UPDATE,
-            $values
-        );
+        $validator = new TagValidator();
 
-        $this->assertFalse($validator->isValid());
+        $validationResult = $validator->validate($values, Context::UPDATE);
+
+        $this->assertFalse($validationResult->isValid());
     }
 
     public function testNameMustBeAString()
@@ -90,12 +84,11 @@ class TagValidatorUpdateContextTest extends \PHPUnit_Framework_TestCase
         $values = $this->getAllValues();
         $values['id'] = $this->getFaker()->word;
 
-        $validator = new TagValidator(
-            Context::UPDATE,
-            $values
-        );
+        $validator = new TagValidator();
 
-        $this->assertFalse($validator->isValid());
+        $validationResult = $validator->validate($values, Context::UPDATE);
+
+        $this->assertFalse($validationResult->isValid());
     }
 
     private function getAllValues()

@@ -12,12 +12,11 @@ class ArticleValidatorCreateContextTest extends \PHPUnit_Framework_TestCase
 
     public function testIsValid()
     {
-        $validator = new ArticleValidator(
-            Context::CREATE,
-            $this->getAllValues()
-        );
+        $validator = new ArticleValidator();
 
-        $this->assertTrue($validator->isValid());
+        $validationResult = $validator->validate($this->getAllValues(), Context::CREATE);
+
+        $this->assertTrue($validationResult->isValid());
     }
 
     public function testRequiresSlug()
@@ -25,12 +24,11 @@ class ArticleValidatorCreateContextTest extends \PHPUnit_Framework_TestCase
         $values = $this->getAllValues();
         unset($values['slug']);
 
-        $validator = new ArticleValidator(
-            Context::CREATE,
-            $values
-        );
+        $validator = new ArticleValidator();
 
-        $this->assertFalse($validator->isValid());
+        $validationResult = $validator->validate($values, Context::CREATE);
+
+        $this->assertFalse($validationResult->isValid());
     }
 
     public function testRequiresNonEmptySlug()
@@ -38,12 +36,11 @@ class ArticleValidatorCreateContextTest extends \PHPUnit_Framework_TestCase
         $values = $this->getAllValues();
         $values['slug'] = '';
 
-        $validator = new ArticleValidator(
-            Context::CREATE,
-            $values
-        );
+        $validator = new ArticleValidator();
 
-        $this->assertFalse($validator->isValid());
+        $validationResult = $validator->validate($values, Context::CREATE);
+
+        $this->assertFalse($validationResult->isValid());
     }
 
     public function testRequiresTitle()
@@ -51,12 +48,11 @@ class ArticleValidatorCreateContextTest extends \PHPUnit_Framework_TestCase
         $values = $this->getAllValues();
         unset($values['title']);
 
-        $validator = new ArticleValidator(
-            Context::CREATE,
-            $values
-        );
+        $validator = new ArticleValidator();
 
-        $this->assertFalse($validator->isValid());
+        $validationResult = $validator->validate($values, Context::CREATE);
+
+        $this->assertFalse($validationResult->isValid());
     }
 
     public function testRequiresNonEmptyTitle()
@@ -64,12 +60,11 @@ class ArticleValidatorCreateContextTest extends \PHPUnit_Framework_TestCase
         $values = $this->getAllValues();
         $values['title'] = '';
 
-        $validator = new ArticleValidator(
-            Context::CREATE,
-            $values
-        );
+        $validator = new ArticleValidator();
 
-        $this->assertFalse($validator->isValid());
+        $validationResult = $validator->validate($values, Context::CREATE);
+
+        $this->assertFalse($validationResult->isValid());
     }
 
     public function testRequiresContent()
@@ -77,12 +72,11 @@ class ArticleValidatorCreateContextTest extends \PHPUnit_Framework_TestCase
         $values = $this->getAllValues();
         unset($values['content']);
 
-        $validator = new ArticleValidator(
-            Context::CREATE,
-            $values
-        );
+        $validator = new ArticleValidator();
 
-        $this->assertFalse($validator->isValid());
+        $validationResult = $validator->validate($values, Context::CREATE);
+
+        $this->assertFalse($validationResult->isValid());
     }
 
     public function testRequiredContentCanBeEmpty()
@@ -90,12 +84,11 @@ class ArticleValidatorCreateContextTest extends \PHPUnit_Framework_TestCase
         $values = $this->getAllValues();
         $values['content'] = '';
 
-        $validator = new ArticleValidator(
-            Context::CREATE,
-            $values
-        );
+        $validator = new ArticleValidator();
 
-        $this->assertTrue($validator->isValid());
+        $validationResult = $validator->validate($values, Context::CREATE);
+
+        $this->assertTrue($validationResult->isValid());
     }
 
     public function testRequiresTags()
@@ -103,12 +96,11 @@ class ArticleValidatorCreateContextTest extends \PHPUnit_Framework_TestCase
         $values = $this->getAllValues();
         unset($values['tags']);
 
-        $validator = new ArticleValidator(
-            Context::CREATE,
-            $values
-        );
+        $validator = new ArticleValidator();
 
-        $this->assertFalse($validator->isValid());
+        $validationResult = $validator->validate($values, Context::CREATE);
+
+        $this->assertFalse($validationResult->isValid());
     }
 
     public function testRequiredTagsCanBeEmpty()
@@ -116,12 +108,11 @@ class ArticleValidatorCreateContextTest extends \PHPUnit_Framework_TestCase
         $values = $this->getAllValues();
         $values['tags'] = [];
 
-        $validator = new ArticleValidator(
-            Context::CREATE,
-            $values
-        );
+        $validator = new ArticleValidator();
 
-        $this->assertTrue($validator->isValid());
+        $validationResult = $validator->validate($values, Context::CREATE);
+
+        $this->assertTrue($validationResult->isValid());
     }
 
     public function testRequiredTagsMustBeArray()
@@ -129,12 +120,11 @@ class ArticleValidatorCreateContextTest extends \PHPUnit_Framework_TestCase
         $values = $this->getAllValues();
         $values['tags'] = $this->getFaker()->word;
 
-        $validator = new ArticleValidator(
-            Context::CREATE,
-            $values
-        );
+        $validator = new ArticleValidator();
 
-        $this->assertFalse($validator->isValid());
+        $validationResult = $validator->validate($values, Context::CREATE);
+
+        $this->assertFalse($validationResult->isValid());
     }
 
     public function testActiveIsOptional()
@@ -142,12 +132,11 @@ class ArticleValidatorCreateContextTest extends \PHPUnit_Framework_TestCase
         $values = $this->getAllValues();
         unset($values['active']);
 
-        $validator = new ArticleValidator(
-            Context::CREATE,
-            $values
-        );
+        $validator = new ArticleValidator();
 
-        $this->assertTrue($validator->isValid());
+        $validationResult = $validator->validate($values, Context::CREATE);
+
+        $this->assertTrue($validationResult->isValid());
     }
 
     public function testOptionalActiveCanBeEmpty()
@@ -155,12 +144,11 @@ class ArticleValidatorCreateContextTest extends \PHPUnit_Framework_TestCase
         $values = $this->getAllValues();
         $values['active'] = null;
 
-        $validator = new ArticleValidator(
-            Context::CREATE,
-            $values
-        );
+        $validator = new ArticleValidator();
 
-        $this->assertTrue($validator->isValid());
+        $validationResult = $validator->validate($values, Context::CREATE);
+
+        $this->assertTrue($validationResult->isValid());
     }
 
     private function getAllValues()
