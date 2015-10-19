@@ -15,6 +15,7 @@ class ControllerServiceProvider extends AbstractServiceProvider
      * @var array
      */
     protected $provides = [
+        Controller\Api\ArticleController::class,
         Controller\Api\StatusController::class,
         Controller\Api\TagController::class,
         Controller\MainController::class,
@@ -26,6 +27,13 @@ class ControllerServiceProvider extends AbstractServiceProvider
     public function register()
     {
         $container = $this->getContainer();
+
+        $container->share(Controller\Api\ArticleController::class)
+            ->withArgument(EntityManager::class)
+            ->withArgument(Repository\ArticleRepository::class)
+            ->withArgument(Serializer\ScopeBuilder::class)
+            ->withArgument(Validator\Entity\ArticleValidator::class)
+        ;
 
         $container->share(Controller\Api\StatusController::class);
 
