@@ -20,6 +20,6 @@ trait RenderResponse
             ResourceFactory::result($result)
         );
 
-        return $response;
+        return $response->withHeader('Content-Type', 'application/json');
     }
 }

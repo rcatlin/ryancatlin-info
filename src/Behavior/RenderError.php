@@ -59,6 +59,6 @@ trait RenderError
         $response = $response->setStatusCode($statusCode);
         $response->setErrors($errors);
 
-        return $response;
+        return $response->withHeader('Content-Type', 'application/json');
     }
 }
