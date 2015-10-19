@@ -68,14 +68,16 @@ class EntityManagerServiceProvider extends AbstractServiceProvider
         Assertion::string($host);
         Assertion::string($driver);
         Assertion::string($entityDir);
-        Assertion::directory($entityDir);
+
+        $entityPath = __DIR__ . '/../../' . $entityDir;
+        Assertion::directory($entityPath);
 
         $this->dbName = $dbName;
         $this->user = $user;
         $this->password = $password;
         $this->host = $host;
         $this->driver = $driver;
-        $this->entityDir = $entityDir;
+        $this->entityDir = $entityPath;
         $this->isProd = boolval($isProd);
     }
 
