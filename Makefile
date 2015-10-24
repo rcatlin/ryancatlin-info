@@ -1,4 +1,4 @@
-.PHONY: test composer cs migrate setup
+.PHONY: test composer cs migrate setup database
 
 # For setting up the dev environment.
 setup:
@@ -19,6 +19,6 @@ test: composer
 	vendor/bin/phpunit test --colors --debug --verbose
 
 # See https://github.com/doctrine/DoctrineORMModule/issues/361 as to why '-n' flag is included
-migrate:
+migrate: composer
 	./console migrations:migrate -n
 
