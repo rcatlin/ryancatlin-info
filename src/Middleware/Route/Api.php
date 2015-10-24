@@ -25,8 +25,8 @@ class Api implements StageInterface
         $subject->group('api', function (RouteGroup $group) {
             $group->get('status', Controller\Api\StatusController::class . '::get');
 
-            $group->get('articles/{id:number}', Controller\Api\ArticleController::class . '::get');
-            $group->post('articles', Controller\Api\ArticleController::class . '::create');
+            $group->get('articles/{id:number}', Controller\Api\ArticleGetController::class . '::get');
+            $group->post('articles', Controller\Api\ArticleCreateController::class . '::create');
 
             $group->get('tags/{id:number}', Controller\Api\TagController::class . '::get');
             $group->post('tags', Controller\Api\TagController::class . '::create');
