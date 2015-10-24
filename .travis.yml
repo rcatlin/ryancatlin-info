@@ -18,9 +18,8 @@ before_install:
     - composer self-update
 
 install:
-	- mysql -uroot -e "DROP DATABASE IF EXISTS ryancatlin_info_test; CREATE DATABASE ryancatlin_info_test
     - make setup
-    - make migrate
+    - make database
 
 before_script:
     - mkdir -p "$HOME/.php-cs-fixer"

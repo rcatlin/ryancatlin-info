@@ -11,6 +11,10 @@ composer:
 cs: composer
     vendor/bin/php-cs-fixer fix --config-file=.php_cs --verbose --diff
 
+database:
+	mysql -uroot -e "DROP DATABASE IF EXISTS ryancatlin_info_test; CREATE DATABASE ryancatlin_info_test"
+	make migrate
+
 test: composer
 	vendor/bin/phpunit test --colors --debug --verbose
 
