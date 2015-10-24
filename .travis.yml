@@ -18,6 +18,7 @@ before_install:
     - composer self-update
 
 install:
+    - make composer
     - make setup
     - make database
 
