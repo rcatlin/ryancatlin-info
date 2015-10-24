@@ -2,8 +2,8 @@
 
 namespace RCatlin\Blog\Test\Integration\ServiceProvider;
 
-use RCatlin\Blog\Serializer;
 use RCatlin\Blog\ServiceProvider;
+use RCatlin\Blog\Transformer;
 
 class TransformerContainerServiceProviderTest extends AbstractServiceProviderTest
 {
@@ -23,7 +23,7 @@ class TransformerContainerServiceProviderTest extends AbstractServiceProviderTes
     public function providesDataProvider()
     {
         return [
-            [Serializer\TransformerContainer::class, Serializer\TransformerContainer::class],
+            [Transformer\TransformerContainer::class, Transformer\TransformerContainer::class],
         ];
     }
 }

@@ -1,11 +1,11 @@
 <?php
 
-namespace RCatlin\Blog\Serializer\Transformer\Entity;
+namespace RCatlin\Blog\Transformer\Entity;
 
 use Doctrine\Common\Collections\Collection;
 use League\Fractal\TransformerAbstract;
 use RCatlin\Blog\Entity;
-use RCatlin\Blog\Serializer\Transformer;
+use RCatlin\Blog\Transformer;
 
 class ArticleTransformer extends TransformerAbstract
 {

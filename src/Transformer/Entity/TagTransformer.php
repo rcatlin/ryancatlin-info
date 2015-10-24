@@ -1,6 +1,6 @@
 <?php
 
-namespace RCatlin\Blog\Serializer\Transformer\Entity;
+namespace RCatlin\Blog\Transformer\Entity;
 
 use League\Fractal\TransformerAbstract;
 use RCatlin\Blog\Entity;

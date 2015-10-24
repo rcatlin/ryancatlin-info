@@ -4,9 +4,9 @@ namespace RCatlin\Blog\Test\Unit\Serializer;
 
 use League\Container\Container;
 use League\Fractal\TransformerAbstract;
-use RCatlin\Blog\Serializer;
 use RCatlin\Blog\Test\Unit\BuildsMocks;
 use RCatlin\Blog\Test\Unit\HasFaker;
+use RCatlin\Blog\Transformer;
 
 class TransformerContainerTest extends \PHPUnit_Framework_TestCase
 {
@@ -25,7 +25,7 @@ class TransformerContainerTest extends \PHPUnit_Framework_TestCase
             ->willreturn($transformer)
         ;
 
-        $transformerContainer = new Serializer\TransformerContainer($container);
+        $transformerContainer = new Transformer\TransformerContainer($container);
 
         $this->assertSame($transformer, $transformerContainer->getTransformer($alias));
     }
@@ -44,7 +44,7 @@ class TransformerContainerTest extends \PHPUnit_Framework_TestCase
             ->willreturn($hasTransformer)
         ;
 
-        $transformerContainer = new Serializer\TransformerContainer($container);
+        $transformerContainer = new Transformer\TransformerContainer($container);
 
         $this->assertSame($hasTransformer, $transformerContainer->hasTransformer($alias));
     }

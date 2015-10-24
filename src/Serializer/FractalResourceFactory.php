@@ -5,18 +5,19 @@ namespace RCatlin\Blog\Serializer;
 use Assert\Assertion;
 use League\Fractal\Resource;
 use League\Fractal\TransformerAbstract;
+use RCatlin\Blog\Transformer;
 
 class FractalResourceFactory
 {
     /**
-     * @var TransformerContainer
+     * @var Transformer\TransformerContainer
      */
     private $container;
 
     /**
-     * @param TransformerContainer $container
+     * @param Transformer\TransformerContainer $container
      */
-    public function __construct(TransformerContainer $container)
+    public function __construct(Transformer\TransformerContainer $container)
     {
         $this->container = $container;
     }

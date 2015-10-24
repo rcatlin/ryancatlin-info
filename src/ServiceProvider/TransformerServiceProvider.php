@@ -4,7 +4,7 @@ namespace RCatlin\Blog\ServiceProvider;
 
 use League\Container\ServiceProvider\AbstractServiceProvider;
 use RCatlin\Blog\Entity;
-use RCatlin\Blog\Serializer\Transformer;
+use RCatlin\Blog\Transformer;
 
 class TransformerServiceProvider extends AbstractServiceProvider
 {
