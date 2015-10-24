@@ -1,9 +1,9 @@
 <?php
 
-namespace RCatlin\Blog\Test\Unit\Serializer\Transformer\Entity;
+namespace RCatlin\Blog\Test\Unit\Transformer\Entity;
 
 use RCatlin\Blog\Entity;
-use RCatlin\Blog\Serializer\Transformer\Entity\TagTransformer;
+use RCatlin\Blog\Transformer\Entity\TagTransformer;
 use RCatlin\Blog\Test\Unit\HasFaker;
 
 class TagTransformerTest extends \PHPUnit_Framework_TestCase

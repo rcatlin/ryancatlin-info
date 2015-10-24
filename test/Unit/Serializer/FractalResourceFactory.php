@@ -54,11 +54,11 @@ class FractalResourceFactoryTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @return \PHPUnit_Framework_MockObject_MockObject|Serializer\TransformerContainer
+     * @return \PHPUnit_Framework_MockObject_MockObject|TransformerContainer
      */
     private function getMockTransformerContainer()
     {
-        return $this->buildMock(Serializer\TransformerContainer::class);
+        return $this->buildMock(TransformerContainer::class);
     }
 
     /**

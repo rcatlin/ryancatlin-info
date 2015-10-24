@@ -1,6 +1,6 @@
 <?php
 
-namespace RCatlin\Blog\Serializer;
+namespace RCatlin\Blog\Transformer;
 
 use Assert\Assertion;
 use League\Container\Container;

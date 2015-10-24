@@ -3,8 +3,8 @@
 namespace RCatlin\Blog\Test\Integration\ServiceProvider;
 
 use RCatlin\Blog\Entity;
-use RCatlin\Blog\Serializer\Transformer;
 use RCatlin\Blog\ServiceProvider;
+use RCatlin\Blog\Transformer;
 
 class TransformerServiceProviderTest extends AbstractServiceProviderTest
 {

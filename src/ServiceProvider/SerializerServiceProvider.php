@@ -5,6 +5,7 @@ namespace RCatlin\Blog\ServiceProvider;
 use League\Container\ServiceProvider\AbstractServiceProvider;
 use League\Fractal\Manager;
 use RCatlin\Blog\Serializer;
+use RCatlin\Blog\Transformer\TransformerContainer;
 
 class SerializerServiceProvider extends AbstractServiceProvider
 {
@@ -21,7 +22,7 @@ class SerializerServiceProvider extends AbstractServiceProvider
         $container = $this->getContainer();
 
         $container->share(Serializer\FractalResourceFactory::class)
-            ->withArgument(Serializer\TransformerContainer::class)
+            ->withArgument(TransformerContainer::class)
         ;
 
         $container->share(Serializer\ScopeBuilder::class)
