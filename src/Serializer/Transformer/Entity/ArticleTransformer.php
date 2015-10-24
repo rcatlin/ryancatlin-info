@@ -2,7 +2,7 @@
 
 namespace RCatlin\Blog\Serializer\Transformer\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use League\Fractal\TransformerAbstract;
 use RCatlin\Blog\Entity;
 use RCatlin\Blog\Serializer\Transformer;
@@ -58,7 +58,7 @@ class ArticleTransformer extends TransformerAbstract
      *
      * @return array
      */
-    private function serializeTags(ArrayCollection $tags = null)
+    private function serializeTags(Collection $tags = null)
     {
         if ($tags === null) {
             return [];

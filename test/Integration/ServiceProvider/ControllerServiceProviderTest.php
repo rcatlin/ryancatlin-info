@@ -38,6 +38,14 @@ class ControllerServiceProviderTest extends AbstractServiceProviderTest
     {
         return [
             [
+                Controller\Api\ArticleCreateController::class,
+                Controller\Api\ArticleCreateController::class,
+            ],
+            [
+                Controller\Api\ArticleGetController::class,
+                Controller\Api\ArticleGetController::class,
+            ],
+            [
                 Controller\Api\StatusController::class,
                 Controller\Api\StatusController::class,
             ],

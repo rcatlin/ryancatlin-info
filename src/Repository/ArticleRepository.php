@@ -3,6 +3,7 @@
 namespace RCatlin\Blog\Repository;
 
 use Doctrine\ORM\EntityRepository;
+use RCatlin\Blog\Entity;
 
 /**
  * ArticleRepository
@@ -32,6 +33,11 @@ WHERE
     a.active=1
 EOF;
 
+    /**
+     * @param string $order
+     *
+     * @return mixed
+     */
     public function findAll($order = 'DESC')
     {
         return $this->createQueryBuilder('a')
@@ -41,6 +47,13 @@ EOF;
         ;
     }
 
+    /**
+     * @param $offset
+     * @param int    $limit
+     * @param string $order
+     *
+     * @return mixed
+     */
     public function findAllActiveArticles($offset, $limit = 5, $order = 'DESC')
     {
         $qb = $this->createQueryBuilder('a');
@@ -59,6 +72,14 @@ EOF;
         ;
     }
 
+    /**
+     * @param $slug
+     *
+     * @throws \Doctrine\ORM\NoResultException
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     *
+     * @return mixed
+     */
     public function findActiveBySlug($slug)
     {
         $qb = $this->createQueryBuilder('a');
@@ -83,7 +104,15 @@ EOF;
         ;
     }
 
-    public function findActiveByTag(Tag $tag, $offset = 0, $limit = 5, $order = 'DESC')
+    /**
+     * @param Entity\Tag $tag
+     * @param int        $offset
+     * @param int        $limit
+     * @param string     $order
+     *
+     * @return mixed
+     */
+    public function findActiveByTag(Entity\Tag $tag, $offset = 0, $limit = 5, $order = 'DESC')
     {
         $qb = $this->createQueryBuilder('a')
             ->join('a.tags', 't')
@@ -111,6 +140,13 @@ EOF;
         ;
     }
 
+    /**
+     * @param int    $offset
+     * @param int    $limit
+     * @param string $order
+     *
+     * @return mixed
+     */
     public function findTitles($offset = 0, $limit = 10, $order = 'DESC')
     {
         $qb = $this->createQueryBuilder('a')
@@ -136,6 +172,9 @@ EOF;
         ;
     }
 
+    /**
+     * @return mixed
+     */
     public function getActiveTotalCount()
     {
         return $this->getEntityManager()
@@ -146,7 +185,12 @@ EOF;
         ;
     }
 
-    public function getActiveTotalCountByTag(Tag $tag = null)
+    /**
+     * @param Entity\Tag|null $tag
+     *
+     * @return mixed
+     */
+    public function getActiveTotalCountByTag(Entity\Tag $tag = null)
     {
         return $this->getEntityManager()
             ->createQuery(

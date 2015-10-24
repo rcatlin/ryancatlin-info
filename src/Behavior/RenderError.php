@@ -30,10 +30,14 @@ trait RenderError
     public function renderValidationErrors(Response $response, array $validationErrors)
     {
         $errors = [];
-        foreach ($validationErrors as $code => $title) {
-            Assertion::integer($code);
-            Assertion::string($title);
-            $errors[] = ResourceFactory::error($title, 0);
+        foreach ($validationErrors as $value => $valueErrors) {
+            Assertion::string($value);
+            Assertion::isArray($valueErrors);
+            foreach ($valueErrors as $code => $title) {
+                Assertion::string($code);
+                Assertion::string($title);
+                $errors[] = ResourceFactory::error($title, 0);
+            }
         }
 
         return $this->renderErrors($response, 400, ResourceFactory::errorCollection($errors));
@@ -55,6 +59,6 @@ trait RenderError
         $response = $response->setStatusCode($statusCode);
         $response->setErrors($errors);
 
-        return $response;
+        return $response->withHeader('Content-Type', 'application/json');
     }
 }

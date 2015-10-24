@@ -33,6 +33,36 @@ class ArticleTest extends \PHPUnit_Framework_TestCase
         $this->assertSame($active, $article->getActive());
     }
 
+    public function testFromArray()
+    {
+        $faker = $this->getFaker();
+
+        $tag = $this->getMockTag();
+
+        $slug = $faker->word;
+        $title = $faker->sentence;
+        $content = $faker->paragraph;
+        $tags = [$tag];
+        $active = $faker->boolean();
+
+        $values = [
+            'slug' => $slug,
+            'title' => $title,
+            'content' => $content,
+            'tags' => $tags,
+            'active' => $active,
+        ];
+
+        $article = Entity\Article::fromArray($values);
+
+        $this->assertSame($slug, $article->getSlug());
+        $this->assertSame($title, $article->getTitle());
+        $this->assertSame($content, $article->getContent());
+        $this->assertSame(1, $article->getTags()->count());
+        $this->assertSame($tag, $article->getTags()->first());
+        $this->assertSame($active, $article->getActive());
+    }
+
     public function testSetAndGetSlug()
     {
         $article = $this->createArticle();

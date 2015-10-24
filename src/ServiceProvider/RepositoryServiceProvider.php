@@ -13,6 +13,7 @@ class RepositoryServiceProvider extends AbstractServiceProvider
      * @var array
      */
     protected $provides = [
+        Repository\ArticleRepository::class,
         Repository\TagRepository::class,
     ];
 
@@ -22,6 +23,13 @@ class RepositoryServiceProvider extends AbstractServiceProvider
     public function register()
     {
         $container = $this->getContainer();
+
+        $container->share(Repository\ArticleRepository::class, function () use ($container) {
+            /** @var EntityManager $em */
+            $em = $container->get(EntityManager::class);
+
+            return $em->getRepository(Entity\Article::class);
+        });
 
         $container->share(Repository\TagRepository::class, function () use ($container) {
             /** @var EntityManager $em */

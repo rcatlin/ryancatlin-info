@@ -75,15 +75,21 @@ class RenderErrorTest extends \PHPUnit_Framework_TestCase
     {
         $faker = $this->getFaker();
 
-        $firstCode = $faker->randomNumber();
-        $firstMessage = $faker->sentence();
+        $value0 = $faker->word;
+        $code0 = $faker->word;
+        $title0 = $faker->sentence();
 
-        $secondCode = $faker->randomNumber();
-        $secondMessage = $faker->sentence();
+        $value1 = $faker->word;
+        $code1 = $faker->word;
+        $title1 = $faker->sentence();
 
         $response = $this->renderValidationErrors(new Response(), [
-            $firstCode => $firstMessage,
-            $secondCode => $secondMessage,
+            $value0 => [
+                $code0 => $title0,
+            ],
+            $value1 => [
+                $code1 => $title1,
+            ],
         ]);
 
         $this->assertInstanceOf(Response::class, $response);
@@ -92,11 +98,11 @@ class RenderErrorTest extends \PHPUnit_Framework_TestCase
             json_encode([
                 'errors' => [
                     [
-                        'title' => $firstMessage,
+                        'title' => $title0,
                         'code' => 0,
                     ],
                     [
-                        'title' => $secondMessage,
+                        'title' => $title1,
                         'code' => 0,
                     ],
                 ],
@@ -112,12 +118,48 @@ class RenderErrorTest extends \PHPUnit_Framework_TestCase
     {
         $faker = $this->getFaker();
 
-        $badCode = $faker->word;
+        $badValue = $faker->randomNumber();
 
         $this->renderValidationErrors(new Response(), [
            [
-                $badCode => $faker->sentence,
+                $badValue => [
+                    $faker->word => $faker->sentence,
+                ],
            ],
+        ]);
+    }
+
+    /**
+     * @expectedException \Assert\AssertionFailedException
+     */
+    public function testRenderValidationErrorsRequiresArrayAsValue()
+    {
+        $faker = $this->getFaker();
+
+        $notAnArray = $faker->word;
+
+        $this->renderValidationErrors(new Response(), [
+            [
+                $faker->word => $notAnArray,
+            ],
+        ]);
+    }
+
+    /**
+     * @expectedException \Assert\AssertionFailedException
+     */
+    public function testRenderValidationErrorsRequiresStringCode()
+    {
+        $faker = $this->getFaker();
+
+        $badCode = $faker->randomNumber();
+
+        $this->renderValidationErrors(new Response(), [
+            [
+                $faker->word => [
+                    $badCode => $faker->sentence,
+                ],
+            ],
         ]);
     }
 
@@ -132,7 +174,9 @@ class RenderErrorTest extends \PHPUnit_Framework_TestCase
 
         $this->renderValidationErrors(new Response(), [
             [
-                $faker->randomNumber() => $badTitle,
+                $faker->word => [
+                    $faker->word => $badTitle,
+                ],
             ],
         ]);
     }

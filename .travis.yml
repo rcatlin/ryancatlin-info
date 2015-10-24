@@ -18,7 +18,9 @@ before_install:
     - composer self-update
 
 install:
+    - make composer
     - make setup
+    - make database
 
 before_script:
     - mkdir -p "$HOME/.php-cs-fixer"

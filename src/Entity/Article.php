@@ -72,7 +72,10 @@ class Article
     /**
      * @var ArrayCollection
      *
-     * @ORM\ManyToMany(targetEntity="Tag")
+     * @ORM\ManyToMany(
+     *      targetEntity="Tag",
+     *      cascade={"persist"}
+     * )
      */
     protected $tags;
 
@@ -101,16 +104,13 @@ class Article
         Assertion::string($title);
         Assertion::string($content);
         Assertion::boolean($active);
+        Assertion::allIsInstanceOf($tags, Tag::class);
 
         $this->slug = $slug;
         $this->title = $title;
         $this->content = $content;
         $this->active = $active;
-        $this->tags = new ArrayCollection();
-
-        foreach ($tags as $tag) {
-            $this->addTag($tag);
-        }
+        $this->tags = new ArrayCollection($tags);
     }
 
     /**
@@ -125,6 +125,36 @@ class Article
     public static function fromValues($slug, $title, $content, array $tags, $active)
     {
         return new Article($slug, $title, $content, $tags, $active);
+    }
+
+    /**
+     * @param array $values
+     *
+     * @return Article
+     */
+    public static function fromArray(array $values)
+    {
+        $missing = array_diff(
+            ['slug', 'title', 'content', 'tags', 'active'],
+            array_keys($values)
+        );
+
+        if (!empty($missing)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    'Missing Article keys: [%s]',
+                    implode(', ', $missing)
+                )
+            );
+        }
+
+        return self::fromValues(
+            $values['slug'],
+            $values['title'],
+            $values['content'],
+            $values['tags'],
+            $values['active']
+        );
     }
 
     /**
@@ -291,6 +321,14 @@ class Article
         $this->active = $active;
 
         return $this;
+    }
+
+    /**
+     * @ORM\PrePersist)
+     */
+    public function prePersistSetUpdatedAt()
+    {
+        $this->updatedAt = new \DateTime();
     }
 
     /**

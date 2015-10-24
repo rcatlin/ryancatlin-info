@@ -5,6 +5,7 @@ namespace RCatlin\Blog\Test\Unit\Validator\Entity;
 use RCatlin\Blog\Test\Unit\HasFaker;
 use RCatlin\Blog\Validator\Context;
 use RCatlin\Blog\Validator\Entity\ArticleValidator;
+use RCatlin\Blog\Validator\Entity\TagValidator;
 
 class ArticleValidatorUpdateContextTest extends \PHPUnit_Framework_TestCase
 {
@@ -12,7 +13,7 @@ class ArticleValidatorUpdateContextTest extends \PHPUnit_Framework_TestCase
 
     public function testIsValid()
     {
-        $validator = new ArticleValidator();
+        $validator = new ArticleValidator(new TagValidator());
 
         $validationResult = $validator->validate($this->getAllValues(), Context::UPDATE);
 
@@ -24,7 +25,7 @@ class ArticleValidatorUpdateContextTest extends \PHPUnit_Framework_TestCase
         $values = $this->getAllValues();
         unset($values['slug']);
 
-        $validator = new ArticleValidator();
+        $validator = new ArticleValidator(new TagValidator());
 
         $validationResult = $validator->validate($values, Context::UPDATE);
 
@@ -36,7 +37,7 @@ class ArticleValidatorUpdateContextTest extends \PHPUnit_Framework_TestCase
         $values = $this->getAllValues();
         $values['slug'] = '';
 
-        $validator = new ArticleValidator();
+        $validator = new ArticleValidator(new TagValidator());
 
         $validationResult = $validator->validate($values, Context::UPDATE);
 
@@ -48,7 +49,7 @@ class ArticleValidatorUpdateContextTest extends \PHPUnit_Framework_TestCase
         $values = $this->getAllValues();
         unset($values['title']);
 
-        $validator = new ArticleValidator();
+        $validator = new ArticleValidator(new TagValidator());
 
         $validationResult = $validator->validate($values, Context::UPDATE);
 
@@ -60,7 +61,7 @@ class ArticleValidatorUpdateContextTest extends \PHPUnit_Framework_TestCase
         $values = $this->getAllValues();
         $values['title'] = '';
 
-        $validator = new ArticleValidator();
+        $validator = new ArticleValidator(new TagValidator());
 
         $validationResult = $validator->validate($values, Context::UPDATE);
 
@@ -72,7 +73,7 @@ class ArticleValidatorUpdateContextTest extends \PHPUnit_Framework_TestCase
         $values = $this->getAllValues();
         unset($values['content']);
 
-        $validator = new ArticleValidator();
+        $validator = new ArticleValidator(new TagValidator());
 
         $validationResult = $validator->validate($values, Context::UPDATE);
 
@@ -84,7 +85,7 @@ class ArticleValidatorUpdateContextTest extends \PHPUnit_Framework_TestCase
         $values = $this->getAllValues();
         $values['content'] = '';
 
-        $validator = new ArticleValidator();
+        $validator = new ArticleValidator(new TagValidator());
 
         $validationResult = $validator->validate($values, Context::UPDATE);
 
@@ -96,7 +97,7 @@ class ArticleValidatorUpdateContextTest extends \PHPUnit_Framework_TestCase
         $values = $this->getAllValues();
         unset($values['tags']);
 
-        $validator = new ArticleValidator();
+        $validator = new ArticleValidator(new TagValidator());
 
         $validationResult = $validator->validate($values, Context::UPDATE);
 
@@ -108,31 +109,31 @@ class ArticleValidatorUpdateContextTest extends \PHPUnit_Framework_TestCase
         $values = $this->getAllValues();
         $values['tags'] = [];
 
-        $validator = new ArticleValidator();
+        $validator = new ArticleValidator(new TagValidator());
 
         $validationResult = $validator->validate($values, Context::UPDATE);
 
         $this->assertTrue($validationResult->isValid());
     }
 
-    public function testActiveIsOptional()
+    public function testActiveIsRequired()
     {
         $values = $this->getAllValues();
         unset($values['active']);
 
-        $validator = new ArticleValidator();
+        $validator = new ArticleValidator(new TagValidator());
 
         $validationResult = $validator->validate($values, Context::UPDATE);
 
-        $this->assertTrue($validationResult->isValid());
+        $this->assertFalse($validationResult->isValid());
     }
 
     public function testActiveCannotBeEmpty()
     {
         $values = $this->getAllValues();
-        $values['slug'] = null;
+        $values['active'] = null;
 
-        $validator = new ArticleValidator();
+        $validator = new ArticleValidator(new TagValidator());
 
         $validationResult = $validator->validate($values, Context::UPDATE);
 
@@ -149,8 +150,8 @@ class ArticleValidatorUpdateContextTest extends \PHPUnit_Framework_TestCase
             'title' => $faker->sentence(),
             'content' => $faker->paragraph,
             'tags' => [
-                $faker->word,
-                $faker->word,
+                [$faker->word],
+                [$faker->word],
             ],
             'active' => $faker->boolean(),
         ];

@@ -7,16 +7,20 @@ use RCatlin\Blog\Validator\Context;
 
 class ArticleValidator extends AbstractValidator
 {
-    public function __construct()
+    private $tagValidator;
+
+    public function __construct(TagValidator $tagValidator)
     {
         parent::__construct();
+
+        $this->tagValidator = $tagValidator;
 
         $this->context(Context::CREATE, function () {
             $this->addSlug();
             $this->addTitle();
             $this->addContent(true);
             $this->addTags(true);
-            $this->addActive(true, false);
+            $this->addActive();
         });
 
         $this->context(Context::UPDATE, function () {
@@ -25,7 +29,7 @@ class ArticleValidator extends AbstractValidator
             $this->addTitle(false, false);
             $this->addContent(true, false);
             $this->addTags(true, false);
-            $this->addActive(false, false);
+            $this->addActive();
         });
     }
 
@@ -90,6 +94,7 @@ class ArticleValidator extends AbstractValidator
     {
         return $this->getChain('tags', null, $required, $allowEmpty)
             ->isArray()
+            ->embedArray($this->tagValidator, $allowEmpty, $this->context)
         ;
     }
 

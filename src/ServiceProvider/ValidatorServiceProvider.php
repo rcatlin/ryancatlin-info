@@ -22,7 +22,10 @@ class ValidatorServiceProvider extends AbstractServiceProvider
     {
         $container = $this->getContainer();
 
-        $container->share(Validator\Entity\ArticleValidator::class);
+        $container->share(Validator\Entity\ArticleValidator::class)
+            ->withArgument(Validator\Entity\TagValidator::class)
+        ;
+
         $container->share(Validator\Entity\TagValidator::class);
     }
 }
