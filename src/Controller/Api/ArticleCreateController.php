@@ -4,7 +4,6 @@ namespace RCatlin\Blog\Controller\Api;
 
 use Doctrine\ORM\EntityManager;
 use RCatlin\Blog\Entity;
-use RCatlin\Blog\Repository;
 use RCatlin\Blog\Serializer;
 use RCatlin\Blog\Validator;
 use Refinery29\Piston\Request;
@@ -23,8 +22,8 @@ class ArticleCreateController extends AbstractArticleController
     private $articleValidator;
 
     /**
-     * @param EntityManager $entityManager
-     * @param Serializer\ScopeBuilder $scopeBuilder
+     * @param EntityManager                     $entityManager
+     * @param Serializer\ScopeBuilder           $scopeBuilder
      * @param Validator\Entity\ArticleValidator $articleValidator
      */
     public function __construct(
