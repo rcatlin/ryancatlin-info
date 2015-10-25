@@ -47,6 +47,7 @@ class ControllerServiceProvider extends AbstractServiceProvider
 
         $container->share(Controller\Api\TagCreateController::class)
             ->withArgument(EntityManager::class)
+            ->withArgument(ReverseTransformer\Entity\TagReverseTransformer::class)
             ->withArgument(Serializer\ScopeBuilder::class)
             ->withArgument(Validator\Entity\TagValidator::class)
         ;
