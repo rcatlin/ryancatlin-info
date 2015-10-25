@@ -3,14 +3,12 @@
 namespace RCatlin\Blog\Controller\Api;
 
 use Doctrine\ORM\EntityManager;
-use RCatlin\Blog\Validator\Context;
-use Refinery29\Piston\Request;
-use Refinery29\Piston\Response;
-use RCatlin\Blog\Entity;
-use RCatlin\Blog\Repository;
 use RCatlin\Blog\ReverseTransformer;
 use RCatlin\Blog\Serializer;
 use RCatlin\Blog\Validator;
+use RCatlin\Blog\Validator\Context;
+use Refinery29\Piston\Request;
+use Refinery29\Piston\Response;
 
 class TagCreateController extends AbstractTagController
 {
@@ -30,10 +28,10 @@ class TagCreateController extends AbstractTagController
     private $tagValidator;
 
     /**
-     * @param EntityManager $entityManager
+     * @param EntityManager                                   $entityManager
      * @param ReverseTransformer\Entity\TagReverseTransformer $tagReverseTransformer
-     * @param Serializer\ScopeBuilder $scopeBuilder
-     * @param Validator\Entity\TagValidator $tagValidator
+     * @param Serializer\ScopeBuilder                         $scopeBuilder
+     * @param Validator\Entity\TagValidator                   $tagValidator
      */
     public function __construct(
         EntityManager $entityManager,
