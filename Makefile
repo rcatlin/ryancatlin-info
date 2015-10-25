@@ -2,7 +2,7 @@
 
 # For setting up the dev environment.
 setup:
-	cp .env.dist .env
+	cp config/.env.dist config/.env
 
 composer:
 	composer validate

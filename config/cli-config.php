@@ -7,7 +7,7 @@ use League\Container\Container;
 use Symfony\Component\Console\Helper\HelperSet;
 
 /* @var Container */
-$container = require 'container.php';
+$container = require __DIR__ . '/container.php';
 
 /* @var EntityManager $em */
 $em = $container->get(EntityManager::class);
