@@ -81,7 +81,7 @@ class TagCreateControllerTest extends \PHPUnit_Framework_TestCase
 
         $response = $controller->create($request, new Response());
 
-        $this->assertEquals(200, $response->getStatusCode());
+        $this->assertEquals(201, $response->getStatusCode());
         $this->assertEquals(
             json_encode(
                 [
