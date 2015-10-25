@@ -25,6 +25,7 @@ class ControllerServiceProviderTest extends AbstractServiceProviderTest
             ),
             new ServiceProvider\FractalManagerServiceProvider(),
             new ServiceProvider\RepositoryServiceProvider(),
+            new ServiceProvider\ReverseTransformerServiceProvider(),
             new ServiceProvider\SerializerServiceProvider(),
             new ServiceProvider\TransformerContainerServiceProvider(),
             new ServiceProvider\ValidatorServiceProvider(),
@@ -50,8 +51,12 @@ class ControllerServiceProviderTest extends AbstractServiceProviderTest
                 Controller\Api\StatusController::class,
             ],
             [
-                Controller\Api\TagController::class,
-                Controller\Api\TagController::class,
+                Controller\Api\TagCreateController::class,
+                Controller\Api\TagCreateController::class,
+            ],
+            [
+                Controller\Api\TagGetController::class,
+                Controller\Api\TagGetController::class,
             ],
             [
                 Controller\MainController::class,

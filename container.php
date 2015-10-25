@@ -29,6 +29,7 @@ $container->addServiceProvider(new ServiceProvider\EntityManagerServiceProvider(
 $container->addServiceProvider(new ServiceProvider\ControllerServiceProvider());
 $container->addServiceProvider(new ServiceProvider\FractalManagerServiceProvider());
 $container->addServiceProvider(new ServiceProvider\RepositoryServiceProvider());
+$container->addServiceProvider(new ServiceProvider\ReverseTransformerServiceProvider());
 $container->addServiceProvider(new ServiceProvider\SerializerServiceProvider());
 $container->addServiceProvider(new ServiceProvider\TransformerContainerServiceProvider());
 $container->addServiceProvider(new ServiceProvider\ValidatorServiceProvider());

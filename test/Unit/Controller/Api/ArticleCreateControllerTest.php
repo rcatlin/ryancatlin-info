@@ -7,6 +7,7 @@ use League\Container\Container;
 use League\Fractal\Scope;
 use RCatlin\Blog\Controller;
 use RCatlin\Blog\Entity;
+use RCatlin\Blog\ReverseTransformer;
 use RCatlin\Blog\Serializer;
 use RCatlin\Blog\ServiceProvider;
 use RCatlin\Blog\Test\Unit\BuildsMocks;
@@ -50,6 +51,7 @@ class ArticleCreateControllerTest extends \PHPUnit_Framework_TestCase
             'active' => $faker->boolean(),
         ];
         $serializedArticle = ['serialized-article'];
+        $article = $this->getMockArticle();
 
         $scope = $this->getMockScope();
         $scope->expects($this->once())
@@ -60,20 +62,29 @@ class ArticleCreateControllerTest extends \PHPUnit_Framework_TestCase
         $entityManager = $this->getMockEntityManager();
         $entityManager->expects($this->once())
             ->method('persist')
-            ->with($this->isInstanceOf(Entity\Article::class))
+            ->with($article)
         ;
         $entityManager->expects($this->once())
             ->method('flush')
         ;
 
+        $reverseTransformer = $this->getMockArticleReverseTransformer();
+        $reverseTransformer->expects($this->once())
+            ->method('reverseTransform')
+            ->with($body)
+            ->willReturn($article)
+        ;
+
         $scopeBuilder = $this->getMockScopeBuilder();
         $scopeBuilder->expects($this->once())
             ->method('buildItem')
+            ->with(Entity\Article::class, $article)
             ->willReturn($scope)
         ;
 
         $controller = new Controller\Api\ArticleCreateController(
             $entityManager,
+            $reverseTransformer,
             $scopeBuilder,
             $this->articleValidator
         );
@@ -95,6 +106,7 @@ class ArticleCreateControllerTest extends \PHPUnit_Framework_TestCase
     {
         $controller = new Controller\Api\ArticleCreateController(
             $this->getMockEntityManager(),
+            $this->getMockArticleReverseTransformer(),
             $this->getMockScopeBuilder(),
             $this->articleValidator
         );
@@ -108,6 +120,7 @@ class ArticleCreateControllerTest extends \PHPUnit_Framework_TestCase
     {
         $controller = new Controller\Api\ArticleCreateController(
             $this->getMockEntityManager(),
+            $this->getMockArticleReverseTransformer(),
             $this->getMockScopeBuilder(),
             $this->articleValidator
         );
@@ -130,6 +143,14 @@ class ArticleCreateControllerTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @return \PHPUnit_Framework_MockObject_MockObject|ReverseTransformer\Entity\ArticleReverseTransformer
+     */
+    private function getMockArticleReverseTransformer()
+    {
+        return $this->buildMock(ReverseTransformer\Entity\ArticleReverseTransformer::class);
+    }
+
+    /**
      * @return \PHPUnit_Framework_MockObject_MockObject|Serializer\ScopeBuilder
      */
     private function getMockScopeBuilder()
@@ -143,5 +164,13 @@ class ArticleCreateControllerTest extends \PHPUnit_Framework_TestCase
     private function getMockScope()
     {
         return $this->buildMock(Scope::class);
+    }
+
+    /**
+     * @return \PHPUnit_Framework_MockObject_MockObject|Entity\Article
+     */
+    private function getMockArticle()
+    {
+        return $this->buildMock(Entity\Article::class);
     }
 }
