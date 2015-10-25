@@ -1,10 +1,8 @@
 #!/usr/bin/env bash
 
-set -e
-
 # Start PHP Server
 echo "Starting local PHP Server..."
-php -S localhost:8000 -t web& &> /dev/null
+php -S localhost:8000 -t app& &> /dev/null
 
 # Get PID of PHP Server
 PHP_PID=$!
