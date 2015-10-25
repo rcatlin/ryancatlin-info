@@ -1,6 +1,6 @@
 <?php
 
-namespace RCatlin\Blog\Test\Unit;
+namespace RCatlin\Blog\Test;
 
 use Refinery29\Piston\Response;
 

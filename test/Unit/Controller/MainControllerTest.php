@@ -3,7 +3,7 @@
 namespace RCatlin\Blog\Test\Unit\Controller;
 
 use RCatlin\Blog\Controller\MainController;
-use RCatlin\Blog\Test\Unit\ReadsResponseContent;
+use RCatlin\Blog\Test\ReadsResponseContent;
 use Refinery29\Piston\Request;
 use Refinery29\Piston\Response;
 

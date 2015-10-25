@@ -3,7 +3,7 @@
 namespace RCatlin\Blog\Test\Unit\Behavior;
 
 use RCatlin\Blog\Behavior\RenderResponse;
-use RCatlin\Blog\Test\Unit\ReadsResponseContent;
+use RCatlin\Blog\Test\ReadsResponseContent;
 use Refinery29\Piston\Response;
 
 class RenderResponseTest extends \PHPUnit_Framework_TestCase

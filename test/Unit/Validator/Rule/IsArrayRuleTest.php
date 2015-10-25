@@ -2,7 +2,7 @@
 
 namespace RCatlin\Blog\Test\Unit\Validator\Rule;
 
-use RCatlin\Blog\Test\Unit\HasFaker;
+use RCatlin\Blog\Test\HasFaker;
 use RCatlin\Blog\Validator\Rule;
 
 class IsArrayRuleTest extends \PHPUnit_Framework_TestCase

@@ -3,7 +3,7 @@
 namespace RCatlin\Blog\Test\Unit\Transformer\Entity;
 
 use RCatlin\Blog\Entity;
-use RCatlin\Blog\Test\Unit\HasFaker;
+use RCatlin\Blog\Test\HasFaker;
 use RCatlin\Blog\Transformer;
 
 class ArticleTransformerTest extends \PHPUnit_Framework_TestCase

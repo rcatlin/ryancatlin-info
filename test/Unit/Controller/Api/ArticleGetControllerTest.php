@@ -7,9 +7,9 @@ use RCatlin\Blog\Controller;
 use RCatlin\Blog\Entity;
 use RCatlin\Blog\Repository;
 use RCatlin\Blog\Serializer;
+use RCatlin\Blog\Test\HasFaker;
+use RCatlin\Blog\Test\ReadsResponseContent;
 use RCatlin\Blog\Test\Unit\BuildsMocks;
-use RCatlin\Blog\Test\Unit\HasFaker;
-use RCatlin\Blog\Test\Unit\ReadsResponseContent;
 use Refinery29\Piston\Request;
 use Refinery29\Piston\Response;
 
