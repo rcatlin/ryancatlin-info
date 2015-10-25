@@ -8,7 +8,8 @@ use Symfony\Component\HttpFoundation\Response;
 class BaseController extends Controller
 {
     /**
-     * @param  array                                     $data
+     * @param array $data
+     *
      * @return Symfony\Component\HttpFoundation\Response
      */
     protected function returnJson(array $data)
@@ -16,9 +17,9 @@ class BaseController extends Controller
         return new Response(
             json_encode($data),
             Response::HTTP_OK,
-            array(
+            [
                 'Content-type' => 'application/json',
-            )
+            ]
         );
     }
 

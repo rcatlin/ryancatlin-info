@@ -34,11 +34,11 @@ class MainController extends MainBundleController
         ;
 
         // Pass variables to template
-        return array(
+        return [
             'articles' => $articles,
             'page' => $page,
             'numPages' => $numPages,
-        );
+        ];
     }
 
     /**
@@ -47,7 +47,7 @@ class MainController extends MainBundleController
      */
     public function aboutAction(Request $request)
     {
-        return array();
+        return [];
     }
 
     /**
@@ -60,9 +60,9 @@ class MainController extends MainBundleController
             ->findActiveBySlug($slug)
         ;
 
-        return array(
+        return [
             'article' => $article,
-        );
+        ];
     }
 
     /**
@@ -87,12 +87,12 @@ class MainController extends MainBundleController
                 10
             );
 
-        return array(
+        return [
             'articles' => $articles,
             'page' => $page,
             'numPages' => $numPages,
             'count' => $count,
-        );
+        ];
     }
 
     /**
@@ -105,7 +105,7 @@ class MainController extends MainBundleController
 
         $page = $this->getRequestPage($request);
         if ($page <= 0) {
-            return $this->redirectToRoute('articles_by_tag', array('name' => $name));
+            return $this->redirectToRoute('articles_by_tag', ['name' => $name]);
         }
 
         if ($tag != null) {
@@ -125,11 +125,11 @@ class MainController extends MainBundleController
             )
         ;
 
-        return array(
+        return [
             'articles' => $articles,
             'page' => $page,
             'numPages' => $numPages,
-        );
+        ];
     }
 
     protected function getRequestPage(Request $request)

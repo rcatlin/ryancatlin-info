@@ -34,11 +34,11 @@ class TagEditController extends BaseController
         $editForm = $this->createEditForm($entity);
         $deleteForm = $this->createDeleteForm($id);
 
-        return array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
+        return [
+            'entity' => $entity,
+            'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
-        );
+        ];
     }
 
     /**
@@ -64,40 +64,40 @@ class TagEditController extends BaseController
             $em = $this->getDefaultEntityManager();
             $em->flush();
 
-            return $this->redirect($this->generateUrl('tags_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('tags_edit', ['id' => $id]));
         }
 
-        return array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
+        return [
+            'entity' => $entity,
+            'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
-        );
+        ];
     }
 
     /**
-    * Creates a form to edit a Tag entity.
-    *
-    * @param Tag $entity The entity
-    *
-    * @return \Symfony\Component\Form\Form The form
-    */
+     * Creates a form to edit a Tag entity.
+     *
+     * @param Tag $entity The entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
     protected function createEditForm(Tag $entity)
     {
         $form = $this->createForm(
             new TagType(),
             $entity,
-            array(
+            [
                 'action' => $this->generateUrl(
                     'tags_update',
-                    array(
+                    [
                         'id' => $entity->getId(),
-                    )
+                    ]
                 ),
                 'method' => 'PUT',
-            )
+            ]
         );
 
-        $form->add('submit', 'submit', array('label' => 'Update'));
+        $form->add('submit', 'submit', ['label' => 'Update']);
 
         return $form;
     }
@@ -115,14 +115,14 @@ class TagEditController extends BaseController
             ->setAction(
                 $this->generateUrl(
                     'tags_delete',
-                    array('id' => $id)
+                    ['id' => $id]
                 )
             )
             ->setMethod('DELETE')
             ->add(
                 'submit',
                 'submit',
-                array('label' => 'Delete')
+                ['label' => 'Delete']
             )
             ->getForm()
         ;
