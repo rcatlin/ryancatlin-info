@@ -3,8 +3,8 @@
 namespace RCatlin\Blog\Test\Unit\Behavior;
 
 use RCatlin\Blog\Behavior\RenderError;
-use RCatlin\Blog\Test\Unit\HasFaker;
-use RCatlin\Blog\Test\Unit\ReadsResponseContent;
+use RCatlin\Blog\Test\HasFaker;
+use RCatlin\Blog\Test\ReadsResponseContent;
 use Refinery29\Piston\Response;
 
 class RenderErrorTest extends \PHPUnit_Framework_TestCase

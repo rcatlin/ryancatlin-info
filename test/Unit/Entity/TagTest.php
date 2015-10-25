@@ -3,8 +3,8 @@
 namespace RCatlin\Blog\Test\Unit\Entity;
 
 use RCatlin\Blog\Entity;
+use RCatlin\Blog\Test\HasFaker;
 use RCatlin\Blog\Test\Unit\BuildsMocks;
-use RCatlin\Blog\Test\Unit\HasFaker;
 
 class TagTest extends \PHPUnit_Framework_TestCase
 {

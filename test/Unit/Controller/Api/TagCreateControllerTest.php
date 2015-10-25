@@ -9,10 +9,10 @@ use RCatlin\Blog\Controller;
 use RCatlin\Blog\Entity;
 use RCatlin\Blog\ReverseTransformer;
 use RCatlin\Blog\Serializer;
+use RCatlin\Blog\Test\CreatesRequest;
+use RCatlin\Blog\Test\HasFaker;
+use RCatlin\Blog\Test\ReadsResponseContent;
 use RCatlin\Blog\Test\Unit\BuildsMocks;
-use RCatlin\Blog\Test\Unit\CreatesRequest;
-use RCatlin\Blog\Test\Unit\HasFaker;
-use RCatlin\Blog\Test\Unit\ReadsResponseContent;
 use RCatlin\Blog\Validator;
 use Refinery29\Piston\Response;
 

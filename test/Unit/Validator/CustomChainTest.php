@@ -2,7 +2,7 @@
 
 namespace RCatlin\Blog\Test\Unit\Validator;
 
-use RCatlin\Blog\Test\Unit\HasFaker;
+use RCatlin\Blog\Test\HasFaker;
 use RCatlin\Blog\Validator\CustomChain;
 use RCatlin\Blog\Validator\Rule;
 

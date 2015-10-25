@@ -2,7 +2,7 @@
 
 namespace RCatlin\Blog\Test\Unit\Validator\Entity;
 
-use RCatlin\Blog\Test\Unit\HasFaker;
+use RCatlin\Blog\Test\HasFaker;
 use RCatlin\Blog\Validator\Context;
 use RCatlin\Blog\Validator\Entity\TagValidator;
 
