@@ -43,6 +43,10 @@ class ControllerServiceProviderTest extends AbstractServiceProviderTest
                 Controller\Api\ArticleCreateController::class,
             ],
             [
+                Controller\Api\ArticleDeleteController::class,
+                Controller\Api\ArticleDeleteController::class,
+            ],
+            [
                 Controller\Api\ArticleGetController::class,
                 Controller\Api\ArticleGetController::class,
             ],
