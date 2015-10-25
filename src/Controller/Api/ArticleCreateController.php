@@ -75,14 +75,14 @@ class ArticleCreateController extends AbstractArticleController
         }
 
         try {
-            $this->entityManager->flush();
             $this->entityManager->persist($article);
+            $this->entityManager->flush();
         } catch (\Exception $e) {
             return $this->renderServerError($response, $e->getMessage());
         }
 
         $scope = $this->getArticleScope($article);
 
-        return $this->renderResult($response, $scope->toArray());
+        return $this->renderResult($response, $scope->toArray(), 201);
     }
 }
