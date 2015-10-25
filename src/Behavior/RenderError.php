@@ -9,6 +9,12 @@ use Refinery29\Piston\Response;
 
 trait RenderError
 {
+    /**
+     * @param Response $response
+     * @param $message
+     *
+     * @return Response
+     */
     public function renderNotFound(Response $response, $message)
     {
         Assertion::string($message);
@@ -18,6 +24,12 @@ trait RenderError
         ]));
     }
 
+    /**
+     * @param Response $response
+     * @param $message
+     *
+     * @return Response
+     */
     public function renderBadRequest(Response $response, $message)
     {
         Assertion::string($message);
@@ -27,6 +39,12 @@ trait RenderError
         ]));
     }
 
+    /**
+     * @param Response $response
+     * @param array    $validationErrors
+     *
+     * @return Response
+     */
     public function renderValidationErrors(Response $response, array $validationErrors)
     {
         $errors = [];
@@ -43,6 +61,12 @@ trait RenderError
         return $this->renderErrors($response, 400, ResourceFactory::errorCollection($errors));
     }
 
+    /**
+     * @param Response $response
+     * @param $message
+     *
+     * @return Response
+     */
     public function renderServerError(Response $response, $message)
     {
         Assertion::string($message);
@@ -52,13 +76,25 @@ trait RenderError
         ]));
     }
 
+    /**
+     * @param Response $response
+     * @param $statusCode
+     * @param ErrorCollection $errors
+     *
+     * @return Response
+     */
     private function renderErrors(Response $response, $statusCode, ErrorCollection $errors)
     {
         Assertion::integer($statusCode);
 
-        $response = $response->setStatusCode($statusCode);
+        /** @var Response $response */
+        $response = $response
+            ->withHeader('Content-Type', 'application/json')
+            ->withStatus($statusCode)
+        ;
+
         $response->setErrors($errors);
 
-        return $response->withHeader('Content-Type', 'application/json');
+        return $response;
     }
 }

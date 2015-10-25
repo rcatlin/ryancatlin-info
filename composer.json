@@ -36,7 +36,8 @@
         "fabpot/php-cs-fixer": "2.0.*@dev",
         "phpspec/phpspec": "^2.2",
         "refinery29/php-cs-fixer-config": "^0.2.3",
-        "codeclimate/php-test-reporter": "dev-master"
+        "codeclimate/php-test-reporter": "dev-master",
+        "guzzlehttp/guzzle": "6.*"
     },
     "bin": ["vendor/bin"]
 }

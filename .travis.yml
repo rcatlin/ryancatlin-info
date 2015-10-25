@@ -27,6 +27,7 @@ before_script:
 
 script:
     - make test
+    - make integration
     - vendor/bin/php-cs-fixer fix --config-file=.php_cs --verbose --diff --dry-run
 
 after_script:

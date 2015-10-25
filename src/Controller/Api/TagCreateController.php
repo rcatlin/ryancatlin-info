@@ -83,7 +83,8 @@ class TagCreateController extends AbstractTagController
 
         return $this->renderResult(
             $response,
-            $this->getTagScope($tag)->toArray()
+            $this->getTagScope($tag)->toArray(),
+            201
         );
     }
 }
