@@ -6,6 +6,7 @@ use Doctrine\ORM\EntityManager;
 use League\Container\ServiceProvider\AbstractServiceProvider;
 use RCatlin\Blog\Controller;
 use RCatlin\Blog\Repository;
+use RCatlin\Blog\ReverseTransformer;
 use RCatlin\Blog\Serializer;
 use RCatlin\Blog\Validator;
 
@@ -31,6 +32,7 @@ class ControllerServiceProvider extends AbstractServiceProvider
 
         $container->share(Controller\Api\ArticleCreateController::class)
             ->withArgument(EntityManager::class)
+            ->withArgument(ReverseTransformer\Entity\ArticleReverseTransformer::class)
             ->withArgument(Serializer\ScopeBuilder::class)
             ->withArgument(Validator\Entity\ArticleValidator::class)
         ;

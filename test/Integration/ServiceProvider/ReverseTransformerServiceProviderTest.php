@@ -5,7 +5,7 @@ namespace RCatlin\Blog\Test\Integration\ServiceProvider;
 use RCatlin\Blog\ReverseTransformer;
 use RCatlin\Blog\ServiceProvider;
 
-class RepositoryServiceProviderTest extends AbstractServiceProviderTest
+class ReverseTransformerServiceProviderTest extends AbstractServiceProviderTest
 {
     /**
      * {inheritDoc}

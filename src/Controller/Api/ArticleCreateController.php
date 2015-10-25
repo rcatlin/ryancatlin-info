@@ -3,7 +3,7 @@
 namespace RCatlin\Blog\Controller\Api;
 
 use Doctrine\ORM\EntityManager;
-use RCatlin\Blog\Entity;
+use RCatlin\Blog\ReverseTransformer;
 use RCatlin\Blog\Serializer;
 use RCatlin\Blog\Validator;
 use Refinery29\Piston\Request;
@@ -17,23 +17,31 @@ class ArticleCreateController extends AbstractArticleController
     private $entityManager;
 
     /**
+     * @var ReverseTransformer\Entity\ArticleReverseTransformer
+     */
+    private $articleReverseTransformer;
+
+    /**
      * @var Validator\Entity\ArticleValidator
      */
     private $articleValidator;
 
     /**
-     * @param EntityManager                     $entityManager
-     * @param Serializer\ScopeBuilder           $scopeBuilder
-     * @param Validator\Entity\ArticleValidator $articleValidator
+     * @param EntityManager                                       $entityManager
+     * @param ReverseTransformer\Entity\ArticleReverseTransformer $articleReverseTransformer
+     * @param Serializer\ScopeBuilder                             $scopeBuilder
+     * @param Validator\Entity\ArticleValidator                   $articleValidator
      */
     public function __construct(
         EntityManager $entityManager,
+        ReverseTransformer\Entity\ArticleReverseTransformer $articleReverseTransformer,
         Serializer\ScopeBuilder $scopeBuilder,
         Validator\Entity\ArticleValidator $articleValidator
     ) {
         parent::__construct($scopeBuilder);
 
         $this->entityManager = $entityManager;
+        $this->articleReverseTransformer = $articleReverseTransformer;
         $this->articleValidator = $articleValidator;
     }
 
@@ -60,15 +68,8 @@ class ArticleCreateController extends AbstractArticleController
 
         $values = $json;
 
-        if (!empty($json['tags'])) {
-            $values['tags'] = [];
-            foreach ($json['tags'] as $tag) {
-                $values[] = Entity\Tag::fromArray($tag);
-            }
-        }
-
         try {
-            $article = Entity\Article::fromArray($values);
+            $article = $this->articleReverseTransformer->reverseTransform($values);
         } catch (\Exception $e) {
             return $this->renderServerError($response, $e->getMessage());
         }

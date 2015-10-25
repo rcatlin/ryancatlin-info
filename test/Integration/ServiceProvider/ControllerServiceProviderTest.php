@@ -25,6 +25,7 @@ class ControllerServiceProviderTest extends AbstractServiceProviderTest
             ),
             new ServiceProvider\FractalManagerServiceProvider(),
             new ServiceProvider\RepositoryServiceProvider(),
+            new ServiceProvider\ReverseTransformerServiceProvider(),
             new ServiceProvider\SerializerServiceProvider(),
             new ServiceProvider\TransformerContainerServiceProvider(),
             new ServiceProvider\ValidatorServiceProvider(),
