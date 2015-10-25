@@ -87,11 +87,14 @@ trait RenderError
     {
         Assertion::integer($statusCode);
 
-        $response->setErrors($errors);
-
-        return $response
+        /** @var Response $response */
+        $response = $response
             ->withHeader('Content-Type', 'application/json')
             ->withStatus($statusCode)
         ;
+
+        $response->setErrors($errors);
+
+        return $response;
     }
 }
