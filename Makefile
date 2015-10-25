@@ -15,8 +15,11 @@ database:
 	mysql -uroot -e "DROP DATABASE IF EXISTS ryancatlin_info_test; CREATE DATABASE ryancatlin_info_test"
 	make migrate
 
-test: composer
-	vendor/bin/phpunit test --colors --debug --verbose
+test: composer setup database
+	vendor/bin/phpunit test/Unit --colors --debug --verbose
+
+integration: composer setup database
+	./script/integration.sh
 
 # See https://github.com/doctrine/DoctrineORMModule/issues/361 as to why '-n' flag is included
 migrate: composer
