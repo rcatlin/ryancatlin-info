@@ -51,8 +51,12 @@ class ControllerServiceProviderTest extends AbstractServiceProviderTest
                 Controller\Api\StatusController::class,
             ],
             [
-                Controller\Api\TagController::class,
-                Controller\Api\TagController::class,
+                Controller\Api\TagCreateController::class,
+                Controller\Api\TagCreateController::class,
+            ],
+            [
+                Controller\Api\TagGetController::class,
+                Controller\Api\TagGetController::class,
             ],
             [
                 Controller\MainController::class,

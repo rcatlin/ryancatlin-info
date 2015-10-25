@@ -3,35 +3,26 @@
 namespace RCatlin\Blog\Controller\Api;
 
 use Doctrine\ORM\EntityManager;
-use League\Fractal\Scope;
-use RCatlin\Blog\Behavior;
-use RCatlin\Blog\Entity;
-use RCatlin\Blog\Repository;
-use RCatlin\Blog\Serializer;
-use RCatlin\Blog\Validator;
 use RCatlin\Blog\Validator\Context;
 use Refinery29\Piston\Request;
 use Refinery29\Piston\Response;
+use RCatlin\Blog\Entity;
+use RCatlin\Blog\Repository;
+use RCatlin\Blog\ReverseTransformer;
+use RCatlin\Blog\Serializer;
+use RCatlin\Blog\Validator;
 
-class TagController
+class TagCreateController extends AbstractTagController
 {
-    use Behavior\RenderError;
-    use Behavior\RenderResponse;
-
     /**
      * @var EntityManager
      */
     private $entityManager;
 
     /**
-     * @var Serializer\ScopeBuilder
+     * @var ReverseTransformer\Entity\TagReverseTransformer
      */
-    private $scopeBuilder;
-
-    /**
-     * @var Repository\TagRepository
-     */
-    private $tagRepository;
+    private $tagReverseTransformer;
 
     /**
      * @var Validator\Entity\TagValidator
@@ -39,53 +30,22 @@ class TagController
     private $tagValidator;
 
     /**
-     * @param EntityManager                 $entityManager
-     * @param Serializer\ScopeBuilder       $scopeBuilder
-     * @param Repository\TagRepository      $tagRepository
+     * @param EntityManager $entityManager
+     * @param ReverseTransformer\Entity\TagReverseTransformer $tagReverseTransformer
+     * @param Serializer\ScopeBuilder $scopeBuilder
      * @param Validator\Entity\TagValidator $tagValidator
      */
     public function __construct(
         EntityManager $entityManager,
+        ReverseTransformer\Entity\TagReverseTransformer $tagReverseTransformer,
         Serializer\ScopeBuilder $scopeBuilder,
-        Repository\TagRepository $tagRepository,
         Validator\Entity\TagValidator $tagValidator
     ) {
+        parent::__construct($scopeBuilder);
+
         $this->entityManager = $entityManager;
-        $this->scopeBuilder = $scopeBuilder;
-        $this->tagRepository = $tagRepository;
+        $this->tagReverseTransformer = $tagReverseTransformer;
         $this->tagValidator = $tagValidator;
-    }
-
-    /**
-     * @param Response $response
-     * @param Request  $request
-     * @param array    $vars
-     *
-     * @return Response
-     */
-    public function get(Request $request, Response $response, array $vars = [])
-    {
-        if (!isset($vars['id'])) {
-            return $this->renderBadRequest($response, 'Missing required id parameter');
-        }
-
-        /** @var int $id */
-        $id = intval($vars['id']);
-
-        /** @var Entity\Tag|null $tag */
-        $tag = $this->tagRepository->findOneBy(['id' => $id]);
-
-        if (!$tag) {
-            return $this->renderNotFound(
-                $response,
-                sprintf('Tag with id %s not found.', $id)
-            );
-        }
-
-        return $this->renderResult(
-            $response,
-            $this->getTagScope($tag)->toArray()
-        );
     }
 
     /**
@@ -114,7 +74,7 @@ class TagController
             return $this->renderValidationErrors($response, $validationResult->getMessages());
         }
 
-        $tag = Entity\Tag::fromArray($decodedContent);
+        $tag = $this->tagReverseTransformer->reverseTransform($decodedContent);
 
         try {
             $this->entityManager->persist($tag);
@@ -127,15 +87,5 @@ class TagController
             $response,
             $this->getTagScope($tag)->toArray()
         );
-    }
-
-    /**
-     * @param Entity\Tag $tag
-     *
-     * @return Scope
-     */
-    private function getTagScope(Entity\Tag $tag)
-    {
-        return $this->scopeBuilder->buildItem(Entity\Tag::class, $tag);
     }
 }

@@ -19,7 +19,8 @@ class ControllerServiceProvider extends AbstractServiceProvider
         Controller\Api\ArticleCreateController::class,
         Controller\Api\ArticleGetController::class,
         Controller\Api\StatusController::class,
-        Controller\Api\TagController::class,
+        Controller\Api\TagGetController::class,
+        Controller\Api\TagCreateController::class,
         Controller\MainController::class,
     ];
 
@@ -44,11 +45,15 @@ class ControllerServiceProvider extends AbstractServiceProvider
 
         $container->share(Controller\Api\StatusController::class);
 
-        $container->share(Controller\Api\TagController::class)
+        $container->share(Controller\Api\TagCreateController::class)
             ->withArgument(EntityManager::class)
             ->withArgument(Serializer\ScopeBuilder::class)
-            ->withArgument(Repository\TagRepository::class)
             ->withArgument(Validator\Entity\TagValidator::class)
+        ;
+
+        $container->share(Controller\Api\TagGetController::class)
+            ->withArgument(Serializer\ScopeBuilder::class)
+            ->withArgument(Repository\TagRepository::class)
         ;
 
         $container->share(Controller\MainController::class);
