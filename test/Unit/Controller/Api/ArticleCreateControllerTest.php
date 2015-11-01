@@ -98,7 +98,7 @@ class ArticleCreateControllerTest extends \PHPUnit_Framework_TestCase
             json_encode([
                 'result' => $serializedArticle,
             ]),
-            $this->readResponseContent($response)
+            $this->readControllerResponse($response)
         );
     }
 

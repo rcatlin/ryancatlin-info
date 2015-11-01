@@ -30,7 +30,7 @@ class RenderErrorTest extends \PHPUnit_Framework_TestCase
                     ],
                 ],
             ]),
-            $this->readResponseContent($response)
+            $this->readControllerResponse($response)
         );
     }
 
@@ -59,7 +59,7 @@ class RenderErrorTest extends \PHPUnit_Framework_TestCase
                     ],
                 ],
             ]),
-            $this->readResponseContent($response)
+            $this->readControllerResponse($response)
         );
     }
 
@@ -107,7 +107,7 @@ class RenderErrorTest extends \PHPUnit_Framework_TestCase
                     ],
                 ],
             ]),
-            $this->readResponseContent($response)
+            $this->readControllerResponse($response)
         );
     }
 
@@ -198,7 +198,7 @@ class RenderErrorTest extends \PHPUnit_Framework_TestCase
                     ],
                 ],
             ]),
-            $this->readResponseContent($response)
+            $this->readControllerResponse($response)
         );
     }
 

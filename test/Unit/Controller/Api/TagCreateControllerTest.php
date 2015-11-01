@@ -88,7 +88,7 @@ class TagCreateControllerTest extends \PHPUnit_Framework_TestCase
                     'result' => ['serialized-tag'],
                 ]
             ),
-            $this->readResponseContent($response)
+            $this->readControllerResponse($response)
         );
     }
 

@@ -24,7 +24,7 @@ class MainControllerTest extends \PHPUnit_Framework_TestCase
                     'message' => 'Hello, world.',
                 ],
             ]),
-            $this->readResponseContent($response)
+            $this->readControllerResponse($response)
         );
     }
 }

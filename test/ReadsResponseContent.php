@@ -2,6 +2,7 @@
 
 namespace RCatlin\Blog\Test;
 
+use Psr\Http\Message\ResponseInterface;
 use Refinery29\Piston\Response;
 
 trait ReadsResponseContent
@@ -11,12 +12,22 @@ trait ReadsResponseContent
      *
      * @return string
      */
-    public function readResponseContent(Response $response)
+    public function readControllerResponse(Response $response)
     {
         $stream = $response->compileContent();
 
         $stream->rewind();
 
         return $stream->getContents();
+    }
+
+    /**
+     * @param ResponseInterface $response
+     *
+     * @return string
+     */
+    public function readResponse(ResponseInterface $response)
+    {
+        return $response->getBody()->getContents();
     }
 }
