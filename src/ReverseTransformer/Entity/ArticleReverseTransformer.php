@@ -2,6 +2,7 @@
 
 namespace RCatlin\Blog\ReverseTransformer\Entity;
 
+use Doctrine\ORM\EntityManager;
 use RCatlin\Blog\Entity;
 use RCatlin\Blog\Repository;
 use RCatlin\Blog\ReverseTransformer;
@@ -14,6 +15,11 @@ class ArticleReverseTransformer implements ReverseTransformer\ReverseTransformer
     private $articleRepository;
 
     /**
+     * @var EntityManager
+     */
+    private $entityManager;
+
+    /**
      * @var TagReverseTransformer
      */
     private $tagReverseTransformer;
@@ -22,9 +28,11 @@ class ArticleReverseTransformer implements ReverseTransformer\ReverseTransformer
      * @param TagReverseTransformer $tagReverseTransformer
      */
     public function __construct(
+        EntityManager $entityManager,
         Repository\ArticleRepository $articleRepository,
         ReverseTransformer\Entity\TagReverseTransformer $tagReverseTransformer
     ) {
+        $this->entityManager = $entityManager;
         $this->articleRepository = $articleRepository;
         $this->tagReverseTransformer = $tagReverseTransformer;
     }
@@ -36,12 +44,12 @@ class ArticleReverseTransformer implements ReverseTransformer\ReverseTransformer
      */
     public function reverseTransform(array $values)
     {
-        if (isset($values['id'])) {
+        if (array_key_exists('id', $values)) {
             /** @var Entity\Article $article */
             $article = $this->articleRepository->find($values['id']);
 
             if ($article === null) {
-                // TOOD - Throw Exception
+                // TODO - Throw Exception
                 return;
             }
 
@@ -60,6 +68,13 @@ class ArticleReverseTransformer implements ReverseTransformer\ReverseTransformer
             $tags = [];
             if (isset($values['tags'])) {
                 $tags = $this->tagReverseTransformer->reverseTransformAll($values['tags']);
+                foreach ($tags as $tag) {
+                    if ($tag->getId() !== null) {
+                        $this->entityManager->flush($tag);
+                    } else {
+                        $this->entityManager->persist($tag);
+                    }
+                }
             }
             $article->setTags($tags);
 

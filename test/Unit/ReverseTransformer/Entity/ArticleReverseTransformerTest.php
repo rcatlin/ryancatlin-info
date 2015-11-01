@@ -2,6 +2,7 @@
 
 namespace RCatlin\Blog\Test\Unit\ReverseTransformer\Entity;
 
+use Doctrine\ORM\EntityManager;
 use RCatlin\Blog\Entity;
 use RCatlin\Blog\Repository;
 use RCatlin\Blog\ReverseTransformer;
@@ -76,6 +77,7 @@ class ArticleReverseTransformerTest extends \PHPUnit_Framework_TestCase
         ;
 
         $reverseTransformer = new ReverseTransformer\Entity\ArticleReverseTransformer(
+            $this->getMockEntityManager(),
             $repository,
             $tagReverseTransformer
         );
@@ -107,6 +109,7 @@ class ArticleReverseTransformerTest extends \PHPUnit_Framework_TestCase
         ;
 
         $reverseTransformer = new ReverseTransformer\Entity\ArticleReverseTransformer(
+            $this->getMockEntityManager(),
             $this->getMockArticleRepository(),
             $tagReverseTransformer
         );
@@ -114,6 +117,14 @@ class ArticleReverseTransformerTest extends \PHPUnit_Framework_TestCase
         $result = $reverseTransformer->reverseTransform($values);
 
         $this->assertInstanceOf(Entity\Article::class, $result);
+    }
+
+    /**
+     * @return \PHPUnit_Framework_MockObject_MockObject|EntityManager
+     */
+    private function getMockEntityManager()
+    {
+        return $this->buildMock(EntityManager::class);
     }
 
     /**
