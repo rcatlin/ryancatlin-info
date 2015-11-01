@@ -2,8 +2,10 @@
 
 namespace RCatlin\Blog\Test\Integration;
 
+use Doctrine\ORM\EntityManager;
 use GuzzleHttp\Client;
 use League\Container\Container;
+use RCatlin\Blog\Entity;
 
 abstract class AbstractIntegrationTest extends \PHPUnit_Framework_TestCase
 {
@@ -17,6 +19,11 @@ abstract class AbstractIntegrationTest extends \PHPUnit_Framework_TestCase
      */
     protected static $container;
 
+    /**
+     * @var EntityManager
+     */
+    protected static $entityManager;
+
     public function setUp()
     {
         // TODO - Add Auth Headers once Authorization is setup for API.
@@ -27,13 +34,32 @@ abstract class AbstractIntegrationTest extends \PHPUnit_Framework_TestCase
         ]);
     }
 
+    public function tearDown()
+    {
+        $entityClasses = [
+            Entity\Tag::class,
+            Entity\Article::class,
+            Entity\User::class,
+        ];
+
+        foreach ($entityClasses as $entityClass) {
+            $query = self::$entityManager->createQuery(
+                sprintf('DELETE FROM %s', $entityClass)
+            );
+            $query->execute();
+        }
+    }
+
     public static function setUpBeforeClass()
     {
         self::createContainer();
+
+        self::$entityManager = self::$container->get(EntityManager::class);
     }
 
     public static function tearDownAfterClass()
     {
+        self::$entityManager = null;
         self::$container = null;
     }
 
