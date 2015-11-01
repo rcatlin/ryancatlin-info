@@ -82,18 +82,18 @@ class ArticleUpdateController extends AbstractArticleController
         }
 
         // Reverse Transform and Update
-//        try {
+        try {
             $article = $this->articleReverseTransformer->reverseTransform($values);
-//        } catch (\Exception $e) {
-//            return $this->renderServerError($response, 'An error occurred processing the data.');
-//        }
+        } catch (\Exception $e) {
+            return $this->renderServerError($response, 'An error occurred processing the data.');
+        }
 
         // Persist
-//        try {
+        try {
             $this->entityManager->flush($article);
-//        } catch (\Exception $e) {
-//            return $this->renderServerError($response, 'An error occurred saving the data.' . $e->getMessage());
-//        }
+        } catch (\Exception $e) {
+            return $this->renderServerError($response, 'An error occurred saving the data.' . $e->getMessage());
+        }
 
         // Serialize
         $scope = $this->getArticleScope($article);
