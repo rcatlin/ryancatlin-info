@@ -73,8 +73,18 @@ class Article
      * @var ArrayCollection
      *
      * @ORM\ManyToMany(
-     *      targetEntity="Tag",
+     *      targetEntity="RCatlin\Blog\Entity\Tag",
+     *      inversedBy="articles",
      *      cascade={"persist"}
+     * )
+     * @ORM\JoinTable(
+     *      name="article_tag",
+     *      joinColumns={
+     *          @ORM\JoinColumn(name="article_id", referencedColumnName="id")
+     *      },
+     *      inverseJoinColumns={
+     *          @ORM\JoinColumn(name="tag_id", referencedColumnName="id")
+     *      }
      * )
      */
     protected $tags;
@@ -284,9 +294,7 @@ class Article
      */
     public function setTags(array $tags)
     {
-        foreach ($tags as $tag) {
-            $this->addTag($tag);
-        }
+        $this->tags = new ArrayCollection($tags);
 
         return $this;
     }
@@ -296,6 +304,13 @@ class Article
      */
     public function addTag(Tag $tag)
     {
+        // Tag is the "owning" side of the relationship
+        $tag->addArticle($this);
+
+        if ($this->tags->contains($tag)) {
+            return $this;
+        }
+
         $this->tags->add($tag);
 
         return $this;
