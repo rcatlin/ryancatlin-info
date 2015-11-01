@@ -2,12 +2,16 @@
 
 namespace RCatlin\Blog\Test\Integration\Controller\Api;
 
+use RCatlin\Blog\Test\CreatesGuzzleStream;
 use RCatlin\Blog\Test\HasFaker;
 use RCatlin\Blog\Test\Integration\AbstractIntegrationTest;
+use RCatlin\Blog\Test\ReadsResponseContent;
 
 class ArticleControllersIntegrationTest extends AbstractIntegrationTest
 {
+    use CreatesGuzzleStream;
     use HasFaker;
+    use ReadsResponseContent;
 
     public function testCreateGetAndDeleteArticleWithATag()
     {
@@ -18,25 +22,26 @@ class ArticleControllersIntegrationTest extends AbstractIntegrationTest
         $tagName = $faker->word;
         $active = $faker->boolean();
 
-        $values = [
-            'slug' => $slug,
-            'title' => $title,
-            'content' => $content,
-            'tags' => [
-                [
-                    'name' => $tagName,
-                ],
-            ],
-            'active' => $active,
-        ];
-
         // Create Article And Tag
-        $body = \GuzzleHttp\Psr7\stream_for(json_encode($values));
-        $response = $this->client->request('POST', '/api/articles', ['body' => $body]);
+        $response = $this->client->request('POST', '/api/articles', [
+            'body' => $this->createStreamFromArray(
+                [
+                    'slug' => $slug,
+                    'title' => $title,
+                    'content' => $content,
+                    'tags' => [
+                        [
+                            'name' => $tagName,
+                        ],
+                    ],
+                    'active' => $active,
+                ]
+            ),
+        ]);
 
         $this->assertEquals(201, $response->getStatusCode());
 
-        $responseContent = json_decode($response->getBody()->getContents(), true);
+        $responseContent = json_decode($this->readResponse($response), true);
 
         $data = $responseContent['result']['data'];
 

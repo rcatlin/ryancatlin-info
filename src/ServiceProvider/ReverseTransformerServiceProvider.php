@@ -2,6 +2,7 @@
 
 namespace RCatlin\Blog\ServiceProvider;
 
+use Doctrine\ORM\EntityManager;
 use League\Container\ServiceProvider\AbstractServiceProvider;
 use RCatlin\Blog\Repository;
 use RCatlin\Blog\ReverseTransformer;
@@ -24,6 +25,7 @@ class ReverseTransformerServiceProvider extends AbstractServiceProvider
         $container = $this->getContainer();
 
         $container->share(ReverseTransformer\Entity\ArticleReverseTransformer::class)
+            ->withArgument(EntityManager::class)
             ->withArgument(Repository\ArticleRepository::class)
             ->withArgument(ReverseTransformer\Entity\TagReverseTransformer::class)
         ;

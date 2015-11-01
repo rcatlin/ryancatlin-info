@@ -3,7 +3,9 @@
 namespace RCatlin\Blog\Entity;
 
 use Assert\Assertion;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use RCatlin\Blog\Entity;
 
 /**
  * Tag
@@ -29,11 +31,36 @@ class Tag
      */
     private $name;
 
+    /**
+     * @var ArrayCollection
+     *
+     * @ORM\ManyToMany(
+     *      targetEntity="RCatlin\Blog\Entity\Article",
+     *      mappedBy="tags",
+     *      cascade={"persist"}
+     * )
+     * @ORM\JoinTable(
+     *      name="article_tag",
+     *      joinColumns={
+     *          @ORM\JoinColumn(
+     *              name="tag_id", referencedColumnName="id"
+     *          )
+     *      },
+     *      inverseJoinColumns={
+     *          @ORM\JoinColumn(
+     *              name="article_id", referencedColumnName="id"
+     *          )
+     *      }
+     * )
+     */
+    private $articles;
+
     private function __construct($name)
     {
         Assertion::string($name);
 
         $this->name = $name;
+        $this->articles = new ArrayCollection();
     }
 
     /**
@@ -92,6 +119,42 @@ class Tag
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * @param array $articles
+     *
+     * @return $this
+     */
+    public function setArticles(array $articles)
+    {
+        $this->articles = new ArrayCollection($articles);
+
+        return $this;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getArticles()
+    {
+        return $this->articles;
+    }
+
+    /**
+     * @param Article $article
+     *
+     * @return $this
+     */
+    public function addArticle(Entity\Article $article)
+    {
+        if ($this->articles->contains($article)) {
+            return $this;
+        }
+
+        $this->articles->add($article);
+
+        return $this;
     }
 
     /**

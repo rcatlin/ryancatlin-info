@@ -23,7 +23,7 @@ class RenderResponseTest extends \PHPUnit_Framework_TestCase
             json_encode([
                 'result' => $data,
             ]),
-            $this->readResponseContent($response)
+            $this->readControllerResponse($response)
         );
     }
 }

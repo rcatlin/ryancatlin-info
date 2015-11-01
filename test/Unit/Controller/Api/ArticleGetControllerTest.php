@@ -52,7 +52,7 @@ class ArticleGetControllerTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals(200, $response->getStatusCode());
 
-        $content = $this->readResponseContent($response);
+        $content = $this->readControllerResponse($response);
 
         $this->assertEquals(json_encode([
             'result' => $serializedArticle,

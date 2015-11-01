@@ -29,7 +29,7 @@ class TagReverseTransformer implements ReverseTransformer\ReverseTransformerInte
     public function reverseTransform(array $values)
     {
         // Existing Tag
-        if (isset($values['id'])) {
+        if (array_key_exists('id', $values)) {
             /** @var null|Entity\Tag $tag */
             $tag = $this->repository->find($values['id']);
 
@@ -51,14 +51,19 @@ class TagReverseTransformer implements ReverseTransformer\ReverseTransformerInte
 
     /**
      * @param array $multipleValues
+     * 
      *
-     * @return Entity\Article[]
+     * @return Entity\Tag[]
      */
     public function reverseTransformAll(array $multipleValues)
     {
         $tags = [];
         foreach ($multipleValues as $values) {
-            $tags[] = $this->reverseTransform($values);
+            $tag = $this->reverseTransform($values);
+
+            if ($tag !== null) {
+                $tags[] = $tag;
+            }
         }
 
         return $tags;
