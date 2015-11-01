@@ -24,9 +24,9 @@ class TagType extends AbstractType
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'data_class' => 'MyProject\Bundle\MainBundle\Entity\Tag',
-        ));
+        ]);
     }
 
     /**
