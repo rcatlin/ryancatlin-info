@@ -50,9 +50,9 @@ class ArticleUpdateControllerTest extends AbstractIntegrationTest
         $newContent = $faker->sentence;
         $newActive = !$active;
         $newTagName = $faker->word;
+        $anotherTagName = $faker->word;
 
-        // Update
-        $body =
+        // Update, include a New Tag to be Created
         $response = $this->client->request(
             'PATCH',
             sprintf('/api/articles/%s', $articleId),
@@ -67,6 +67,9 @@ class ArticleUpdateControllerTest extends AbstractIntegrationTest
                             [
                                 'id' => $tagId,
                                 'name' => $newTagName,
+                            ],
+                            [
+                                'name' => $anotherTagName,
                             ],
                         ],
                     ]
@@ -85,11 +88,16 @@ class ArticleUpdateControllerTest extends AbstractIntegrationTest
         $this->assertEquals($data['title'], $newTitle);
         $this->assertEquals($data['content'], $newContent);
         $this->assertEquals($data['active'], $newActive);
-        $this->assertEquals(1, count($data['tags']));
+        $this->assertEquals(2, count($data['tags']));
 
-        $tagData = $data['tags'][0];
+        foreach ($data['tags'] as $tagData) {
+            if ($tagData['id'] == $tagId) {
+                $this->assertEquals($newTagName, $tagData['name']);
+                continue;
+            }
 
-        $this->assertEquals($tagId, $tagData['id']);
-        $this->assertEquals($newTagName, $tagData['name']);
+            $this->assertNotEquals($tagId, $tagData['id']);
+            $this->assertEquals($anotherTagName, $tagData['name']);
+        }
     }
 }
