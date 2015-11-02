@@ -59,7 +59,7 @@ class ArticleUpdateController extends AbstractArticleController
         $this->entityManager = $entityManager;
     }
 
-    public function update(Request $request, Response $response, $vars = [])
+    public function partialUpdate(Request $request, Response $response, $vars = [])
     {
         $id = $vars['id'];
 
