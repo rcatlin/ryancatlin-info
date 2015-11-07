@@ -29,7 +29,7 @@ class ArticleValidator extends AbstractValidator
             $this->addTitle(false, false);
             $this->addContent(true, false);
             $this->addTags(true, false);
-            $this->addActive();
+            $this->addActive(false, false);
         });
     }
 

@@ -14,7 +14,80 @@ class ArticleReverseTransformerTest extends \PHPUnit_Framework_TestCase
     use BuildsMocks;
     use HasFaker;
 
-    public function testReverseTransformExistingArticle()
+    public function testReverseTransformExisintArticleWithoutOverridedEmbedded()
+    {
+        $faker = $this->getFaker();
+
+        $id = $faker->randomNumber();
+        $slug = $faker->word;
+        $title = $faker->sentence;
+        $content = $faker->sentence;
+        $active = $faker->boolean();
+
+        $values = [
+            'id' => $id,
+            'slug' => $slug,
+            'title' => $title,
+            'content' => $content,
+            'active' => $active,
+            'tags' => ['tag-values'],
+        ];
+
+        $article = $this->getMockArticle();
+        $tag0 = $this->getMockTag();
+        $tag1 = $this->getMockTag();
+
+        $repository = $this->getMockArticleRepository();
+        $repository->expects($this->once())
+            ->method('find')
+            ->with($id)
+            ->willReturn($article)
+        ;
+
+        $article->expects($this->once())
+            ->method('setSlug')
+            ->with($slug)
+        ;
+
+        $article->expects($this->once())
+            ->method('setTitle')
+            ->with($title)
+        ;
+
+        $article->expects($this->once())
+            ->method('setContent')
+            ->with($content)
+        ;
+
+        $article->expects($this->once())
+            ->method('addTags')
+            ->with([$tag0, $tag1])
+        ;
+
+        $article->expects($this->once())
+            ->method('setActive')
+            ->with($active)
+        ;
+
+        $tagReverseTransformer = $this->getMockTagReverseTransformer();
+        $tagReverseTransformer->expects($this->once())
+            ->method('reverseTransformAll')
+            ->with(['tag-values'])
+            ->willReturn([$tag0, $tag1])
+        ;
+
+        $reverseTransformer = new ReverseTransformer\Entity\ArticleReverseTransformer(
+            $this->getMockEntityManager(),
+            $repository,
+            $tagReverseTransformer
+        );
+
+        $result = $reverseTransformer->reverseTransform($values, false);
+
+        $this->assertInstanceOf(Entity\Article::class, $result);
+    }
+
+    public function testReverseTransformExistingArticleAndOverrideEmbebbed()
     {
         $faker = $this->getFaker();
 

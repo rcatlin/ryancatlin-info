@@ -23,10 +23,11 @@ class TagReverseTransformer implements ReverseTransformer\ReverseTransformerInte
 
     /**
      * @param array $values
+     * @param bool  $overrideEmbedded
      *
      * @return null|object|Entity\Tag
      */
-    public function reverseTransform(array $values)
+    public function reverseTransform(array $values, $overrideEmbedded = true)
     {
         // Existing Tag
         if (array_key_exists('id', $values)) {
@@ -51,15 +52,15 @@ class TagReverseTransformer implements ReverseTransformer\ReverseTransformerInte
 
     /**
      * @param array $multipleValues
-     * 
+     * @param bool  $overrideEmbedded
      *
      * @return Entity\Tag[]
      */
-    public function reverseTransformAll(array $multipleValues)
+    public function reverseTransformAll(array $multipleValues, $overrideEmbedded = true)
     {
         $tags = [];
         foreach ($multipleValues as $values) {
-            $tag = $this->reverseTransform($values);
+            $tag = $this->reverseTransform($values, $overrideEmbedded);
 
             if ($tag !== null) {
                 $tags[] = $tag;

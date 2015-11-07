@@ -25,7 +25,9 @@ class ArticleReverseTransformer implements ReverseTransformer\ReverseTransformer
     private $tagReverseTransformer;
 
     /**
-     * @param TagReverseTransformer $tagReverseTransformer
+     * @param EntityManager                $entityManager
+     * @param Repository\ArticleRepository $articleRepository
+     * @param TagReverseTransformer        $tagReverseTransformer
      */
     public function __construct(
         EntityManager $entityManager,
@@ -39,10 +41,11 @@ class ArticleReverseTransformer implements ReverseTransformer\ReverseTransformer
 
     /**
      * @param array $values
+     * @param bool  $overrideEmbedded
      *
      * @return null|Entity\Article
      */
-    public function reverseTransform(array $values)
+    public function reverseTransform(array $values, $overrideEmbedded = true)
     {
         if (array_key_exists('id', $values)) {
             /** @var Entity\Article $article */
@@ -65,9 +68,9 @@ class ArticleReverseTransformer implements ReverseTransformer\ReverseTransformer
                 $article->setContent($values['content']);
             }
 
-            $tags = [];
             if (isset($values['tags'])) {
                 $tags = $this->tagReverseTransformer->reverseTransformAll($values['tags']);
+
                 foreach ($tags as $tag) {
                     if ($tag->getId() !== null) {
                         $this->entityManager->flush($tag);
@@ -75,8 +78,14 @@ class ArticleReverseTransformer implements ReverseTransformer\ReverseTransformer
                         $this->entityManager->persist($tag);
                     }
                 }
+
+                // Override or Add Embedded Tags
+                if ($overrideEmbedded) {
+                    $article->setTags($tags);
+                } else {
+                    $article->addTags($tags);
+                }
             }
-            $article->setTags($tags);
 
             if (isset($values['active'])) {
                 $article->setActive($values['active']);
@@ -96,15 +105,16 @@ class ArticleReverseTransformer implements ReverseTransformer\ReverseTransformer
 
     /**
      * @param array $multipleValues
+     * @param bool  $overrideEmbedded
      *
      * @return Entity\Article[]
      */
-    public function reverseTransformAll(array $multipleValues)
+    public function reverseTransformAll(array $multipleValues, $overrideEmbedded = true)
     {
         $articles = [];
 
         foreach ($multipleValues as $values) {
-            $articles[] = $this->reverseTransform($values);
+            $articles[] = $this->reverseTransform($values, $overrideEmbedded);
         }
 
         return $articles;

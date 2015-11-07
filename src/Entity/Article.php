@@ -291,6 +291,8 @@ class Article
 
     /**
      * @param array $tags
+     *
+     * @return $this
      */
     public function setTags(array $tags)
     {
@@ -301,6 +303,8 @@ class Article
 
     /**
      * @param Tag $tag
+     *
+     * @return $this
      */
     public function addTag(Tag $tag)
     {
@@ -312,6 +316,20 @@ class Article
         }
 
         $this->tags->add($tag);
+
+        return $this;
+    }
+
+    /**
+     * @param array $tags
+     *
+     * @return $this
+     */
+    public function addTags(array $tags)
+    {
+        foreach ($tags as $tag) {
+            $this->addTag($tag);
+        }
 
         return $this;
     }

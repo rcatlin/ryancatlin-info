@@ -99,5 +99,39 @@ class ArticleUpdateControllerTest extends AbstractIntegrationTest
             $this->assertNotEquals($tagId, $tagData['id']);
             $this->assertEquals($anotherTagName, $tagData['name']);
         }
+
+        // Update a Single Field
+        $newerTitle = $faker->sentence;
+        $newerTagName = $faker->word;
+
+        $response = $this->client->request(
+            'PATCH',
+            sprintf('/api/articles/%s', $articleId),
+            [
+                'body' => $this->createStreamFromArray(
+                    [
+                        'title' => $newerTitle,
+                        'tags' => [
+                            ['name' => $newerTagName],
+                        ],
+                    ]
+                ),
+            ]
+        );
+
+        $this->assertEquals(202, $response->getStatusCode());
+
+        // Verify Article
+        $response = $this->client->request(
+            'GET',
+            sprintf('/api/articles/%s', $articleId)
+        );
+
+        $content = json_decode($this->readResponse($response), true);
+
+        $data = $content['result']['data'];
+
+        // New Tag should have been added to the two existing tags
+        $this->assertEquals(3, count($data['tags']));
     }
 }
