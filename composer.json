@@ -37,7 +37,8 @@
         "refinery29/php-cs-fixer-config": "^0.2.3",
         "codeclimate/php-test-reporter": "dev-master",
         "guzzlehttp/guzzle": "6.*",
-        "fzaninotto/faker": "1.4.*"
+        "fzaninotto/faker": "1.4.*",
+        "league/factory-muffin": "^2.1"
     },
     "bin": ["vendor/bin"]
 }

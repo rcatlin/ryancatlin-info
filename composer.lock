@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "ae241e0d6e121424c7878861231f50c5",
-    "content-hash": "c92f5e6ed43f8fb674441aa7d58be06c",
+    "hash": "5cf33f0f69a657eeb97fbb9f41af4204",
+    "content-hash": "879bf9a7091ba6d8e869f99fed9ed247",
     "packages": [
         {
             "name": "beberlei/assert",
@@ -3133,6 +3133,67 @@
                 "uri"
             ],
             "time": "2015-11-03 01:34:55"
+        },
+        {
+            "name": "league/factory-muffin",
+            "version": "v2.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thephpleague/factory-muffin.git",
+                "reference": "91f0adcdac6b5f7bf2277ac2c90f94352afe65de"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thephpleague/factory-muffin/zipball/91f0adcdac6b5f7bf2277ac2c90f94352afe65de",
+                "reference": "91f0adcdac6b5f7bf2277ac2c90f94352afe65de",
+                "shasum": ""
+            },
+            "require": {
+                "fzaninotto/faker": "1.4.*",
+                "php": ">=5.3.3"
+            },
+            "replace": {
+                "zizaco/factory-muff": "self.version"
+            },
+            "require-dev": {
+                "illuminate/database": "~4.1",
+                "phpunit/phpunit": "~4.0"
+            },
+            "suggest": {
+                "illuminate/database": "Factory Muffin works well with eloquent models."
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "League\\FactoryMuffin\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Graham Campbell",
+                    "email": "graham@mineuk.com"
+                },
+                {
+                    "name": "Zizaco Zizuini",
+                    "email": "zizaco@gmail.com"
+                },
+                {
+                    "name": "Scott Robertson",
+                    "email": "scottymeuk@gmail.com"
+                }
+            ],
+            "description": "The goal of this package is to enable the rapid creation of objects for the purpose of testing.",
+            "homepage": "http://factory-muffin.thephpleague.com/",
+            "keywords": [
+                "factory",
+                "laravel",
+                "testing"
+            ],
+            "time": "2014-09-18 18:29:06"
         },
         {
             "name": "phpspec/php-diff",
