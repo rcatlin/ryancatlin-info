@@ -52,7 +52,7 @@ EOF;
      * @param int    $limit
      * @param string $order
      *
-     * @return mixed
+     * @return array|null
      */
     public function findAllActiveArticles($offset, $limit = 5, $order = 'DESC')
     {

@@ -52,4 +52,29 @@ class ArticleGetController extends AbstractArticleController
 
         return $this->renderResult($response, $scope->toArray());
     }
+
+    /**
+     * @param Request  $request
+     * @param Response $response
+     * @param array    $vars
+     *
+     * @return Response
+     */
+    public function getMostRecent(Request $request, Response $response, array $vars = [])
+    {
+        try {
+            /* @var Entity\Article|null $article */
+            $articles = $this->articleRepository->findAllActiveArticles(0, 1, 'DESC');
+        } catch (\Exception $e) {
+            return $this->renderServerError($response, $e->getMessage());
+        }
+
+        if ($articles === null || count($articles) <= 0) {
+            return $this->renderNotFound($response, 'Most Recent Article Not Found.');
+        }
+
+        $scope = $this->getArticleScope($articles[0]);
+
+        return $this->renderResult($response, $scope->toArray());
+    }
 }
