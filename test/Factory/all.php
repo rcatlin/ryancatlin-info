@@ -41,15 +41,15 @@ FactoryMuffin::setCustomSetter(function ($object, $name, $value) {
                 $object->setActive($value);
                 break;
             case 'tagCount':
-//                $faker = FactoryMuffin::getFaker();
-//
-//                $tags = [];
-//
-//                for ($i = 0; $i < $faker->numberBetween(0, $value); $i++) {
-//                    $tags[] = FactoryMuffin::create(Entity\Tag::class);
-//                }
-//
-//                $object->setTags($tags);
+                $faker = FactoryMuffin::getFaker();
+
+                $tags = [];
+
+                for ($i = 0; $i < $faker->numberBetween(0, $value); $i++) {
+                    $tags[] = FactoryMuffin::create(Entity\Tag::class);
+                }
+
+                $object->setTags($tags);
                 break;
             case 'tags':
                 $object->setTags($value);
