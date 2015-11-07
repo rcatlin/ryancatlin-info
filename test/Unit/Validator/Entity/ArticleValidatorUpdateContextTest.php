@@ -116,7 +116,7 @@ class ArticleValidatorUpdateContextTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($validationResult->isValid());
     }
 
-    public function testActiveIsRequired()
+    public function testActiveIsOptional()
     {
         $values = $this->getAllValues();
         unset($values['active']);
@@ -125,7 +125,7 @@ class ArticleValidatorUpdateContextTest extends \PHPUnit_Framework_TestCase
 
         $validationResult = $validator->validate($values, Context::UPDATE);
 
-        $this->assertFalse($validationResult->isValid());
+        $this->assertTrue($validationResult->isValid());
     }
 
     public function testActiveCannotBeEmpty()
