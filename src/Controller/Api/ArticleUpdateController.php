@@ -59,6 +59,29 @@ class ArticleUpdateController extends AbstractArticleController
         $this->entityManager = $entityManager;
     }
 
+    public function update(Request $request, Response $response, $vars = [])
+    {
+        $id = $vars['id'];
+
+        $article = $this->articleRepository->find($id);
+
+        if ($article == null) {
+            return $this->renderNotFound($response, sprintf(
+                'Article with id %s not found.', $id
+            ));
+        }
+
+        $values = $this->readRequestJson($request);
+
+        $values['id'] = $id;
+
+        $tags = null;
+        if (array_key_exists('tags', $values)) {
+            $tags = $values['tags'];
+            unset($values['tags']);
+        }
+    }
+
     public function partialUpdate(Request $request, Response $response, $vars = [])
     {
         $id = $vars['id'];
@@ -83,7 +106,7 @@ class ArticleUpdateController extends AbstractArticleController
 
         // Reverse Transform and Update
         try {
-            $article = $this->articleReverseTransformer->reverseTransform($values);
+            $article = $this->articleReverseTransformer->reverseTransform($values, false);
         } catch (\Exception $e) {
             return $this->renderServerError($response, 'An error occurred processing the data.');
         }
