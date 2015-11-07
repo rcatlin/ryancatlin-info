@@ -28,7 +28,6 @@
         "filp/whoops": "^1.1",
         "phpunit/phpunit": "4.*",
         "particle/validator": "2.0.0-alpha.2",
-        "fzaninotto/faker": "^1.5",
         "beberlei/assert": "^2.4",
         "league/route": "dev-develop"
     },
@@ -37,7 +36,8 @@
         "phpspec/phpspec": "^2.2",
         "refinery29/php-cs-fixer-config": "^0.2.3",
         "codeclimate/php-test-reporter": "dev-master",
-        "guzzlehttp/guzzle": "6.*"
+        "guzzlehttp/guzzle": "6.*",
+        "fzaninotto/faker": "1.4.*"
     },
     "bin": ["vendor/bin"]
 }
