@@ -29,6 +29,7 @@ class Api implements StageInterface
             $group->post('articles', Controller\Api\ArticleCreateController::class . '::create');
             $group->delete('articles/{id:number}', Controller\Api\ArticleDeleteController::class . '::delete');
             $group->patch('articles/{id:number}', Controller\Api\ArticleUpdateController::class . '::partialUpdate');
+            $group->put('articles/{id:number}', Controller\Api\ArticleUpdateController::class . '::update');
 
             $group->get('tags/{id:number}', Controller\Api\TagGetController::class . '::get');
             $group->post('tags', Controller\Api\TagCreateController::class . '::create');
