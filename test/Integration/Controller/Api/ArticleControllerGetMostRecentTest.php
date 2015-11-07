@@ -4,16 +4,12 @@ namespace RCatlin\Blog\Test\Integration\Controller\Api;
 
 use League\FactoryMuffin\Facade as FactoryMuffin;
 use RCatlin\Blog\Entity;
-use RCatlin\Blog\Test\CreatesGuzzleStream;
-use RCatlin\Blog\Test\HasFaker;
 use RCatlin\Blog\Test\Integration\AbstractIntegrationTest;
 use RCatlin\Blog\Test\LoadsFactoryMuffinFactories;
 use RCatlin\Blog\Test\ReadsResponseContent;
 
 class ArticleControllerGetMostRecentTest extends AbstractIntegrationTest
 {
-    use CreatesGuzzleStream;
-    use HasFaker;
     use LoadsFactoryMuffinFactories;
     use ReadsResponseContent;
 
