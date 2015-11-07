@@ -23,12 +23,14 @@ class ArticleControllerGetMostRecentTest extends AbstractIntegrationTest
         $article0 = FactoryMuffin::create(Entity\Article::class, [
             'active' => true,
             'createdAt' => 'dateTimeBetween|-3 days;-2 days',
+            'tagCount' => 0,
         ]);
 
         /** @var Entity\Article $article1 */
         $article1 = FactoryMuffin::create(Entity\Article::class, [
             'active' => true,
             'createdAt' => 'dateTimeBetween|-1 day;now',
+            'tagCount' => 0,
         ]);
 
         $response = $this->client->get('/api/articles/mostrecent');
