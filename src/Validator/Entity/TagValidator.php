@@ -16,8 +16,11 @@ class TagValidator extends AbstractValidator
         });
 
         $this->context(Context::UPDATE, function () {
-            $this->addId();
-            $this->addName();
+            $this->copyContext(Context::CREATE);
+        });
+
+        $this->context(Context::PARTIAL_UPDATE, function () {
+            $this->copyContext(Context::CREATE);
         });
     }
 

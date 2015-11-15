@@ -6,7 +6,7 @@ use RCatlin\Blog\Test\HasFaker;
 use RCatlin\Blog\Validator\Context;
 use RCatlin\Blog\Validator\Entity\TagValidator;
 
-class TagValidatorUpdateContextTest extends \PHPUnit_Framework_TestCase
+class TagValidatorPartialUpdateContextTest extends \PHPUnit_Framework_TestCase
 {
     use HasFaker;
 
@@ -14,7 +14,7 @@ class TagValidatorUpdateContextTest extends \PHPUnit_Framework_TestCase
     {
         $validator = new TagValidator();
 
-        $validationResult = $validator->validate($this->getAllValues(), Context::UPDATE);
+        $validationResult = $validator->validate($this->getAllValues(), Context::PARTIAL_UPDATE);
 
         $this->assertTrue($validationResult->isValid());
     }
