@@ -12,7 +12,6 @@ FactoryMuffin::define(Entity\Article::class, [
     'updatedAt' => 'dateTimebetween|-1 day;now',
     'content' => 'text',
     'active' => 'boolean',
-    'tagCount' => 'numberBetween|0;2',
 ]);
 
 FactoryMuffin::define(Entity\Tag::class, [
@@ -65,6 +64,7 @@ FactoryMuffin::setCustomSetter(function ($object, $name, $value) {
 
                 break;
             case 'tag':
+                /** @var Entity\Tag $tag */
                 $tag = FactoryMuffin::create(Entity\Tag::class, [
                     'name' => $value,
                 ]);
