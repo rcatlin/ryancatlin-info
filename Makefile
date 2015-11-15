@@ -22,6 +22,6 @@ integration: composer setup database
 	./script/integration.sh
 
 # See https://github.com/doctrine/DoctrineORMModule/issues/361 as to why '-n' flag is included
-migrate: composer
+migrate:
 	./console migrations:migrate -n
 
