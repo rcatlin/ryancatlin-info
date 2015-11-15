@@ -17,7 +17,7 @@ class ArticleGetByTagControllerTest extends AbstractIntegrationTest
 
     public function testGetByTags()
     {
-        $faker = $this->getFaker();
+        $faker = FactoryMuffin::getFaker();
 
         $tagName = $faker->word;
 
