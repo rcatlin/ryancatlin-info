@@ -99,7 +99,7 @@ class ArticleUpdateController extends AbstractArticleController
         $values['id'] = $id;
 
         // Validate
-        $validationResult = $this->articleValidator->validate($values, Validator\Context::UPDATE);
+        $validationResult = $this->articleValidator->validate($values, Validator\Context::PARTIAL_UPDATE);
         if ($validationResult->isNotValid()) {
             return $this->renderValidationErrors($response, $validationResult->getMessages());
         }
