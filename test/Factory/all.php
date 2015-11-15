@@ -37,14 +37,14 @@ FactoryMuffin::setCustomSetter(function ($object, $name, $value) {
                 $object->setContent($value);
                 break;
             case 'active':
-                $object->setActive($value);
+                $object->setActive(boolval($value));
                 break;
             case 'tagCount':
                 $faker = FactoryMuffin::getFaker();
 
                 $tags = [];
 
-                for ($i = 0; $i < $faker->numberBetween(0, $value); $i++) {
+                for ($i = 0; $i < $value; $i++) {
                     $tags[] = FactoryMuffin::create(Entity\Tag::class, [
                         'name' => $faker->word,
                     ]);
