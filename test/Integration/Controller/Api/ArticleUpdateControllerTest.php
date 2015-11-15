@@ -2,48 +2,40 @@
 
 namespace RCatlin\Blog\Test\Integration\Controller\Api;
 
+use League\FactoryMuffin\Facade as FactoryMuffin;
+use RCatlin\Blog\Entity;
 use RCatlin\Blog\Test\CreatesGuzzleStream;
 use RCatlin\Blog\Test\HasFaker;
 use RCatlin\Blog\Test\Integration\AbstractIntegrationTest;
+use RCatlin\Blog\Test\LoadsFactoryMuffinFactories;
 use RCatlin\Blog\Test\ReadsResponseContent;
 
 class ArticleUpdateControllerTest extends AbstractIntegrationTest
 {
     use CreatesGuzzleStream;
     use HasFaker;
+    use LoadsFactoryMuffinFactories;
     use ReadsResponseContent;
 
-    public function testUpdate()
+    public function testPartialUpdate()
     {
         $faker = $this->getFaker();
 
         $active = $faker->boolean();
 
         // Create Article And Tag
-        $response = $this->client->request('POST', '/api/articles', [
-            'body' => $this->createStreamFromArray(
-                [
-                    'slug' => $faker->word,
-                    'title' => $faker->sentence,
-                    'content' => $faker->sentence,
-                    'tags' => [
-                        [
-                            'name' => $faker->word,
-                        ],
-                    ],
-                    'active' => $active,
-                ]
-            ),
+        /** @var Entity\Article $article */
+        $article = FactoryMuffin::create(Entity\Article::class, [
+            'active' => $active,
+            'tagCount' => '1',
         ]);
 
-        $this->assertEquals(201, $response->getStatusCode());
+        $articleId = $article->getId();
 
-        // Get Article ID
-        $content = json_decode($this->readResponse($response), true);
+        /** @var Entity\Tag $tag */
+        $tag = $article->getTags()->first();
 
-        $data = $content['result']['data'];
-        $articleId = $data['id'];
-        $tagId = $data['tags'][0]['id'];
+        $tagId = $tag->getId();
 
         $newSlug = $faker->word;
         $newTitle = $faker->sentence;
