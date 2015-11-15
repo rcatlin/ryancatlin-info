@@ -35,4 +35,14 @@ class AbstractArticleController
     {
         return $this->scopeBuilder->buildItem(Entity\Article::class, $article);
     }
+
+    /**
+     * @param Entity\Article[] $articles
+     *
+     * @return Scope
+     */
+    protected function getArticlesScope(array $articles)
+    {
+        return $this->scopeBuilder->buildCollection(Entity\Article::class, $articles);
+    }
 }

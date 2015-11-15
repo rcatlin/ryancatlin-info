@@ -49,6 +49,7 @@ class ControllerServiceProvider extends AbstractServiceProvider
         $container->share(Controller\Api\ArticleGetController::class)
             ->withArgument(Repository\ArticleRepository::class)
             ->withArgument(Serializer\ScopeBuilder::class)
+            ->withArgument(Repository\TagRepository::class)
         ;
 
         $container->share(Controller\Api\ArticleUpdateController::class)

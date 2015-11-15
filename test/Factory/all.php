@@ -12,7 +12,6 @@ FactoryMuffin::define(Entity\Article::class, [
     'updatedAt' => 'dateTimebetween|-1 day;now',
     'content' => 'text',
     'active' => 'boolean',
-    'tagCount' => 'numberBetween|0;2',
 ]);
 
 FactoryMuffin::define(Entity\Tag::class, [
@@ -46,13 +45,32 @@ FactoryMuffin::setCustomSetter(function ($object, $name, $value) {
                 $tags = [];
 
                 for ($i = 0; $i < $faker->numberBetween(0, $value); $i++) {
-                    $tags[] = FactoryMuffin::create(Entity\Tag::class);
+                    $tags[] = FactoryMuffin::create(Entity\Tag::class, [
+                        'name' => $faker->word,
+                    ]);
                 }
 
                 $object->setTags($tags);
                 break;
             case 'tags':
+                $tags = [];
+                foreach ($value as $name) {
+                    $tags[] = FactoryMuffin::create(Entity\Tag::class, [
+                        'name' => $name,
+                    ]);
+                }
+
                 $object->setTags($value);
+
+                break;
+            case 'tag':
+                /** @var Entity\Tag $tag */
+                $tag = FactoryMuffin::create(Entity\Tag::class, [
+                    'name' => $value,
+                ]);
+
+                $object->addTag($tag);
+
                 break;
         }
 
@@ -62,7 +80,8 @@ FactoryMuffin::setCustomSetter(function ($object, $name, $value) {
     if ($object instanceof Entity\Tag) {
         switch ($name) {
             case 'name':
-                $object->setName($name);
+                $object->setName($value);
+                break;
         }
 
         return;
