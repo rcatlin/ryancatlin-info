@@ -2,6 +2,7 @@
 
 namespace RCatlin\Blog\Test;
 
+use Doctrine\ORM\EntityManager;
 use League\FactoryMuffin\Facade as FactoryMuffin;
 
 /**
@@ -16,6 +17,7 @@ trait LoadsFactoryMuffinFactories
 
         FactoryMuffin::loadFactories(__DIR__ . '/Factory');
 
+        /** @var EntityManager $entityManager */
         $entityManager = self::$entityManager;
 
         FactoryMuffin::setCustomSaver(function ($object) use ($entityManager) {
@@ -24,18 +26,23 @@ trait LoadsFactoryMuffinFactories
 
             return true;
         });
-    }
-
-    public static function tearDownBeforeClass()
-    {
-        $entityManager = self::$entityManager;
 
         FactoryMuffin::setCustomDeleter(function ($object) use ($entityManager) {
+            if (!$entityManager->contains($object)) {
+                return true;
+            }
+
             $entityManager->remove($object);
             $entityManager->flush();
-        });
-        FactoryMuffin::deleteSaved();
 
+            return true;
+        });
+    }
+
+    public static function tearDownAfterClass()
+    {
         parent::tearDownAfterClass();
+
+        FactoryMuffin::deleteSaved();
     }
 }
