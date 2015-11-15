@@ -46,7 +46,7 @@ class ArticleGetControllerTest extends \PHPUnit_Framework_TestCase
             ->willReturn($article)
         ;
 
-        $controller = new Controller\Api\ArticleGetController($repo, $scopeBuilder);
+        $controller = new Controller\Api\ArticleGetController($repo, $scopeBuilder, $this->getMockTagRepository());
 
         $response = $controller->get(new Request(), new Response(), ['id' => $id]);
 
@@ -70,7 +70,11 @@ class ArticleGetControllerTest extends \PHPUnit_Framework_TestCase
             ->willReturn(null)
         ;
 
-        $controller = new Controller\Api\ArticleGetController($repo, $this->getMockScopeBuilder());
+        $controller = new Controller\Api\ArticleGetController(
+            $repo,
+            $this->getMockScopeBuilder(),
+            $this->getMockTagRepository()
+        );
 
         $response = $controller->get(new Request(), new Response(), ['id' => $id]);
 
@@ -83,6 +87,14 @@ class ArticleGetControllerTest extends \PHPUnit_Framework_TestCase
     private function getMockArticleRepository()
     {
         return $this->buildMock(Repository\ArticleRepository::class);
+    }
+
+    /**
+     * @return \PHPUnit_Framework_MockObject_MockObject|Repository\TagRepository
+     */
+    private function getMockTagRepository()
+    {
+        return $this->buildMock(Repository\TagRepository::class);
     }
 
     /**
