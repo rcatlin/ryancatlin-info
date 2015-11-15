@@ -73,13 +73,32 @@ class ArticleUpdateController extends AbstractArticleController
 
         $values = $this->readRequestJson($request);
 
+        // Validate
+        $validationResult = $this->articleValidator->validate($values, Validator\Context::UPDATE);
+        if ($validationResult->isNotValid()) {
+            return $this->renderValidationErrors($response, $validationResult->getMessages());
+        }
+
         $values['id'] = $id;
 
-        $tags = null;
-        if (array_key_exists('tags', $values)) {
-            $tags = $values['tags'];
-            unset($values['tags']);
+        // Reverse Transform and Update
+        try {
+            $article = $this->articleReverseTransformer->reverseTransform($values, false);
+        } catch (\Exception $e) {
+            return $this->renderServerError($response, 'An error occurred processing the data.');
         }
+
+        // Persist
+        try {
+            $this->entityManager->flush($article);
+        } catch (\Exception $e) {
+            return $this->renderServerError($response, 'An error occurred saving the data.' . $e->getMessage());
+        }
+
+        // Serialize
+        $scope = $this->getArticleScope($article);
+
+        return $this->renderResult($response, $scope->toArray(), 202);
     }
 
     public function partialUpdate(Request $request, Response $response, $vars = [])
