@@ -53,7 +53,6 @@ class ControllerServiceProvider extends AbstractServiceProvider
         ;
 
         $container->share(Controller\Api\ArticleUpdateController::class)
-            ->withArgument(Repository\ArticleRepository::class)
             ->withArgument(ReverseTransformer\Entity\ArticleReverseTransformer::class)
             ->withArgument(Validator\Entity\ArticleValidator::class)
             ->withArgument(EntityManager::class)

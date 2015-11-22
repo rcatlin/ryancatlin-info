@@ -5,7 +5,6 @@ namespace RCatlin\Blog\Controller\Api;
 use Doctrine\ORM\EntityManager;
 use RCatlin\Blog\Behavior\ReadsRequestContent;
 use RCatlin\Blog\Behavior\RenderError;
-use RCatlin\Blog\Repository;
 use RCatlin\Blog\ReverseTransformer;
 use RCatlin\Blog\Serializer;
 use RCatlin\Blog\Validator;
@@ -16,11 +15,6 @@ class ArticleUpdateController extends AbstractArticleController
 {
     use ReadsRequestContent;
     use RenderError;
-
-    /**
-     * @var Repository\ArticleRepository
-     */
-    private $articleRepository;
 
     /**
      * @var ReverseTransformer\Entity\ArticleReverseTransformer
@@ -38,14 +32,12 @@ class ArticleUpdateController extends AbstractArticleController
     private $entityManager;
 
     /**
-     * @param Repository\ArticleRepository                        $articleRepository
      * @param ReverseTransformer\Entity\ArticleReverseTransformer $articleReverseTransformer
      * @param Validator\Entity\ArticleValidator                   $articleValidator
      * @param EntityManager                                       $entityManager
      * @param Serializer\ScopeBuilder                             $scopeBuilder
      */
     public function __construct(
-        Repository\ArticleRepository $articleRepository,
         ReverseTransformer\Entity\ArticleReverseTransformer $articleReverseTransformer,
         Validator\Entity\ArticleValidator $articleValidator,
         EntityManager $entityManager,
@@ -53,7 +45,6 @@ class ArticleUpdateController extends AbstractArticleController
     ) {
         parent::__construct($scopeBuilder);
 
-        $this->articleRepository = $articleRepository;
         $this->articleReverseTransformer = $articleReverseTransformer;
         $this->articleValidator = $articleValidator;
         $this->entityManager = $entityManager;
@@ -62,14 +53,6 @@ class ArticleUpdateController extends AbstractArticleController
     public function update(Request $request, Response $response, $vars = [])
     {
         $id = $vars['id'];
-
-        $article = $this->articleRepository->find($id);
-
-        if ($article === null) {
-            return $this->renderNotFound($response, sprintf(
-                'Article with id %s not found.', $id
-            ));
-        }
 
         $values = $this->readRequestJson($request);
 
@@ -83,9 +66,15 @@ class ArticleUpdateController extends AbstractArticleController
 
         // Reverse Transform and Update
         try {
-            $article = $this->articleReverseTransformer->reverseTransform($values, false);
+            $article = $this->articleReverseTransformer->reverseTransform($values, true);
         } catch (\Exception $e) {
             return $this->renderServerError($response, 'An error occurred processing the data.');
+        }
+
+        if ($article === null) {
+            return $this->renderNotFound($response, sprintf(
+                'Article with id %s not found.', $id
+            ));
         }
 
         // Flush
@@ -105,14 +94,6 @@ class ArticleUpdateController extends AbstractArticleController
     {
         $id = $vars['id'];
 
-        $article = $this->articleRepository->find($id);
-
-        if ($article == null) {
-            return $this->renderNotFound($response, sprintf(
-                'Article with id %s not found.', $id
-            ));
-        }
-
         $values = $this->readRequestJson($request);
 
         $values['id'] = $id;
@@ -130,7 +111,13 @@ class ArticleUpdateController extends AbstractArticleController
             return $this->renderServerError($response, 'An error occurred processing the data.');
         }
 
-        // Persist
+        if ($article == null) {
+            return $this->renderNotFound($response, sprintf(
+                'Article with id %s not found.', $id
+            ));
+        }
+
+        // Flush
         try {
             $this->entityManager->flush($article);
         } catch (\Exception $e) {

@@ -2,27 +2,16 @@
 
 namespace RCatlin\Blog\Test\Integration;
 
-use Doctrine\ORM\EntityManager;
 use GuzzleHttp\Client;
-use League\Container\Container;
 use RCatlin\Blog\Entity;
+use RCatlin\Blog\Test\AbstractRequiresContainerTest;
 
-abstract class AbstractIntegrationTest extends \PHPUnit_Framework_TestCase
+abstract class AbstractIntegrationTest extends AbstractRequiresContainerTest
 {
     /**
      * @var Client
      */
     protected $client;
-
-    /**
-     * @var Container
-     */
-    protected static $container;
-
-    /**
-     * @var EntityManager
-     */
-    protected static $entityManager;
 
     public function setUp()
     {
@@ -48,25 +37,5 @@ abstract class AbstractIntegrationTest extends \PHPUnit_Framework_TestCase
             );
             $query->execute();
         }
-    }
-
-    public static function setUpBeforeClass()
-    {
-        self::createContainer();
-
-        self::$entityManager = self::$container->get(EntityManager::class);
-    }
-
-    public static function tearDownAfterClass()
-    {
-        self::$entityManager = null;
-        self::$container = null;
-    }
-
-    public static function createContainer()
-    {
-        $container = require __DIR__ . '/../../config/container.php';
-
-        self::$container = $container;
     }
 }

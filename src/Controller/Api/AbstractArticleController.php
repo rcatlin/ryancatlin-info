@@ -7,7 +7,7 @@ use RCatlin\Blog\Behavior;
 use RCatlin\Blog\Entity;
 use RCatlin\Blog\Serializer;
 
-class AbstractArticleController
+abstract class AbstractArticleController
 {
     use Behavior\ReadsRequestContent;
     use Behavior\RenderError;
