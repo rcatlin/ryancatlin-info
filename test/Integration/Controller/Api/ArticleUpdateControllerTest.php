@@ -126,4 +126,54 @@ class ArticleUpdateControllerTest extends AbstractIntegrationTest
         // New Tag should have been added to the two existing tags
         $this->assertEquals(3, count($data['tags']));
     }
+
+    public function testUpdate()
+    {
+        $faker = $this->getFaker();
+
+        /** @var Entity\Article $article */
+        $article = FactoryMuffin::create(Entity\Article::class);
+        $articleId = $article->getId();
+
+        $title = $faker->sentence();
+        $slug = $faker->word;
+        $content = $faker->sentence();
+        $active = $faker->boolean();
+        $tags = [];
+
+        $values = [
+            'title' => $title,
+            'slug' => $slug,
+            'content' => $content,
+            'active' => $active,
+            'tags' => $tags,
+        ];
+
+        $response = $this->client->request(
+            'PUT',
+            sprintf('/api/articles/%s', $articleId),
+            [
+                'body' => $this->createStreamFromArray($values),
+            ]
+        );
+
+        $this->assertEquals(202, $response->getStatusCode());
+
+        $response = $this->client->request(
+            'GET',
+            sprintf('/api/articles/%s', $articleId)
+        );
+
+        $this->assertEquals(200, $response->getStatusCode());
+
+        $responseContent = json_decode($this->readResponse($response), true);
+
+        $article = $responseContent['result']['data'];
+
+        $this->assertSame($title, $article['title']);
+        $this->assertSame($slug, $article['slug']);
+        $this->assertSame($content, $article['content']);
+        $this->assertSame($active, $article['active']);
+        $this->assertSame(count($tags), count($article['tags']));
+    }
 }
