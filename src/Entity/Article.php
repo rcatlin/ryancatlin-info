@@ -49,7 +49,7 @@ class Article
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="createdAt", type="datetimetz")
+     * @ORM\Column(name="createdAt", type="datetime")
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $createdAt;
@@ -57,7 +57,7 @@ class Article
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="updatedAt", type="datetimetz")
+     * @ORM\Column(name="updatedAt", type="datetime")
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $updatedAt;
