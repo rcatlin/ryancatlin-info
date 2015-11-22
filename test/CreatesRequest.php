@@ -9,7 +9,7 @@ use Zend\Diactoros\Stream;
 trait CreatesRequest
 {
     /**
-     * @param $content
+     * @param string $content
      *
      * @return Request
      */

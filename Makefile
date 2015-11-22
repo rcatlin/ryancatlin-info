@@ -1,4 +1,4 @@
-.PHONY: test composer cs migrate setup database
+.PHONY: test composer cs migrate setup database test unit integration
 
 # For setting up the dev environment.
 setup:
@@ -15,10 +15,12 @@ database:
 	mysql -uroot -e "DROP DATABASE IF EXISTS ryancatlin_info_test; CREATE DATABASE ryancatlin_info_test"
 	make migrate
 
-test: composer setup database
+test: composer setup unit integration
+
+unit: database
 	vendor/bin/phpunit test/Unit --colors --debug --verbose
 
-integration: composer setup database
+integration: database
 	./script/integration.sh
 
 # See https://github.com/doctrine/DoctrineORMModule/issues/361 as to why '-n' flag is included

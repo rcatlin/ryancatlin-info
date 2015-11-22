@@ -24,7 +24,7 @@ before_script:
     - mkdir -p "$HOME/.php-cs-fixer"
 
 script:
-    - make test
+    - make unit
     - make integration
     - vendor/bin/php-cs-fixer fix --config-file=.php_cs --verbose --diff --dry-run
 
