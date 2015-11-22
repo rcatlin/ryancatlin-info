@@ -65,7 +65,7 @@ class ArticleUpdateController extends AbstractArticleController
 
         $article = $this->articleRepository->find($id);
 
-        if ($article == null) {
+        if ($article === null) {
             return $this->renderNotFound($response, sprintf(
                 'Article with id %s not found.', $id
             ));
@@ -88,7 +88,7 @@ class ArticleUpdateController extends AbstractArticleController
             return $this->renderServerError($response, 'An error occurred processing the data.');
         }
 
-        // Persist
+        // Flush
         try {
             $this->entityManager->flush($article);
         } catch (\Exception $e) {
