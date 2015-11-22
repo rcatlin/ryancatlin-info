@@ -15,6 +15,7 @@ use RCatlin\Blog\Test\ReadsResponseContent;
 use RCatlin\Blog\Test\Unit\BuildsMocks;
 use RCatlin\Blog\Validator;
 use Refinery29\Piston\Response;
+use Teapot\StatusCode;
 
 class TagUpdateControllerTest extends \PHPUnit_Framework_TestCase
 {
@@ -90,7 +91,7 @@ class TagUpdateControllerTest extends \PHPUnit_Framework_TestCase
         // Call Our Test Method
         $response = $controller->update($request, new Response(), ['id' => $id]);
 
-        $this->assertEquals(202, $response->getStatusCode());
+        $this->assertEquals(StatusCode::ACCEPTED, $response->getStatusCode());
 
         $content = $this->readControllerResponse($response);
 

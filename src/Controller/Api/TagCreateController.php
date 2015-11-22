@@ -9,6 +9,7 @@ use RCatlin\Blog\Validator;
 use RCatlin\Blog\Validator\Context;
 use Refinery29\Piston\Request;
 use Refinery29\Piston\Response;
+use Teapot\StatusCode;
 
 class TagCreateController extends AbstractTagController
 {
@@ -84,7 +85,7 @@ class TagCreateController extends AbstractTagController
         return $this->renderResult(
             $response,
             $this->getTagScope($tag)->toArray(),
-            201
+            StatusCode::CREATED
         );
     }
 }

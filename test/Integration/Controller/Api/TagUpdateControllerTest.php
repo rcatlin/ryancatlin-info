@@ -9,6 +9,7 @@ use RCatlin\Blog\Test\HasFaker;
 use RCatlin\Blog\Test\Integration\AbstractIntegrationTest;
 use RCatlin\Blog\Test\LoadsFactoryMuffinFactories;
 use RCatlin\Blog\Test\ReadsResponseContent;
+use Teapot\StatusCode;
 
 class TagUpdateControllerTest extends AbstractIntegrationTest
 {
@@ -38,7 +39,7 @@ class TagUpdateControllerTest extends AbstractIntegrationTest
             ]
         );
 
-        $this->assertEquals(202, $response->getStatusCode());
+        $this->assertEquals(StatusCode::ACCEPTED, $response->getStatusCode());
 
         // GET
         $response = $this->client->request(
@@ -46,7 +47,7 @@ class TagUpdateControllerTest extends AbstractIntegrationTest
             sprintf('/api/tags/%s', $tagId)
         );
 
-        $this->assertSame(200, $response->getStatusCode());
+        $this->assertSame(StatusCode::OK, $response->getStatusCode());
 
         $content = $this->readResponse($response);
 

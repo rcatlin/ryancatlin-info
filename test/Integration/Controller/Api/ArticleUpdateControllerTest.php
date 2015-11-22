@@ -9,6 +9,7 @@ use RCatlin\Blog\Test\HasFaker;
 use RCatlin\Blog\Test\Integration\AbstractIntegrationTest;
 use RCatlin\Blog\Test\LoadsFactoryMuffinFactories;
 use RCatlin\Blog\Test\ReadsResponseContent;
+use Teapot\StatusCode;
 
 class ArticleUpdateControllerTest extends AbstractIntegrationTest
 {
@@ -157,14 +158,14 @@ class ArticleUpdateControllerTest extends AbstractIntegrationTest
             ]
         );
 
-        $this->assertEquals(202, $response->getStatusCode());
+        $this->assertEquals(StatusCode::ACCEPTED, $response->getStatusCode());
 
         $response = $this->client->request(
             'GET',
             sprintf('/api/articles/%s', $articleId)
         );
 
-        $this->assertEquals(200, $response->getStatusCode());
+        $this->assertEquals(StatusCode::OK, $response->getStatusCode());
 
         $responseContent = json_decode($this->readResponse($response), true);
 

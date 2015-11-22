@@ -17,6 +17,7 @@ use RCatlin\Blog\Test\Unit\BuildsMocks;
 use RCatlin\Blog\Validator;
 use Refinery29\Piston\Request;
 use Refinery29\Piston\Response;
+use Teapot\StatusCode;
 
 class ArticleCreateControllerTest extends \PHPUnit_Framework_TestCase
 {
@@ -93,7 +94,7 @@ class ArticleCreateControllerTest extends \PHPUnit_Framework_TestCase
 
         $response = $controller->create($request, new Response());
 
-        $this->assertEquals(201, $response->getStatusCode());
+        $this->assertEquals(StatusCode::CREATED, $response->getStatusCode());
         $this->assertEquals(
             json_encode([
                 'result' => $serializedArticle,
@@ -113,7 +114,7 @@ class ArticleCreateControllerTest extends \PHPUnit_Framework_TestCase
 
         $response = $controller->create(new Request(), new Response());
 
-        $this->assertEquals(400, $response->getStatusCode());
+        $this->assertEquals(StatusCode::BAD_REQUEST, $response->getStatusCode());
     }
 
     public function testCreateAndValidationFails()
@@ -131,7 +132,7 @@ class ArticleCreateControllerTest extends \PHPUnit_Framework_TestCase
 
         $response = $controller->create($request, new Response());
 
-        $this->assertEquals(400, $response->getStatusCode());
+        $this->assertEquals(StatusCode::BAD_REQUEST, $response->getStatusCode());
     }
 
     /**

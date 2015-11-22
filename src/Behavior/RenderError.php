@@ -6,6 +6,7 @@ use Assert\Assertion;
 use Refinery29\ApiOutput\Resource\Error\ErrorCollection;
 use Refinery29\ApiOutput\Resource\ResourceFactory;
 use Refinery29\Piston\Response;
+use Teapot\StatusCode;
 
 trait RenderError
 {
@@ -19,7 +20,7 @@ trait RenderError
     {
         Assertion::string($message);
 
-        return $this->renderErrors($response, 404, ResourceFactory::errorCollection([
+        return $this->renderErrors($response, StatusCode::NOT_FOUND, ResourceFactory::errorCollection([
             ResourceFactory::error($message, 0),
         ]));
     }
@@ -34,7 +35,7 @@ trait RenderError
     {
         Assertion::string($message);
 
-        return $this->renderErrors($response, 400, ResourceFactory::errorCollection([
+        return $this->renderErrors($response, StatusCode::BAD_REQUEST, ResourceFactory::errorCollection([
             ResourceFactory::error($message, 0),
         ]));
     }
@@ -58,7 +59,7 @@ trait RenderError
             }
         }
 
-        return $this->renderErrors($response, 400, ResourceFactory::errorCollection($errors));
+        return $this->renderErrors($response, StatusCode::BAD_REQUEST, ResourceFactory::errorCollection($errors));
     }
 
     /**
@@ -71,7 +72,7 @@ trait RenderError
     {
         Assertion::string($message);
 
-        return $this->renderErrors($response, 500, ResourceFactory::errorCollection([
+        return $this->renderErrors($response, StatusCode::INTERNAL_SERVER_ERROR, ResourceFactory::errorCollection([
             ResourceFactory::error($message, 0),
         ]));
     }
