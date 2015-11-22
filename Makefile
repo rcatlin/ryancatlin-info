@@ -13,7 +13,7 @@ cs: composer
 
 database:
 	mysql -uroot -e "DROP DATABASE IF EXISTS ryancatlin_info_test; CREATE DATABASE ryancatlin_info_test"
-	make migrate
+	make schema
 
 test: composer setup unit integration
 
@@ -22,6 +22,9 @@ unit: database
 
 integration: database
 	./script/integration.sh
+
+schema:
+	mysql -uroot ryancatlin_info_test < sql/schema.sql
 
 # See https://github.com/doctrine/DoctrineORMModule/issues/361 as to why '-n' flag is included
 migrate:
