@@ -25,8 +25,8 @@ class ArticleController extends BaseController
     {
         $entities = $this->getArticleRepository()->findAll();
 
-        return array(
+        return [
             'entities' => $entities,
-        );
+        ];
     }
 }
