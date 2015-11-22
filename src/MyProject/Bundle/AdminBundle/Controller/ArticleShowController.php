@@ -30,10 +30,10 @@ class ArticleShowController extends BaseController
 
         $deleteForm = $this->createDeleteForm($id);
 
-        return array(
-            'entity'      => $entity,
+        return [
+            'entity' => $entity,
             'delete_form' => $deleteForm->createView(),
-        );
+        ];
     }
 
     /**
@@ -49,14 +49,14 @@ class ArticleShowController extends BaseController
             ->setAction(
                 $this->generateUrl(
                     'article_delete',
-                    array('id' => $id)
+                    ['id' => $id]
                 )
             )
             ->setMethod('DELETE')
             ->add(
                 'submit',
                 'submit',
-                array('label' => 'Delete')
+                ['label' => 'Delete']
             )
             ->getForm()
         ;

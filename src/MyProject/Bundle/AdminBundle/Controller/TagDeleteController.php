@@ -52,14 +52,14 @@ class TagDeleteController extends BaseController
             ->setAction(
                 $this->generateUrl(
                     'tags_delete',
-                    array('id' => $id)
+                    ['id' => $id]
                 )
             )
             ->setMethod('DELETE')
             ->add(
                 'submit',
                 'submit',
-                array('label' => 'Delete')
+                ['label' => 'Delete']
             )
             ->getForm()
         ;

@@ -24,8 +24,8 @@ class TagController extends BaseController
     {
         $entities = $this->getTagRepository()->findAll();
 
-        return array(
+        return [
             'entities' => $entities,
-        );
+        ];
     }
 }
