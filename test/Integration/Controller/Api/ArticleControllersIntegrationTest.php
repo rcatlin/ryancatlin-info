@@ -6,6 +6,7 @@ use RCatlin\Blog\Test\CreatesGuzzleStream;
 use RCatlin\Blog\Test\HasFaker;
 use RCatlin\Blog\Test\Integration\AbstractIntegrationTest;
 use RCatlin\Blog\Test\ReadsResponseContent;
+use Teapot\StatusCode;
 
 class ArticleControllersIntegrationTest extends AbstractIntegrationTest
 {
@@ -39,7 +40,7 @@ class ArticleControllersIntegrationTest extends AbstractIntegrationTest
             ),
         ]);
 
-        $this->assertEquals(201, $response->getStatusCode());
+        $this->assertEquals(StatusCode::CREATED, $response->getStatusCode());
 
         $responseContent = json_decode($this->readResponse($response), true);
 
@@ -62,48 +63,48 @@ class ArticleControllersIntegrationTest extends AbstractIntegrationTest
             '/api/articles/%s', $articleId
         ));
 
-        $this->assertEquals(200, $response->getStatusCode());
+        $this->assertEquals(StatusCode::OK, $response->getStatusCode());
 
         // Get Tag Created From Creating Article
         $response = $this->client->request('GET', sprintf(
             '/api/tags/%s', $tagId
         ));
 
-        $this->assertEquals(200, $response->getStatusCode());
+        $this->assertEquals(StatusCode::OK, $response->getStatusCode());
 
         // Delete Article
         $response = $this->client->request('DELETE', sprintf(
             '/api/articles/%s', $articleId
         ));
 
-        $this->assertEquals(204, $response->getStatusCode());
+        $this->assertEquals(StatusCode::NO_CONTENT, $response->getStatusCode());
 
         // Ensure Article no longer exists
         $response = $this->client->request('GET', sprintf(
             '/api/articles/%s', $articleId
         ));
 
-        $this->assertEquals(404, $response->getStatusCode());
+        $this->assertEquals(StatusCode::NOT_FOUND, $response->getStatusCode());
 
         // Ensure Tag was not Deleted with Article
         $response = $this->client->request('GET', sprintf(
             '/api/tags/%s', $tagId
         ));
 
-        $this->assertEquals(200, $response->getStatusCode());
+        $this->assertEquals(StatusCode::OK, $response->getStatusCode());
 
         // Delete Tag
         $response = $this->client->request('DELETE', sprintf(
             '/api/tags/%s', $tagId
         ));
 
-        $this->assertEquals(204, $response->getStatusCode());
+        $this->assertEquals(StatusCode::NO_CONTENT, $response->getStatusCode());
 
         // Ensure Tag is Deleted
         $response = $this->client->request('GET', sprintf(
             '/api/tags/%s', $tagId
         ));
 
-        $this->assertEquals(404, $response->getStatusCode());
+        $this->assertEquals(StatusCode::NOT_FOUND, $response->getStatusCode());
     }
 }

@@ -18,6 +18,7 @@ use RCatlin\Blog\Test\ReadsResponseContent;
 use RCatlin\Blog\Test\Unit\BuildsMocks;
 use RCatlin\Blog\Validator;
 use Refinery29\Piston\Response;
+use Teapot\StatusCode;
 
 class ArticleUpdateControllerTest extends AbstractRequiresContainerTest
 {
@@ -106,7 +107,7 @@ class ArticleUpdateControllerTest extends AbstractRequiresContainerTest
         // Call Our Test Method
         $response = $controller->update($request, new Response(), ['id' => $id]);
 
-        $this->assertSame(202, $response->getStatusCode());
+        $this->assertSame(StatusCode::ACCEPTED, $response->getStatusCode());
 
         $content = $this->readControllerResponse($response);
 

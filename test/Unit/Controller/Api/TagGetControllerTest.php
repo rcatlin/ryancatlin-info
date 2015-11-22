@@ -12,6 +12,7 @@ use RCatlin\Blog\Test\ReadsResponseContent;
 use RCatlin\Blog\Test\Unit\BuildsMocks;
 use Refinery29\Piston\Request;
 use Refinery29\Piston\Response;
+use Teapot\StatusCode;
 
 class TagGetControllerTest extends \PHPUnit_Framework_TestCase
 {
@@ -51,7 +52,7 @@ class TagGetControllerTest extends \PHPUnit_Framework_TestCase
 
         $response = $controller->get(new Request(), new Response(), ['id' => $id]);
 
-        $this->assertEquals(200, $response->getStatusCode());
+        $this->assertEquals(StatusCode::OK, $response->getStatusCode());
         $this->assertEquals(
             json_encode(
                 [

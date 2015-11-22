@@ -5,6 +5,7 @@ namespace RCatlin\Blog\Behavior;
 use Assert\Assertion;
 use Refinery29\ApiOutput\Resource\ResourceFactory;
 use Refinery29\Piston\Response;
+use Teapot\StatusCode;
 
 trait RenderResponse
 {
@@ -15,7 +16,7 @@ trait RenderResponse
      *
      * @return Response
      */
-    public function renderResult(Response $response, array $result, $status = 200)
+    public function renderResult(Response $response, array $result, $status = StatusCode::OK)
     {
         Assertion::integer($status);
 

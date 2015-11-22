@@ -12,6 +12,7 @@ use RCatlin\Blog\Test\ReadsResponseContent;
 use RCatlin\Blog\Test\Unit\BuildsMocks;
 use Refinery29\Piston\Request;
 use Refinery29\Piston\Response;
+use Teapot\StatusCode;
 
 class ArticleGetControllerTest extends \PHPUnit_Framework_TestCase
 {
@@ -50,7 +51,7 @@ class ArticleGetControllerTest extends \PHPUnit_Framework_TestCase
 
         $response = $controller->get(new Request(), new Response(), ['id' => $id]);
 
-        $this->assertEquals(200, $response->getStatusCode());
+        $this->assertEquals(StatusCode::OK, $response->getStatusCode());
 
         $content = $this->readControllerResponse($response);
 
@@ -78,7 +79,7 @@ class ArticleGetControllerTest extends \PHPUnit_Framework_TestCase
 
         $response = $controller->get(new Request(), new Response(), ['id' => $id]);
 
-        $this->assertEquals(404, $response->getStatusCode());
+        $this->assertEquals(StatusCode::NOT_FOUND, $response->getStatusCode());
     }
 
     /**

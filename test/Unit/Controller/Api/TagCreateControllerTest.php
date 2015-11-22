@@ -15,6 +15,7 @@ use RCatlin\Blog\Test\ReadsResponseContent;
 use RCatlin\Blog\Test\Unit\BuildsMocks;
 use RCatlin\Blog\Validator;
 use Refinery29\Piston\Response;
+use Teapot\StatusCode;
 
 class TagCreateControllerTest extends \PHPUnit_Framework_TestCase
 {
@@ -81,7 +82,7 @@ class TagCreateControllerTest extends \PHPUnit_Framework_TestCase
 
         $response = $controller->create($request, new Response());
 
-        $this->assertEquals(201, $response->getStatusCode());
+        $this->assertEquals(StatusCode::CREATED, $response->getStatusCode());
         $this->assertEquals(
             json_encode(
                 [

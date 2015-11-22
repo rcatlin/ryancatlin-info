@@ -4,6 +4,7 @@ namespace RCatlin\Blog\Test\Integration\Controller\Api;
 
 use RCatlin\Blog\Test\HasFaker;
 use RCatlin\Blog\Test\Integration\AbstractIntegrationTest;
+use Teapot\StatusCode;
 
 class TagControllersIntegrationTest extends AbstractIntegrationTest
 {
@@ -22,7 +23,7 @@ class TagControllersIntegrationTest extends AbstractIntegrationTest
         // Create Tag
         $response = $this->client->request('POST', '/api/tags', ['body' => $body]);
 
-        $this->assertEquals(201, $response->getStatusCode());
+        $this->assertEquals(StatusCode::CREATED, $response->getStatusCode());
 
         $content = json_decode($response->getBody()->getContents(), true);
 
@@ -38,7 +39,7 @@ class TagControllersIntegrationTest extends AbstractIntegrationTest
             '/api/tags/%s', $tagId
         ));
 
-        $this->assertEquals(200, $response->getStatusCode());
+        $this->assertEquals(StatusCode::OK, $response->getStatusCode());
 
         $content = json_decode($response->getBody()->getContents(), true);
         $data = $content['result']['data'];
@@ -51,13 +52,13 @@ class TagControllersIntegrationTest extends AbstractIntegrationTest
             '/api/tags/%s', $tagId
         ));
 
-        $this->assertEquals(204, $response->getStatusCode());
+        $this->assertEquals(StatusCode::NO_CONTENT, $response->getStatusCode());
 
         // Ensure Tag No Longer Exists
         $response = $this->client->request('GET', sprintf(
             '/api/tags/%s', $tagId
         ));
 
-        $this->assertEquals(404, $response->getStatusCode());
+        $this->assertEquals(StatusCode::NOT_FOUND, $response->getStatusCode());
     }
 }

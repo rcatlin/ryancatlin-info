@@ -8,6 +8,7 @@ use RCatlin\Blog\Test\HasFaker;
 use RCatlin\Blog\Test\Integration\AbstractIntegrationTest;
 use RCatlin\Blog\Test\LoadsFactoryMuffinFactories;
 use RCatlin\Blog\Test\ReadsResponseContent;
+use Teapot\StatusCode;
 
 class ArticleGetByTagControllerTest extends AbstractIntegrationTest
 {
@@ -33,7 +34,7 @@ class ArticleGetByTagControllerTest extends AbstractIntegrationTest
             sprintf('/api/articles/tag/%s', $tag->getName())
         );
 
-        $this->assertSame(200, $response->getStatusCode());
+        $this->assertSame(StatusCode::OK, $response->getStatusCode());
 
         $content = json_decode($this->readResponse($response), true);
 

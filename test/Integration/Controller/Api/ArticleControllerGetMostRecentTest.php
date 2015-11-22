@@ -7,6 +7,7 @@ use RCatlin\Blog\Entity;
 use RCatlin\Blog\Test\Integration\AbstractIntegrationTest;
 use RCatlin\Blog\Test\LoadsFactoryMuffinFactories;
 use RCatlin\Blog\Test\ReadsResponseContent;
+use Teapot\StatusCode;
 
 class ArticleControllerGetMostRecentTest extends AbstractIntegrationTest
 {
@@ -31,7 +32,7 @@ class ArticleControllerGetMostRecentTest extends AbstractIntegrationTest
 
         $response = $this->client->get('/api/articles/mostrecent');
 
-        $this->assertSame(200, $response->getStatusCode());
+        $this->assertSame(StatusCode::OK, $response->getStatusCode());
 
         $content = json_decode($this->readResponse($response), true);
 

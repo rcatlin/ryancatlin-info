@@ -10,6 +10,7 @@ use RCatlin\Blog\Serializer;
 use RCatlin\Blog\Validator;
 use Refinery29\Piston\Request;
 use Refinery29\Piston\Response;
+use Teapot\StatusCode;
 
 class TagUpdateController extends  AbstractTagController
 {
@@ -86,6 +87,6 @@ class TagUpdateController extends  AbstractTagController
         // Serialize
         $scope = $this->getTagScope($tag);
 
-        return $this->renderResult($response, $scope->toArray(), 202);
+        return $this->renderResult($response, $scope->toArray(), StatusCode::ACCEPTED);
     }
 }

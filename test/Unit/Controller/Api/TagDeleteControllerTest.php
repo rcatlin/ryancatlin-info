@@ -10,6 +10,7 @@ use RCatlin\Blog\Test\HasFaker;
 use RCatlin\Blog\Test\Unit\BuildsMocks;
 use Refinery29\Piston\Request;
 use Refinery29\Piston\Response;
+use Teapot\StatusCode;
 
 class TagDeleteControllerTest extends \PHPUnit_Framework_TestCase
 {
@@ -42,7 +43,7 @@ class TagDeleteControllerTest extends \PHPUnit_Framework_TestCase
 
         $response = $controller->delete(new Request(), new Response(), ['id' => $id]);
 
-        $this->assertEquals(204, $response->getStatusCode());
+        $this->assertEquals(StatusCode::NO_CONTENT, $response->getStatusCode());
     }
 
     public function testDeleteWithBadId()
@@ -60,7 +61,7 @@ class TagDeleteControllerTest extends \PHPUnit_Framework_TestCase
 
         $response = $controller->delete(new Request(), new Response(), ['id' => $id]);
 
-        $this->assertEquals(404, $response->getStatusCode());
+        $this->assertEquals(StatusCode::NOT_FOUND, $response->getStatusCode());
     }
 
     /**

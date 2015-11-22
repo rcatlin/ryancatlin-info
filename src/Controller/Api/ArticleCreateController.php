@@ -8,6 +8,7 @@ use RCatlin\Blog\Serializer;
 use RCatlin\Blog\Validator;
 use Refinery29\Piston\Request;
 use Refinery29\Piston\Response;
+use Teapot\StatusCode;
 
 class ArticleCreateController extends AbstractArticleController
 {
@@ -83,6 +84,6 @@ class ArticleCreateController extends AbstractArticleController
 
         $scope = $this->getArticleScope($article);
 
-        return $this->renderResult($response, $scope->toArray(), 201);
+        return $this->renderResult($response, $scope->toArray(), StatusCode::CREATED);
     }
 }

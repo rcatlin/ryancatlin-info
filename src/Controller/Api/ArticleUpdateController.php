@@ -10,6 +10,7 @@ use RCatlin\Blog\Serializer;
 use RCatlin\Blog\Validator;
 use Refinery29\Piston\Request;
 use Refinery29\Piston\Response;
+use Teapot\StatusCode;
 
 class ArticleUpdateController extends AbstractArticleController
 {
@@ -87,7 +88,7 @@ class ArticleUpdateController extends AbstractArticleController
         // Serialize
         $scope = $this->getArticleScope($article);
 
-        return $this->renderResult($response, $scope->toArray(), 202);
+        return $this->renderResult($response, $scope->toArray(), StatusCode::ACCEPTED);
     }
 
     public function partialUpdate(Request $request, Response $response, $vars = [])
@@ -127,6 +128,6 @@ class ArticleUpdateController extends AbstractArticleController
         // Serialize
         $scope = $this->getArticleScope($article);
 
-        return $this->renderResult($response, $scope->toArray(), 202);
+        return $this->renderResult($response, $scope->toArray(), StatusCode::ACCEPTED);
     }
 }
