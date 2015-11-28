@@ -4,7 +4,7 @@ module.exports = function (grunt) {
         bowercopy: {
             options: {
                 srcPrefix: 'bower_components',
-                destPrefix: 'web'
+                destPrefix: 'web/resources'
             },
             scripts: {
                 files: {
@@ -42,7 +42,7 @@ module.exports = function (grunt) {
                 expand: true,
                 cwd: 'web/bundles/main/images',
                 src: '**',
-                dest: 'web/images/'
+                dest: 'web/resources/images/'
             }
         }
     });
