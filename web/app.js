@@ -7,8 +7,10 @@ var router = new Router();
 router.extendExpress(app);
 router.registerAppHelpers(app);
 
+// Define Static Resources Directory with virtual path
 app.use('/static', express.static('resources'));
 
+// Setup Twig
 var twig = require('twig');
 twig.extendFunction('is_granted', function (role_name) {
     return true;
@@ -18,11 +20,12 @@ app.set('twig options', {
 })
 app.set('view engine', twig.__express);
 
+// Routing
 app.get('/', 'index', function (request, response) {
     response.render('index.html.twig', {articles: []});
 })
 
-
+// Init Server and Listen
 var server = app.listen(8080, function () {
     var host = server.address().address;
     var port = server.address().port;
