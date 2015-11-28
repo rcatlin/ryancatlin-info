@@ -17,7 +17,6 @@
         "php": ">=5.5",
         "doctrine/orm": "~2.2,>=2.2.3",
         "doctrine/migrations": "1.0.*@dev",
-        "twig/twig": "^1.20",
         "kriswallsmith/assetic": "^1.2",
         "monolog/monolog": "^1.16",
         "swiftmailer/swiftmailer": "^5.4",
