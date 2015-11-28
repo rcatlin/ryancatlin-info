@@ -4,21 +4,21 @@
     </a>
     <ul class="dropdown-menu" role="menu">
         <li>
-            <a href="{{ path('articles') }}">Articles List</a>
+            <a href="{{ url('articles') }}">Articles List</a>
         </li>
         <li>
-            <a href="{{ path('article_new') }}">New Article</a>
-        </li>
-        <li class="divider"></li>
-        <li>
-            <a href="{{ path('tags') }}">Tags List</a>
-        </li>
-        <li>
-            <a href="{{ path('tag_new') }}">New Tag</a>
+            <a href="{{ url('article_new') }}">New Article</a>
         </li>
         <li class="divider"></li>
         <li>
-            <a href="{{ path('fos_user_security_logout') }}">Logout</a>
+            <a href="{{ url('tags') }}">Tags List</a>
+        </li>
+        <li>
+            <a href="{{ url('tag_new') }}">New Tag</a>
+        </li>
+        <li class="divider"></li>
+        <li>
+            <a href="{{ url('fos_user_security_logout') }}">Logout</a>
         </li>
     </ul>
 </li>

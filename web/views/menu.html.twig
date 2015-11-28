@@ -11,7 +11,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="{{ path('index') }}">ryancatlin.info</a>
+            <a class="navbar-brand" href="{{ url('index') }}">ryancatlin.info</a>
         </div>
 
 
@@ -25,7 +25,7 @@
                     </li>
                 {% else %}
                     <li>
-                        <a class="fa fa-home" href="{{ path('index') }}">&nbsp;Main</a>
+                        <a class="fa fa-home" href="{{ url('index') }}">&nbsp;Main</a>
                     </li>
                 {% endif %}
 
@@ -36,7 +36,7 @@
                     </li>
                 {% else %}
                     <li>
-                        <a class="fa fa-newspaper-o" href="{{ path('article_list') }}">&nbsp;Articles</a>
+                        <a class="fa fa-newspaper-o" href="{{ url('article_list') }}">&nbsp;Articles</a>
                     </li>
                 {% endif %}
 
@@ -47,13 +47,13 @@
                     </li>
                 {% else %}
                     <li>
-                        <a class="fa fa-info-circle" href="{{ path('about') }}">&nbsp;About</a>
+                        <a class="fa fa-info-circle" href="{{ url('about') }}">&nbsp;About</a>
                     </li>
                 {% endif %}
 
                 {# ADMIN #}
                 {% if is_granted('ROLE_USER') %}
-                   {% include 'MainBundle::admin_menu.html.twig' %}
+                   {% include 'admin_menu.html.twig' %}
                 {% endif %}
             </ul>
         </div>

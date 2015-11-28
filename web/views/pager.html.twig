@@ -2,7 +2,7 @@
 
     {% if page > 1 %}
         <li class="previous">
-            <a href="{{ path(
+            <a href="{{ url(
                 app.request.attributes.get('_route'),
                 {'p': page - 1}|merge(app.request.attributes.get('_route_params'))
             ) }}">&larr; Previous</a>
@@ -11,7 +11,7 @@
 
     {% if page < numPages %}
         <li class="next">
-            <a href="{{ path(
+            <a href="{{ url(
                 app.request.attributes.get('_route'),
                 {'p': page + 1}|merge(app.request.attributes.get('_route_params'))
             ) }}">Next &rarr;</a>

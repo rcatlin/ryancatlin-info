@@ -1,4 +1,4 @@
-{% extends 'MainBundle::base.html.twig' %}
+{% extends 'base.html.twig' %}
 
 {% block title %}{{ parent() }}{% endblock %}
 
@@ -13,11 +13,11 @@
         </div>
     {% else %}
         {% for article in articles %}
-            {% include 'MainBundle::Article/view.html.twig' with {article: article} %}
+            {% include 'Article/view.html.twig' with {article: article} %}
         {% endfor %}
     {% endif %}
 
-    {% include 'MainBundle::pager.html.twig' with {
+    {% include 'pager.html.twig' with {
         page: page,
         numPages: numPages
     } %}

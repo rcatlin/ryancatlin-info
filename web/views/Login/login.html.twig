@@ -1,4 +1,4 @@
-{% extends 'MainBundle::base.html.twig' %}
+{% extends 'base.html.twig' %}
 
 {% block content %}
 
@@ -6,7 +6,7 @@
             <div>{{ error|trans }}</div>
         {% endif %}
 
-        <form class="form-inline" action="{{ path("fos_user_security_check") }}" method="post" role="form">
+        <form class="form-inline" action="{{ url("fos_user_security_check") }}" method="post" role="form">
             <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
 
             <div class="form-group">

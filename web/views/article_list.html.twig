@@ -1,4 +1,4 @@
-{% extends 'MainBundle::base.html.twig' %}
+{% extends 'base.html.twig' %}
 
 {% block content %}
 
@@ -15,7 +15,7 @@
     {% for article in articles %}
         <p>
             <h3>
-                <a href="{{ path('article', { slug: article.slug }) }}">{{ article.title }}</a>
+                <a href="{{ url('article', { slug: article.slug }) }}">{{ article.title }}</a>
                 <small>{{ article.createdAt|date('M jS, Y', 'America/New_York') }}</small>
             </h3>
         </p>
@@ -27,13 +27,13 @@
 
         {% if page > 1 %}
             <li class="previous">
-                <a href="{{ path('article_list', {'p': page + 1}) }}">&larr; Previous</a>
+                <a href="{{ url('article_list', {'p': page + 1}) }}">&larr; Previous</a>
             </li>
         {% endif %}
 
         {% if page < numPages %}
             <li class="next">
-                <a href="{{ path('article_list', {'p': page - 1}) }}">Next &rarr;</a>
+                <a href="{{ url('article_list', {'p': page - 1}) }}">Next &rarr;</a>
             </li>
         {% endif %}
 

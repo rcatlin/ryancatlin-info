@@ -12,11 +12,11 @@
 <p class="text-center">
     {% if article.tags is defined and article.tags|length > 0 %}
         {% for tag in article.tags %}
-            <a href="{{ path('articles_by_tag', {name: tag.name} ) }}">#{{ tag.name }}</a>&nbsp;
+            <a href="{{ url('articles_by_tag', {name: tag.name} ) }}">#{{ tag.name }}</a>&nbsp;
         {% endfor %}
     {% endif %}
 
-    <a href="{{ path('article', {'slug': article.slug}) }}">
+    <a href="{{ url('article', {'slug': article.slug}) }}">
         <i class="fa fa-link"></i>
     </a>
 </p>

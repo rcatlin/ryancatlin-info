@@ -6,18 +6,18 @@
         <title>{% block title %}Ryan Catlin{% endblock %}</title>
 
         {% block stylesheets %}
-            {% include 'MainBundle::_stylesheets.html.twig' %}
+            {% include '_stylesheets.html.twig' %}
         {% endblock %}
 
         {% block javascripts %}
-            {% include 'MainBundle::_javascripts.html.twig' %}
+            {% include '_javascripts.html.twig' %}
         {% endblock %}
 
-        {% include 'MainBundle::favicon.html.twig' %}
+        {% include 'favicon.html.twig' %}
     </head>
     <body>
 
-        {% include 'MainBundle::menu.html.twig' %}
+        {% include 'menu.html.twig' %}
 
         <div class="jumbotron">
             <div class="container">
@@ -37,7 +37,7 @@
         </div>
 
         {% block google_analytics %}
-            {% include 'MainBundle::google_analytics.html.twig' %}
+            {% include 'google_analytics.html.twig' %}
         {% endblock %}
 
         <div id="footer">
