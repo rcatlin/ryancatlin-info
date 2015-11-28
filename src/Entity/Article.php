@@ -80,10 +80,10 @@ class Article
      * @ORM\JoinTable(
      *      name="article_tag",
      *      joinColumns={
-     *          @ORM\JoinColumn(name="article_id", referencedColumnName="id")
+     *          @ORM\JoinColumn(name="article_id", referencedColumnName="id", onDelete="cascade")
      *      },
      *      inverseJoinColumns={
-     *          @ORM\JoinColumn(name="tag_id", referencedColumnName="id")
+     *          @ORM\JoinColumn(name="tag_id", referencedColumnName="id", onDelete="cascade")
      *      }
      * )
      */
