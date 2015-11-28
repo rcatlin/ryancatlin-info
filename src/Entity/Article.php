@@ -15,7 +15,6 @@ use Doctrine\ORM\Mapping as ORM;
  * )
  * @ORM\Table(
  *     indexes={
- *         @ORM\Index(name="slug_idx", columns={"slug"}),
  *         @ORM\Index(name="active_idx", columns={"active"})
  *     }
  * )
