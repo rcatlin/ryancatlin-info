@@ -19,7 +19,7 @@ class MainBundleController extends Controller
      */
     public function redirectToRoute(
         $route,
-        $parameters = array(),
+        $parameters = [],
         $referenceType = UrlGeneratorInterface::ABSOLUTE_PATH,
         $status = 302
     ) {

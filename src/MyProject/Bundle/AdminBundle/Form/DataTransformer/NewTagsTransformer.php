@@ -2,10 +2,10 @@
 
 namespace MyProject\Bundle\AdminBundle\Form\DataTransformer;
 
-use Symfony\Component\Form\Exception\TransformationFailedException;
 use Doctrine\Common\Collections\ArrayCollection;
 use MyProject\Bundle\MainBundle\Entity\Tag;
 use Symfony\Component\Form\DataTransformerInterface;
+use Symfony\Component\Form\Exception\TransformationFailedException;
 
 class NewTagsTransformer implements DataTransformerInterface
 {
@@ -86,7 +86,7 @@ class NewTagsTransformer implements DataTransformerInterface
     {
         $self = $this;
 
-        $tags = array();
+        $tags = [];
         foreach (explode(',', $str) as $name) {
             $name = trim($name);
 
@@ -118,7 +118,7 @@ class NewTagsTransformer implements DataTransformerInterface
      *
      * @return ArrayCollection
      */
-    protected function createArrayCollection(array $values = array())
+    protected function createArrayCollection(array $values = [])
     {
         return new ArrayCollection($values);
     }
