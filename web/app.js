@@ -2,7 +2,7 @@ var express = require('express');
 
 var app = express();
 
-app.use(express.static('resources'));
+app.use('/static', express.static('resources'));
 
 app.get('/', function (request, response) {
     response.send('Hello, world.');
