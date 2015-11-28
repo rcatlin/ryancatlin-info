@@ -4,8 +4,13 @@ var app = express();
 
 app.use('/static', express.static('resources'));
 
+app.set('twig options', {
+    strict_variables: false
+})
+app.set('view engine', 'twig');
+
 app.get('/', function (request, response) {
-    response.send('Hello, world.');
+    response.render('index', {message: 'Hello, world.'});
 })
 
 
