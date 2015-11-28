@@ -23,7 +23,7 @@ class User
     /**
      * @var string
      *
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", length=255)
      */
     protected $username;
 
@@ -33,6 +33,7 @@ class User
      * @ORM\Column(
      *     type="string",
      *     name="username_canonical",
+     *     length=255,
      *     unique=true
      * )
      */
@@ -41,7 +42,7 @@ class User
     /**
      * @var string
      *
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", length=255)
      */
     protected $email;
 
@@ -51,6 +52,7 @@ class User
      * @ORM\Column(
      *     type="string",
      *     name="email_canonical",
+     *     length=255,
      *     unique=true
      * )
      */
@@ -83,8 +85,7 @@ class User
      * @ORM\Column(
      *     type="datetime",
      *     nullable=true,
-     *     name="last_login",
-     *     options={"default": null}
+     *     name="last_login"
      * )
      */
     protected $lastLogin;
@@ -109,8 +110,7 @@ class User
      * @ORM\Column(
      *     type="datetime",
      *     nullable=true,
-     *     name="expires_at",
-     *     options={"default": null}
+     *     name="expires_at"
      * )
      */
     protected $expiresAt;
@@ -121,9 +121,8 @@ class User
      * @ORM\Column(
      *     type="string",
      *     name="confirmation_token",
-     *     nullable=true,
-     *     options={"default": null}
-     *     )
+     *     nullable=true
+     * )
      */
     protected $confirmationToken;
 
@@ -133,8 +132,7 @@ class User
      * @ORM\Column(
      *     type="datetime",
      *     name="password_requested_at",
-     *     nullable=true,
-     *     options={"default": null}
+     *     nullable=true
      * )
      */
     protected $passwordRequestedAt;
@@ -142,10 +140,7 @@ class User
     /**
      * @var array
      *
-     * @ORM\Column(
-     *     type="string",
-     *     columnDefinition="longtext COLLATE utf8_unicode_ci NOT NULL COMMENT '(DC2Type:array)'"
-     * )
+     * @ORM\Column(type="array")
      */
     protected $roles;
 
@@ -162,8 +157,7 @@ class User
      * @ORM\Column(
      *     type="datetime",
      *     name="credentials_expire_at",
-     *     nullable=true,
-     *     options={"default": null}
+     *     nullable=true
      * )
      */
     protected $credentialsExpireAt;
