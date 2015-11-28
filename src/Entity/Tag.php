@@ -43,12 +43,12 @@ class Tag
      *      name="article_tag",
      *      joinColumns={
      *          @ORM\JoinColumn(
-     *              name="tag_id", referencedColumnName="id"
+     *              name="tag_id", referencedColumnName="id", onDelete="cascade"
      *          )
      *      },
      *      inverseJoinColumns={
      *          @ORM\JoinColumn(
-     *              name="article_id", referencedColumnName="id"
+     *              name="article_id", referencedColumnName="id", onDelete="cascade"
      *          )
      *      }
      * )

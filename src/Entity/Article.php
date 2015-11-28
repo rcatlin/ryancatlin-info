@@ -15,7 +15,6 @@ use Doctrine\ORM\Mapping as ORM;
  * )
  * @ORM\Table(
  *     indexes={
- *         @ORM\Index(name="slug_idx", columns={"slug"}),
  *         @ORM\Index(name="active_idx", columns={"active"})
  *     }
  * )
@@ -80,10 +79,10 @@ class Article
      * @ORM\JoinTable(
      *      name="article_tag",
      *      joinColumns={
-     *          @ORM\JoinColumn(name="article_id", referencedColumnName="id")
+     *          @ORM\JoinColumn(name="article_id", referencedColumnName="id", onDelete="cascade")
      *      },
      *      inverseJoinColumns={
-     *          @ORM\JoinColumn(name="tag_id", referencedColumnName="id")
+     *          @ORM\JoinColumn(name="tag_id", referencedColumnName="id", onDelete="cascade")
      *      }
      * )
      */

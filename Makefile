@@ -26,6 +26,9 @@ integration: database
 schema:
 	mysql -uroot ryancatlin_info_test < sql/schema.sql
 
+validate:
+	./console orm:validate-schema
+
 # See https://github.com/doctrine/DoctrineORMModule/issues/361 as to why '-n' flag is included
 migrate:
 	./console migrations:migrate -n
