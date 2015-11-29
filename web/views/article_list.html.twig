@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+
+    <div class="panel-heading text-center">
+        <h1>
+            Articles
+            <br />
+            <small>
+                Showing page {{ page }} of {{ numPages }}
+            </small>
+        </h1>
+    </div>
+    
+    {% for article in articles %}
+        <p>
+            <h3>
+                <a href="{{ url('article', { slug: article.slug }) }}">{{ article.title }}</a>
+                <small>{{ article.createdAt|date('M jS, Y', 'America/New_York') }}</small>
+            </h3>
+        </p>
+    {% endfor %}
+
+    <p>&nbsp;</p>
+
+    <ul class="pager">
+
+        {% if page > 1 %}
+            <li class="previous">
+                <a href="{{ url('article_list', {'p': page + 1}) }}">&larr; Previous</a>
+            </li>
+        {% endif %}
+
+        {% if page < numPages %}
+            <li class="next">
+                <a href="{{ url('article_list', {'p': page - 1}) }}">Next &rarr;</a>
+            </li>
+        {% endif %}
+
+    </ul>
+
+{% endblock %}

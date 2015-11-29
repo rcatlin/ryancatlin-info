@@ -29,6 +29,9 @@ schema:
 validate:
 	./console orm:validate-schema
 
+dev-server:
+	cd web && node app.js
+
 # See https://github.com/doctrine/DoctrineORMModule/issues/361 as to why '-n' flag is included
 migrate:
 	./console migrations:migrate -n

@@ -70,10 +70,6 @@ class ControllerServiceProviderTest extends AbstractServiceProviderTest
                 Controller\Api\TagGetController::class,
                 Controller\Api\TagGetController::class,
             ],
-            [
-                Controller\MainController::class,
-                Controller\MainController::class,
-            ],
         ];
     }
 }

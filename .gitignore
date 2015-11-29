@@ -24,10 +24,10 @@ node_modules
 bower_components/
 
 # Grunt generated directories
-web/js
-web/css
-web/fonts
-web/images
+web/resources/js
+web/resources/css
+web/resources/fonts
+web/resources/images
 
 
 # Assembled Assets
