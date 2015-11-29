@@ -2,7 +2,7 @@
 
 $config = new Refinery29\CS\Config\Refinery29();
 $config->getFinder()
-    ->exclude(['_tests', 'app', 'bower_components', 'node_modules', 'web']) // Remove/reduce after Refactor
+    ->exclude(['_tests', 'app', 'bower_components', 'node_modules', 'old_web', 'web']) // Remove/reduce after Refactor
     ->in(__DIR__)
 ;
 
