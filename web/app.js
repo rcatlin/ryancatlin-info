@@ -13,7 +13,7 @@ app.use('/static', express.static('resources'));
 // Setup Twig
 var twig = require('twig');
 twig.extendFunction('is_granted', function (role_name) {
-    return false;
+    return true;
 });
 app.set('twig options', {
     strict_variables: false
@@ -32,6 +32,18 @@ app.get('/about', 'about', function (request, response) { response.send('TODO');
 app.get('/article/:slug', 'article', function (request, response) { response.send('TODO'); });
 app.get('/articles', 'article_list', function (request, response) { response.send('TODO'); });
 app.get('/tag/:name', 'articles_by_tag', function (request, response) { response.send('TODO'); });
+
+// Admin Article Routes
+app.get('/admin/articles', 'admin.articles', function (request, response) { response.send('TODO'); })
+app.get('/admin/articles/:id/edit', 'admin.article_edit', function (request, response) { response.send('TODO'); })
+app.get('/admin/articles/:id/show', 'admin.article_show', function (request, response) { response.send('TODO'); })
+app.get('/admin/articles/new', 'admin.article_new', function (request, response) { response.send('TODO'); })
+
+// Admin Tag Routes
+app.get('/admin/tags', 'admin.tags', function (request, response) { response.send('TODO'); })
+app.get('/admin/tags/:id/edit', 'admin.tags_edit', function (request, response) { response.send('TODO'); })
+app.get('/admin/tags/:id', 'admin.tags_show', function (request, response) { response.send('TODO'); })
+app.get('/admin/tags/new', 'admin.tag_new', function (request, response) { response.send('TODO'); })
 
 // Init Server and Listen
 var server = app.listen(8080, function () {
