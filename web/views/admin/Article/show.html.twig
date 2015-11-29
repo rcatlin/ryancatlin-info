@@ -1,4 +1,4 @@
-{% extends 'AdminBundle::base.html.twig' %}
+{% extends 'admin/base.html.twig' %}
 
 {% block content -%}
     <h1>Article</h1>
@@ -48,7 +48,7 @@
 
     {{ form_start(delete_form) }}
         <div class="record_actions btn-group">
-            <a class="btn btn-primary" href="{{ path('article_edit', { 'id': entity.id }) }}">Edit</a>
+            <a class="btn btn-primary" href="{{ url('admin.article_edit', { 'id': entity.id }) }}">Edit</a>
             {{ form_widget(
                 delete_form.submit, {
                     'attr': {
@@ -62,7 +62,7 @@
 
     <ul class="record_actions pager">
         <li class="previous">
-            <a href="{{ path('articles') }}">&larr; Back to the list</a>
+            <a href="{{ url('admin.articles') }}">&larr; Back to the list</a>
         </li>
     </ul>
 

@@ -1,13 +1,13 @@
-{% extends 'AdminBundle::base.html.twig' %}
+{% extends 'admin/base.html.twig' %}
 
 {% block content -%}
     <h1>Tag edit</h1>
 
-    {% include 'AdminBundle::Tag/form.html.twig' with {'form': edit_form} %}
+    {% include 'admin/Tag/form.html.twig' with {'form': edit_form} %}
 
         <ul class="record_actions">
     <li>
-        <a href="{{ path('tags') }}">
+        <a href="{{ url('admin.tags') }}">
             Back to the list
         </a>
     </li>

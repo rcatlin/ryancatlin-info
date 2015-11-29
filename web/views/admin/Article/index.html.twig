@@ -1,4 +1,4 @@
-{% extends 'AdminBundle::base.html.twig' %}
+{% extends 'admin/base.html.twig' %}
 
 {% block content -%}
     <h1>Article list</h1>
@@ -18,7 +18,7 @@
             <tbody>
             {% for entity in entities %}
                 <tr>
-                    <td><a href="{{ path('article_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                    <td><a href="{{ url('admin.article_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
                     <td>{{ entity.slug }}</td>
                     <td>{{ entity.title }}</td>
                     <td>{{ entity.updatedAt|date('m/d/y g:ia') }}</td>
@@ -35,8 +35,8 @@
                     </td>
                     <td>
                         <div class="btn-group">
-                            <a class="btn btn-primary btn-sm" href="{{ path('article_show', { 'id': entity.id }) }}">show</a>
-                            <a class="btn btn-info btn-sm" href="{{ path('article_edit', { 'id': entity.id }) }}">edit</a>
+                            <a class="btn btn-primary btn-sm" href="{{ url('admin.article_show', { 'id': entity.id }) }}">show</a>
+                            <a class="btn btn-info btn-sm" href="{{ url('admin.article_edit', { 'id': entity.id }) }}">edit</a>
                         </div>
                     </td>
                 </tr>
@@ -46,6 +46,6 @@
     </div>
 
     <div class="btn-group">
-        <a class="btn btn-success" href="{{ path('article_new') }}">Create a new entry</a>
+        <a class="btn btn-success" href="{{ url('admin.article_new') }}">Create a new entry</a>
     </div>
 {% endblock %}

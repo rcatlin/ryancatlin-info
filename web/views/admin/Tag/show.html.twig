@@ -1,4 +1,4 @@
-{% extends 'AdminBundle::base.html.twig' %}
+{% extends 'admin/base.html.twig' %}
 
 {% block content -%}
     <h1>Tag</h1>
@@ -17,7 +17,7 @@
     </table>
 
     <div class="record_actions btn-group">
-        <a class="btn btn-default" href="{{ path('tags_edit', { 'id': entity.id }) }}">
+        <a class="btn btn-default" href="{{ url('admin.tags_edit', { 'id': entity.id }) }}">
             Edit
         </a>
     </div>
@@ -26,7 +26,7 @@
 
     <ul class="record_actions pager">
         <li class="previous">
-            <a href="{{ path('tags') }}">&larr;
+            <a href="{{ url('admin.tags') }}">&larr;
                 Back to the list
             </a>
         </li>
