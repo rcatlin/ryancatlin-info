@@ -4,6 +4,6 @@
 }
 
 .jumbotron {
-    background-image: url('../images/head-bg.jpg');
+    background-image: url('/img/head-bg.jpg');
     background-size: cover;
 }
