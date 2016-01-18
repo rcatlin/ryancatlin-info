@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{% block title %}Ryan Catlin{% endblock %}</title>
+
+        {% block stylesheets %}
+            {% include '_stylesheets.html.twig' %}
+        {% endblock %}
+
+        {% block javascripts %}
+            {% include '_javascripts.html.twig' %}
+        {% endblock %}
+
+        {% include 'favicon.html.twig' %}
+    </head>
+    <body>
+
+        {% include 'menu.html.twig' %}
+
+        <div class="jumbotron">
+            <div class="container">
+                <p>&nbsp;</p>
+                <h2>Ryan Catlin</h2>
+                <p>code and shark enthusiast</p>
+            </div>
+        </div>
+
+        <div class="container-fluid">
+            <div class="col-lg-2 col-md-2 col-sm-1 col-xs-1"></div>
+            <div class="col-lg-8 col-md-8 col-sm-10 col-xs-10">
+                {% block content %}
+                {% endblock %}
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-1 col-xs-1"></div>
+        </div>
+
+        {% block google_analytics %}
+            {% include 'google_analytics.html.twig' %}
+        {% endblock %}
+
+        <div id="footer">
+            {% block footer %}
+            {% endblock %}
+        </div>
+    </body>
+<html>

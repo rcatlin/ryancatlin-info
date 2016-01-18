@@ -1,4 +1,6 @@
 [![Build Status](https://travis-ci.org/rcatlin/ryancatlin-info.svg?branch=master)](https://travis-ci.org/rcatlin/ryancatlin-info.svg?branch=master)
+[![Code Climate](https://codeclimate.com/github/rcatlin/ryancatlin-info/badges/gpa.svg)](https://codeclimate.com/github/rcatlin/ryancatlin-info)
+[![Test Coverage](https://codeclimate.com/github/rcatlin/ryancatlin-info/badges/coverage.svg)](https://codeclimate.com/github/rcatlin/ryancatlin-info/coverage)
 
 Ryan Catlin Info (Personal Site)
 ========================
