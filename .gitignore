@@ -2,6 +2,7 @@
 .idea
 *.DS_Store
 /.php_cs.cache
+*npm-debug.log
 
 /Api/web/bundles/
 /Api/app/bootstrap.php.cache
@@ -15,6 +16,7 @@
 !/Api/app/cache/.gitkeep
 !/Api/app/logs/.gitkeep
 /Api/build/
+/Blog/build/
 /Api/vendor/
 /Api/bin/
 /composer.phar
