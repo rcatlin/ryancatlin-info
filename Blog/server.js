@@ -4,12 +4,12 @@ var app = express();
 
 const PORT = 8000;
 
-app.use('/css', express.static('blogapp/css'));
-app.use('/js', express.static('blogapp/js'));
+app.use('/css', express.static('app/css'));
+app.use('/js', express.static('app/js'));
 
 app.get("/", function(request, response) {
   response.status(200)
-    .sendFile(__dirname + '/blogapp/index.html');
+    .sendFile(__dirname + '/app/index.html');
 });
 
 
