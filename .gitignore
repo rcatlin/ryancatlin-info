@@ -11,7 +11,7 @@
 
 # Application cache
 /Api/app/cache/*
-/Api//app/config/parameters.yml
+/Api/app/config/parameters.yml
 /Api/app/logs/*
 !/Api/app/cache/.gitkeep
 !/Api/app/logs/.gitkeep
@@ -38,3 +38,4 @@
 
 # Assembled Assets
 /Api/web/assets
+/Blog/app

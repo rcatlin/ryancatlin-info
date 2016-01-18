@@ -21,7 +21,7 @@
   },
   "scripts": {
     "start": "node server.js",
-    "bundle": "browserify src/index.js > app/js/bundle.js"
+    "bundle": "browserify src/js/index.js > app/js/bundle.js"
   },
   "browserify": {
     "transform": [

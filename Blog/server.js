@@ -6,6 +6,7 @@ const PORT = 8000;
 
 app.use('/css', express.static('app/css'));
 app.use('/js', express.static('app/js'));
+app.use('/img', express.static('app/img'));
 
 app.get("/", function(request, response) {
   response.status(200)
