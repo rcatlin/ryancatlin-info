@@ -59,8 +59,9 @@ class ArticleValidator extends AbstractValidator
     protected function addSlug($allowEmpty = false, $required = true)
     {
         return $this->getChain('slug', null, $required, $allowEmpty)
+            ->isString()
             ->lengthBetween(1, 100)
-            ->alnum()
+            ->regex('/^[a-zA-Z\d]+(([_-][A-Za-z\d]+)*)?$/')
         ;
     }
 

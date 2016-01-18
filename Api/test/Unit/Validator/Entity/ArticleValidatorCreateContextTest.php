@@ -44,6 +44,42 @@ class ArticleValidatorCreateContextTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($validationResult->isValid());
     }
 
+    public function testSlugCanContainHyphensAndUnderlines()
+    {
+        $values = $this->getAllValues();
+        $values['slug'] = 'this-is_a-test';
+
+        $validator = new ArticleValidator(new TagValidator());
+
+        $validationResult = $validator->validate($values, Context::CREATE);
+
+        $this->assertTrue($validationResult->isValid());
+    }
+
+    public function testSlugCannotEndWithHyphen()
+    {
+        $values = $this->getAllValues();
+        $values['slug'] = 'bad-slug-';
+
+        $validator = new ArticleValidator(new TagValidator());
+
+        $validationResult = $validator->validate($values, Context::CREATE);
+
+        $this->assertFalse($validationResult->isValid());
+    }
+
+    public function testSlugCannotEndWithAnUnderline()
+    {
+        $values = $this->getAllValues();
+        $values['slug'] = 'bad_slug_';
+
+        $validator = new ArticleValidator(new TagValidator());
+
+        $validationResult = $validator->validate($values, Context::CREATE);
+
+        $this->assertFalse($validationResult->isValid());
+    }
+
     public function testRequiresTitle()
     {
         $values = $this->getAllValues();
