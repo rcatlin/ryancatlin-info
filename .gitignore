@@ -1,36 +1,38 @@
 .env
 .idea
 *.DS_Store
-.php_cs.cache
+/.php_cs.cache
 
-/web/bundles/
-/app/bootstrap.php.cache
-/blogapp/js
-/blogapp/cs
+/Api/web/bundles/
+/Api/app/bootstrap.php.cache
+/Blog/app/js
+/Blog/app/cs
 
 # Application cache
-/app/cache/*
-/app/config/parameters.yml
-/app/logs/*
-!app/cache/.gitkeep
-!app/logs/.gitkeep
-/build/
-/vendor/
-/bin/
+/Api/app/cache/*
+/Api//app/config/parameters.yml
+/Api/app/logs/*
+!/Api/app/cache/.gitkeep
+!/Api/app/logs/.gitkeep
+/Api/build/
+/Api/vendor/
+/Api/bin/
 /composer.phar
 
 # NPM
-node_modules
+/Api/node_modules
+/Blog/node_modules
 
 # Bower components
-bower_components/
+/Api/bower_components/
+/Blog/bower_components/
 
 # Grunt generated directories
-web/resources/js
-web/resources/css
-web/resources/fonts
-web/resources/images
+/Api/web/resources/js
+/Api/web/resources/css
+/Api/web/resources/fonts
+/Api/web/resources/images
 
 
 # Assembled Assets
-web/assets
+/Api/web/assets

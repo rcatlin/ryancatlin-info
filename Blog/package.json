@@ -21,7 +21,7 @@
   },
   "scripts": {
     "start": "node server.js",
-    "bundle": "browserify react/index.js > blogapp/js/bundle.js"
+    "bundle": "browserify src/index.js > app/js/bundle.js"
   },
   "browserify": {
     "transform": [

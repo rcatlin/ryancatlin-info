@@ -13,23 +13,28 @@ matrix:
         - php: 7
 
 before_install:
+    - @cd Api
     - composer self-update
 
 install:
+    - @cd Api
     - make composer
     - make setup
     - make database
 
 before_script:
+    - @cd Api
     - mkdir -p "$HOME/.php-cs-fixer"
 
 script:
+    - @cd Api
     - make unit
     - make integration
     - vendor/bin/php-cs-fixer fix --config-file=.php_cs --verbose --diff --dry-run
     - make validate
 
 after_script:
+    - @cd Api
     - if [[ "$TRAVIS_PULL_REQUEST" == "false" && "$TRAVIS_BRANCH" == "master" && "$COLLECT_COVERAGE" == "true" ]]; then bin/test-reporter; fi
 
 cache:
