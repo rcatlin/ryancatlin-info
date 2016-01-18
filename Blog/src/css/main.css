@@ -1,0 +1,9 @@
+
+.navbar-nav {
+    margin-top: 0;
+}
+
+.jumbotron {
+    background-image: url('../images/head-bg.jpg');
+    background-size: cover;
+}
