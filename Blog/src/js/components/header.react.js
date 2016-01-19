@@ -5,7 +5,13 @@ var React = require('react');
 var Header = React.createClass({
     render: function() {
         return (
-            <h1>Header</h1>
+            <div className="jumbotron">
+                <div className="container">
+                    <p>&nbsp;</p>
+                    <h2>Ryan Catlin</h2>
+                    <p>code and shark enthusiast</p>
+                </div>
+            </div>
         );
     }
 });
