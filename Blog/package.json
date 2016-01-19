@@ -10,6 +10,8 @@
     "grunt-contrib-cssmin": "^0.10.0",
     "grunt-contrib-uglify": "^0.5.1",
     "grunt-contrib-watch": "^0.6.1",
+    "jest": "^0.1.40",
+    "jest-cli": "^0.8.2",
     "reactify": "^1.1.1"
   },
   "dependencies": {
@@ -24,7 +26,8 @@
   },
   "scripts": {
     "start": "node server.js",
-    "bundle": "browserify src/js/index.js > app/js/bundle.js"
+    "bundle": "browserify src/js/index.js > app/js/bundle.js",
+    "test": "jest"
   },
   "browserify": {
     "transform": [
