@@ -13,6 +13,7 @@ matrix:
         - php: 7
 
 before_install:
+    - npm install -g npm@3.3.6
     - cd Api
     - composer self-update
     - cd ..
