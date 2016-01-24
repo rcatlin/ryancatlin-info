@@ -2,7 +2,7 @@ var assign = require('object-assign');
 var EventEmitter = require('events').EventEmitter;
 
 var AppDispatcher = require('../dispatcher/AppDispatcher');
-var MenuConstants = require('../actions/MenuConstants');
+var MenuConstants = require('../constants/MenuConstants');
 
 var CHANGE_EVENT = 'change';
 
