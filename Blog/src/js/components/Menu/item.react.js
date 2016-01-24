@@ -1,5 +1,3 @@
-'use strict';
-
 var React = require('react');
 var ReactPropTypes = React.PropTypes;
 
@@ -16,7 +14,7 @@ var Item = React.createClass({
     },
 
     /**
-     * @return {object}
+     * @return {object} The Default Properties.
      */
     getDefaultProps: function() {
         return {

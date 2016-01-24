@@ -1,5 +1,3 @@
-'use strict';
-
 var React = require('react');
 var ReactPropTypes = React.PropTypes;
 
@@ -16,11 +14,16 @@ var Article = React.createClass({
 
     render: function() {
         var tags = [],
-            index,
-            tag;
+            index = 0,
+            tag = '';
 
         for (index in this.props.tagNames) {
+            if (typeof index !== 'number') {
+                continue;
+            }
+
             tag = this.props.tagNames[index];
+
             tags.push(
                 <a
                     href="#"

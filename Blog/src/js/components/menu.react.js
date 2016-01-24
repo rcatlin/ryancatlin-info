@@ -1,23 +1,14 @@
-'use strict';
-
 var React = require('react');
 
 var MenuActions = require('../actions/MenuActions');
 var MenuItem = require('./Menu/item.react');
 var MenuStore = require('../stores/MenuStore');
 
-/**
- * @return {object}
- */
-function getState() {
-    return MenuStore.getAll();
-};
-
 var Menu = React.createClass({
     displayName: 'Menu',
 
     /**
-     * @return {object}
+     * @return {object} All Menu values.
      */
     getInitialState: function() {
         return MenuStore.getAll();
@@ -32,7 +23,7 @@ var Menu = React.createClass({
     },
 
     _onChange: function() {
-        this.setState(getState());
+        this.setState(MenuStore.getAll());
     },
 
     handleOnItemClick: function(key) {
@@ -45,13 +36,17 @@ var Menu = React.createClass({
 
     render: function() {
         var menuItems = [],
-            index,
-            page,
-            active;
+            index = 0,
+            page = 0,
+            active = false;
 
         for (index in this.state.pages) {
+            if (typeof index !== 'number') {
+                continue;
+            }
+
             page = this.state.pages[index];
-            active = (this.state.activePage == index);
+            active = this.state.activePage === index;
 
             menuItems.push(
                 <MenuItem
