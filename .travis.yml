@@ -13,6 +13,7 @@ matrix:
         - php: 7
 
 before_install:
+    - nvm install 5.0.0
     - cd Api
     - composer self-update
     - cd ..
@@ -22,6 +23,9 @@ install:
     - make composer
     - make setup
     - make database
+    - cd ..
+    - cd Blog
+    - npm install
     - cd ..
 
 before_script:
@@ -35,6 +39,9 @@ script:
     - make integration
     - vendor/bin/php-cs-fixer fix --config-file=.php_cs --verbose --diff --dry-run
     - make validate
+    - cd ..
+    - cd Blog
+    - npm test
     - cd ..
 
 after_script:
