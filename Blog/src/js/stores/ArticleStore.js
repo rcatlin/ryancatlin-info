@@ -1,10 +1,6 @@
-'use strict';
-
 var assign = require('object-assign');
 var EventEmitter = require('events').EventEmitter;
 
-var AppDispatcher = require('../dispatcher/AppDispatcher');
-// var ArticleActions = require('../actions/ArticleAction');
 var ArticleConstants = require('../constants/ArticleConstants');
 
 var CHANGE_EVENT = 'change';
@@ -14,26 +10,34 @@ var ArticleStore = assign({}, EventEmitter.prototype, {
         this.emit(CHANGE_EVENT);
     },
 
+    /**
+     * @param {object} component The React Component that requires API data.
+     * @return {void}
+     */
     getMostRecent: function(component) {
+        var data = {};
+
         $.get(ArticleConstants.mostRecentEndpoint, function(result) {
             if (component.isMounted()) {
-                var data = result.result.data;
+                data = result.result.data;
                 component.setState({
                     article: data
                 });
             }
-        }.bind(component));
+        });
     },
 
     /**
-    * @param {function} callback
+    * @param {function} callback The callback to be added.
+    * @return {void}
     */
     addChangeListener: function(callback) {
         this.on(CHANGE_EVENT, callback);
     },
 
     /**
-    * @param {function} callback
+    * @param {function} callback The callback to be removed.
+    * @return {void}
     */
     removeChangeListener: function(callback) {
         this.removeListener(CHANGE_EVENT, callback);

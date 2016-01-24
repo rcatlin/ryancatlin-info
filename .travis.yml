@@ -41,6 +41,7 @@ script:
     - make validate
     - cd ..
     - cd Blog
+    - grunt eslint
     - npm test
     - cd ..
 

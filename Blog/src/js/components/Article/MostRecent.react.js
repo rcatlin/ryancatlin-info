@@ -1,54 +1,56 @@
-'use strict';
-
 var React = require('react');
-var ReactPropTypes = React.PropTypes;
 
 var Article = require('../article.react');
 var ArticleStore = require('../../stores/ArticleStore');
 
 var MostRecent = React.createClass({
+    displayName: 'MostRecent',
+
+    /**
+     * @return {object} The initial state object.
+     */
+    getInitialState: function() {
+        return {
+            article: undefined // eslint-disable-line no-undefined
+        };
+    },
+
     componentDidMount: function() {
         ArticleStore.getMostRecent(this);
     },
 
-    /**
-     * @return {object}
-     */
-    getInitialState: function() {
-        return {
-            article: undefined
-        };
-    },
-
     render: function() {
-        var tagNames = [],
-            index,
-            article = this.state.article;
+        var article = this.state.article,
+            index = 0,
+            tagNames = [];
 
-        if (article == undefined) {
+        if (typeof article === 'undefined') {
             return (
                 <div className="panel panel-default">
                     <div className="panel-body">
-                        There seems to be nothing here.
+                        {'There seems to be nothing here.'}
                     </div>
                 </div>
             );
         }
 
         for (index in article.tags) {
-            tagNames.push(
-                article.tags[index].name
-            );
+            if (typeof index === 'number') {
+                tagNames.push(
+                    article.tags[index].name
+                );
+            }
         }
 
         return (
             <Article
-                key={article.id}
                 content={article.content}
-                createdAt=''
+                createdAt
+                key={article.id}
+                slug={article.slug}
                 tagNames={tagNames}
                 title={article.title}
-                slug={article.slug} />
+            />
         );
     }
 });

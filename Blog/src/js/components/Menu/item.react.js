@@ -1,9 +1,9 @@
-'use strict';
-
 var React = require('react');
 var ReactPropTypes = React.PropTypes;
 
 var Item = React.createClass({
+    displayName: 'Item',
+
     propTypes: {
         active: ReactPropTypes.bool,
         href: ReactPropTypes.string,
@@ -14,7 +14,7 @@ var Item = React.createClass({
     },
 
     /**
-     * @return {object}
+     * @return {object} The Default Properties.
      */
     getDefaultProps: function() {
         return {
@@ -23,20 +23,27 @@ var Item = React.createClass({
         };
     },
 
-    onClick: function() {
+    handleOnClick: function() {
         this.props.onItemClick(this.props.name);
     },
 
     render: function() {
-        var iconClass = 'fa fa-' + this.props.icon;
+        var iconClass = 'fa fa-' + this.props.icon,
+            listItemClass = '';
+
+        if (this.props.active) {
+            listItemClass = 'active';
+        }
 
         return (
-            <li className={this.props.active ? 'active' : ''}>
-                <a className={iconClass}
-                    href='#'
+            <li className={listItemClass}>
+                <a
+                    className={iconClass}
+                    href="#"
                     name={this.props.name}
-                    onClick={this.onClick}>
-                    &nbsp;{this.props.text}
+                    onClick={this.handleOnClick}
+                >
+                    {'&nbsp;'}{this.props.text}
                 </a>
             </li>
         );

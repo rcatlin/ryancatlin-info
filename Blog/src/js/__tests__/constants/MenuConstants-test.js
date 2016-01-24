@@ -11,6 +11,8 @@ describe('MenuConstants', function() {
     it('ensures constant values exist', function() {
         var MenuConstants = require('../../constants/MenuConstants');
 
-        expect(MenuConstants.ACTION_PAGE_SELECTED).toEqual('ACTION_PAGE_SELECTED');
+        expect(MenuConstants.ACTION_PAGE_SELECTED).toEqual(
+            'ACTION_PAGE_SELECTED'
+        );
     });
 });

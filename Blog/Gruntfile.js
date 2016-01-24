@@ -50,10 +50,16 @@ module.exports = function (grunt) {
                 src: '**',
                 dest: 'app'
             }
+        },
+        eslint: {
+            target: [
+                'src/js/**/*.js'
+            ]
         }
     });
 
     grunt.loadNpmTasks('grunt-bowercopy');
     grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-eslint');
     grunt.registerTask('default', ['bowercopy', 'copy']);
 }

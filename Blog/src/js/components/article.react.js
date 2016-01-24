@@ -1,30 +1,36 @@
-'use strict';
-
 var React = require('react');
 var ReactPropTypes = React.PropTypes;
 
 var Article = React.createClass({
+    displayName: 'Article',
+
     propTypes: {
         content: ReactPropTypes.string.isRequired,
         createdAt: ReactPropTypes.string.isRequired,
-        tagNames: ReactPropTypes.array.isRequired,
-        title: ReactPropTypes.string.isRequired,
-        slug: ReactPropTypes.string.isRequired
+        slug: ReactPropTypes.string.isRequired,
+        tagNames: ReactPropTypes.arrayOf(ReactPropTypes.string).isRequired,
+        title: ReactPropTypes.string.isRequired
     },
 
     render: function() {
-        var tags = [],
-            index,
-            tag;
+        var index = 0,
+            tag = '',
+            tags = [];
 
         for (index in this.props.tagNames) {
-            tag = this.props.tagNames[index];
-            tags.push(
-                <a
-                    href="#"
-                    key={tag}
-                    tagName={tag}>#{tag}</a>
-            );
+            if (typeof index === 'number') {
+                tag = this.props.tagNames[index];
+
+                tags.push(
+                    <a
+                        href="#"
+                        key={tag}
+                        tagName={tag}
+                    >
+                        {'#'}{tag}
+                    </a>
+                );
+            }
         }
 
         return (
