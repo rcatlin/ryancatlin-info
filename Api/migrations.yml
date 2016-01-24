@@ -1,0 +1,5 @@
+name: Doctrine ryancatlin-info Migrations
+migrations_namespace: RCatlin\Blog\Migration
+table_name: doctrine_migration_versions
+migrations_directory: ./src/Migration
+
