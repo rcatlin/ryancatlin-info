@@ -37,50 +37,50 @@ var markPageActive = function(key) {
 
 var MenuStore = assign({}, EventEmitter.prototype, {
 
-  /**
-   * @returns {void}
-   */
-  emitChange: function() {
-    this.emit(CHANGE_EVENT);
-  },
+    /**
+     * @returns {void}
+     */
+    emitChange: function() {
+        this.emit(CHANGE_EVENT);
+    },
 
-  /**
-   * @param {function} callback The callback for change events to be added.
-   * @returns {void}
-   */
-  addChangeListener: function(callback) {
-    this.on(CHANGE_EVENT, callback);
-  },
+    /**
+     * @param {function} callback The callback for change events to be added.
+     * @returns {void}
+     */
+    addChangeListener: function(callback) {
+        this.on(CHANGE_EVENT, callback);
+    },
 
-  /**
-   * @param {function} callback The callback for change events to remove.
-   * @returns {void}
-   */
-  removeChangeListener: function(callback) {
-    this.removeListener(CHANGE_EVENT, callback);
-  },
+    /**
+     * @param {function} callback The callback for change events to remove.
+     * @returns {void}
+     */
+    removeChangeListener: function(callback) {
+        this.removeListener(CHANGE_EVENT, callback);
+    },
 
-  /**
-   * Get All Menu values.
-   * @return {array} All Menu values.
-   */
-  getAll: function() {
-    return menu;
-  }
+    /**
+     * Get All Menu values.
+     * @return {array} All Menu values.
+     */
+    getAll: function() {
+        return menu;
+    }
 });
 
 // Register callback to handle all updates
 AppDispatcher.register(function(action) {
 
-  switch (action.actionType) {
-    case MenuConstants.ACTION_PAGE_SELECTED:
-        markPageActive(action.key);
-        MenuStore.emitChange();
-        break;
+    switch (action.actionType) {
+        case MenuConstants.ACTION_PAGE_SELECTED:
+            markPageActive(action.key);
+            MenuStore.emitChange();
+            break;
 
-    default:
-      // no-op
-  }
+        default:
+            // no-op
+    }
 
 });
 
