@@ -11,7 +11,7 @@ var MostRecent = React.createClass({
      */
     getInitialState: function() {
         return {
-            article: undefined //eslint-disable-line no-undefined
+            article: undefined // eslint-disable-line no-undefined
         };
     },
 
@@ -35,13 +35,11 @@ var MostRecent = React.createClass({
         }
 
         for (index in article.tags) {
-            if (typeof index !== 'number') {
-                continue;
+            if (typeof index === 'number') {
+                tagNames.push(
+                    article.tags[index].name
+                );
             }
-
-            tagNames.push(
-                article.tags[index].name
-            );
         }
 
         return (

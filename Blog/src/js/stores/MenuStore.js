@@ -6,7 +6,7 @@ var MenuConstants = require('../actions/MenuConstants');
 
 var CHANGE_EVENT = 'change';
 
-var _menu = {
+var menu = {
     activePage: 'home',
     pages: {
         home: {
@@ -25,6 +25,14 @@ var _menu = {
             text: 'About'
         }
     }
+};
+
+/**
+ * @param {string} key The Page that is Active.d
+ * @return {void}
+ */
+var markPageActive = function(key) {
+    menu.activePage = key;
 };
 
 var MenuStore = assign({}, EventEmitter.prototype, {
@@ -57,19 +65,14 @@ var MenuStore = assign({}, EventEmitter.prototype, {
    * @return {array} All Menu values.
    */
   getAll: function() {
-    return _menu;
+    return menu;
   }
 });
-
-
-function markPageActive(key) {
-    _menu.activePage = key;
-}
 
 // Register callback to handle all updates
 AppDispatcher.register(function(action) {
 
-  switch(action.actionType) {
+  switch (action.actionType) {
     case MenuConstants.ACTION_PAGE_SELECTED:
         markPageActive(action.key);
         MenuStore.emitChange();

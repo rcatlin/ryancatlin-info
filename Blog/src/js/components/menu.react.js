@@ -15,14 +15,14 @@ var Menu = React.createClass({
     },
 
     componentDidMount: function() {
-        MenuStore.addChangeListener(this._onChange);
+        MenuStore.addChangeListener(this.handleChange);
     },
 
     componentWillUnmount: function() {
-        MenuStore.removeChangeListener(this._onChange);
+        MenuStore.removeChangeListener(this.handleChange);
     },
 
-    _onChange: function() {
+    handleChange: function() {
         this.setState(MenuStore.getAll());
     },
 
@@ -35,30 +35,29 @@ var Menu = React.createClass({
     },
 
     render: function() {
-        var menuItems = [],
+        var active = false,
             index = 0,
-            page = 0,
-            active = false;
+            menuItems = [],
+            page = 0;
 
         for (index in this.state.pages) {
-            if (typeof index !== 'number') {
-                continue;
+            if (typeof index === 'number') {
+                page = this.state.pages[index];
+                active = this.state.activePage === index;
+
+                menuItems.push(
+                    <MenuItem
+                        active={active}
+                        href={page.href}
+                        icon={page.icon}
+                        key={index}
+                        name={index}
+                        onItemClick={this.handleOItemClick}
+                        text={page.text}
+                    />
+                );
             }
 
-            page = this.state.pages[index];
-            active = this.state.activePage === index;
-
-            menuItems.push(
-                <MenuItem
-                    active={active}
-                    href={page.href}
-                    icon={page.icon}
-                    key={index}
-                    name={index}
-                    onItemClick={this.handleOItemClick}
-                    text={page.text}
-                />
-            );
         }
 
         return (

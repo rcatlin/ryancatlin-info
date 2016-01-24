@@ -28,10 +28,15 @@ var Item = React.createClass({
     },
 
     render: function() {
-        var iconClass = 'fa fa-' + this.props.icon;
+        var iconClass = 'fa fa-' + this.props.icon,
+            listItemClass = '';
+
+        if (this.props.active) {
+            listItemClass = 'active';
+        }
 
         return (
-            <li className={this.props.active ? 'active' : ''}>
+            <li className={listItemClass}>
                 <a
                     className={iconClass}
                     href="#"

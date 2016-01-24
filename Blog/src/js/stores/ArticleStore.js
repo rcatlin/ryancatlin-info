@@ -11,7 +11,7 @@ var ArticleStore = assign({}, EventEmitter.prototype, {
     },
 
     /**
-     * @param {object} component The React Component that requires API result data.
+     * @param {object} component The React Component that requires API data.
      * @return {void}
      */
     getMostRecent: function(component) {

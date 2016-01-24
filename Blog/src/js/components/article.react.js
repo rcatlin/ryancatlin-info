@@ -13,26 +13,24 @@ var Article = React.createClass({
     },
 
     render: function() {
-        var tags = [],
-            index = 0,
-            tag = '';
+        var index = 0,
+            tag = '',
+            tags = [];
 
         for (index in this.props.tagNames) {
-            if (typeof index !== 'number') {
-                continue;
+            if (typeof index === 'number') {
+                tag = this.props.tagNames[index];
+
+                tags.push(
+                    <a
+                        href="#"
+                        key={tag}
+                        tagName={tag}
+                    >
+                        {'#'}{tag}
+                    </a>
+                );
             }
-
-            tag = this.props.tagNames[index];
-
-            tags.push(
-                <a
-                    href="#"
-                    key={tag}
-                    tagName={tag}
-                >
-                    {'#'}{tag}
-                </a>
-            );
         }
 
         return (
