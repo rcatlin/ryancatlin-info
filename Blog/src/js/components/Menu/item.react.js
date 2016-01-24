@@ -4,6 +4,8 @@ var React = require('react');
 var ReactPropTypes = React.PropTypes;
 
 var Item = React.createClass({
+    displayName: 'Item',
+
     propTypes: {
         active: ReactPropTypes.bool,
         href: ReactPropTypes.string,
@@ -23,7 +25,7 @@ var Item = React.createClass({
         };
     },
 
-    onClick: function() {
+    handleOnClick: function() {
         this.props.onItemClick(this.props.name);
     },
 
@@ -32,11 +34,13 @@ var Item = React.createClass({
 
         return (
             <li className={this.props.active ? 'active' : ''}>
-                <a className={iconClass}
-                    href='#'
+                <a
+                    className={iconClass}
+                    href="#"
                     name={this.props.name}
-                    onClick={this.onClick}>
-                    &nbsp;{this.props.text}
+                    onClick={this.handleOnClick}
+                >
+                    {'&nbsp;'}{this.props.text}
                 </a>
             </li>
         );

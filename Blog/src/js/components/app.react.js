@@ -8,6 +8,8 @@ var Menu = require('./menu.react');
 var MostRecent = require('./Article/MostRecent.react');
 
 var App = React.createClass({
+    displayName: 'App',
+
     render: function() {
         return (
             <div>

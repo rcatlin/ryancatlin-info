@@ -7,9 +7,7 @@ var Article = require('../article.react');
 var ArticleStore = require('../../stores/ArticleStore');
 
 var MostRecent = React.createClass({
-    componentDidMount: function() {
-        ArticleStore.getMostRecent(this);
-    },
+    displayName: 'MostRecent',
 
     /**
      * @return {object}
@@ -20,16 +18,20 @@ var MostRecent = React.createClass({
         };
     },
 
+    componentDidMount: function() {
+        ArticleStore.getMostRecent(this);
+    },
+
     render: function() {
-        var tagNames = [],
+        var article = this.state.article,
             index,
-            article = this.state.article;
+            tagNames = [];
 
         if (article == undefined) {
             return (
                 <div className="panel panel-default">
                     <div className="panel-body">
-                        There seems to be nothing here.
+                        {'There seems to be nothing here.'}
                     </div>
                 </div>
             );
@@ -43,12 +45,13 @@ var MostRecent = React.createClass({
 
         return (
             <Article
-                key={article.id}
                 content={article.content}
-                createdAt=''
+                createdAt
+                key={article.id}
+                slug={article.slug}
                 tagNames={tagNames}
                 title={article.title}
-                slug={article.slug} />
+            />
         );
     }
 });

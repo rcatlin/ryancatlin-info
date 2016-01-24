@@ -14,8 +14,13 @@ function getState() {
 };
 
 var Menu = React.createClass({
-    _onChange: function() {
-        this.setState(getState());
+    displayName: 'Menu',
+
+    /**
+     * @return {object}
+     */
+    getInitialState: function() {
+        return MenuStore.getAll();
     },
 
     componentDidMount: function() {
@@ -26,18 +31,15 @@ var Menu = React.createClass({
         MenuStore.removeChangeListener(this._onChange);
     },
 
-    /**
-     * @return {object}
-     */
-    getInitialState: function() {
-        return MenuStore.getAll();
+    _onChange: function() {
+        this.setState(getState());
     },
 
-    onItemClick: function(key) {
+    handleOnItemClick: function(key) {
         MenuActions.markPageActive(key);
     },
 
-    onLogoClick: function() {
+    handleOnLogoClick: function() {
         this.onItemClick('home');
     },
 
@@ -54,22 +56,32 @@ var Menu = React.createClass({
             menuItems.push(
                 <MenuItem
                     active={active}
+                    href={page.href}
                     icon={page.icon}
                     key={index}
                     name={index}
+                    onItemClick={this.handleOItemClick}
                     text={page.text}
-                    href={page.href}
-                    onItemClick={this.onItemClick} />
+                />
             );
         }
 
         return (
-            <nav className="navbar navbar-default navbar-fixed-top" role="navigation">
-
+            <nav
+                className="navbar navbar-default navbar-fixed-top"
+                role="navigation"
+            >
                 <div className="container-fluid">
                     <div className="navbar-header">
-                        <button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#bs-navbar-collapse-1">
-                            <span className="sr-only">Toggle navigation</span>
+                        <button
+                            className="navbar-toggle"
+                            data-target="#bs-navbar-collapse-1"
+                            data-toggle="collapse"
+                            type="button"
+                        >
+                            <span className="sr-only">
+                                {'Toggle navigation'}
+                            </span>
                             <span className="icon-bar"></span>
                             <span className="icon-bar"></span>
                             <span className="icon-bar"></span>
@@ -77,11 +89,19 @@ var Menu = React.createClass({
                         <a
                             className="navbar-brand"
                             href="#"
-                            onClick={this.onLogoClick}>ryancatlin.info</a>
+                            onClick={this.handleOnLogoClick}
+                        >
+                            {'ryancatlin.info'}
+                        </a>
                     </div>
 
-                    <div className="collapse navbar-collapse" id="bs-navbar-collapse-1">
-                        <ul className="nav navbar-nav">{menuItems}</ul>
+                    <div
+                        className="collapse navbar-collapse"
+                        id="bs-navbar-collapse-1"
+                    >
+                        <ul className="nav navbar-nav">
+                            {menuItems}
+                        </ul>
                     </div>
                 </div>
             </nav>
