@@ -25,9 +25,7 @@ class PistonServiceProvider extends AbstractServiceProvider
         $container->share(Piston::class, function () use ($container) {
             $app = new Piston($container);
 
-            $app->addMiddleware(new Middleware\Route\Api())
-                ->addMiddleware(new Middleware\Route\Main())
-            ;
+            $app->addMiddleware(new Middleware\Route\Api());
 
             return $app;
         });
