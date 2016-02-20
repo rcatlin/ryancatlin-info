@@ -7,10 +7,10 @@ use RCatlin\Api\Entity;
 
 FactoryMuffin::define(Entity\Article::class, [
     'slug' => 'unique:word',
-    'title' => 'text|255',
+    'title' => 'text|25',
     'createdAt' => 'dateTimeBetween|-1 year;-1 day',
     'updatedAt' => 'dateTimebetween|-1 day;now',
-    'content' => 'text',
+    'content' => 'paragraph',
     'active' => 'boolean',
 ]);
 

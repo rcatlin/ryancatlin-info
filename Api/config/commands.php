@@ -1,16 +1,8 @@
 <?php
 
-use Symfony\Component\Console\Application;
-use Symfony\Component\Console\Helper\HelperSet;
+require_once __DIR__ . '/../vendor/autoload.php';
 
-/* @var HelperSet $helperSet */
-$helperSet = require __DIR__ . '/cli-config.php';
-
-$application = new Application();
-
-$application->setHelperSet($helperSet);
-
-$application->addCommands([
+return [
     // Doctrine ORM
     new \Doctrine\ORM\Tools\Console\Command\ClearCache\CollectionRegionCommand(),
     new \Doctrine\ORM\Tools\Console\Command\ClearCache\EntityRegionCommand(),
@@ -49,5 +41,4 @@ $application->addCommands([
     new \Doctrine\DBAL\Migrations\Tools\Console\Command\MigrateCommand(),
     new \Doctrine\DBAL\Migrations\Tools\Console\Command\StatusCommand(),
     new \Doctrine\DBAL\Migrations\Tools\Console\Command\VersionCommand(),
-]);
-$application->run();
+];
