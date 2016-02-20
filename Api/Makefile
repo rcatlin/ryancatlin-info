@@ -1,4 +1,4 @@
-.PHONY: test composer cs migrate setup database database-dev test unit integration
+.PHONY: test composer cs migrate setup database test unit integration
 
 # For setting up the dev environment.
 setup:
