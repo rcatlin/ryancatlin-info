@@ -1,0 +1,70 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+
+    <link href="/static/css/summernote.css') }}" type="text/css" rel="stylesheet" />
+    <link href="/static/css/jquery-ui/themes/ui-lightness/jquery-ui.min.css" type="text/css" rel="stylesheet" />
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script type="text/javascript" src="/static/js/summernote.min.js"></script>
+    <!-- autocomplete dependencies -->
+    <script type="text/javascript" src="/static/js/jquery-ui/ui/core.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery-ui/ui/widget.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery-ui/ui/position.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery-ui/ui/menu.min.js"></script>
+    <!-- autocomplete -->
+    <script type="text/javascript" src="/static/js/jquery-ui/ui/autocomplete.min.js"></script>
+    <script type="text/javascript" src="/static/js/tag_autocomplete.js"></script>
+{% endblock %}
+
+{% block content -%}
+    <h1>Article edit</h1>
+
+    {% include 'admin/Article/form.html.twig' with {form: edit_form} %}
+
+    <ul class="record_actions pager">
+        <li class="previous">
+            <a href="{{ url('admin.articles') }}">&larr; Back to the list</a>
+        </li>
+    </ul>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var submitted = false;
+            var code = null;
+            var srcCodeSelector = '.note-editable';
+            var destCodeSelector = '#article_content';
+
+            // Set content in pretty content
+            var code = $(destCodeSelector).val();
+            $('#article_prettyContent').val(code);
+
+            // Handle form submission
+            $('form').on('submit', function (e) {
+                if (!submitted) {
+                    e.preventDefault();
+
+                    var codeSrc = $(srcCodeSelector);
+                    var codeDest = $(destCodeSelector);
+
+                    var code = codeSrc.code();
+                    codeDest.val(code);
+
+                    submitted = true;
+
+                    $('form').trigger('submit');
+                }
+            });
+
+            // Setup Summernote
+            $('textarea').summernote({
+                height: 300
+            });
+        });
+    </script>
+
+{% endblock %}
