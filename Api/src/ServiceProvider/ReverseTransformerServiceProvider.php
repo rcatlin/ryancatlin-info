@@ -1,11 +1,11 @@
 <?php
 
-namespace RCatlin\Blog\ServiceProvider;
+namespace RCatlin\Api\ServiceProvider;
 
 use Doctrine\ORM\EntityManager;
 use League\Container\ServiceProvider\AbstractServiceProvider;
-use RCatlin\Blog\Repository;
-use RCatlin\Blog\ReverseTransformer;
+use RCatlin\Api\Repository;
+use RCatlin\Api\ReverseTransformer;
 
 class ReverseTransformerServiceProvider extends AbstractServiceProvider
 {

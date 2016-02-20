@@ -1,11 +1,11 @@
 <?php
 
-namespace RCatlin\Blog\ServiceProvider;
+namespace RCatlin\Api\ServiceProvider;
 
 use League\Container\ServiceProvider\AbstractServiceProvider;
 use League\Fractal\Manager;
-use RCatlin\Blog\Serializer;
-use RCatlin\Blog\Transformer\TransformerContainer;
+use RCatlin\Api\Serializer;
+use RCatlin\Api\Transformer\TransformerContainer;
 
 class SerializerServiceProvider extends AbstractServiceProvider
 {

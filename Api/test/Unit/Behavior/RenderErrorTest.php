@@ -1,10 +1,10 @@
 <?php
 
-namespace RCatlin\Blog\Test\Unit\Behavior;
+namespace RCatlin\Api\Test\Unit\Behavior;
 
-use RCatlin\Blog\Behavior\RenderError;
-use RCatlin\Blog\Test\HasFaker;
-use RCatlin\Blog\Test\ReadsResponseContent;
+use RCatlin\Api\Behavior\RenderError;
+use RCatlin\Api\Test\HasFaker;
+use RCatlin\Api\Test\ReadsResponseContent;
 use Refinery29\Piston\Response;
 
 class RenderErrorTest extends \PHPUnit_Framework_TestCase

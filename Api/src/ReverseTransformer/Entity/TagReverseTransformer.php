@@ -1,10 +1,10 @@
 <?php
 
-namespace RCatlin\Blog\ReverseTransformer\Entity;
+namespace RCatlin\Api\ReverseTransformer\Entity;
 
-use RCatlin\Blog\Entity;
-use RCatlin\Blog\Repository;
-use RCatlin\Blog\ReverseTransformer;
+use RCatlin\Api\Entity;
+use RCatlin\Api\Repository;
+use RCatlin\Api\ReverseTransformer;
 
 class TagReverseTransformer implements ReverseTransformer\ReverseTransformerInterface
 {

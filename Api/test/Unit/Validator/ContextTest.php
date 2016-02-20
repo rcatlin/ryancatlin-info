@@ -1,8 +1,8 @@
 <?php
 
-namespace RCatlin\Blog\Test\Unit\Validator;
+namespace RCatlin\Api\Test\Unit\Validator;
 
-use RCatlin\Blog\Validator\Context;
+use RCatlin\Api\Validator\Context;
 
 class ContextTest extends \PHPUnit_Framework_TestCase
 {

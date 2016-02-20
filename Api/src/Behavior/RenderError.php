@@ -1,6 +1,6 @@
 <?php
 
-namespace RCatlin\Blog\Behavior;
+namespace RCatlin\Api\Behavior;
 
 use Assert\Assertion;
 use Refinery29\ApiOutput\Resource\Error\ErrorCollection;

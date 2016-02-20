@@ -1,6 +1,6 @@
 <?php
 
-namespace RCatlin\Blog\Serializer;
+namespace RCatlin\Api\Serializer;
 
 use Assert\Assertion;
 use League\Fractal\Manager;

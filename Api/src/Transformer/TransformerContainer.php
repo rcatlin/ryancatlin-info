@@ -1,10 +1,10 @@
 <?php
 
-namespace RCatlin\Blog\Transformer;
+namespace RCatlin\Api\Transformer;
 
 use Assert\Assertion;
 use League\Container\Container;
-use RCatlin\Blog\ServiceProvider;
+use RCatlin\Api\ServiceProvider;
 
 class TransformerContainer
 {

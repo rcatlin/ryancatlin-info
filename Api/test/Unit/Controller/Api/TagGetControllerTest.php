@@ -1,15 +1,15 @@
 <?php
 
-namespace RCatlin\Blog\Test\Unit\Controller\Api;
+namespace RCatlin\Api\Test\Unit\Controller\Api;
 
 use League\Fractal\Scope;
-use RCatlin\Blog\Controller;
-use RCatlin\Blog\Entity;
-use RCatlin\Blog\Repository;
-use RCatlin\Blog\Serializer;
-use RCatlin\Blog\Test\HasFaker;
-use RCatlin\Blog\Test\ReadsResponseContent;
-use RCatlin\Blog\Test\Unit\BuildsMocks;
+use RCatlin\Api\Controller;
+use RCatlin\Api\Entity;
+use RCatlin\Api\Repository;
+use RCatlin\Api\Serializer;
+use RCatlin\Api\Test\HasFaker;
+use RCatlin\Api\Test\ReadsResponseContent;
+use RCatlin\Api\Test\Unit\BuildsMocks;
 use Refinery29\Piston\Request;
 use Refinery29\Piston\Response;
 use Teapot\StatusCode;

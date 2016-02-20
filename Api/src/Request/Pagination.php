@@ -1,6 +1,6 @@
 <?php
 
-namespace RCatlin\Blog\Request;
+namespace RCatlin\Api\Request;
 
 class Pagination
 {

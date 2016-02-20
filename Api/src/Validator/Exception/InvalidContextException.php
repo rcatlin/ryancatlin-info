@@ -1,6 +1,6 @@
 <?php
 
-namespace RCatlin\Blog\Validator\Exception;
+namespace RCatlin\Api\Validator\Exception;
 
 class InvalidContextException extends \Exception
 {

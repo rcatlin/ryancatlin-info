@@ -1,6 +1,6 @@
 <?php
 
-namespace RCatlin\Blog\Test;
+namespace RCatlin\Api\Test;
 
 use Doctrine\ORM\EntityManager;
 use League\FactoryMuffin\Facade as FactoryMuffin;

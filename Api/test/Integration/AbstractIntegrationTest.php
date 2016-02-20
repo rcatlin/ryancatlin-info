@@ -1,10 +1,10 @@
 <?php
 
-namespace RCatlin\Blog\Test\Integration;
+namespace RCatlin\Api\Test\Integration;
 
 use GuzzleHttp\Client;
-use RCatlin\Blog\Entity;
-use RCatlin\Blog\Test\AbstractRequiresContainerTest;
+use RCatlin\Api\Entity;
+use RCatlin\Api\Test\AbstractRequiresContainerTest;
 
 abstract class AbstractIntegrationTest extends AbstractRequiresContainerTest
 {

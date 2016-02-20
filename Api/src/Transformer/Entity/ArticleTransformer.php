@@ -1,11 +1,11 @@
 <?php
 
-namespace RCatlin\Blog\Transformer\Entity;
+namespace RCatlin\Api\Transformer\Entity;
 
 use Doctrine\Common\Collections\Collection;
 use League\Fractal\TransformerAbstract;
-use RCatlin\Blog\Entity;
-use RCatlin\Blog\Transformer;
+use RCatlin\Api\Entity;
+use RCatlin\Api\Transformer;
 
 class ArticleTransformer extends TransformerAbstract
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace RCatlin\Blog\Test\Unit;
+namespace RCatlin\Api\Test\Unit;
 
 use Assert\Assertion;
 

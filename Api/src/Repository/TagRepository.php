@@ -1,9 +1,9 @@
 <?php
 
-namespace RCatlin\Blog\Repository;
+namespace RCatlin\Api\Repository;
 
 use Doctrine\ORM\EntityRepository;
-use RCatlin\Blog\Entity;
+use RCatlin\Api\Entity;
 
 class TagRepository extends EntityRepository
 {

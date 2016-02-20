@@ -1,6 +1,6 @@
 <?php
 
-namespace RCatlin\Blog\Validator;
+namespace RCatlin\Api\Validator;
 
 use Particle\Validator\Validator;
 

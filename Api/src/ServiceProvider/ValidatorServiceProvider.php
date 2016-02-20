@@ -1,9 +1,9 @@
 <?php
 
-namespace RCatlin\Blog\ServiceProvider;
+namespace RCatlin\Api\ServiceProvider;
 
 use League\Container\ServiceProvider\AbstractServiceProvider;
-use RCatlin\Blog\Validator;
+use RCatlin\Api\Validator;
 
 class ValidatorServiceProvider extends AbstractServiceProvider
 {

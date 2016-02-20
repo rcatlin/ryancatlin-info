@@ -1,6 +1,6 @@
 <?php
 
-namespace RCatlin\Blog\Test\Integration\ServiceProvider;
+namespace RCatlin\Api\Test\Integration\ServiceProvider;
 
 use Assert\Assertion;
 use League\Container\Container;

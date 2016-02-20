@@ -1,6 +1,6 @@
 <?php
 
-namespace RCatlin\Blog\ServiceProvider;
+namespace RCatlin\Api\ServiceProvider;
 
 use Assert\Assertion;
 use Doctrine\ORM\EntityManager;

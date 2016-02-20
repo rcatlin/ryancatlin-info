@@ -1,11 +1,11 @@
 <?php
 
-namespace RCatlin\Blog\Serializer;
+namespace RCatlin\Api\Serializer;
 
 use Assert\Assertion;
 use League\Fractal\Resource;
 use League\Fractal\TransformerAbstract;
-use RCatlin\Blog\Transformer;
+use RCatlin\Api\Transformer;
 
 class FractalResourceFactory
 {

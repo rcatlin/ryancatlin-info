@@ -1,11 +1,11 @@
 <?php
 
-namespace RCatlin\Blog\Test\Integration\ServiceProvider;
+namespace RCatlin\Api\Test\Integration\ServiceProvider;
 
-use RCatlin\Blog\Serializer;
-use RCatlin\Blog\ServiceProvider\FractalManagerServiceProvider;
-use RCatlin\Blog\ServiceProvider\SerializerServiceProvider;
-use RCatlin\Blog\ServiceProvider\TransformerContainerServiceProvider;
+use RCatlin\Api\Serializer;
+use RCatlin\Api\ServiceProvider\FractalManagerServiceProvider;
+use RCatlin\Api\ServiceProvider\SerializerServiceProvider;
+use RCatlin\Api\ServiceProvider\TransformerContainerServiceProvider;
 
 class SerializerServiceProviderTest extends AbstractServiceProviderTest
 {

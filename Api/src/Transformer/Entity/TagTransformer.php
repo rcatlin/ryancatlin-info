@@ -1,9 +1,9 @@
 <?php
 
-namespace RCatlin\Blog\Transformer\Entity;
+namespace RCatlin\Api\Transformer\Entity;
 
 use League\Fractal\TransformerAbstract;
-use RCatlin\Blog\Entity;
+use RCatlin\Api\Entity;
 
 class TagTransformer extends TransformerAbstract
 {

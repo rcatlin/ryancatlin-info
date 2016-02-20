@@ -1,8 +1,8 @@
 <?php
 
-namespace RCatlin\Blog\Test\Integration\ServiceProvider;
+namespace RCatlin\Api\Test\Integration\ServiceProvider;
 
-use RCatlin\Blog\ServiceProvider;
+use RCatlin\Api\ServiceProvider;
 use Refinery29\Piston\Piston;
 
 class PistonServiceProviderTest extends AbstractServiceProviderTest

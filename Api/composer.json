@@ -5,12 +5,12 @@
     "description": "My personal site.",
     "autoload": {
         "psr-4": {
-            "RCatlin\\Blog\\": "src/"
+            "RCatlin\\Api\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "RCatlin\\Blog\\Test\\": "test/"
+            "RCatlin\\Api\\Test\\": "test/"
         }
     },
     "require": {

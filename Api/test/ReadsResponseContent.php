@@ -1,6 +1,6 @@
 <?php
 
-namespace RCatlin\Blog\Test;
+namespace RCatlin\Api\Test;
 
 use Psr\Http\Message\ResponseInterface;
 use Refinery29\Piston\Response;

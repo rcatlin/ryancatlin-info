@@ -1,9 +1,9 @@
 <?php
 
-namespace RCatlin\Blog\ServiceProvider;
+namespace RCatlin\Api\ServiceProvider;
 
 use League\Container\ServiceProvider\AbstractServiceProvider;
-use RCatlin\Blog\Transformer;
+use RCatlin\Api\Transformer;
 
 class TransformerContainerServiceProvider extends AbstractServiceProvider
 {

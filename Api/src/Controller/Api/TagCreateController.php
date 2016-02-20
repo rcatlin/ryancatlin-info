@@ -1,12 +1,12 @@
 <?php
 
-namespace RCatlin\Blog\Controller\Api;
+namespace RCatlin\Api\Controller\Api;
 
 use Doctrine\ORM\EntityManager;
-use RCatlin\Blog\ReverseTransformer;
-use RCatlin\Blog\Serializer;
-use RCatlin\Blog\Validator;
-use RCatlin\Blog\Validator\Context;
+use RCatlin\Api\ReverseTransformer;
+use RCatlin\Api\Serializer;
+use RCatlin\Api\Validator;
+use RCatlin\Api\Validator\Context;
 use Refinery29\Piston\Request;
 use Refinery29\Piston\Response;
 use Teapot\StatusCode;

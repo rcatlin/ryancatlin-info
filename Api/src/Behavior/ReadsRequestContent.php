@@ -1,6 +1,6 @@
 <?php
 
-namespace RCatlin\Blog\Behavior;
+namespace RCatlin\Api\Behavior;
 
 use Refinery29\Piston\Request;
 

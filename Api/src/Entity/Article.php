@@ -1,6 +1,6 @@
 <?php
 
-namespace RCatlin\Blog\Entity;
+namespace RCatlin\Api\Entity;
 
 use Assert\Assertion;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -11,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table()
  * @ORM\Entity(
- *     repositoryClass="RCatlin\Blog\Repository\ArticleRepository"
+ *     repositoryClass="RCatlin\Api\Repository\ArticleRepository"
  * )
  * @ORM\Table(
  *     indexes={
@@ -72,7 +72,7 @@ class Article
      * @var ArrayCollection
      *
      * @ORM\ManyToMany(
-     *      targetEntity="RCatlin\Blog\Entity\Tag",
+     *      targetEntity="RCatlin\Api\Entity\Tag",
      *      inversedBy="articles",
      *      cascade={"persist"}
      * )

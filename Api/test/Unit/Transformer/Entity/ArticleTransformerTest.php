@@ -1,10 +1,10 @@
 <?php
 
-namespace RCatlin\Blog\Test\Unit\Transformer\Entity;
+namespace RCatlin\Api\Test\Unit\Transformer\Entity;
 
-use RCatlin\Blog\Entity;
-use RCatlin\Blog\Test\HasFaker;
-use RCatlin\Blog\Transformer;
+use RCatlin\Api\Entity;
+use RCatlin\Api\Test\HasFaker;
+use RCatlin\Api\Transformer;
 
 class ArticleTransformerTest extends \PHPUnit_Framework_TestCase
 {

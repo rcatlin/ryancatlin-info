@@ -4,7 +4,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 use Dotenv\Dotenv;
 use League\Container\Container;
-use RCatlin\Blog\ServiceProvider;
+use RCatlin\Api\ServiceProvider;
 
 // Create our container
 $container = new Container();

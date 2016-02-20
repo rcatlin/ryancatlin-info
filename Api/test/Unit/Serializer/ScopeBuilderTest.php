@@ -1,13 +1,13 @@
 <?php
 
-namespace RCatlin\Blog\Test\Unit\Serializer;
+namespace RCatlin\Api\Test\Unit\Serializer;
 
 use League\Fractal\Manager;
 use League\Fractal\Resource\Collection;
 use League\Fractal\Resource\Item;
 use League\Fractal\Scope;
-use RCatlin\Blog\Serializer;
-use RCatlin\Blog\Test\Unit\BuildsMocks;
+use RCatlin\Api\Serializer;
+use RCatlin\Api\Test\Unit\BuildsMocks;
 
 class ScopeBuilderTest extends \PHPUnit_Framework_TestCase
 {

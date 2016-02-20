@@ -1,6 +1,6 @@
 <?php
 
-namespace RCatlin\Blog\Test;
+namespace RCatlin\Api\Test;
 
 use GuzzleHttp\Psr7\Stream;
 

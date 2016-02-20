@@ -1,10 +1,10 @@
 <?php
 
-namespace RCatlin\Blog\ServiceProvider;
+namespace RCatlin\Api\ServiceProvider;
 
 use League\Container\ServiceProvider\AbstractServiceProvider;
-use RCatlin\Blog\Entity;
-use RCatlin\Blog\Transformer;
+use RCatlin\Api\Entity;
+use RCatlin\Api\Transformer;
 
 class TransformerServiceProvider extends AbstractServiceProvider
 {
