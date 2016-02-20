@@ -1,9 +1,9 @@
 <?php
 
-namespace RCatlin\Blog\Validator\Entity;
+namespace RCatlin\Api\Validator\Entity;
 
-use RCatlin\Blog\Validator\AbstractValidator;
-use RCatlin\Blog\Validator\Context;
+use RCatlin\Api\Validator\AbstractValidator;
+use RCatlin\Api\Validator\Context;
 
 class TagValidator extends AbstractValidator
 {

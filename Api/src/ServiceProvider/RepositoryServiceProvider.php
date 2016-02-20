@@ -1,11 +1,11 @@
 <?php
 
-namespace RCatlin\Blog\ServiceProvider;
+namespace RCatlin\Api\ServiceProvider;
 
 use Doctrine\ORM\EntityManager;
 use League\Container\ServiceProvider\AbstractServiceProvider;
-use RCatlin\Blog\Entity;
-use RCatlin\Blog\Repository;
+use RCatlin\Api\Entity;
+use RCatlin\Api\Repository;
 
 class RepositoryServiceProvider extends AbstractServiceProvider
 {

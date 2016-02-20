@@ -3,7 +3,7 @@
 namespace RCatlin\Test\Factory;
 
 use League\FactoryMuffin\Facade as FactoryMuffin;
-use RCatlin\Blog\Entity;
+use RCatlin\Api\Entity;
 
 FactoryMuffin::define(Entity\Article::class, [
     'slug' => 'unique:word',

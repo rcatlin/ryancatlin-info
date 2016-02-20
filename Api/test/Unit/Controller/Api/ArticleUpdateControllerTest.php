@@ -1,22 +1,22 @@
 <?php
 
-namespace RCatlin\Blog\Test\Unit\Controller\Api;
+namespace RCatlin\Api\Test\Unit\Controller\Api;
 
 use Doctrine\ORM\EntityManager;
 use League\FactoryMuffin\Facade as FactoryMuffin;
 use League\Fractal\Scope;
 use Particle\Validator\ValidationResult;
-use RCatlin\Blog\Controller;
-use RCatlin\Blog\Entity;
-use RCatlin\Blog\ReverseTransformer;
-use RCatlin\Blog\Serializer;
-use RCatlin\Blog\Test\AbstractRequiresContainerTest;
-use RCatlin\Blog\Test\CreatesRequest;
-use RCatlin\Blog\Test\HasFaker;
-use RCatlin\Blog\Test\LoadsFactoryMuffinFactories;
-use RCatlin\Blog\Test\ReadsResponseContent;
-use RCatlin\Blog\Test\Unit\BuildsMocks;
-use RCatlin\Blog\Validator;
+use RCatlin\Api\Controller;
+use RCatlin\Api\Entity;
+use RCatlin\Api\ReverseTransformer;
+use RCatlin\Api\Serializer;
+use RCatlin\Api\Test\AbstractRequiresContainerTest;
+use RCatlin\Api\Test\CreatesRequest;
+use RCatlin\Api\Test\HasFaker;
+use RCatlin\Api\Test\LoadsFactoryMuffinFactories;
+use RCatlin\Api\Test\ReadsResponseContent;
+use RCatlin\Api\Test\Unit\BuildsMocks;
+use RCatlin\Api\Validator;
 use Refinery29\Piston\Response;
 use Teapot\StatusCode;
 

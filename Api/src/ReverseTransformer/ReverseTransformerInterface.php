@@ -1,6 +1,6 @@
 <?php
 
-namespace RCatlin\Blog\ReverseTransformer;
+namespace RCatlin\Api\ReverseTransformer;
 
 interface ReverseTransformerInterface
 {

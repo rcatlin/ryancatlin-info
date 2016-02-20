@@ -1,11 +1,11 @@
 <?php
 
-namespace RCatlin\Blog\Controller\Api;
+namespace RCatlin\Api\Controller\Api;
 
 use Doctrine\ORM\EntityManager;
-use RCatlin\Blog\Behavior\RenderError;
-use RCatlin\Blog\Behavior\RenderResponse;
-use RCatlin\Blog\Repository;
+use RCatlin\Api\Behavior\RenderError;
+use RCatlin\Api\Behavior\RenderResponse;
+use RCatlin\Api\Repository;
 use Refinery29\Piston\Request;
 use Refinery29\Piston\Response;
 use Teapot\StatusCode;

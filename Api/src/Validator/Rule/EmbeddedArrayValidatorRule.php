@@ -1,6 +1,6 @@
 <?php
 
-namespace RCatlin\Blog\Validator\Rule;
+namespace RCatlin\Api\Validator\Rule;
 
 use Assert\Assertion;
 use Particle\Validator\Rule;

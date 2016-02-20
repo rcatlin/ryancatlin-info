@@ -1,9 +1,9 @@
 <?php
 
-namespace RCatlin\Blog\Test\Integration\ServiceProvider;
+namespace RCatlin\Api\Test\Integration\ServiceProvider;
 
-use RCatlin\Blog\ServiceProvider;
-use RCatlin\Blog\Validator;
+use RCatlin\Api\ServiceProvider;
+use RCatlin\Api\Validator;
 
 class ValidatorServiceProviderTest extends AbstractServiceProviderTest
 {

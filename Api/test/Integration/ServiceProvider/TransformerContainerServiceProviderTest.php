@@ -1,9 +1,9 @@
 <?php
 
-namespace RCatlin\Blog\Test\Integration\ServiceProvider;
+namespace RCatlin\Api\Test\Integration\ServiceProvider;
 
-use RCatlin\Blog\ServiceProvider;
-use RCatlin\Blog\Transformer;
+use RCatlin\Api\ServiceProvider;
+use RCatlin\Api\Transformer;
 
 class TransformerContainerServiceProviderTest extends AbstractServiceProviderTest
 {

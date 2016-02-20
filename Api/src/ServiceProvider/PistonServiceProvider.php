@@ -1,9 +1,9 @@
 <?php
 
-namespace RCatlin\Blog\ServiceProvider;
+namespace RCatlin\Api\ServiceProvider;
 
 use League\Container\ServiceProvider\AbstractServiceProvider;
-use RCatlin\Blog\Middleware;
+use RCatlin\Api\Middleware;
 use Refinery29\Piston\Piston;
 
 class PistonServiceProvider extends AbstractServiceProvider

@@ -1,10 +1,10 @@
 <?php
 
-namespace RCatlin\Blog\Test\Unit\Validator\Entity;
+namespace RCatlin\Api\Test\Unit\Validator\Entity;
 
-use RCatlin\Blog\Test\HasFaker;
-use RCatlin\Blog\Validator\Context;
-use RCatlin\Blog\Validator\Entity\TagValidator;
+use RCatlin\Api\Test\HasFaker;
+use RCatlin\Api\Validator\Context;
+use RCatlin\Api\Validator\Entity\TagValidator;
 
 class TagValidatorPartialUpdateContextTest extends \PHPUnit_Framework_TestCase
 {

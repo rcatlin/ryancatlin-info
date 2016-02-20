@@ -1,9 +1,9 @@
 <?php
 
-namespace RCatlin\Blog\Middleware\Route;
+namespace RCatlin\Api\Middleware\Route;
 
 use League\Pipeline\StageInterface;
-use RCatlin\Blog\Controller;
+use RCatlin\Api\Controller;
 use Refinery29\Piston\Middleware\Payload;
 use Refinery29\Piston\Piston;
 use Refinery29\Piston\Router\RouteGroup;

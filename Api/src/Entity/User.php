@@ -1,6 +1,6 @@
 <?php
 
-namespace RCatlin\Blog\Entity;
+namespace RCatlin\Api\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  * as it was previously a dependency for User functionality.
  * Group properties and methods were excluded.
  *
- * @ORM\Entity(repositoryClass="RCatlin\Blog\Repository\UserRepository")
+ * @ORM\Entity(repositoryClass="RCatlin\Api\Repository\UserRepository")
  */
 class User implements \Serializable
 {

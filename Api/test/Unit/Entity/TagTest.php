@@ -1,10 +1,10 @@
 <?php
 
-namespace RCatlin\Blog\Test\Unit\Entity;
+namespace RCatlin\Api\Test\Unit\Entity;
 
-use RCatlin\Blog\Entity;
-use RCatlin\Blog\Test\HasFaker;
-use RCatlin\Blog\Test\Unit\BuildsMocks;
+use RCatlin\Api\Entity;
+use RCatlin\Api\Test\HasFaker;
+use RCatlin\Api\Test\Unit\BuildsMocks;
 
 class TagTest extends \PHPUnit_Framework_TestCase
 {

@@ -1,9 +1,9 @@
 <?php
 
-namespace RCatlin\Blog\Validator\Entity;
+namespace RCatlin\Api\Validator\Entity;
 
-use RCatlin\Blog\Validator\AbstractValidator;
-use RCatlin\Blog\Validator\Context;
+use RCatlin\Api\Validator\AbstractValidator;
+use RCatlin\Api\Validator\Context;
 
 class ArticleValidator extends AbstractValidator
 {
@@ -82,7 +82,7 @@ class ArticleValidator extends AbstractValidator
      * @param bool|false $allowEmpty
      * @param bool|true  $required
      *
-     * @return \RCatlin\Blog\Validator\CustomChain
+     * @return \RCatlin\Api\Validator\CustomChain
      */
     protected function addContent($allowEmpty = false, $required = true)
     {

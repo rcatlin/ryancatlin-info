@@ -1,11 +1,11 @@
 <?php
 
-namespace RCatlin\Blog\Test\Unit\Serializer;
+namespace RCatlin\Api\Test\Unit\Serializer;
 
 use League\Fractal\Resource;
 use League\Fractal\TransformerAbstract;
-use RCatlin\Blog\Serializer;
-use RCatlin\Blog\Test\Unit\BuildsMocks;
+use RCatlin\Api\Serializer;
+use RCatlin\Api\Test\Unit\BuildsMocks;
 
 class FractalResourceFactoryTest extends \PHPUnit_Framework_TestCase
 {

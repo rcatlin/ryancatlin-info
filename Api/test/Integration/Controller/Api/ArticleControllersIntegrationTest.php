@@ -1,11 +1,11 @@
 <?php
 
-namespace RCatlin\Blog\Test\Integration\Controller\Api;
+namespace RCatlin\Api\Test\Integration\Controller\Api;
 
-use RCatlin\Blog\Test\CreatesGuzzleStream;
-use RCatlin\Blog\Test\HasFaker;
-use RCatlin\Blog\Test\Integration\AbstractIntegrationTest;
-use RCatlin\Blog\Test\ReadsResponseContent;
+use RCatlin\Api\Test\CreatesGuzzleStream;
+use RCatlin\Api\Test\HasFaker;
+use RCatlin\Api\Test\Integration\AbstractIntegrationTest;
+use RCatlin\Api\Test\ReadsResponseContent;
 use Teapot\StatusCode;
 
 class ArticleControllersIntegrationTest extends AbstractIntegrationTest

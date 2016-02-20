@@ -1,11 +1,11 @@
 <?php
 
-namespace RCatlin\Blog\Controller\Api;
+namespace RCatlin\Api\Controller\Api;
 
 use League\Fractal\Scope;
-use RCatlin\Blog\Behavior;
-use RCatlin\Blog\Entity;
-use RCatlin\Blog\Serializer;
+use RCatlin\Api\Behavior;
+use RCatlin\Api\Entity;
+use RCatlin\Api\Serializer;
 
 class AbstractTagController
 {

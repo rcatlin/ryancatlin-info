@@ -1,17 +1,17 @@
 <?php
 
-namespace RCatlin\Blog\Entity;
+namespace RCatlin\Api\Entity;
 
 use Assert\Assertion;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use RCatlin\Blog\Entity;
+use RCatlin\Api\Entity;
 
 /**
  * Tag
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="RCatlin\Blog\Repository\TagRepository")
+ * @ORM\Entity(repositoryClass="RCatlin\Api\Repository\TagRepository")
  */
 class Tag
 {
@@ -35,7 +35,7 @@ class Tag
      * @var ArrayCollection
      *
      * @ORM\ManyToMany(
-     *      targetEntity="RCatlin\Blog\Entity\Article",
+     *      targetEntity="RCatlin\Api\Entity\Article",
      *      mappedBy="tags",
      *      cascade={"persist"}
      * )

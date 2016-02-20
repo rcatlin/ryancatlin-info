@@ -1,9 +1,9 @@
 <?php
 
-namespace RCatlin\Blog\Test\Integration\ServiceProvider;
+namespace RCatlin\Api\Test\Integration\ServiceProvider;
 
 use Doctrine\ORM\EntityManager;
-use RCatlin\Blog\ServiceProvider;
+use RCatlin\Api\ServiceProvider;
 
 class EntityManagerServiceProviderTest extends AbstractServiceProviderTest
 {

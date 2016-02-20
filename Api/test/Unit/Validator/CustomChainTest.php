@@ -1,10 +1,10 @@
 <?php
 
-namespace RCatlin\Blog\Test\Unit\Validator;
+namespace RCatlin\Api\Test\Unit\Validator;
 
-use RCatlin\Blog\Test\HasFaker;
-use RCatlin\Blog\Validator\CustomChain;
-use RCatlin\Blog\Validator\Rule;
+use RCatlin\Api\Test\HasFaker;
+use RCatlin\Api\Validator\CustomChain;
+use RCatlin\Api\Validator\Rule;
 
 class CustomChainTest extends \PHPUnit_Framework_TestCase
 {

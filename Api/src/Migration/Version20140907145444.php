@@ -1,6 +1,6 @@
 <?php
 
-namespace RCatlin\Blog\Migration;
+namespace RCatlin\Api\Migration;
 
 use Doctrine\DBAL\Migrations\AbstractMigration;
 use Doctrine\DBAL\Schema\Schema;

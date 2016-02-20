@@ -1,12 +1,12 @@
 <?php
 
-namespace RCatlin\Blog\Test\Integration\Controller\Api;
+namespace RCatlin\Api\Test\Integration\Controller\Api;
 
 use League\FactoryMuffin\Facade as FactoryMuffin;
-use RCatlin\Blog\Entity;
-use RCatlin\Blog\Test\Integration\AbstractIntegrationTest;
-use RCatlin\Blog\Test\LoadsFactoryMuffinFactories;
-use RCatlin\Blog\Test\ReadsResponseContent;
+use RCatlin\Api\Entity;
+use RCatlin\Api\Test\Integration\AbstractIntegrationTest;
+use RCatlin\Api\Test\LoadsFactoryMuffinFactories;
+use RCatlin\Api\Test\ReadsResponseContent;
 use Teapot\StatusCode;
 
 class ArticleControllerGetMostRecentTest extends AbstractIntegrationTest

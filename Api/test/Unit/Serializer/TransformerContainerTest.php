@@ -1,12 +1,12 @@
 <?php
 
-namespace RCatlin\Blog\Test\Unit\Serializer;
+namespace RCatlin\Api\Test\Unit\Serializer;
 
 use League\Container\Container;
 use League\Fractal\TransformerAbstract;
-use RCatlin\Blog\Test\HasFaker;
-use RCatlin\Blog\Test\Unit\BuildsMocks;
-use RCatlin\Blog\Transformer;
+use RCatlin\Api\Test\HasFaker;
+use RCatlin\Api\Test\Unit\BuildsMocks;
+use RCatlin\Api\Transformer;
 
 class TransformerContainerTest extends \PHPUnit_Framework_TestCase
 {

@@ -1,11 +1,11 @@
 <?php
 
-namespace RCatlin\Blog\Controller\Api;
+namespace RCatlin\Api\Controller\Api;
 
-use RCatlin\Blog\Entity;
-use RCatlin\Blog\Repository;
-use RCatlin\Blog\Request\Pagination;
-use RCatlin\Blog\Serializer;
+use RCatlin\Api\Entity;
+use RCatlin\Api\Repository;
+use RCatlin\Api\Request\Pagination;
+use RCatlin\Api\Serializer;
 use Refinery29\Piston\Request;
 use Refinery29\Piston\Response;
 

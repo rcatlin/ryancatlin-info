@@ -1,12 +1,12 @@
 <?php
 
-namespace RCatlin\Blog\Test\Unit\ReverseTransformer\Entity;
+namespace RCatlin\Api\Test\Unit\ReverseTransformer\Entity;
 
-use RCatlin\Blog\Entity;
-use RCatlin\Blog\Repository;
-use RCatlin\Blog\ReverseTransformer;
-use RCatlin\Blog\Test\HasFaker;
-use RCatlin\Blog\Test\Unit\BuildsMocks;
+use RCatlin\Api\Entity;
+use RCatlin\Api\Repository;
+use RCatlin\Api\ReverseTransformer;
+use RCatlin\Api\Test\HasFaker;
+use RCatlin\Api\Test\Unit\BuildsMocks;
 
 class TagReverseTransformerTest extends \PHPUnit_Framework_TestCase
 {

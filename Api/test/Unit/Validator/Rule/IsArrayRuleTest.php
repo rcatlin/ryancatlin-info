@@ -1,9 +1,9 @@
 <?php
 
-namespace RCatlin\Blog\Test\Unit\Validator\Rule;
+namespace RCatlin\Api\Test\Unit\Validator\Rule;
 
-use RCatlin\Blog\Test\HasFaker;
-use RCatlin\Blog\Validator\Rule;
+use RCatlin\Api\Test\HasFaker;
+use RCatlin\Api\Validator\Rule;
 
 class IsArrayRuleTest extends \PHPUnit_Framework_TestCase
 {

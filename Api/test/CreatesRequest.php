@@ -1,6 +1,6 @@
 <?php
 
-namespace RCatlin\Blog\Test;
+namespace RCatlin\Api\Test;
 
 use Assert\Assertion;
 use Refinery29\Piston\Request;

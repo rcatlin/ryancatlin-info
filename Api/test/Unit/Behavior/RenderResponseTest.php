@@ -1,9 +1,9 @@
 <?php
 
-namespace RCatlin\Blog\Test\Unit\Behavior;
+namespace RCatlin\Api\Test\Unit\Behavior;
 
-use RCatlin\Blog\Behavior\RenderResponse;
-use RCatlin\Blog\Test\ReadsResponseContent;
+use RCatlin\Api\Behavior\RenderResponse;
+use RCatlin\Api\Test\ReadsResponseContent;
 use Refinery29\Piston\Response;
 
 class RenderResponseTest extends \PHPUnit_Framework_TestCase

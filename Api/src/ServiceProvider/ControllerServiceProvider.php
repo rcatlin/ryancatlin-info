@@ -1,14 +1,14 @@
 <?php
 
-namespace RCatlin\Blog\ServiceProvider;
+namespace RCatlin\Api\ServiceProvider;
 
 use Doctrine\ORM\EntityManager;
 use League\Container\ServiceProvider\AbstractServiceProvider;
-use RCatlin\Blog\Controller;
-use RCatlin\Blog\Repository;
-use RCatlin\Blog\ReverseTransformer;
-use RCatlin\Blog\Serializer;
-use RCatlin\Blog\Validator;
+use RCatlin\Api\Controller;
+use RCatlin\Api\Repository;
+use RCatlin\Api\ReverseTransformer;
+use RCatlin\Api\Serializer;
+use RCatlin\Api\Validator;
 
 class ControllerServiceProvider extends AbstractServiceProvider
 {
