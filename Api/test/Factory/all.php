@@ -99,5 +99,8 @@ FactoryMuffin::setCustomMaker(function ($class) {
         return Entity\Tag::fromValues('name');
     }
 
-    return new $class();
+    throw new \InvalidArgumentException(sprintf(
+        'Unknown Entity Class \'%s\'',
+        $class
+    ));
 });
