@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }}{% endblock %}
+
+{% block content %}
+
+    {% set count = articles|length %}
+    {% if articles is not defined or count <= 0 %}
+        <div class="panel panel-default">
+            <div class="panel-body">
+                There seems to be nothing here.
+            </div>
+        </div>
+    {% else %}
+        {% for article in articles %}
+            {% include 'Article/view.html.twig' with {article: article} %}
+        {% endfor %}
+    {% endif %}
+
+    {% include 'pager.html.twig' with {
+        page: page,
+        numPages: numPages
+    } %}
+{% endblock %}
