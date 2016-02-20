@@ -1,4 +1,4 @@
-.PHONY: test composer cs migrate setup database test unit integration
+.PHONY: test composer cs migrate setup database database-dev test unit integration
 
 # For setting up the dev environment.
 setup:
@@ -13,7 +13,7 @@ cs: composer
 
 database:
 	mysql -uroot -e "DROP DATABASE IF EXISTS ryancatlin_info_test; CREATE DATABASE ryancatlin_info_test"
-	make schema
+	make migrate
 
 test: composer setup unit integration
 
@@ -23,16 +23,13 @@ unit: database
 integration: database
 	./script/integration.sh
 
-schema:
-	mysql -uroot ryancatlin_info_test < sql/schema.sql
-
 validate:
-	./console orm:validate-schema
+	./script/console orm:validate-schema
 
 dev-server:
 	cd web && node app.js
 
 # See https://github.com/doctrine/DoctrineORMModule/issues/361 as to why '-n' flag is included
 migrate:
-	./console migrations:migrate -n
+	./script/console migrations:migrate -n
 
