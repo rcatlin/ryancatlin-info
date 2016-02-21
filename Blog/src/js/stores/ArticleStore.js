@@ -1,4 +1,5 @@
 var assign = require('object-assign');
+var makeUrl = require('make-url');
 var EventEmitter = require('events').EventEmitter;
 
 var ArticleConstants = require('../constants/ArticleConstants');
@@ -12,19 +13,34 @@ var ArticleStore = assign({}, EventEmitter.prototype, {
 
     /**
      * @param {object} component The React Component that requires API data.
+     * @param {integer} offset Query Offset
+     * @param {integer} limit Query Limit
+     * @param {boolean} createdAtDescending Sort Articles by createdAt
      * @return {void}
      */
-    getMostRecent: function(component) {
-        var data = {};
+    getList: function(component, offset, limit, createdAtDescending) {
+        var data = {},
+            urlParams = {
+                offset: offset,
+                limit: limit,
+                sort: 'created_at'
+            };
 
-        $.get(ArticleConstants.mostRecentEndpoint, function(result) {
-            if (component.isMounted()) {
-                data = result.result.data;
-                component.setState({
-                    article: data
-                });
+        if (createdAtDescending === true || createdAtDescending === null) {
+            urlParams.sort = '-created_at';
+        }
+
+        $.get(
+            makeUrl(ArticleConstants.listEndpoint, urlParams),
+            function(result) {
+                if (component.isMounted()) {
+                    data = result.result.data.pop();
+                    component.setState({
+                        article: data
+                    });
+                }
             }
-        });
+        );
     },
 
     /**

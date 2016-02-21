@@ -16,7 +16,7 @@ var MostRecent = React.createClass({
     },
 
     componentDidMount: function() {
-        ArticleStore.getMostRecent(this);
+        ArticleStore.getList(this, 0, 1, true);
     },
 
     render: function() {
