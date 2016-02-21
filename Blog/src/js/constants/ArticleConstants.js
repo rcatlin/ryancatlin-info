@@ -1,3 +1,3 @@
 module.exports = {
-    mostRecentEndpoint: '/api/articles/mostrecent'
+    listEndpoint: '/api/articles'
 };

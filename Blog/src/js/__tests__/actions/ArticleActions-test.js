@@ -10,6 +10,6 @@ describe('ArticleActions', function() {
     it('ensures constant values exist', function() {
         var ArticleConstants = require('../../constants/ArticleConstants');
 
-        expect(ArticleConstants.mostRecentEndpoint).toBeDefined();
+        expect(ArticleConstants.listEndpoint).toBeDefined();
     });
 });
