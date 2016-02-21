@@ -5,18 +5,18 @@ namespace RCatlin\Api\Behavior;
 use Assert\Assertion;
 use Refinery29\ApiOutput\Resource\Error\ErrorCollection;
 use Refinery29\ApiOutput\Resource\ResourceFactory;
-use Refinery29\Piston\Response;
+use Refinery29\Piston\ApiResponse;
 use Teapot\StatusCode;
 
 trait RenderError
 {
     /**
-     * @param Response $response
+     * @param ApiResponse $response
      * @param $message
      *
-     * @return Response
+     * @return ApiResponse
      */
-    public function renderNotFound(Response $response, $message)
+    public function renderNotFound(ApiResponse $response, $message)
     {
         Assertion::string($message);
 
@@ -26,12 +26,12 @@ trait RenderError
     }
 
     /**
-     * @param Response $response
+     * @param ApiResponse $response
      * @param $message
      *
-     * @return Response
+     * @return ApiResponse
      */
-    public function renderBadRequest(Response $response, $message)
+    public function renderBadRequest(ApiResponse $response, $message)
     {
         Assertion::string($message);
 
@@ -41,12 +41,12 @@ trait RenderError
     }
 
     /**
-     * @param Response $response
-     * @param array    $validationErrors
+     * @param ApiResponse $response
+     * @param array       $validationErrors
      *
-     * @return Response
+     * @return ApiResponse
      */
-    public function renderValidationErrors(Response $response, array $validationErrors)
+    public function renderValidationErrors(ApiResponse $response, array $validationErrors)
     {
         $errors = [];
         foreach ($validationErrors as $value => $valueErrors) {
@@ -63,12 +63,12 @@ trait RenderError
     }
 
     /**
-     * @param Response $response
+     * @param ApiResponse $response
      * @param $message
      *
-     * @return Response
+     * @return ApiResponse
      */
-    public function renderServerError(Response $response, $message)
+    public function renderServerError(ApiResponse $response, $message)
     {
         Assertion::string($message);
 
@@ -78,17 +78,17 @@ trait RenderError
     }
 
     /**
-     * @param Response $response
+     * @param ApiResponse $response
      * @param $statusCode
      * @param ErrorCollection $errors
      *
-     * @return Response
+     * @return ApiResponse
      */
-    private function renderErrors(Response $response, $statusCode, ErrorCollection $errors)
+    private function renderErrors(ApiResponse $response, $statusCode, ErrorCollection $errors)
     {
         Assertion::integer($statusCode);
 
-        /** @var Response $response */
+        /** @var ApiResponse $response */
         $response = $response
             ->withHeader('Content-Type', 'application/json')
             ->withStatus($statusCode)

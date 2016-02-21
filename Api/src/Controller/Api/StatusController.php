@@ -3,21 +3,21 @@
 namespace RCatlin\Api\Controller\Api;
 
 use RCatlin\Api\Behavior\RenderResponse;
+use Refinery29\Piston\ApiResponse;
 use Refinery29\Piston\Request;
-use Refinery29\Piston\Response;
 
 class StatusController
 {
     use RenderResponse;
 
     /**
-     * @param Request  $request
-     * @param Response $response
-     * @param array    $vars
+     * @param Request     $request
+     * @param ApiResponse $response
+     * @param array       $vars
      *
-     * @return Response
+     * @return ApiResponse
      */
-    public function get(Request $request, Response $response, array $vars = [])
+    public function get(Request $request, ApiResponse $response, array $vars = [])
     {
         return $this->renderResult($response, ['status' => 'ok']);
     }

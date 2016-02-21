@@ -6,8 +6,10 @@ use RCatlin\Api\Entity;
 use RCatlin\Api\Repository;
 use RCatlin\Api\Request\Pagination;
 use RCatlin\Api\Serializer;
+use RCatlin\Api\Sort;
+use Refinery29\Piston\ApiResponse;
+use Refinery29\Piston\Middleware\Request\Sorts;
 use Refinery29\Piston\Request;
-use Refinery29\Piston\Response;
 
 class ArticleGetController extends AbstractArticleController
 {
@@ -37,13 +39,13 @@ class ArticleGetController extends AbstractArticleController
     }
 
     /**
-     * @param Request  $request
-     * @param Response $response
-     * @param array    $vars
+     * @param Request     $request
+     * @param ApiResponse $response
+     * @param array       $vars
      *
-     * @return Response
+     * @return ApiResponse
      */
-    public function get(Request $request, Response $response, array $vars = [])
+    public function get(Request $request, ApiResponse $response, array $vars = [])
     {
         $id = $vars['id'];
 
@@ -63,13 +65,13 @@ class ArticleGetController extends AbstractArticleController
     }
 
     /**
-     * @param Request  $request
-     * @param Response $response
-     * @param array    $vars
+     * @param Request     $request
+     * @param ApiResponse $response
+     * @param array       $vars
      *
-     * @return Response
+     * @return ApiResponse
      */
-    public function getMostRecent(Request $request, Response $response, array $vars = [])
+    public function getMostRecent(Request $request, ApiResponse $response, array $vars = [])
     {
         try {
             /* @var Entity\Article|null $article */
@@ -88,13 +90,50 @@ class ArticleGetController extends AbstractArticleController
     }
 
     /**
-     * @param Request  $request
-     * @param Response $response
-     * @param array    $vars
+     * @param Request     $request
+     * @param ApiResponse $response
+     * @param array       $vars
      *
-     * @return Response
+     * @return ApiResponse
      */
-    public function getByTag(Request $request, Response $response, array $vars = [])
+    public function getList(Request $request, ApiResponse $response, array $vars = [])
+    {
+        $limit = 10;
+        $offset = 0;
+
+        if ($request->isPaginated()) {
+            $offsetLimit = $request->getOffsetLimit();
+
+            $limit = $offsetLimit['limit'];
+            $offset = $offsetLimit['offset'];
+        }
+
+        if ($request->getSort('created_at') == Sorts::SORT_ASCENDING) {
+            $order = Sort::DOCTRINE_ASCENDING;
+        } else {
+            $order = Sort::DOCTRINE_DESCENDING;
+        }
+
+        try {
+            /* @var Entity\Article|null $article */
+            $articles = $this->articleRepository->findAllActiveArticles($offset, $limit, $order);
+        } catch (\Exception $e) {
+            return $this->renderServerError($response, $e->getMessage());
+        }
+
+        $scope = $this->getArticlesScope($articles);
+
+        return $this->renderResult($response, $scope->toArray());
+    }
+
+    /**
+     * @param Request     $request
+     * @param ApiResponse $response
+     * @param array       $vars
+     *
+     * @return ApiResponse
+     */
+    public function getByTag(Request $request, ApiResponse $response, array $vars = [])
     {
         $name = $vars['name'];
 

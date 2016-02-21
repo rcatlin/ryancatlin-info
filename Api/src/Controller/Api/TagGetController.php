@@ -5,8 +5,8 @@ namespace RCatlin\Api\Controller\Api;
 use RCatlin\Api\Entity;
 use RCatlin\Api\Repository;
 use RCatlin\Api\Serializer;
+use Refinery29\Piston\ApiResponse;
 use Refinery29\Piston\Request;
-use Refinery29\Piston\Response;
 
 class TagGetController extends AbstractTagController
 {
@@ -29,13 +29,13 @@ class TagGetController extends AbstractTagController
     }
 
     /**
-     * @param Response $response
-     * @param Request  $request
-     * @param array    $vars
+     * @param ApiResponse $response
+     * @param Request     $request
+     * @param array       $vars
      *
-     * @return Response
+     * @return ApiResponse
      */
-    public function get(Request $request, Response $response, array $vars = [])
+    public function get(Request $request, ApiResponse $response, array $vars = [])
     {
         if (!isset($vars['id'])) {
             return $this->renderBadRequest($response, 'Missing required id parameter');

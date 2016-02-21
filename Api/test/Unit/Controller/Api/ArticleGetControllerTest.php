@@ -10,8 +10,8 @@ use RCatlin\Api\Serializer;
 use RCatlin\Api\Test\HasFaker;
 use RCatlin\Api\Test\ReadsResponseContent;
 use RCatlin\Api\Test\Unit\BuildsMocks;
+use Refinery29\Piston\ApiResponse;
 use Refinery29\Piston\Request;
-use Refinery29\Piston\Response;
 use Teapot\StatusCode;
 
 class ArticleGetControllerTest extends \PHPUnit_Framework_TestCase
@@ -49,7 +49,7 @@ class ArticleGetControllerTest extends \PHPUnit_Framework_TestCase
 
         $controller = new Controller\Api\ArticleGetController($repo, $scopeBuilder, $this->getMockTagRepository());
 
-        $response = $controller->get(new Request(), new Response(), ['id' => $id]);
+        $response = $controller->get(new Request(), new ApiResponse(), ['id' => $id]);
 
         $this->assertEquals(StatusCode::OK, $response->getStatusCode());
 
@@ -77,7 +77,7 @@ class ArticleGetControllerTest extends \PHPUnit_Framework_TestCase
             $this->getMockTagRepository()
         );
 
-        $response = $controller->get(new Request(), new Response(), ['id' => $id]);
+        $response = $controller->get(new Request(), new ApiResponse(), ['id' => $id]);
 
         $this->assertEquals(StatusCode::NOT_FOUND, $response->getStatusCode());
     }

@@ -6,8 +6,8 @@ use Doctrine\ORM\EntityManager;
 use RCatlin\Api\ReverseTransformer;
 use RCatlin\Api\Serializer;
 use RCatlin\Api\Validator;
+use Refinery29\Piston\ApiResponse;
 use Refinery29\Piston\Request;
-use Refinery29\Piston\Response;
 use Teapot\StatusCode;
 
 class ArticleCreateController extends AbstractArticleController
@@ -47,13 +47,13 @@ class ArticleCreateController extends AbstractArticleController
     }
 
     /**
-     * @param Request  $request
-     * @param Response $response
-     * @param array    $vars
+     * @param Request     $request
+     * @param ApiResponse $response
+     * @param array       $vars
      *
-     * @return Response
+     * @return ApiResponse
      */
-    public function create(Request $request, Response $response, array $vars = [])
+    public function create(Request $request, ApiResponse $response, array $vars = [])
     {
         $json = $this->readRequestJson($request);
 

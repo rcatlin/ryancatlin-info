@@ -28,11 +28,6 @@ return [
     new \Doctrine\DBAL\Tools\Console\Command\ReservedWordsCommand(),
     new \Doctrine\DBAL\Tools\Console\Command\RunSqlCommand(),
 
-    // PHP-CS-Fixer
-    new \Symfony\CS\Console\Command\FixCommand(),
-    new \Symfony\CS\Console\Command\ReadmeCommand(),
-    new \Symfony\CS\Console\Command\SelfUpdateCommand(),
-
     // Doctrine Migrations
     new \Doctrine\DBAL\Migrations\Tools\Console\Command\DiffCommand(),
     new \Doctrine\DBAL\Migrations\Tools\Console\Command\ExecuteCommand(),

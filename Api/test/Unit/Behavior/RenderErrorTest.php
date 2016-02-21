@@ -5,7 +5,7 @@ namespace RCatlin\Api\Test\Unit\Behavior;
 use RCatlin\Api\Behavior\RenderError;
 use RCatlin\Api\Test\HasFaker;
 use RCatlin\Api\Test\ReadsResponseContent;
-use Refinery29\Piston\Response;
+use Refinery29\Piston\ApiResponse;
 
 class RenderErrorTest extends \PHPUnit_Framework_TestCase
 {
@@ -17,9 +17,9 @@ class RenderErrorTest extends \PHPUnit_Framework_TestCase
     {
         $message = $this->getFaker()->sentence();
 
-        $response = $this->renderNotFound(new Response(), $message);
+        $response = $this->renderNotFound(new ApiResponse(), $message);
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertInstanceOf(ApiResponse::class, $response);
         $this->assertSame(404, $response->getStatusCode());
         $this->assertSame(
             json_encode([
@@ -39,16 +39,16 @@ class RenderErrorTest extends \PHPUnit_Framework_TestCase
      */
     public function testRenderNotFoundRequiresStringMessage()
     {
-        $this->renderNotFound(new Response(), $this->getFaker()->randomNumber());
+        $this->renderNotFound(new ApiResponse(), $this->getFaker()->randomNumber());
     }
 
     public function testRenderBadRequest()
     {
         $message = $this->getFaker()->sentence();
 
-        $response = $this->renderBadRequest(new Response(), $message);
+        $response = $this->renderBadRequest(new ApiResponse(), $message);
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertInstanceOf(ApiResponse::class, $response);
         $this->assertSame(400, $response->getStatusCode());
         $this->assertSame(
             json_encode([
@@ -68,7 +68,7 @@ class RenderErrorTest extends \PHPUnit_Framework_TestCase
      */
     public function testRenderBadRequestRequiresStringMessage()
     {
-        $this->renderBadRequest(new Response(), $this->getFaker()->randomNumber());
+        $this->renderBadRequest(new ApiResponse(), $this->getFaker()->randomNumber());
     }
 
     public function testRenderValidationErrors()
@@ -83,7 +83,7 @@ class RenderErrorTest extends \PHPUnit_Framework_TestCase
         $code1 = $faker->word;
         $title1 = $faker->sentence();
 
-        $response = $this->renderValidationErrors(new Response(), [
+        $response = $this->renderValidationErrors(new ApiResponse(), [
             $value0 => [
                 $code0 => $title0,
             ],
@@ -92,7 +92,7 @@ class RenderErrorTest extends \PHPUnit_Framework_TestCase
             ],
         ]);
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertInstanceOf(ApiResponse::class, $response);
         $this->assertSame(400, $response->getStatusCode());
         $this->assertSame(
             json_encode([
@@ -120,7 +120,7 @@ class RenderErrorTest extends \PHPUnit_Framework_TestCase
 
         $badValue = $faker->randomNumber();
 
-        $this->renderValidationErrors(new Response(), [
+        $this->renderValidationErrors(new ApiResponse(), [
            [
                 $badValue => [
                     $faker->word => $faker->sentence,
@@ -138,7 +138,7 @@ class RenderErrorTest extends \PHPUnit_Framework_TestCase
 
         $notAnArray = $faker->word;
 
-        $this->renderValidationErrors(new Response(), [
+        $this->renderValidationErrors(new ApiResponse(), [
             [
                 $faker->word => $notAnArray,
             ],
@@ -154,7 +154,7 @@ class RenderErrorTest extends \PHPUnit_Framework_TestCase
 
         $badCode = $faker->randomNumber();
 
-        $this->renderValidationErrors(new Response(), [
+        $this->renderValidationErrors(new ApiResponse(), [
             [
                 $faker->word => [
                     $badCode => $faker->sentence,
@@ -172,7 +172,7 @@ class RenderErrorTest extends \PHPUnit_Framework_TestCase
 
         $badTitle = $faker->randomNumber();
 
-        $this->renderValidationErrors(new Response(), [
+        $this->renderValidationErrors(new ApiResponse(), [
             [
                 $faker->word => [
                     $faker->word => $badTitle,
@@ -185,9 +185,9 @@ class RenderErrorTest extends \PHPUnit_Framework_TestCase
     {
         $message = $this->getFaker()->sentence();
 
-        $response = $this->renderServerError(new Response(), $message);
+        $response = $this->renderServerError(new ApiResponse(), $message);
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertInstanceOf(ApiResponse::class, $response);
         $this->assertSame(500, $response->getStatusCode());
         $this->assertSame(
             json_encode([
@@ -207,6 +207,6 @@ class RenderErrorTest extends \PHPUnit_Framework_TestCase
      */
     public function testRenderServerErrorRequiresStringMessage()
     {
-        $this->renderServerError(new Response(), $this->getFaker()->randomNumber());
+        $this->renderServerError(new ApiResponse(), $this->getFaker()->randomNumber());
     }
 }

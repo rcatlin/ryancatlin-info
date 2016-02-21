@@ -7,8 +7,8 @@ use RCatlin\Api\ReverseTransformer;
 use RCatlin\Api\Serializer;
 use RCatlin\Api\Validator;
 use RCatlin\Api\Validator\Context;
+use Refinery29\Piston\ApiResponse;
 use Refinery29\Piston\Request;
-use Refinery29\Piston\Response;
 use Teapot\StatusCode;
 
 class TagCreateController extends AbstractTagController
@@ -48,12 +48,12 @@ class TagCreateController extends AbstractTagController
     }
 
     /**
-     * @param Response $response
-     * @param Request  $request
+     * @param ApiResponse $response
+     * @param Request     $request
      *
-     * @return Response
+     * @return ApiResponse
      */
-    public function create(Request $request, Response $response, array $vars = [])
+    public function create(Request $request, ApiResponse $response, array $vars = [])
     {
         $content = $request->getBody()->getContents();
 

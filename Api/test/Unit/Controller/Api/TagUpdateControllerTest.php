@@ -14,7 +14,7 @@ use RCatlin\Api\Test\HasFaker;
 use RCatlin\Api\Test\ReadsResponseContent;
 use RCatlin\Api\Test\Unit\BuildsMocks;
 use RCatlin\Api\Validator;
-use Refinery29\Piston\Response;
+use Refinery29\Piston\ApiResponse;
 use Teapot\StatusCode;
 
 class TagUpdateControllerTest extends \PHPUnit_Framework_TestCase
@@ -89,7 +89,7 @@ class TagUpdateControllerTest extends \PHPUnit_Framework_TestCase
         $request = $this->createRequest(json_encode($content));
 
         // Call Our Test Method
-        $response = $controller->update($request, new Response(), ['id' => $id]);
+        $response = $controller->update($request, new ApiResponse(), ['id' => $id]);
 
         $this->assertEquals(StatusCode::ACCEPTED, $response->getStatusCode());
 

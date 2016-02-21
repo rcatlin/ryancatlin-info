@@ -15,8 +15,8 @@ use RCatlin\Api\Test\HasFaker;
 use RCatlin\Api\Test\ReadsResponseContent;
 use RCatlin\Api\Test\Unit\BuildsMocks;
 use RCatlin\Api\Validator;
+use Refinery29\Piston\ApiResponse;
 use Refinery29\Piston\Request;
-use Refinery29\Piston\Response;
 use Teapot\StatusCode;
 
 class ArticleCreateControllerTest extends \PHPUnit_Framework_TestCase
@@ -92,7 +92,7 @@ class ArticleCreateControllerTest extends \PHPUnit_Framework_TestCase
 
         $request = $this->createRequest(json_encode($body));
 
-        $response = $controller->create($request, new Response());
+        $response = $controller->create($request, new ApiResponse());
 
         $this->assertEquals(StatusCode::CREATED, $response->getStatusCode());
         $this->assertEquals(
@@ -112,7 +112,7 @@ class ArticleCreateControllerTest extends \PHPUnit_Framework_TestCase
             $this->articleValidator
         );
 
-        $response = $controller->create(new Request(), new Response());
+        $response = $controller->create(new Request(), new ApiResponse());
 
         $this->assertEquals(StatusCode::BAD_REQUEST, $response->getStatusCode());
     }
@@ -130,7 +130,7 @@ class ArticleCreateControllerTest extends \PHPUnit_Framework_TestCase
             'bad' => 'article request data',
         ]));
 
-        $response = $controller->create($request, new Response());
+        $response = $controller->create($request, new ApiResponse());
 
         $this->assertEquals(StatusCode::BAD_REQUEST, $response->getStatusCode());
     }

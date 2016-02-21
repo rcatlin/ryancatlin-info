@@ -14,7 +14,7 @@ use RCatlin\Api\Test\HasFaker;
 use RCatlin\Api\Test\ReadsResponseContent;
 use RCatlin\Api\Test\Unit\BuildsMocks;
 use RCatlin\Api\Validator;
-use Refinery29\Piston\Response;
+use Refinery29\Piston\ApiResponse;
 use Teapot\StatusCode;
 
 class TagCreateControllerTest extends \PHPUnit_Framework_TestCase
@@ -80,7 +80,7 @@ class TagCreateControllerTest extends \PHPUnit_Framework_TestCase
 
         $request = $this->createRequest(json_encode($content));
 
-        $response = $controller->create($request, new Response());
+        $response = $controller->create($request, new ApiResponse());
 
         $this->assertEquals(StatusCode::CREATED, $response->getStatusCode());
         $this->assertEquals(

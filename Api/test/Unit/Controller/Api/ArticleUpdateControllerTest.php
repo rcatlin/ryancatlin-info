@@ -17,7 +17,7 @@ use RCatlin\Api\Test\LoadsFactoryMuffinFactories;
 use RCatlin\Api\Test\ReadsResponseContent;
 use RCatlin\Api\Test\Unit\BuildsMocks;
 use RCatlin\Api\Validator;
-use Refinery29\Piston\Response;
+use Refinery29\Piston\ApiResponse;
 use Teapot\StatusCode;
 
 class ArticleUpdateControllerTest extends AbstractRequiresContainerTest
@@ -105,7 +105,7 @@ class ArticleUpdateControllerTest extends AbstractRequiresContainerTest
         $request = $this->createRequest(json_encode($data));
 
         // Call Our Test Method
-        $response = $controller->update($request, new Response(), ['id' => $id]);
+        $response = $controller->update($request, new ApiResponse(), ['id' => $id]);
 
         $this->assertSame(StatusCode::ACCEPTED, $response->getStatusCode());
 

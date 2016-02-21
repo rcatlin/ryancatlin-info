@@ -28,7 +28,7 @@ class CustomChain extends Chain
      * @param Validator $validator
      * @param $context
      * @param $allowEmpty
-     * 
+     *
      * @return $this
      */
     public function embed(Validator $validator, $allowEmpty = false, $context = AbstractValidator::DEFAULT_CONTEXT)

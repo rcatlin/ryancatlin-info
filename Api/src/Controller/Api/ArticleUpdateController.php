@@ -8,8 +8,8 @@ use RCatlin\Api\Behavior\RenderError;
 use RCatlin\Api\ReverseTransformer;
 use RCatlin\Api\Serializer;
 use RCatlin\Api\Validator;
+use Refinery29\Piston\ApiResponse;
 use Refinery29\Piston\Request;
-use Refinery29\Piston\Response;
 use Teapot\StatusCode;
 
 class ArticleUpdateController extends AbstractArticleController
@@ -51,7 +51,14 @@ class ArticleUpdateController extends AbstractArticleController
         $this->entityManager = $entityManager;
     }
 
-    public function update(Request $request, Response $response, $vars = [])
+    /**
+     * @param Request     $request
+     * @param ApiResponse $response
+     * @param array       $vars
+     *
+     * @return ApiResponse
+     */
+    public function update(Request $request, ApiResponse $response, $vars = [])
     {
         $id = $vars['id'];
 
@@ -91,7 +98,14 @@ class ArticleUpdateController extends AbstractArticleController
         return $this->renderResult($response, $scope->toArray(), StatusCode::ACCEPTED);
     }
 
-    public function partialUpdate(Request $request, Response $response, $vars = [])
+    /**
+     * @param Request     $request
+     * @param ApiResponse $response
+     * @param array       $vars
+     *
+     * @return ApiResponse
+     */
+    public function partialUpdate(Request $request, ApiResponse $response, $vars = [])
     {
         $id = $vars['id'];
 
