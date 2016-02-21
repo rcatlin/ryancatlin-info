@@ -557,7 +557,7 @@ class User implements \Serializable
      */
     public function setEnabled($boolean)
     {
-        $this->enabled = (Boolean) $boolean;
+        $this->enabled = (bool) $boolean;
 
         return $this;
     }
@@ -571,7 +571,7 @@ class User implements \Serializable
      */
     public function setExpired($boolean)
     {
-        $this->expired = (Boolean) $boolean;
+        $this->expired = (bool) $boolean;
 
         return $this;
     }

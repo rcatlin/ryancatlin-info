@@ -42,7 +42,7 @@ trait RenderError
 
     /**
      * @param ApiResponse $response
-     * @param array    $validationErrors
+     * @param array       $validationErrors
      *
      * @return ApiResponse
      */

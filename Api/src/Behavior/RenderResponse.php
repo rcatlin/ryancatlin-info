@@ -11,8 +11,8 @@ trait RenderResponse
 {
     /**
      * @param ApiResponse $response
-     * @param array    $result
-     * @param int      $status
+     * @param array       $result
+     * @param int         $status
      *
      * @return ApiResponse
      */

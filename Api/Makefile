@@ -9,7 +9,7 @@ composer:
 	composer install
 
 cs: composer
-    vendor/bin/php-cs-fixer fix --config-file=.php_cs --verbose --diff
+	vendor/bin/php-cs-fixer fix --config=.php_cs --verbose --diff
 
 database:
 	mysql -uroot -e "DROP DATABASE IF EXISTS ryancatlin_info_test; CREATE DATABASE ryancatlin_info_test"

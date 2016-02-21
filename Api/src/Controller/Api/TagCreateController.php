@@ -49,7 +49,7 @@ class TagCreateController extends AbstractTagController
 
     /**
      * @param ApiResponse $response
-     * @param Request  $request
+     * @param Request     $request
      *
      * @return ApiResponse
      */

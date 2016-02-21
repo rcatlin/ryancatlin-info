@@ -30,8 +30,8 @@ class TagGetController extends AbstractTagController
 
     /**
      * @param ApiResponse $response
-     * @param Request  $request
-     * @param array    $vars
+     * @param Request     $request
+     * @param array       $vars
      *
      * @return ApiResponse
      */

@@ -67,7 +67,7 @@ class FakeDataCommand extends Command
 
         if ($entityClass === Entity\Article::class) {
             $method = 'createArticle';
-        } else if ($entityClass === Entity\Tag::class) {
+        } elseif ($entityClass === Entity\Tag::class) {
             $method = 'createTag';
         } else {
             throw new \InvalidArgumentException(sprintf(
@@ -75,7 +75,7 @@ class FakeDataCommand extends Command
             ));
         }
 
-        for ($i = 0; $i < $amount; $i++) {
+        for ($i = 0; $i < $amount; ++$i) {
             $this->$method();
         }
     }

@@ -12,7 +12,7 @@ use Refinery29\Piston\ApiResponse;
 use Refinery29\Piston\Request;
 use Teapot\StatusCode;
 
-class TagUpdateController extends  AbstractTagController
+class TagUpdateController extends AbstractTagController
 {
     use ReadsRequestContent;
     use RenderError;
@@ -33,10 +33,10 @@ class TagUpdateController extends  AbstractTagController
     private $tagValidator;
 
     /**
-     * @param EntityManager $entityManager
-     * @param Serializer\ScopeBuilder $scopeBuilder
+     * @param EntityManager                                   $entityManager
+     * @param Serializer\ScopeBuilder                         $scopeBuilder
      * @param ReverseTransformer\Entity\TagReverseTransformer $tagReverseTransformer
-     * @param Validator\Entity\TagValidator $tagValidator
+     * @param Validator\Entity\TagValidator                   $tagValidator
      */
     public function __construct(
         EntityManager $entityManager,
@@ -51,9 +51,9 @@ class TagUpdateController extends  AbstractTagController
     }
 
     /**
-     * @param Request $request
+     * @param Request     $request
      * @param ApiResponse $response
-     * @param array $vars
+     * @param array       $vars
      *
      * @return ApiResponse
      */
