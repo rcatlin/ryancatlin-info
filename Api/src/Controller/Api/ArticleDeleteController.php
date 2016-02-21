@@ -6,8 +6,8 @@ use Doctrine\ORM\EntityManager;
 use RCatlin\Api\Behavior\RenderError;
 use RCatlin\Api\Behavior\RenderResponse;
 use RCatlin\Api\Repository;
+use Refinery29\Piston\ApiResponse;
 use Refinery29\Piston\Request;
-use Refinery29\Piston\Response;
 use Teapot\StatusCode;
 
 class ArticleDeleteController
@@ -35,7 +35,14 @@ class ArticleDeleteController
         $this->articleRepository = $articleRepository;
     }
 
-    public function delete(Request $request, Response $response, $vars = [])
+    /**
+     * @param Request $request
+     * @param ApiResponse $response
+     * @param array $vars
+     *
+     * @return ApiResponse
+     */
+    public function delete(Request $request, ApiResponse $response, $vars = [])
     {
         $id = $vars['id'];
 

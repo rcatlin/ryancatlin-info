@@ -8,8 +8,8 @@ use RCatlin\Api\Behavior\RenderError;
 use RCatlin\Api\ReverseTransformer;
 use RCatlin\Api\Serializer;
 use RCatlin\Api\Validator;
+use Refinery29\Piston\ApiResponse;
 use Refinery29\Piston\Request;
-use Refinery29\Piston\Response;
 use Teapot\StatusCode;
 
 class TagUpdateController extends  AbstractTagController
@@ -33,10 +33,10 @@ class TagUpdateController extends  AbstractTagController
     private $tagValidator;
 
     /**
-     * @param EntityManager                                   $entityManager
-     * @param Serializer\ScopeBuilder                         $scopeBuilder
-     * @param ReverseTransformer\Entity\TagReverseTransformer $tagTransformer
-     * @param Validator\Entity\TagValidator                   $tagValidator
+     * @param EntityManager $entityManager
+     * @param Serializer\ScopeBuilder $scopeBuilder
+     * @param ReverseTransformer\Entity\TagReverseTransformer $tagReverseTransformer
+     * @param Validator\Entity\TagValidator $tagValidator
      */
     public function __construct(
         EntityManager $entityManager,
@@ -50,7 +50,14 @@ class TagUpdateController extends  AbstractTagController
         $this->tagValidator = $tagValidator;
     }
 
-    public function update(Request $request, Response $response, $vars = [])
+    /**
+     * @param Request $request
+     * @param ApiResponse $response
+     * @param array $vars
+     *
+     * @return ApiResponse
+     */
+    public function update(Request $request, ApiResponse $response, $vars = [])
     {
         $id = $vars['id'];
 

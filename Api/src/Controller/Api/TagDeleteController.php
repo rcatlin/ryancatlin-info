@@ -6,8 +6,8 @@ use Doctrine\ORM\EntityManager;
 use RCatlin\Api\Behavior\RenderError;
 use RCatlin\Api\Behavior\RenderResponse;
 use RCatlin\Api\Repository;
+use Refinery29\Piston\ApiResponse;
 use Refinery29\Piston\Request;
-use Refinery29\Piston\Response;
 use Teapot\StatusCode;
 
 class TagDeleteController
@@ -37,12 +37,12 @@ class TagDeleteController
 
     /**
      * @param Request  $request
-     * @param Response $response
+     * @param ApiResponse $response
      * @param array    $vars
      *
-     * @return Response
+     * @return ApiResponse
      */
-    public function delete(Request $request, Response $response, $vars = [])
+    public function delete(Request $request, ApiResponse $response, $vars = [])
     {
         $id = $vars['id'];
 

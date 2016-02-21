@@ -3,16 +3,16 @@
 namespace RCatlin\Api\Test;
 
 use Psr\Http\Message\ResponseInterface;
-use Refinery29\Piston\Response;
+use Refinery29\Piston\ApiResponse;
 
 trait ReadsResponseContent
 {
     /**
-     * @param Response $response
+     * @param ApiResponse $response
      *
      * @return string
      */
-    public function readControllerResponse(Response $response)
+    public function readControllerResponse(ApiResponse $response)
     {
         $stream = $response->compileContent();
 

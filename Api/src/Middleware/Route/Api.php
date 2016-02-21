@@ -27,6 +27,7 @@ class Api implements StageInterface
 
             // Articles
             $group->delete('articles/{id:number}', Controller\Api\ArticleDeleteController::class . '::delete');
+            $group->get('articles', Controller\Api\ArticleGetController::class . '::getList');
             $group->get('articles/{id:number}', Controller\Api\ArticleGetController::class . '::get');
             $group->get('articles/mostrecent', Controller\Api\ArticleGetController::class . '::getMostRecent');
             $group->get('articles/tag/{name:word}', Controller\Api\ArticleGetController::class . '::getByTag');

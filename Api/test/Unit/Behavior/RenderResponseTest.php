@@ -4,7 +4,7 @@ namespace RCatlin\Api\Test\Unit\Behavior;
 
 use RCatlin\Api\Behavior\RenderResponse;
 use RCatlin\Api\Test\ReadsResponseContent;
-use Refinery29\Piston\Response;
+use Refinery29\Piston\ApiResponse;
 
 class RenderResponseTest extends \PHPUnit_Framework_TestCase
 {
@@ -15,9 +15,9 @@ class RenderResponseTest extends \PHPUnit_Framework_TestCase
     {
         $data = ['the-result'];
 
-        $response = $this->renderResult(new Response(), $data);
+        $response = $this->renderResult(new ApiResponse(), $data);
 
-        $this->assertInstanceOf(Response::class, $response);
+        $this->assertInstanceOf(ApiResponse::class, $response);
         $this->assertSame(200, $response->getStatusCode());
         $this->assertSame(
             json_encode([

@@ -8,8 +8,8 @@ use RCatlin\Api\Entity;
 use RCatlin\Api\Repository;
 use RCatlin\Api\Test\HasFaker;
 use RCatlin\Api\Test\Unit\BuildsMocks;
+use Refinery29\Piston\ApiResponse;
 use Refinery29\Piston\Request;
-use Refinery29\Piston\Response;
 use Teapot\StatusCode;
 
 class ArticleDeleteControllerTest extends \PHPUnit_Framework_TestCase
@@ -41,7 +41,7 @@ class ArticleDeleteControllerTest extends \PHPUnit_Framework_TestCase
 
         $controller = new Controller\Api\ArticleDeleteController($entityManager, $articleRepository);
 
-        $response = $controller->delete(new Request(), new Response(), ['id' => $id]);
+        $response = $controller->delete(new Request(), new ApiResponse(), ['id' => $id]);
 
         $this->assertEquals(StatusCode::NO_CONTENT, $response->getStatusCode());
     }
@@ -59,7 +59,7 @@ class ArticleDeleteControllerTest extends \PHPUnit_Framework_TestCase
 
         $controller = new Controller\Api\ArticleDeleteController($this->getMockEntityManager(), $articleRepository);
 
-        $response = $controller->delete(new Request(), new Response(), ['id' => $id]);
+        $response = $controller->delete(new Request(), new ApiResponse(), ['id' => $id]);
 
         $this->assertEquals(StatusCode::NOT_FOUND, $response->getStatusCode());
     }
