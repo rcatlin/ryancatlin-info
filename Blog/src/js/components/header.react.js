@@ -7,9 +7,7 @@ var Header = React.createClass({
         return (
             <div className="jumbotron">
                 <div className="container">
-                    <p>
-                        {'&nbsp;'}
-                    </p>
+                    <p></p>
                     <h2>
                         {'Ryan Catlin'}
                     </h2>
