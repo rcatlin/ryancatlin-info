@@ -1,24 +1,16 @@
 [![Build Status](https://travis-ci.org/rcatlin/ryancatlin-info.svg?branch=master)](https://travis-ci.org/rcatlin/ryancatlin-info.svg?branch=master)
+[![Code Climate](https://codeclimate.com/github/rcatlin/ryancatlin-info/badges/gpa.svg)](https://codeclimate.com/github/rcatlin/ryancatlin-info)
+[![Test Coverage](https://codeclimate.com/github/rcatlin/ryancatlin-info/badges/coverage.svg)](https://codeclimate.com/github/rcatlin/ryancatlin-info/coverage)
 
-Ryan Catlin Info (Personal Site)
-========================
 
-Code for my personal site: http://ryancatlin.info
+# (REFACTOR IN PROGRESS)
 
-## Install locally (dev)
-* REQUIRES PHP>=5.3.3, composer, bower, npm, and an available MySQL instance.
-* `git clone git@github.com:rcatlin/ryancatlin-info`
-* `cd ryancatlin-info`
-* Install PHP dependencies and generate autoloader: `composer install` 
-* Create `parameters.yml` file: `cp app/config/parameters.yml.dist app/config/parameters.yml`
-* Edit `app/config/parameters.yml` with database credentials to allow connection to your MySql instance.
-* Install node dependencies `npm install`
-* Install front-end dependencies: `bower install`
-* Generate front-end assets: `grunt`
-* Generate database: `php app/console doctrine:database:create`
-* Execute migrations: `php app/console doctrine:migrations:migrate`
-* Run server: `php app/console server:run`
-* Visit `http://127.0.0.1:8000/register` and register.
-* Logout via `http://127.0.0.1:8000/logout`
-* Promote your user: `php app/console fos:user:promote --super your-registered-username-here`
-* Login via `http://127.0.0.1:8000/login` to have access to admin.
+# Ryan Catlin Info (Personal Site)
+
+Source code for my website at http://www.ryancatlin.info/
+
+I'm in the process of refactoring my blog away from using the Symfony Framework.
+
+The API (backend) will be using [Piston](http://www.github.com/refinery29/piston), which I have co-developed while working at [Refinery29](http://engineering.r29.com/), and [Doctrine2 ORM](http://www.github.com/doctrine/orm).
+
+The Blog (frontend) will use [React](http://www.github.com/facebook/react) and [Flux](http://www.github.com/facebook/flux) with a spattering of other NPM dependencies.

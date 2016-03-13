@@ -1,0 +1,12 @@
+{
+    "globals": {
+        "describe": true,
+        "expect": true,
+        "it": true,
+        "jest": true,
+        "require": true
+    },
+    "rules": {
+        "global-require": 0
+    }
+}

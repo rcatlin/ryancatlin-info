@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} - About the man himself{% endblock %}
+
+{% block content %}
+    <p>
+        I am Ryan Catlin.
+    </p>
+
+    <p>
+        {% include 'github_badge.html.twig' %}
+    </p>
+
+{% endblock %}
