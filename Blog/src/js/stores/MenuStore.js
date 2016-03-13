@@ -10,16 +10,13 @@ var menu = {
     activePage: 'home',
     pages: {
         home: {
+            to: '',
             href: '/',
             icon: 'home',
             text: 'Main'
         },
-        articles: {
-            href: '/articles',
-            icon: 'newspaper-o',
-            text: 'Articles'
-        },
         about: {
+            to: 'about',
             href: '/about',
             icon: 'info-circle',
             text: 'About'
