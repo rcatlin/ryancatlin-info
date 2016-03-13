@@ -1,0 +1,21 @@
+#!/usr/bin/env php
+<?php
+
+use Symfony\Component\Console\Application;
+use Symfony\Component\Console\Helper\HelperSet;
+
+/* @var HelperSet $helperSet */
+$helperSet = require __DIR__ . '/../config/cli-config.php';
+
+$application = new Application();
+
+$application->setHelperSet($helperSet);
+
+$commands = require __DIR__ . '/../config/commands.php';
+
+if (!getenv('IS_PROD')) {
+    $commands[] = new \RCatlin\Api\Test\Console\Command\FakeDataCommand();
+}
+
+$application->addCommands($commands);
+$application->run();

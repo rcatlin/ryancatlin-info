@@ -1,14 +1,65 @@
 language: php
 
-php:
-    - 5.3
-    - 5.4
+sudo: false
+
+matrix:
+    fast_finish: true
+    include:
+        - env: APP=blog
+        - php: 5.5
+          env: APP=api
+        - php: 5.6
+          env: APP=api
+        - php: 7
+          env: APP=api
+    allow_failures:
+        - php: 7
 
 before_install:
-    - composer self-update
+    - if [[ "$TRAVIS_PULL_REQUEST" == "false" && "$TRAVIS_BRANCH" == "master" ]]; then IS_MERGE_TO_MASTER=true; else IS_MERGE_TO_MASTER=false; fi
+    - if [[ "$APP" == "blog" ]]; then nvm install 5.0.0; fi
+    - if [[ "$APP" == "api" ]]; then cd Api; fi
+    - if [[ "$APP" == "api" ]]; then composer self-update; fi
+    - if [[ "$APP" == "api" ]]; then cd ..; fi
 
-install: 
-    - composer install
+install:
+    - if [[ "$APP" == "api" ]]; then cd Api; fi
+    - if [[ "$APP" == "api" ]]; then make composer; fi
+    - if [[ "$APP" == "api" ]]; then make setup; fi
+    - if [[ "$APP" == "api" ]]; then make database; fi
+    - if [[ "$APP" == "blog" ]]; then cd Blog; fi
+    - if [[ "$APP" == "blog" ]]; then npm install; fi
+    - cd ..
 
-script: 
-    - ./bin/phpunit tests/
+before_script:
+    - if [[ "$APP" == "api" ]]; then cd Api; fi
+    - if [[ "$APP" == "api" ]]; then mkdir -p "$HOME/.php-cs-fixer"; fi
+    - if [[ "$APP" == "api" ]]; then cd ..; fi
+
+script:
+    - if [[ "$APP" == "api" ]]; then cd Api; fi
+    - if [[ "$APP" == "api" ]]; then make unit; fi
+    - if [[ "$APP" == "api" ]]; then make integration; fi
+    - if [[ "$APP" == "api" ]]; then vendor/bin/php-cs-fixer fix --config=.php_cs --verbose --diff --dry-run; fi
+    - if [[ "$APP" == "api" ]]; then make validate; fi
+    - if [[ "$APP" == "blog" ]]; then cd Blog; fi
+    - if [[ "$APP" == "blog" ]]; then grunt eslint; fi
+    - if [[ "$APP" == "blog" ]]; then npm test; fi
+    - cd ..
+
+after_script:
+    - if [[ "$APP" == "api" ]]; then cd Api; fi
+    - if [[ "$APP" == "api" && "$IS_MERGE_TO_MASTER" == "true" ]]; then bin/test-reporter; fi
+    - if [[ "$APP" == "api" ]]; then cd ..; fi
+
+cache:
+    directories:
+        - $HOME/.composer/cache
+        - $HOME/.php-cs-fixer
+        - $HOME/Blog/bower_components
+        - $HOME/Blog/node_modules
+
+addons:
+    code_climate:
+        repo_token: 1422e98c79dacf023e1a5710276ea033865b2884de913e957976f8da173d3ce5
+

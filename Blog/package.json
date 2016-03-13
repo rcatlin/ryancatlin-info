@@ -1,0 +1,41 @@
+{
+  "name": "ryancatlin-info",
+  "version": "0.1.0",
+  "devDependencies": {
+    "eslint": "^1.10.3",
+    "eslint-plugin-react": "^3.15.0",
+    "grunt": "^0.4.5",
+    "grunt-bowercopy": "^1.1.0",
+    "grunt-cli": "^0.1.13",
+    "grunt-contrib-clean": "^0.6.0",
+    "grunt-contrib-concat": "^0.5.0",
+    "grunt-contrib-copy": "^0.5.0",
+    "grunt-contrib-cssmin": "^0.10.0",
+    "grunt-contrib-uglify": "^0.5.1",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-eslint": "^17.3.1",
+    "jest": "^0.1.40",
+    "jest-cli": "^0.8.2",
+    "reactify": "^1.1.1"
+  },
+  "dependencies": {
+    "browserify": "^12.0.1",
+    "flux": "^2.1.1",
+    "keymirror": "^0.1.1",
+    "make-url": "0.0.1",
+    "object-assign": "^4.0.1",
+    "react": "^0.14.3",
+    "react-dom": "^0.14.7",
+    "react-router": "^2.0.1"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "bundle": "browserify src/js/index.js > app/js/bundle.js",
+    "test": "jest"
+  },
+  "browserify": {
+    "transform": [
+      "reactify"
+    ]
+  }
+}
