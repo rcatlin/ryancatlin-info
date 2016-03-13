@@ -2,7 +2,6 @@ var React = require('react');
 
 var Header = require('./header.react');
 var Menu = require('./menu.react');
-var MostRecent = require('./Article/MostRecent.react');
 
 var App = React.createClass({
     displayName: 'App',
@@ -12,7 +11,7 @@ var App = React.createClass({
             <div>
                 <Menu />
                 <Header />
-                <MostRecent />
+                {this.props.children}
             </div>
         );
     }

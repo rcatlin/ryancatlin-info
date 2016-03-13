@@ -36,7 +36,16 @@ var ArticleStore = assign({}, EventEmitter.prototype, {
                 if (component.isMounted()) {
                     data = result.result.data.pop();
                     component.setState({
-                        article: data
+                        article: {
+                            active: data.active,
+                            content: data.content,
+                            createdAt: data.created_at,
+                            id: data.id,
+                            slug: data.slug,
+                            tags: data.tags,
+                            title: data.title,
+                            updatedAt: data.updated_at
+                        }
                     });
                 }
             }

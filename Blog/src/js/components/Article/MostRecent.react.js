@@ -45,7 +45,7 @@ var MostRecent = React.createClass({
         return (
             <Article
                 content={article.content}
-                createdAt
+                createdAt={article.createdAt}
                 key={article.id}
                 slug={article.slug}
                 tagNames={tagNames}
