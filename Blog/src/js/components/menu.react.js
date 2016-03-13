@@ -36,12 +36,12 @@ var Menu = React.createClass({
 
     render: function() {
         var active = false,
-            index = 0,
+            index = 'undefined',
             menuItems = [],
             page = 0;
 
         for (index in this.state.pages) {
-            if (typeof index === 'number') {
+            if (this.state.pages.hasOwnProperty(index)) {
                 page = this.state.pages[index];
                 active = this.state.activePage === index;
 
@@ -52,12 +52,12 @@ var Menu = React.createClass({
                         icon={page.icon}
                         key={index}
                         name={index}
-                        onItemClick={this.handleOItemClick}
+                        onItemClick={this.handleOnItemClick}
                         text={page.text}
+                        to={page.to}
                     />
                 );
             }
-
         }
 
         return (

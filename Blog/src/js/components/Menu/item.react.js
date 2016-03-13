@@ -1,5 +1,8 @@
 var React = require('react');
 var ReactPropTypes = React.PropTypes;
+var ReactRouter = require('react-router');
+
+var Link = ReactRouter.Link;
 
 var Item = React.createClass({
     displayName: 'Item',
@@ -10,7 +13,8 @@ var Item = React.createClass({
         icon: ReactPropTypes.string.isRequired,
         name: ReactPropTypes.string.isRequired,
         onItemClick: ReactPropTypes.func,
-        text: ReactPropTypes.string.isRequired
+        text: ReactPropTypes.string.isRequired,
+        to: ReactPropTypes.string.isRequired
     },
 
     /**
@@ -37,14 +41,15 @@ var Item = React.createClass({
 
         return (
             <li className={listItemClass}>
-                <a
+                <Link
                     className={iconClass}
                     href="#"
                     name={this.props.name}
                     onClick={this.handleOnClick}
+                    to={this.props.to}
                 >
-                    {'&nbsp;'}{this.props.text}
-                </a>
+                    {' '}{this.props.text}
+                </Link>
             </li>
         );
     }
