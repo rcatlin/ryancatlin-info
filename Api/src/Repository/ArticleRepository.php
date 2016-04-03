@@ -17,7 +17,7 @@ class ArticleRepository extends EntityRepository
 SELECT
     COUNT(a.id)
 FROM
-    MainBundle:Article a
+    RCatlin\Api\Entity\Article a
 WHERE
     :tid MEMBER OF a.tags
     AND
@@ -28,7 +28,7 @@ EOF;
 SELECT
     COUNT(a.id)
 FROM
-    MainBundle:Article a
+    RCatlin\Api\Entity\Article a
 WHERE
     a.active=1
 EOF;
@@ -177,12 +177,15 @@ EOF;
      */
     public function getActiveTotalCount()
     {
-        return $this->getEntityManager()
+        $count = $this
+            ->getEntityManager()
             ->createQuery(
                 self::ARTICLE_COUNT_QUERY
             )
             ->getSingleScalarResult()
         ;
+
+        return intval($count);
     }
 
     /**

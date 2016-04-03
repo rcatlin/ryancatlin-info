@@ -17,6 +17,7 @@ class ControllerServiceProvider extends AbstractServiceProvider
      */
     protected $provides = [
         Controller\Api\ArticleCreateController::class,
+        Controller\Api\ArticleCountController::class,
         Controller\Api\ArticleDeleteController::class,
         Controller\Api\ArticleGetController::class,
         Controller\Api\ArticleUpdateController::class,
@@ -41,6 +42,11 @@ class ControllerServiceProvider extends AbstractServiceProvider
             ->withArgument(Validator\Entity\ArticleValidator::class)
         ;
 
+        $container->share(Controller\Api\ArticleCountController::class)
+            ->withArgument(Repository\ArticleRepository::class)
+            ->withArgument(Serializer\ScopeBuilder::class)
+        ;
+
         $container->share(Controller\Api\ArticleDeleteController::class)
             ->withArgument(EntityManager::class)
             ->withArgument(Repository\ArticleRepository::class)
@@ -58,6 +64,7 @@ class ControllerServiceProvider extends AbstractServiceProvider
             ->withArgument(EntityManager::class)
             ->withArgument(Serializer\ScopeBuilder::class)
         ;
+
 
         $container->share(Controller\Api\StatusController::class);
 
