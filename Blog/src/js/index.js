@@ -9,6 +9,7 @@ var browserHistory = ReactRouter.browserHistory;
 
 var App = require('./components/app.react');
 var About = require('./components/about.react');
+var ArticleById = require('./components/Article/ArticleById.react');
 var MostRecent = require('./components/Article/MostRecent.react');
 
 ReactDOM.render(
@@ -20,7 +21,11 @@ ReactDOM.render(
             <IndexRoute component={MostRecent} />
             <Route
                 component={About}
-                path="about"
+                path="/about"
+            />
+            <Route
+                component={ArticleById}
+                path="/articles/:id"
             />
         </Route>
     </Router>,
