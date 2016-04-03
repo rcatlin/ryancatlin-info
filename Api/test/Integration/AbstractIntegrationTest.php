@@ -30,7 +30,7 @@ abstract class AbstractIntegrationTest extends AbstractRequiresContainerTest
             Entity\Article::class,
             Entity\User::class,
         ];
-        
+
         foreach ($entityClasses as $entityClass) {
             $query = self::$entityManager->createQuery(
                 sprintf('DELETE FROM %s', $entityClass)

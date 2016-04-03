@@ -65,7 +65,6 @@ class ControllerServiceProvider extends AbstractServiceProvider
             ->withArgument(Serializer\ScopeBuilder::class)
         ;
 
-
         $container->share(Controller\Api\StatusController::class);
 
         $container->share(Controller\Api\TagCreateController::class)

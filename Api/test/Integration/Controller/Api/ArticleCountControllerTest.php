@@ -24,11 +24,11 @@ class ArticleCountControllerTest extends AbstractIntegrationTest
         ]);
 
         FactoryMuffin::create(Entity\Article::class, [
-            'active' => true
+            'active' => true,
         ]);
 
         FactoryMuffin::create(Entity\Article::class, [
-            'active' => true
+            'active' => true,
         ]);
 
         $response = $this->client->get(

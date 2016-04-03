@@ -23,9 +23,9 @@ class ArticleCountController extends AbstractArticleController
     }
 
     /**
-     * @param Request $request
+     * @param Request     $request
      * @param ApiResponse $response
-     * @param array $vars
+     * @param array       $vars
      *
      * @return ApiResponse
      */
