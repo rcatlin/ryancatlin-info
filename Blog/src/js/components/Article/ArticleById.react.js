@@ -1,14 +1,17 @@
 var React = require('react');
+var ReactPropTypes = React.PropTypes;
 
 var Article = require('../article.react');
 var ArticleStore = require('../../stores/ArticleStore');
 
-var MostRecent = React.createClass({
-    displayName: 'MostRecent',
 
-    /**
-     * @return {object} The initial state object.
-     */
+var ArticleById = React.createClass({
+    displayName: 'ArticleById',
+
+    propTypes: {
+        params: ReactPropTypes.array.isRequired
+    },
+
     getInitialState: function() {
         return {
             article: undefined // eslint-disable-line no-undefined
@@ -16,19 +19,21 @@ var MostRecent = React.createClass({
     },
 
     componentDidMount: function() {
-        ArticleStore.getList(this, 0, 1, true);
+        var articleId = parseInt(this.props.params.id, 10);
+
+        ArticleStore.getById(this, articleId);
     },
 
     render: function() {
         var article = this.state.article,
-            index = 0,
+            index = 'undefined',
             tagNames = [];
 
         if (typeof article === 'undefined') {
             return (
                 <div className="panel panel-default">
                     <div className="panel-body">
-                        {'There seems to be nothing here.'}
+                        {'Article could not be found.'}
                     </div>
                 </div>
             );
@@ -56,4 +61,4 @@ var MostRecent = React.createClass({
     }
 });
 
-module.exports = MostRecent;
+module.exports = ArticleById;

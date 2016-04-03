@@ -13,6 +13,37 @@ var ArticleStore = assign({}, EventEmitter.prototype, {
 
     /**
      * @param {object} component The React Component that requires API data.
+     * @param {integer} articleId Article ID to be fetched from API.
+     * @return {void}
+     */
+    getById: function(component, articleId) {
+        var data = {};
+
+        $.get(
+            makeUrl(ArticleConstants.articleEndpoint, {articleId: articleId}),
+            function(result) {
+                if (component.isMounted()) {
+                    data = result.result.data;
+
+                    component.setState({
+                        article: {
+                            active: data.active,
+                            content: data.content,
+                            createdAt: data.created_at,
+                            id: data.id,
+                            slug: data.slug,
+                            title: data.title,
+                            updatedAt: data.updated_at,
+                            tag: data.tags
+                        }
+                    });
+                }
+            }
+        );
+    },
+
+    /**
+     * @param {object} component The React Component that requires API data.
      * @param {integer} offset Query Offset
      * @param {integer} limit Query Limit
      * @param {boolean} createdAtDescending Sort Articles by createdAt
