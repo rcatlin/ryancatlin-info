@@ -7,4 +7,11 @@ describe('ArticleConstants', function() {
 
         expect(ArticleConstants).toBeDefined();
     });
+
+    it('ensures ArticleConstants has necessary constants', function() {
+        var ArticleConstants = require('../../constants/ArticleConstants');
+
+        expect(ArticleConstants.listEndpoint).toBeDefined();
+        expect(ArticleConstants.articleEndpoint).toBeDefined();
+    });
 });
