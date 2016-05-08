@@ -13,5 +13,5 @@ describe('ArticleConstants', function() {
 
         expect(ArticleConstants.listEndpoint).toBeDefined();
         expect(ArticleConstants.articleEndpoint).toBeDefined();
-    })
+    });
 });
