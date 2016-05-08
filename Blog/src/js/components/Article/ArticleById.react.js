@@ -9,7 +9,7 @@ var ArticleById = React.createClass({
     displayName: 'ArticleById',
 
     propTypes: {
-        params: ReactPropTypes.array.isRequired
+        params: ReactPropTypes.object.isRequired
     },
 
     getInitialState: function() {
@@ -62,3 +62,4 @@ var ArticleById = React.createClass({
 });
 
 module.exports = ArticleById;
+
