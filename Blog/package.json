@@ -24,14 +24,15 @@
     "keymirror": "^0.1.1",
     "make-url": "0.0.1",
     "object-assign": "^4.0.1",
-    "react": "^0.14.3",
+    "react": "^0.14.7",
     "react-dom": "^0.14.7",
     "react-router": "^2.0.1"
   },
   "scripts": {
     "start": "node server.js",
     "bundle": "browserify src/js/index.js > app/js/bundle.js",
-    "test": "jest"
+    "test": "jest",
+    "lint": "grunt eslint"
   },
   "browserify": {
     "transform": [
