@@ -15,6 +15,12 @@ var menu = {
             icon: 'home',
             text: 'Main'
         },
+        articles: {
+            to: 'articles',
+            href: '/articles',
+            icon: 'newspaper-o',
+            text: 'Articles'
+        },
         about: {
             to: 'about',
             href: '/about',

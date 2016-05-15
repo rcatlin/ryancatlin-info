@@ -20,9 +20,7 @@ var MostRecent = React.createClass({
     },
 
     render: function() {
-        var article = this.state.article,
-            index = 0,
-            tagNames = [];
+        var article = this.state.article;
 
         if (typeof article === 'undefined') {
             return (
@@ -34,14 +32,6 @@ var MostRecent = React.createClass({
             );
         }
 
-        for (index in article.tags) {
-            if (typeof index === 'number') {
-                tagNames.push(
-                    article.tags[index].name
-                );
-            }
-        }
-
         return (
             <Article
                 content={article.content}
@@ -49,7 +39,7 @@ var MostRecent = React.createClass({
                 id={article.id}
                 key={article.id}
                 slug={article.slug}
-                tagNames={tagNames}
+                tags={article.tags}
                 title={article.title}
             />
         );
