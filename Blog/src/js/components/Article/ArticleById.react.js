@@ -14,7 +14,7 @@ var ArticleById = React.createClass({
 
     getInitialState: function() {
         return {
-            article: undefined // eslint-disable-line no-undefined
+            articles: undefined // eslint-disable-line no-undefined
         };
     },
 
@@ -25,9 +25,7 @@ var ArticleById = React.createClass({
     },
 
     render: function() {
-        var article = this.state.article,
-            index = 'undefined',
-            tagNames = [];
+        var article = this.state.article;
 
         if (typeof article === 'undefined') {
             return (
@@ -39,14 +37,6 @@ var ArticleById = React.createClass({
             );
         }
 
-        for (index in article.tags) {
-            if (typeof index === 'number') {
-                tagNames.push(
-                    article.tags[index].name
-                );
-            }
-        }
-
         return (
             <Article
                 content={article.content}
@@ -54,7 +44,7 @@ var ArticleById = React.createClass({
                 id={article.id}
                 key={article.id}
                 slug={article.slug}
-                tagNames={tagNames}
+                tags={article.tags}
                 title={article.title}
             />
         );

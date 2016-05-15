@@ -12,26 +12,26 @@ var Article = React.createClass({
         createdAt: ReactPropTypes.string.isRequired,
         id: ReactPropTypes.number.isRequired,
         slug: ReactPropTypes.string.isRequired,
-        tagNames: ReactPropTypes.arrayOf(ReactPropTypes.string).isRequired,
+        tags: ReactPropTypes.array.isRequired,
         title: ReactPropTypes.string.isRequired
     },
 
     render: function() {
-        var index = 0,
-            tag = '',
+        var index = 'undefined',
+            tagName = '',
             tags = [];
 
-        for (index in this.props.tagNames) {
+        for (index in this.props.tags) {
             if (typeof index === 'number') {
-                tag = this.props.tagNames[index];
+                tagName = this.props.tags[index].name;
 
                 tags.push(
                     <a
                         href="#"
-                        key={tag}
-                        tagName={tag}
+                        key={tagName}
+                        tagName={tagName}
                     >
-                        {'#'}{tag}
+                        {'#'}{tagName}
                     </a>
                 );
             }
