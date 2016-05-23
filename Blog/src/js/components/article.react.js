@@ -1,37 +1,38 @@
-var React = require('react');
-var ReactPropTypes = React.PropTypes;
+import React, {Component, PropTypes} from 'react';
 
-var ReactRouter = require('react-router');
-var Link = ReactRouter.Link;
+import {Link} from 'react-router';
 
-var Article = React.createClass({
-    displayName: 'Article',
+export default class Article extends Component {
+    constructor(props) {
+        super(props);
+        
+        self.displayName = 'Article';
+        self.propTypes = {
+            content: PropTypes.string.isRequired,
+            createdAt: PropTypes.string.isRequired,
+            id: PropTypes.number.isRequired,
+            slug: PropTypes.string.isRequired,
+            tags: PropTypes.array.isRequired,
+            title: PropTypes.string.isRequired
+        };
+    }
 
-    propTypes: {
-        content: ReactPropTypes.string.isRequired,
-        createdAt: ReactPropTypes.string.isRequired,
-        id: ReactPropTypes.number.isRequired,
-        slug: ReactPropTypes.string.isRequired,
-        tagNames: ReactPropTypes.arrayOf(ReactPropTypes.string).isRequired,
-        title: ReactPropTypes.string.isRequired
-    },
-
-    render: function() {
-        var index = 0,
-            tag = '',
+    render() {
+        var index = 'undefined',
+            tagName = '',
             tags = [];
 
-        for (index in this.props.tagNames) {
+        for (index in this.props.tags) {
             if (typeof index === 'number') {
-                tag = this.props.tagNames[index];
+                tagName = this.props.tags[index].name;
 
                 tags.push(
                     <a
                         href="#"
-                        key={tag}
-                        tagName={tag}
+                        key={tagName}
+                        tagName={tagName}
                     >
-                        {'#'}{tag}
+                        {'#'}{tagName}
                     </a>
                 );
             }
@@ -54,7 +55,7 @@ var Article = React.createClass({
                 <p className="text-center">
                     {tags}
                     <a href="#">
-                        <i className="fa fa-link"></i>
+                        <i className="fa fa-link" />
                     </a>
                 </p>
 
@@ -62,6 +63,4 @@ var Article = React.createClass({
             </div>
         );
     }
-});
-
-module.exports = Article;
+}

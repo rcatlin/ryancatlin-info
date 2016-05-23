@@ -1,28 +1,24 @@
-var React = require('react');
+import React from 'react';
 
-var Article = require('../article.react');
-var ArticleStore = require('../../stores/ArticleStore');
+import Article from '../article.react';
+import ArticleStore from '../../stores/ArticleStore';
 
-var MostRecent = React.createClass({
-    displayName: 'MostRecent',
-
-    /**
-     * @return {object} The initial state object.
-     */
-    getInitialState: function() {
-        return {
+export default class MostRecent extends React.Component {
+    constructor(props) {
+        super(props);
+        
+        this.displayName = 'MostRecent';
+        this.state = {
             article: undefined // eslint-disable-line no-undefined
         };
-    },
+    }
 
-    componentDidMount: function() {
+    componentDidMount() {
         ArticleStore.getList(this, 0, 1, true);
-    },
+    }
 
-    render: function() {
-        var article = this.state.article,
-            index = 0,
-            tagNames = [];
+    render() {
+        var article = this.state.article;
 
         if (typeof article === 'undefined') {
             return (
@@ -34,14 +30,6 @@ var MostRecent = React.createClass({
             );
         }
 
-        for (index in article.tags) {
-            if (typeof index === 'number') {
-                tagNames.push(
-                    article.tags[index].name
-                );
-            }
-        }
-
         return (
             <Article
                 content={article.content}
@@ -49,11 +37,9 @@ var MostRecent = React.createClass({
                 id={article.id}
                 key={article.id}
                 slug={article.slug}
-                tagNames={tagNames}
+                tags={article.tags}
                 title={article.title}
             />
         );
     }
-});
-
-module.exports = MostRecent;
+}

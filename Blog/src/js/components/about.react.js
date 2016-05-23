@@ -1,15 +1,17 @@
-var React = require('react');
+import React, {Component} from 'react';
 
-var About = React.createClass({
-    displayName: 'About',
+export default class About extends Component {
+    constructor(props) {
+        super(props);
+        
+        self.displayName = 'About';
+    }
 
-    render: function() {
+    render() {
         return (
             <div>
                 <h1>{'About Ryan Catlin'}</h1>
             </div>
         );
     }
-});
-
-module.exports = About;
+}

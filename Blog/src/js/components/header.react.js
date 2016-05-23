@@ -1,13 +1,17 @@
-var React = require('react');
+import React, {Component} from 'react';
 
-var Header = React.createClass({
-    displayName: 'Header',
+export default class Header extends Component {
+    constructor(props) {
+        super(props);
+        
+        self.displayName = 'Header';
+    }
 
-    render: function() {
+    render() {
         return (
             <div className="jumbotron">
                 <div className="container">
-                    <p></p>
+                    <p />
                     <h2>
                         {'Ryan Catlin'}
                     </h2>
@@ -18,6 +22,4 @@ var Header = React.createClass({
             </div>
         );
     }
-});
-
-module.exports = Header;
+}

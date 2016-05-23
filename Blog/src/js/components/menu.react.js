@@ -1,40 +1,38 @@
-var React = require('react');
+import React from 'react';
 
-var MenuActions = require('../actions/MenuActions');
-var MenuItem = require('./Menu/item.react');
-var MenuStore = require('../stores/MenuStore');
+import MenuActions from '../actions/MenuActions';
+import MenuItem from './Menu/item.react';
+import MenuStore from '../stores/MenuStore';
 
-var Menu = React.createClass({
-    displayName: 'Menu',
+export default class Menu extends React.Component {
+    constructor(props) {
+        super(props);
+        
+        this.displayName = 'Menu';
+        this.state = MenuStore.getAll();
+    }
 
-    /**
-     * @return {object} All Menu values.
-     */
-    getInitialState: function() {
-        return MenuStore.getAll();
-    },
-
-    componentDidMount: function() {
+    componentDidMount() {
         MenuStore.addChangeListener(this.handleChange);
-    },
+    }
 
-    componentWillUnmount: function() {
+    componentWillUnmount() {
         MenuStore.removeChangeListener(this.handleChange);
-    },
+    }
 
-    handleChange: function() {
+    handleChange() {
         this.setState(MenuStore.getAll());
-    },
+    }
 
-    handleOnItemClick: function(key) {
+    handleOnItemClick(key) {
         MenuActions.markPageActive(key);
-    },
+    }
 
-    handleOnLogoClick: function() {
+    handleOnLogoClick() {
         this.onItemClick('home');
-    },
+    }
 
-    render: function() {
+    render() {
         var active = false,
             index = 'undefined',
             menuItems = [],
@@ -76,9 +74,9 @@ var Menu = React.createClass({
                             <span className="sr-only">
                                 {'Toggle navigation'}
                             </span>
-                            <span className="icon-bar"></span>
-                            <span className="icon-bar"></span>
-                            <span className="icon-bar"></span>
+                            <span className="icon-bar" />
+                            <span className="icon-bar" />
+                            <span className="icon-bar" />
                         </button>
                         <a
                             className="navbar-brand"
@@ -101,6 +99,4 @@ var Menu = React.createClass({
             </nav>
         );
     }
-});
-
-module.exports = Menu;
+}

@@ -1,37 +1,32 @@
-var React = require('react');
-var ReactPropTypes = React.PropTypes;
-var ReactRouter = require('react-router');
+import React from 'react';
 
-var Link = ReactRouter.Link;
+import {Link} from 'react-router';
 
-var Item = React.createClass({
-    displayName: 'Item',
-
-    propTypes: {
-        active: ReactPropTypes.bool,
-        href: ReactPropTypes.string,
-        icon: ReactPropTypes.string.isRequired,
-        name: ReactPropTypes.string.isRequired,
-        onItemClick: ReactPropTypes.func,
-        text: ReactPropTypes.string.isRequired,
-        to: ReactPropTypes.string.isRequired
-    },
-
-    /**
-     * @return {object} The Default Properties.
-     */
-    getDefaultProps: function() {
-        return {
+export default class Item extends React.Component {
+    constructor(props) {
+        super(props);
+        
+        self.displayName = 'Item';
+        self.propTypes = {
+            active: React.PropTypes.bool,
+            href: React.PropTypes.string,
+            icon: React.PropTypes.string.isRequired,
+            name: React.PropTypes.string.isRequired,
+            onItemClick: React.PropTypes.func,
+            text: React.PropTypes.string.isRequired,
+            to: React.PropTypes.string.isRequired
+        };
+        self.propTypes = {
             active: false,
             href: '#'
         };
-    },
+    }
 
-    handleOnClick: function() {
+    handleOnClick() {
         this.props.onItemClick(this.props.name);
-    },
+    }
 
-    render: function() {
+    render() {
         var iconClass = 'fa fa-' + this.props.icon,
             listItemClass = '';
 
@@ -53,6 +48,4 @@ var Item = React.createClass({
             </li>
         );
     }
-});
-
-module.exports = Item;
+}

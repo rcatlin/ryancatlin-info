@@ -1,16 +1,12 @@
-var React = require('react');
-var ReactDOM = require('react-dom');
-var ReactRouter = require('react-router');
+import React from 'react';
+import ReactDOM from 'react-dom';
+import {Router, Route, IndexRoute, browserHistory} from 'react-router';
 
-var Router = ReactRouter.Router;
-var Route = ReactRouter.Route;
-var IndexRoute = ReactRouter.IndexRoute;
-var browserHistory = ReactRouter.browserHistory;
-
-var App = require('./components/app.react');
-var About = require('./components/about.react');
-var ArticleById = require('./components/Article/ArticleById.react');
-var MostRecent = require('./components/Article/MostRecent.react');
+import App from './components/app.react';
+import About from './components/about.react';
+import ArticleById from './components/Article/ArticleById.react';
+import Articles from './components/Article/List.react';
+import MostRecent from './components/Article/MostRecent.react';
 
 ReactDOM.render(
     <Router history={browserHistory}>
@@ -19,6 +15,10 @@ ReactDOM.render(
             path="/"
         >
             <IndexRoute component={MostRecent} />
+            <Route
+                component={Articles}
+                path="/articles"
+            />
             <Route
                 component={About}
                 path="/about"

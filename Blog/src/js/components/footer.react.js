@@ -1,15 +1,17 @@
-var React = require('react');
+import React, {Component} from 'react';
 
-var Footer = React.createClass({
-    displayName: 'Footer',
+export default class Footer extends Component {
+    constructor(props) {
+        super(props);
+        
+        self.displayName = 'Footer';
+    }
 
-    render: function() {
+    render() {
         return (
             <h1>
                 {'Footer'}
             </h1>
         );
     }
-});
-
-module.exports = Footer;
+}

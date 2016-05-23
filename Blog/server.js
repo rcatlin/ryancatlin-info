@@ -1,6 +1,7 @@
-var express = require('express');
-var fs = require('fs');
-var app = express();
+import express from 'express';
+import fs from 'fs';
+
+let app = express();
 
 const PORT = 8000;
 

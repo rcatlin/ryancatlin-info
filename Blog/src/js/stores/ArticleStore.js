@@ -1,27 +1,49 @@
-var assign = require('object-assign');
-var makeUrl = require('make-url');
-var EventEmitter = require('events').EventEmitter;
+import makeUrl from 'make-url';
+import {EventEmitter} from 'events';
 
-var ArticleConstants = require('../constants/ArticleConstants');
+import ArticleConstants from '../constants/ArticleConstants';
 
-var CHANGE_EVENT = 'change';
+let CHANGE_EVENT = 'change';
 
-var ArticleStore = assign({}, EventEmitter.prototype, {
-    emitChange: function() {
+class ArticleStore extends EventEmitter {
+    constructor() {
+        super();
+        this.activeCount = this.activeCount.bind(this);
+        this.getById = this.getById.bind(this);
+        this.getList = this.getList.bind(this);
+    }
+
+    /**
+     * @returns {void}
+     */
+    emitChange() {
         this.emit(CHANGE_EVENT);
-    },
+    }
+
+    activeCount(component) {
+        $.get(
+            makeUrl(ArticleConstants.countEndpoint, {active: 1}),
+            function (result) {
+                if (component.isMounted()) {
+                    component.setState({
+                        activeCount: result.result.count
+                    });
+                }
+            }
+        );
+    }
 
     /**
      * @param {object} component The React Component that requires API data.
      * @param {integer} articleId Article ID to be fetched from API.
      * @return {void}
      */
-    getById: function(component, articleId) {
+    getById(component, articleId) {
         var data = {};
 
         $.get(
             makeUrl(ArticleConstants.articleEndpoint, {articleId: articleId}),
-            function(result) {
+            function (result) {
                 if (component.isMounted()) {
                     data = result.result.data;
 
@@ -40,7 +62,7 @@ var ArticleStore = assign({}, EventEmitter.prototype, {
                 }
             }
         );
-    },
+    }
 
     /**
      * @param {object} component The React Component that requires API data.
@@ -49,13 +71,12 @@ var ArticleStore = assign({}, EventEmitter.prototype, {
      * @param {boolean} createdAtDescending Sort Articles by createdAt
      * @return {void}
      */
-    getList: function(component, offset, limit, createdAtDescending) {
-        var data = {},
-            urlParams = {
-                offset: offset,
-                limit: limit,
-                sort: 'created_at'
-            };
+    getList(component, offset, limit, createdAtDescending) {
+        var urlParams = {
+            offset: offset,
+            limit: limit,
+            sort: 'created_at'
+        };
 
         if (createdAtDescending === true || createdAtDescending === null) {
             urlParams.sort = '-created_at';
@@ -63,41 +84,67 @@ var ArticleStore = assign({}, EventEmitter.prototype, {
 
         $.get(
             makeUrl(ArticleConstants.listEndpoint, urlParams),
-            function(result) {
+            function (result) {
+                var article = 'undefined',
+                    articles = [],
+                    index = 'undefined';
+
                 if (component.isMounted()) {
-                    data = result.result.data.pop();
-                    component.setState({
-                        article: {
-                            active: data.active,
-                            content: data.content,
-                            createdAt: data.created_at,
-                            id: data.id,
-                            slug: data.slug,
-                            tags: data.tags,
-                            title: data.title,
-                            updatedAt: data.updated_at
+                    for (index in result.result.data) {
+                        if (result.result.data.hasOwnProperty(index)) {
+                            article = result.result.data[index];
+
+                            articles.push({
+                                active: article.active,
+                                content: article.content,
+                                createdAt: article.created_at,
+                                id: article.id,
+                                slug: article.slug,
+                                tags: article.tags,
+                                title: article.title,
+                                updatedAt: article.updated_at
+                            });
                         }
-                    });
+                    }
+
+                    component.setState({articles: articles});
                 }
             }
         );
-    },
+    }
 
     /**
-    * @param {function} callback The callback to be added.
-    * @return {void}
-    */
-    addChangeListener: function(callback) {
+     * @param {function} callback The callback to be added.
+     * @return {void}
+     */
+    addChangeListener(callback) {
         this.on(CHANGE_EVENT, callback);
-    },
+    }
 
     /**
-    * @param {function} callback The callback to be removed.
-    * @return {void}
-    */
-    removeChangeListener: function(callback) {
+     * @param {function} callback The callback to be removed.
+     * @return {void}
+     */
+    removeChangeListener(callback) {
         this.removeListener(CHANGE_EVENT, callback);
     }
-});
 
-module.exports = ArticleStore;
+    /**
+     * @param {object} data An individual Article object returned from API.
+     * @return {object} The parsed Article object
+     */
+    parseArticleData(data) {
+        return {
+            active: data.active,
+            content: data.content,
+            createdAt: data.created_at,
+            id: data.id,
+            slug: data.slug,
+            tags: data.tags,
+            title: data.title,
+            updatedAt: data.updated_at
+        };
+    }
+}
+
+export default new ArticleStore();
