@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "devDependencies": {
     "babel-core": "^6.8.0",
+    "babel-eslint": "^6.1.0",
     "babel-jest": "^12.1.0",
     "babel-polyfill": "^6.9.0",
     "babel-preset-es2015": "*",
