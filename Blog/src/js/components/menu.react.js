@@ -24,12 +24,12 @@ export default class Menu extends React.Component {
         this.setState(MenuStore.getAll());
     }
 
-    handleOnItemClick(key) {
+    static handleOnItemClick(key) {
         MenuActions.markPageActive(key);
     }
 
-    handleOnLogoClick() {
-        this.onItemClick('home');
+    static handleOnLogoClick() {
+        self.onItemClick('home');
     }
 
     render() {
@@ -50,7 +50,7 @@ export default class Menu extends React.Component {
                         icon={page.icon}
                         key={index}
                         name={index}
-                        onItemClick={this.handleOnItemClick}
+                        onItemClick={self.handleOnItemClick}
                         text={page.text}
                         to={page.to}
                     />

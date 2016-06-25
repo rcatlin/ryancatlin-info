@@ -5,7 +5,7 @@ import MenuConstants from '../constants/MenuConstants';
 
 var CHANGE_EVENT = 'change';
 
-const menu = {
+let menu = {
     activePage: 'home',
     pages: {
         home: {
