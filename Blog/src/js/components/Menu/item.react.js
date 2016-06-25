@@ -2,28 +2,27 @@ import React from 'react';
 
 import {Link} from 'react-router';
 
+import MenuActions from '../../actions/MenuActions';
+
 export default class Item extends React.Component {
     constructor(props) {
         super(props);
         
         self.displayName = 'Item';
         self.propTypes = {
-            active: React.PropTypes.bool,
-            href: React.PropTypes.string,
+            active: React.PropTypes.bool.isRequired,
+            href: React.PropTypes.string.isRequired,
             icon: React.PropTypes.string.isRequired,
             name: React.PropTypes.string.isRequired,
-            onItemClick: React.PropTypes.func,
             text: React.PropTypes.string.isRequired,
             to: React.PropTypes.string.isRequired
         };
-        self.propTypes = {
-            active: false,
-            href: '#'
-        };
+
+        this.handleClick = this.handleClick.bind(this);
     }
 
-    handleOnClick() {
-        this.props.onItemClick(this.props.name);
+    handleClick() {
+        MenuActions.markPageActive(this.props.name);
     }
 
     render() {
@@ -40,7 +39,7 @@ export default class Item extends React.Component {
                     className={iconClass}
                     href="#"
                     name={this.props.name}
-                    onClick={this.handleOnClick}
+                    onClick={this.handleClick}
                     to={this.props.to}
                 >
                     {' '}{this.props.text}

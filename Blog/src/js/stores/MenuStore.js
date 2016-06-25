@@ -5,7 +5,7 @@ import MenuConstants from '../constants/MenuConstants';
 
 var CHANGE_EVENT = 'change';
 
-let menu = {
+const menu = {
     activePage: 'home',
     pages: {
         home: {
@@ -67,20 +67,21 @@ class MenuStore extends EventEmitter {
 
     /**
      * Get All Menu values.
-     * @return {array} All Menu values.
+     * @return {object} All Menu values.
      */
     getAll() {
         return menu;
     }
 }
 
+const store = new MenuStore();
+
 // Register callback to handle all updates
 AppDispatcher.register(function(action) {
-
     switch (action.actionType) {
         case MenuConstants.ACTION_PAGE_SELECTED:
             markPageActive(action.key);
-            MenuStore.emitChange();
+            store.emitChange();
             break;
 
         default:
@@ -89,4 +90,4 @@ AppDispatcher.register(function(action) {
 
 });
 
-export default new MenuStore();
+export default store;

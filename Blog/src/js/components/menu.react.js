@@ -10,6 +10,8 @@ export default class Menu extends React.Component {
         
         this.displayName = 'Menu';
         this.state = MenuStore.getAll();
+
+        this.handleChange = this.handleChange.bind(this);
     }
 
     componentDidMount() {
@@ -28,7 +30,7 @@ export default class Menu extends React.Component {
         MenuActions.markPageActive(key);
     }
 
-    static handleOnLogoClick() {
+    handleOnLogoClick() {
         self.onItemClick('home');
     }
 
@@ -41,6 +43,7 @@ export default class Menu extends React.Component {
         for (index in this.state.pages) {
             if (this.state.pages.hasOwnProperty(index)) {
                 page = this.state.pages[index];
+
                 active = this.state.activePage === index;
 
                 menuItems.push(
@@ -50,7 +53,6 @@ export default class Menu extends React.Component {
                         icon={page.icon}
                         key={index}
                         name={index}
-                        onItemClick={self.handleOnItemClick}
                         text={page.text}
                         to={page.to}
                     />
