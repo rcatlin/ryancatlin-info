@@ -1,5 +1,3 @@
-'use strict';
-
 import AppDispatcher from '../dispatcher/AppDispatcher';
 import MenuConstants from '../constants/MenuConstants';
 
@@ -10,4 +8,4 @@ export default {
             key: key
         });
     }
-}
+};

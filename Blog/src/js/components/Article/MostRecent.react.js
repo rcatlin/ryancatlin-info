@@ -9,7 +9,7 @@ export default class MostRecent extends React.Component {
         
         this.displayName = 'MostRecent';
         this.state = {
-            article: undefined // eslint-disable-line no-undefined
+            articles: [],
         };
     }
 
@@ -18,9 +18,9 @@ export default class MostRecent extends React.Component {
     }
 
     render() {
-        var article = this.state.article;
-
-        if (typeof article === 'undefined') {
+        var mostRecent = this.state.articles.pop();
+        
+        if (!(mostRecent instanceof Object)) {
             return (
                 <div className="panel panel-default">
                     <div className="panel-body">
@@ -32,13 +32,13 @@ export default class MostRecent extends React.Component {
 
         return (
             <Article
-                content={article.content}
-                createdAt={article.createdAt}
-                id={article.id}
-                key={article.id}
-                slug={article.slug}
-                tags={article.tags}
-                title={article.title}
+                content={mostRecent.content}
+                createdAt={mostRecent.createdAt}
+                id={mostRecent.id}
+                key={mostRecent.id}
+                slug={mostRecent.slug}
+                tags={mostRecent.tags}
+                title={mostRecent.title}
             />
         );
     }

@@ -30,7 +30,7 @@ const menu = {
 };
 
 /**
- * @param {string} key The Page that is Active.d
+ * @param {string} key The Page that is Active.
  * @return {void}
  */
 let markPageActive = function(key) {

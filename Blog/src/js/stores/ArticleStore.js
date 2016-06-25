@@ -11,6 +11,7 @@ class ArticleStore extends EventEmitter {
         this.activeCount = this.activeCount.bind(this);
         this.getById = this.getById.bind(this);
         this.getList = this.getList.bind(this);
+        this.state = {activeCount: 0};
     }
 
     /**
@@ -24,11 +25,9 @@ class ArticleStore extends EventEmitter {
         $.get(
             makeUrl(ArticleConstants.countEndpoint, {active: 1}),
             function (result) {
-                if (component.isMounted()) {
-                    component.setState({
-                        activeCount: result.result.count
-                    });
-                }
+                component.setState({
+                    activeCount: result.result.count
+                });
             }
         );
     }
@@ -44,22 +43,20 @@ class ArticleStore extends EventEmitter {
         $.get(
             makeUrl(ArticleConstants.articleEndpoint, {articleId: articleId}),
             function (result) {
-                if (component.isMounted()) {
-                    data = result.result.data;
+                data = result.result.data;
 
-                    component.setState({
-                        article: {
-                            active: data.active,
-                            content: data.content,
-                            createdAt: data.created_at,
-                            id: data.id,
-                            slug: data.slug,
-                            title: data.title,
-                            updatedAt: data.updated_at,
-                            tag: data.tags
-                        }
-                    });
-                }
+                component.setState({
+                    article: {
+                        active: data.active,
+                        content: data.content,
+                        createdAt: data.created_at,
+                        id: data.id,
+                        slug: data.slug,
+                        title: data.title,
+                        updatedAt: data.updated_at,
+                        tag: data.tags
+                    }
+                });
             }
         );
     }
@@ -89,26 +86,24 @@ class ArticleStore extends EventEmitter {
                     articles = [],
                     index = 'undefined';
 
-                if (component.isMounted()) {
-                    for (index in result.result.data) {
-                        if (result.result.data.hasOwnProperty(index)) {
-                            article = result.result.data[index];
+                for (index in result.result.data) {
+                    if (result.result.data.hasOwnProperty(index)) {
+                        article = result.result.data[index];
 
-                            articles.push({
-                                active: article.active,
-                                content: article.content,
-                                createdAt: article.created_at,
-                                id: article.id,
-                                slug: article.slug,
-                                tags: article.tags,
-                                title: article.title,
-                                updatedAt: article.updated_at
-                            });
-                        }
+                        articles.push({
+                            active: article.active,
+                            content: article.content,
+                            createdAt: article.created_at,
+                            id: article.id,
+                            slug: article.slug,
+                            tags: article.tags,
+                            title: article.title,
+                            updatedAt: article.updated_at
+                        });
                     }
-
-                    component.setState({articles: articles});
                 }
+
+                component.setState({articles: articles});
             }
         );
     }
