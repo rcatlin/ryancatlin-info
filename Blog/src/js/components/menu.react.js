@@ -1,14 +1,16 @@
 import React from 'react';
 
-import MenuActions from '../actions/MenuActions';
 import MenuItem from './Menu/item.react';
 import MenuStore from '../stores/MenuStore';
 
 export default class Menu extends React.Component {
+    static get displayName() {
+        return 'Menu';
+    }
+
     constructor(props) {
         super(props);
-        
-        this.displayName = 'Menu';
+
         this.state = MenuStore.getAll();
 
         this.handleChange = this.handleChange.bind(this);

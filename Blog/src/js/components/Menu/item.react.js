@@ -5,10 +5,13 @@ import {Link} from 'react-router';
 import MenuActions from '../../actions/MenuActions';
 
 export default class Item extends React.Component {
+    static get displayName() {
+        return 'Item';
+    }
+
     constructor(props) {
         super(props);
-        
-        self.displayName = 'Item';
+
         self.propTypes = {
             active: React.PropTypes.bool.isRequired,
             href: React.PropTypes.string.isRequired,

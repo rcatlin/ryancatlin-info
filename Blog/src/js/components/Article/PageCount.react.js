@@ -3,10 +3,13 @@ import React from 'react';
 import ArticleStore from '../../stores/ArticleStore';
 
 export default class PageCount extends React.Component {
+    static get displayName() {
+        return 'ArticlePageCount';
+    }
+
     constructor(props) {
         super(props);
 
-        self.displayName = 'ArticlePageCount';
         self.propTypes = {
             limit: React.PropTypes.number.isRequired,
             offset: React.PropTypes.number.isRequired

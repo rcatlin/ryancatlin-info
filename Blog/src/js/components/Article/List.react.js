@@ -5,10 +5,13 @@ import ArticleStore from '../../stores/ArticleStore';
 import PageCount from './PageCount.react';
 
 export default class List extends React.Component {
+    static get displayName() {
+        return 'ArticleList';
+    }
+
     constructor(props) {
         super(props);
-        
-        self.displayName = 'ArticleList';
+
         this.state = {
             offset: 0,
             limit: 10,

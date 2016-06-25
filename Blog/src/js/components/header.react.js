@@ -1,10 +1,8 @@
 import React, {Component} from 'react';
 
 export default class Header extends Component {
-    constructor(props) {
-        super(props);
-        
-        self.displayName = 'Header';
+    static get displayName() {
+        return 'Header';
     }
 
     render() {

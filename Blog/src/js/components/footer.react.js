@@ -1,10 +1,8 @@
 import React, {Component} from 'react';
 
 export default class Footer extends Component {
-    constructor(props) {
-        super(props);
-        
-        self.displayName = 'Footer';
+    static get displayName() {
+        return 'Footer';
     }
 
     render() {

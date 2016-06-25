@@ -4,10 +4,13 @@ import Article from '../article.react';
 import ArticleStore from '../../stores/ArticleStore';
 
 export default class MostRecent extends React.Component {
+    static get displayName() {
+        return 'MostRecent';
+    }
+
     constructor(props) {
         super(props);
-        
-        this.displayName = 'MostRecent';
+
         this.state = {
             articles: [],
         };

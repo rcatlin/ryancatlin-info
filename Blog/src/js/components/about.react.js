@@ -1,10 +1,8 @@
 import React, {Component} from 'react';
 
 export default class About extends Component {
-    constructor(props) {
-        super(props);
-        
-        self.displayName = 'About';
+    static get displayName() {
+        return 'About';
     }
 
     render() {

@@ -3,10 +3,13 @@ import Header from './header.react';
 import Menu from './menu.react';
 
 export default class App extends React.Component {
+    static get displayName() {
+        return  'App';
+    }
+    
     constructor(props) {
         super(props);
-        
-        self.displayName = 'App';
+
         self.propTypes = {
             children: React.PropTypes.object.isRequired
         };

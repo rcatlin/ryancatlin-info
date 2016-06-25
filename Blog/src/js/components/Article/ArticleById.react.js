@@ -5,11 +5,14 @@ import ArticleStore from '../../stores/ArticleStore';
 
 
 export default class ArticleById extends React.Component {
+    static get displayName() {
+        return 'ArticleById';
+    }
+
     constructor(props) {
         super(props);
-
-        this.displayName = 'ArticleById';
-        self.propTypes = {
+        
+        this.propTypes = {
             params: React.PropTypes.object.isRequired
         };
         this.state = {
@@ -22,7 +25,7 @@ export default class ArticleById extends React.Component {
 
         ArticleStore.getById(this, articleId);
     }
-    
+
     render() {
         var article = this.state.article;
 

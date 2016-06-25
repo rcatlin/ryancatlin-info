@@ -3,10 +3,13 @@ import React, {Component, PropTypes} from 'react';
 import {Link} from 'react-router';
 
 export default class Article extends Component {
+    static get displayName() {
+        return 'Article';
+    }
+
     constructor(props) {
         super(props);
-        
-        self.displayName = 'Article';
+
         self.propTypes = {
             content: PropTypes.string.isRequired,
             createdAt: PropTypes.string.isRequired,
