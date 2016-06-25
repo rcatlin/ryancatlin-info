@@ -19,7 +19,7 @@ export default class Article extends Component {
             title: PropTypes.string.isRequired
         };
     }
-    
+
     render() {
         var index = 'undefined',
             tagName = '',

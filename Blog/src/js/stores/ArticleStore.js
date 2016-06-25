@@ -22,21 +22,8 @@ class ArticleStore extends EventEmitter {
     }
 
     /**
-     * @param {React.Component} component
-     */
-    activeCount(component) {
-        $.get(
-            makeUrl(ArticleConstants.countEndpoint, {active: 1}),
-            function (result) {
-                component.setState({
-                    activeCount: result.result.count
-                });
-            }
-        );
-    }
-
-    /**
-     * @param {React.Component} component
+     * @param {React.Component} component The React Component that requests an active count.
+     * @returns {void}
      */
     activeCount(component) {
         $.get(

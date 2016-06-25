@@ -4,7 +4,7 @@ import Menu from './menu.react';
 
 export default class App extends React.Component {
     static get displayName() {
-        return  'App';
+        return 'App';
     }
 
     constructor(props) {

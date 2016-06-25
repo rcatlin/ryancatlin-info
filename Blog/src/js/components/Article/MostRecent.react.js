@@ -12,7 +12,7 @@ export default class MostRecent extends React.Component {
         super(props);
 
         this.state = {
-            articles: [],
+            articles: []
         };
     }
 
@@ -22,7 +22,7 @@ export default class MostRecent extends React.Component {
 
     render() {
         var mostRecent = this.state.articles.pop();
-        
+
         if (!(mostRecent instanceof Object)) {
             return (
                 <div className="panel panel-default">

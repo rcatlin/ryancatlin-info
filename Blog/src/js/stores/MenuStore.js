@@ -42,6 +42,7 @@ class MenuStore extends EventEmitter {
         super();
         this.getAll = this.getAll.bind(this);
     }
+
     /**
      * @returns {void}
      */
