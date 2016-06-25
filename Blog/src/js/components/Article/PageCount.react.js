@@ -10,7 +10,7 @@ export default class PageCount extends React.Component {
     constructor(props) {
         super(props);
 
-        self.propTypes = {
+        PageCount.propTypes = {
             limit: React.PropTypes.number.isRequired,
             offset: React.PropTypes.number.isRequired
         };

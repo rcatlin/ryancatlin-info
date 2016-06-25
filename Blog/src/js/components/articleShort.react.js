@@ -10,7 +10,7 @@ export default class ArticleShort extends Component {
     constructor(props) {
         super(props);
 
-        self.propTypes = {
+        ArticleShort.propTypes = {
             createdAt: PropTypes.string.isRequired,
             id: PropTypes.number.isRequired,
             title: PropTypes.string.isRequired

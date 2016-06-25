@@ -12,7 +12,7 @@ export default class Item extends React.Component {
     constructor(props) {
         super(props);
 
-        self.propTypes = {
+        Item.propTypes = {
             active: React.PropTypes.bool.isRequired,
             href: React.PropTypes.string.isRequired,
             icon: React.PropTypes.string.isRequired,

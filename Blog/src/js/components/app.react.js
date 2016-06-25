@@ -6,11 +6,11 @@ export default class App extends React.Component {
     static get displayName() {
         return  'App';
     }
-    
+
     constructor(props) {
         super(props);
 
-        self.propTypes = {
+        App.propTypes = {
             children: React.PropTypes.object.isRequired
         };
     }

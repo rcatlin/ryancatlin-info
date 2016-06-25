@@ -11,19 +11,18 @@ export default class ArticleById extends React.Component {
 
     constructor(props) {
         super(props);
-        
-        this.propTypes = {
+
+        ArticleById.propTypes = {
             params: React.PropTypes.object.isRequired
         };
+
         this.state = {
             article: 'undefined'
         };
     }
 
     componentDidMount() {
-        var articleId = parseInt(this.props.params.id, 10);
-
-        ArticleStore.getById(this, articleId);
+        ArticleStore.getById(this, parseInt(this.props.params.id, 10));
     }
 
     render() {
