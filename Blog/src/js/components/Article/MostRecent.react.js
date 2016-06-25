@@ -1,28 +1,29 @@
-var React = require('react');
+import React from 'react';
 
-var Article = require('../article.react');
-var ArticleStore = require('../../stores/ArticleStore');
+import Article from '../article.react';
+import ArticleStore from '../../stores/ArticleStore';
 
-var MostRecent = React.createClass({
-    displayName: 'MostRecent',
+export default class MostRecent extends React.Component {
+    static get displayName() {
+        return 'MostRecent';
+    }
 
-    /**
-     * @return {object} The initial state object.
-     */
-    getInitialState: function() {
-        return {
-            article: undefined // eslint-disable-line no-undefined
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            articles: []
         };
-    },
+    }
 
-    componentDidMount: function() {
+    componentDidMount() {
         ArticleStore.getList(this, 0, 1, true);
-    },
+    }
 
-    render: function() {
-        var article = this.state.article;
+    render() {
+        var mostRecent = this.state.articles.pop();
 
-        if (typeof article === 'undefined') {
+        if (!(mostRecent instanceof Object)) {
             return (
                 <div className="panel panel-default">
                     <div className="panel-body">
@@ -34,16 +35,14 @@ var MostRecent = React.createClass({
 
         return (
             <Article
-                content={article.content}
-                createdAt={article.createdAt}
-                id={article.id}
-                key={article.id}
-                slug={article.slug}
-                tags={article.tags}
-                title={article.title}
+                content={mostRecent.content}
+                createdAt={mostRecent.createdAt}
+                id={mostRecent.id}
+                key={mostRecent.id}
+                slug={mostRecent.slug}
+                tags={mostRecent.tags}
+                title={mostRecent.title}
             />
         );
     }
-});
-
-module.exports = MostRecent;
+}

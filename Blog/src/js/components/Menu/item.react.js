@@ -1,37 +1,34 @@
-var React = require('react');
-var ReactPropTypes = React.PropTypes;
-var ReactRouter = require('react-router');
+import React from 'react';
 
-var Link = ReactRouter.Link;
+import {Link} from 'react-router';
 
-var Item = React.createClass({
-    displayName: 'Item',
+import MenuActions from '../../actions/MenuActions';
 
-    propTypes: {
-        active: ReactPropTypes.bool,
-        href: ReactPropTypes.string,
-        icon: ReactPropTypes.string.isRequired,
-        name: ReactPropTypes.string.isRequired,
-        onItemClick: ReactPropTypes.func,
-        text: ReactPropTypes.string.isRequired,
-        to: ReactPropTypes.string.isRequired
-    },
+export default class Item extends React.Component {
+    static get displayName() {
+        return 'Item';
+    }
 
-    /**
-     * @return {object} The Default Properties.
-     */
-    getDefaultProps: function() {
-        return {
-            active: false,
-            href: '#'
+    constructor(props) {
+        super(props);
+
+        Item.propTypes = {
+            active: React.PropTypes.bool.isRequired,
+            href: React.PropTypes.string.isRequired,
+            icon: React.PropTypes.string.isRequired,
+            name: React.PropTypes.string.isRequired,
+            text: React.PropTypes.string.isRequired,
+            to: React.PropTypes.string.isRequired
         };
-    },
 
-    handleOnClick: function() {
-        this.props.onItemClick(this.props.name);
-    },
+        this.handleClick = this.handleClick.bind(this);
+    }
 
-    render: function() {
+    handleClick() {
+        MenuActions.markPageActive(this.props.name);
+    }
+
+    render() {
         var iconClass = 'fa fa-' + this.props.icon,
             listItemClass = '';
 
@@ -45,7 +42,7 @@ var Item = React.createClass({
                     className={iconClass}
                     href="#"
                     name={this.props.name}
-                    onClick={this.handleOnClick}
+                    onClick={this.handleClick}
                     to={this.props.to}
                 >
                     {' '}{this.props.text}
@@ -53,6 +50,4 @@ var Item = React.createClass({
             </li>
         );
     }
-});
-
-module.exports = Item;
+}

@@ -1,19 +1,23 @@
-var React = require('react');
-var ReactPropTypes = React.PropTypes;
+import React, {Component, PropTypes} from 'react';
 
-var ReactRouter = require('react-router');
-var Link = ReactRouter.Link;
+import {Link} from 'react-router';
 
-var ArticleShort = React.createClass({
-    displayName: 'ArticleShort',
+export default class ArticleShort extends Component {
+    static get displayName() {
+        return 'ArticleShort';
+    }
 
-    propTypes: {
-        createdAt: ReactPropTypes.string.isRequired,
-        id: ReactPropTypes.number.isRequired,
-        title: ReactPropTypes.string.isRequired
-    },
+    constructor(props) {
+        super(props);
 
-    render: function() {
+        ArticleShort.propTypes = {
+            createdAt: PropTypes.string.isRequired,
+            id: PropTypes.number.isRequired,
+            title: PropTypes.string.isRequired
+        };
+    }
+
+    render() {
         return (
             <div>
                 <div className="panel-heading">
@@ -30,6 +34,4 @@ var ArticleShort = React.createClass({
             </div>
         );
     }
-});
-
-module.exports = ArticleShort;
+}

@@ -1,8 +1,8 @@
-var AppDispatcher = require('../dispatcher/AppDispatcher');
-var MenuConstants = require('../constants/MenuConstants');
+import AppDispatcher from '../dispatcher/AppDispatcher';
+import MenuConstants from '../constants/MenuConstants';
 
-module.exports = {
-    markPageActive: function(key) {
+export default {
+    markPageActive: function (key) {
         AppDispatcher.dispatch({
             actionType: MenuConstants.ACTION_PAGE_SELECTED,
             key: key

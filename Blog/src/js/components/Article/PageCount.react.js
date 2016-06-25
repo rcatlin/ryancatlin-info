@@ -1,28 +1,29 @@
-var React = require('react');
+import React from 'react';
 
-var ReactPropTypes = React.PropTypes;
+import ArticleStore from '../../stores/ArticleStore';
 
-var ArticleStore = require('../../stores/ArticleStore');
+export default class PageCount extends React.Component {
+    static get displayName() {
+        return 'ArticlePageCount';
+    }
 
-var PageCount = React.createClass({
-    displayName: 'ArticlePageCount',
+    constructor(props) {
+        super(props);
 
-    propTypes: {
-        limit: ReactPropTypes.number.isRequired,
-        offset: ReactPropTypes.number.isRequired
-    },
-
-    getInitialState: function() {
-        return {
+        PageCount.propTypes = {
+            limit: React.PropTypes.number.isRequired,
+            offset: React.PropTypes.number.isRequired
+        };
+        this.state = {
             activeCount: undefined // eslint-disable-line no-undefined
         };
-    },
+    }
 
-    componentDidMount: function() {
+    componentDidMount() {
         ArticleStore.activeCount(this);
-    },
+    }
 
-    calculateLimitOffset: function(limit, offset) {
+    calculateLimitOffset(limit, offset) {
         var current = offset / limit,
             total = this.state.activeCount / limit;
 
@@ -39,9 +40,9 @@ var PageCount = React.createClass({
         }
 
         return [current, total];
-    },
+    }
 
-    render: function() {
+    render() {
         var calculatedResult = ['-', '-'],
             current = '-',
             total = '-';
@@ -62,6 +63,4 @@ var PageCount = React.createClass({
             </span>
         );
     }
-});
-
-module.exports = PageCount;
+}

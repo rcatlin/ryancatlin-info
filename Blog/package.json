@@ -2,6 +2,14 @@
   "name": "ryancatlin-info",
   "version": "0.1.0",
   "devDependencies": {
+    "babel-core": "^6.8.0",
+    "babel-eslint": "^6.1.0",
+    "babel-jest": "^12.1.0",
+    "babel-polyfill": "^6.9.0",
+    "babel-preset-es2015": "*",
+    "babel-preset-jest": "^12.1.0",
+    "babel-preset-react": "*",
+    "babelify": "^7.3.0",
     "eslint": "^1.10.3",
     "eslint-plugin-react": "^3.15.0",
     "grunt": "^0.4.5",
@@ -15,7 +23,7 @@
     "grunt-contrib-watch": "^0.6.1",
     "grunt-eslint": "^17.3.1",
     "jest": "^0.1.40",
-    "jest-cli": "^0.8.2",
+    "jest-cli": "*",
     "reactify": "^1.1.1"
   },
   "dependencies": {
@@ -24,20 +32,34 @@
     "keymirror": "^0.1.1",
     "make-url": "0.0.1",
     "object-assign": "^4.0.1",
-    "react": "^0.14.7",
-    "react-dom": "^0.14.7",
-    "react-router": "^2.0.1"
+    "react": "~15.1.0",
+    "react-dom": "~15.1.0",
+    "react-router": "~2.2.0"
   },
   "scripts": {
     "start": "node server.js",
-    "bundle": "browserify src/js/index.js > app/js/bundle.js",
+    "bundle": "browserify src/js/index.js -o app/js/bundle.js -t [ babelify --presets [ es2015 react ] ]",
     "grunt": "grunt",
     "test": "jest",
     "lint": "grunt eslint"
   },
-  "browserify": {
-    "transform": [
-      "reactify"
+  "jest": {
+    "scriptPreprocessor": "<rootDir>/node_modules/babel-jest",
+    "globals": {
+      "__DEV__": true
+    },
+    "moduleFileExtensions": [
+      "js",
+      "es6"
+    ],
+    "testFileExtensions": [
+      "js",
+      "es6"
+    ],
+    "unmockedModulePathPatterns": [
+      "<rootDir>/node_modules/react/",
+      "<rootDir>/node_modules/react-dom/",
+      "<rootDir>/node_modules/react-addons-test-utils/"
     ]
   }
 }

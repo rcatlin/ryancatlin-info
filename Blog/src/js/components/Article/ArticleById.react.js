@@ -1,33 +1,34 @@
-var React = require('react');
-var ReactPropTypes = React.PropTypes;
+import React from 'react';
 
-var Article = require('../article.react');
-var ArticleStore = require('../../stores/ArticleStore');
+import Article from '../article.react';
+import ArticleStore from '../../stores/ArticleStore';
 
 
-var ArticleById = React.createClass({
-    displayName: 'ArticleById',
+export default class ArticleById extends React.Component {
+    static get displayName() {
+        return 'ArticleById';
+    }
 
-    propTypes: {
-        params: ReactPropTypes.object.isRequired
-    },
+    constructor(props) {
+        super(props);
 
-    getInitialState: function() {
-        return {
-            articles: undefined // eslint-disable-line no-undefined
+        ArticleById.propTypes = {
+            params: React.PropTypes.object.isRequired
         };
-    },
 
-    componentDidMount: function() {
-        var articleId = parseInt(this.props.params.id, 10);
+        this.state = {
+            article: 'undefined'
+        };
+    }
 
-        ArticleStore.getById(this, articleId);
-    },
+    componentDidMount() {
+        ArticleStore.getById(this, parseInt(this.props.params.id, 10));
+    }
 
-    render: function() {
+    render() {
         var article = this.state.article;
 
-        if (typeof article === 'undefined') {
+        if (!(article instanceof Object)) {
             return (
                 <div className="panel panel-default">
                     <div className="panel-body">
@@ -49,7 +50,5 @@ var ArticleById = React.createClass({
             />
         );
     }
-});
-
-module.exports = ArticleById;
+}
 

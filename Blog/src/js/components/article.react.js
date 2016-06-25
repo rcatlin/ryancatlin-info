@@ -1,22 +1,26 @@
-var React = require('react');
-var ReactPropTypes = React.PropTypes;
+import React, {Component, PropTypes} from 'react';
 
-var ReactRouter = require('react-router');
-var Link = ReactRouter.Link;
+import {Link} from 'react-router';
 
-var Article = React.createClass({
-    displayName: 'Article',
+export default class Article extends Component {
+    static get displayName() {
+        return 'Article';
+    }
 
-    propTypes: {
-        content: ReactPropTypes.string.isRequired,
-        createdAt: ReactPropTypes.string.isRequired,
-        id: ReactPropTypes.number.isRequired,
-        slug: ReactPropTypes.string.isRequired,
-        tags: ReactPropTypes.array.isRequired,
-        title: ReactPropTypes.string.isRequired
-    },
+    constructor(props) {
+        super(props);
 
-    render: function() {
+        Article.propTypes = {
+            content: PropTypes.string.isRequired,
+            createdAt: PropTypes.string.isRequired,
+            id: PropTypes.number.isRequired,
+            slug: PropTypes.string.isRequired,
+            tags: PropTypes.array.isRequired,
+            title: PropTypes.string.isRequired
+        };
+    }
+
+    render() {
         var index = 'undefined',
             tagName = '',
             tags = [];
@@ -54,7 +58,7 @@ var Article = React.createClass({
                 <p className="text-center">
                     {tags}
                     <a href="#">
-                        <i className="fa fa-link"></i>
+                        <i className="fa fa-link" />
                     </a>
                 </p>
 
@@ -62,6 +66,4 @@ var Article = React.createClass({
             </div>
         );
     }
-});
-
-module.exports = Article;
+}

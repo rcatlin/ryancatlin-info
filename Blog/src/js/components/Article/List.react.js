@@ -1,29 +1,33 @@
-var React = require('react');
+import React from 'react';
 
-var ArticleShort = require('../articleShort.react');
-var ArticleStore = require('../../stores/ArticleStore');
-var PageCount = require('./PageCount.react');
+import ArticleShort from '../articleShort.react';
+import ArticleStore from '../../stores/ArticleStore';
+import PageCount from './PageCount.react';
 
-var List = React.createClass({
-    displayName: 'ArticleList',
+export default class List extends React.Component {
+    static get displayName() {
+        return 'ArticleList';
+    }
 
-    getInitialState: function () {
-        return {
+    constructor(props) {
+        super(props);
+
+        this.state = {
             offset: 0,
             limit: 10,
-            articles: undefined // eslint-disable-line no-undefined
+            articles: []
         };
-    },
+    }
 
-    componentDidMount: function () {
+    componentDidMount() {
         ArticleStore.getList(
             this,
             this.state.offset,
             this.state.limit
         );
-    },
+    }
 
-    render: function() {
+    render() {
         var article = 'undefined',
             index = 'undefined',
             rendered = [];
@@ -59,6 +63,4 @@ var List = React.createClass({
             </div>
         );
     }
-});
-
-module.exports = List;
+}

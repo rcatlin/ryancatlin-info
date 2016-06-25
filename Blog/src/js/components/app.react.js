@@ -1,17 +1,21 @@
-var React = require('react');
-var Header = require('./header.react');
-var Menu = require('./menu.react');
+import React from 'react';
+import Header from './header.react';
+import Menu from './menu.react';
 
-var ReactPropTypes = React.PropTypes;
+export default class App extends React.Component {
+    static get displayName() {
+        return 'App';
+    }
 
-var App = React.createClass({
-    displayName: 'App',
+    constructor(props) {
+        super(props);
 
-    propTypes: {
-        children: ReactPropTypes.object.isRequired
-    },
+        App.propTypes = {
+            children: React.PropTypes.object.isRequired
+        };
+    }
 
-    render: function() {
+    render() {
         return (
             <div>
                 <Menu />
@@ -20,6 +24,4 @@ var App = React.createClass({
             </div>
         );
     }
-});
-
-module.exports = App;
+}

@@ -1,40 +1,34 @@
-var React = require('react');
+import React from 'react';
 
-var MenuActions = require('../actions/MenuActions');
-var MenuItem = require('./Menu/item.react');
-var MenuStore = require('../stores/MenuStore');
+import MenuItem from './Menu/item.react';
+import MenuStore from '../stores/MenuStore';
 
-var Menu = React.createClass({
-    displayName: 'Menu',
+export default class Menu extends React.Component {
+    static get displayName() {
+        return 'Menu';
+    }
 
-    /**
-     * @return {object} All Menu values.
-     */
-    getInitialState: function() {
-        return MenuStore.getAll();
-    },
+    constructor(props) {
+        super(props);
 
-    componentDidMount: function() {
+        this.state = MenuStore.getAll();
+
+        this.handleChange = this.handleChange.bind(this);
+    }
+
+    componentDidMount() {
         MenuStore.addChangeListener(this.handleChange);
-    },
+    }
 
-    componentWillUnmount: function() {
+    componentWillUnmount() {
         MenuStore.removeChangeListener(this.handleChange);
-    },
+    }
 
-    handleChange: function() {
+    handleChange() {
         this.setState(MenuStore.getAll());
-    },
+    }
 
-    handleOnItemClick: function(key) {
-        MenuActions.markPageActive(key);
-    },
-
-    handleOnLogoClick: function() {
-        this.onItemClick('home');
-    },
-
-    render: function() {
+    render() {
         var active = false,
             index = 'undefined',
             menuItems = [],
@@ -43,6 +37,7 @@ var Menu = React.createClass({
         for (index in this.state.pages) {
             if (this.state.pages.hasOwnProperty(index)) {
                 page = this.state.pages[index];
+
                 active = this.state.activePage === index;
 
                 menuItems.push(
@@ -52,7 +47,6 @@ var Menu = React.createClass({
                         icon={page.icon}
                         key={index}
                         name={index}
-                        onItemClick={this.handleOnItemClick}
                         text={page.text}
                         to={page.to}
                     />
@@ -76,14 +70,13 @@ var Menu = React.createClass({
                             <span className="sr-only">
                                 {'Toggle navigation'}
                             </span>
-                            <span className="icon-bar"></span>
-                            <span className="icon-bar"></span>
-                            <span className="icon-bar"></span>
+                            <span className="icon-bar" />
+                            <span className="icon-bar" />
+                            <span className="icon-bar" />
                         </button>
                         <a
                             className="navbar-brand"
-                            href="#"
-                            onClick={this.handleOnLogoClick}
+                            href="/"
                         >
                             {'ryancatlin.info'}
                         </a>
@@ -101,6 +94,4 @@ var Menu = React.createClass({
             </nav>
         );
     }
-});
-
-module.exports = Menu;
+}

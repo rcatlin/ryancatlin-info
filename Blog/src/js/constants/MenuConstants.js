@@ -1,5 +1,5 @@
-var keyMirror = require('keymirror');
+import keyMirror from 'keymirror';
 
-module.exports = keyMirror({
+export default keyMirror({
     ACTION_PAGE_SELECTED: null
 });
