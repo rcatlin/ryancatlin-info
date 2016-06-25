@@ -1,4 +1,4 @@
-jest.dontMock('../../../components/Menu/item.react');
+jest.unmock('../../../components/Menu/item.react');
 
 import item from '../../../components/Menu/item.react';
 

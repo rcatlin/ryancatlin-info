@@ -1,4 +1,4 @@
-jest.dontMock('../../../components/Article/PageCount.react');
+jest.unmock('../../../components/Article/PageCount.react');
 
 import PageCount from '../../../components/Article/PageCount.react';
 

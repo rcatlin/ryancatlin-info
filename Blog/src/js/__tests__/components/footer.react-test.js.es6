@@ -1,4 +1,4 @@
-jest.dontMock('../../components/footer.react.js');
+jest.unmock('../../components/footer.react.js');
 
 import footer from '../../components/footer.react.js';
 

@@ -1,4 +1,4 @@
-jest.dontMock('../../../components/Article/List.react');
+jest.unmock('../../../components/Article/List.react');
 
 import List from '../../../components/Article/List.react';
 

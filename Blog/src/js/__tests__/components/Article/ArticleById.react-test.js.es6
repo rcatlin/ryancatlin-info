@@ -1,4 +1,4 @@
-jest.dontMock('../../../components/Article/ArticleById.react');
+jest.unmock('../../../components/Article/ArticleById.react');
 
 import ArticleById from '../../../components/Article/ArticleById.react';
 

@@ -43,19 +43,19 @@
     "lint": "grunt eslint"
   },
   "jest": {
+    "scriptPreprocessor": "<rootDir>/node_modules/babel-jest",
     "globals": {
       "__DEV__": true
     },
-    "scriptPreprocessor": "<rootDir>/node_modules/jest-babel-preprocessor/preprocessor.js",
     "moduleFileExtensions": [
       "js",
-      "json"
+      "es6"
     ],
     "testFileExtensions": [
-      "js"
+      "js",
+      "es6"
     ],
     "unmockedModulePathPatterns": [
-      "source-map",
       "<rootDir>/node_modules/react/",
       "<rootDir>/node_modules/react-dom/",
       "<rootDir>/node_modules/react-addons-test-utils/"

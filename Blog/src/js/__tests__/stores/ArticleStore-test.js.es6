@@ -1,6 +1,6 @@
-jest.dontMock('../../stores/ArticleStore');
-jest.dontMock('events');
-jest.dontMock('object-assign');
+jest.unmock('../../stores/ArticleStore');
+jest.unmock('events');
+jest.unmock('object-assign');
 
 import ArticleStore from '../../stores/ArticleStore';
 

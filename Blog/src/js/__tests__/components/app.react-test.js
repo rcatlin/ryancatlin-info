@@ -1,4 +1,4 @@
-jest.dontMock('../../components/app.react');
+jest.unmock('../../components/app.react');
 
 import App from '../../components/app.react';
 

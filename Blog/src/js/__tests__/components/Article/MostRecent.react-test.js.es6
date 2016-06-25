@@ -1,4 +1,4 @@
-jest.dontMock('../../../components/Article/MostRecent.react');
+jest.unmock('../../../components/Article/MostRecent.react');
 
 import MostRecent from '../../../components/Article/MostRecent.react';
 

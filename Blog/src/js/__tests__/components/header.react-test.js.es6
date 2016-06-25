@@ -1,4 +1,4 @@
-jest.dontMock('../../components/header.react.js');
+jest.unmock('../../components/header.react.js');
 
 import Header from '../../components/header.react.js';
 

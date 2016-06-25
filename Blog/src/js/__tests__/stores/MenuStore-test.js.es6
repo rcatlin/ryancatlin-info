@@ -1,6 +1,6 @@
-jest.dontMock('../../stores/MenuStore');
-jest.dontMock('events');
-jest.dontMock('object-assign');
+jest.unmock('../../stores/MenuStore');
+jest.unmock('events');
+jest.unmock('object-assign');
 
 import MenuStore from '../../stores/MenuStore';
 

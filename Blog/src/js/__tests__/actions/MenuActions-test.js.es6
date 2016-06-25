@@ -1,13 +1,14 @@
-jest.dontMock('keymirror');
-jest.dontMock('../../actions/MenuActions');
-jest.dontMock('../../constants/MenuConstants');
+jest.unmock('keymirror');
+jest.unmock('../../actions/MenuActions');
+jest.unmock('../../constants/MenuConstants');
+
+import AppDispatcher from '../../dispatcher/AppDispatcher';
+import MenuActions from '../../actions/MenuActions';
+import MenuConstants from '../../constants/MenuConstants';
 
 describe('MenuActions', function() {
     it('ensures markPageActive calls AppDispatcher', function() {
-        var AppDispatcher = require('../../dispatcher/AppDispatcher'),
-            MenuActions = require('../../actions/MenuActions'),
-            MenuConstants = require('../../constants/MenuConstants'),
-            key = 'event-key';
+        var key = 'event-key';
 
         MenuActions.markPageActive(key);
 
