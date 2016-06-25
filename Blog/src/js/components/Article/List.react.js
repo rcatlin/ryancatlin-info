@@ -9,10 +9,10 @@ export default class List extends React.Component {
         super(props);
         
         self.displayName = 'ArticleList';
-        self.state = {
+        this.state = {
             offset: 0,
             limit: 10,
-            articles: undefined // eslint-disable-line no-undefined
+            articles: []
         };
     }
 
