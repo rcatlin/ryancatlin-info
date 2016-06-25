@@ -22,7 +22,7 @@ export default class ArticleById extends React.Component {
 
         ArticleStore.getById(this, articleId);
     }
-
+    
     render() {
         var article = this.state.article;
 

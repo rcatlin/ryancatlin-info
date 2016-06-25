@@ -21,6 +21,9 @@ class ArticleStore extends EventEmitter {
         this.emit(CHANGE_EVENT);
     }
 
+    /**
+     * @param {React.Component} component
+     */
     activeCount(component) {
         $.get(
             makeUrl(ArticleConstants.countEndpoint, {active: 1}),
@@ -33,8 +36,24 @@ class ArticleStore extends EventEmitter {
     }
 
     /**
+     * @param {React.Component} component
+     */
+    activeCount(component) {
+        $.get(
+            makeUrl(ArticleConstants.countEndpoint, {active: 1}),
+            function(result) {
+                if (component.isMounted()) {
+                    component.setState({
+                        activeCount: result.result.count
+                    });
+                }
+            }
+        );
+    }
+
+    /**
      * @param {object} component The React Component that requires API data.
-     * @param {integer} articleId Article ID to be fetched from API.
+     * @param {int} articleId Article ID to be fetched from API.
      * @return {void}
      */
     getById(component, articleId) {
@@ -63,8 +82,8 @@ class ArticleStore extends EventEmitter {
 
     /**
      * @param {object} component The React Component that requires API data.
-     * @param {integer} offset Query Offset
-     * @param {integer} limit Query Limit
+     * @param {int} offset Query Offset
+     * @param {int} limit Query Limit
      * @param {boolean} createdAtDescending Sort Articles by createdAt
      * @return {void}
      */
