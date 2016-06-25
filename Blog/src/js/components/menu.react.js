@@ -26,14 +26,6 @@ export default class Menu extends React.Component {
         this.setState(MenuStore.getAll());
     }
 
-    static handleOnItemClick(key) {
-        MenuActions.markPageActive(key);
-    }
-
-    handleOnLogoClick() {
-        self.onItemClick('home');
-    }
-
     render() {
         var active = false,
             index = 'undefined',
@@ -83,7 +75,6 @@ export default class Menu extends React.Component {
                         <a
                             className="navbar-brand"
                             href="/"
-                            onClick={this.handleOnLogoClick}
                         >
                             {'ryancatlin.info'}
                         </a>
