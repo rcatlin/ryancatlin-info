@@ -199,7 +199,7 @@
         "linebreak-style": 2,
         "lines-around-comment": 2,
         "max-depth": 2,
-        "max-len": 2,
+        "max-len": [2, 100],
         "max-nested-callbacks": 2,
         "max-params": 0,
         "max-statements": 2,
