@@ -9,19 +9,19 @@ let menu = {
     activePage: 'home',
     pages: {
         home: {
-            to: '',
+            to: '/',
             href: '/',
             icon: 'home',
             text: 'Main'
         },
         articles: {
-            to: 'articles',
+            to: '/articles',
             href: '/articles',
             icon: 'newspaper-o',
             text: 'Articles'
         },
         about: {
-            to: 'about',
+            to: '/about',
             href: '/about',
             icon: 'info-circle',
             text: 'About'

@@ -80,7 +80,7 @@ export default class Menu extends React.Component {
                         </button>
                         <a
                             className="navbar-brand"
-                            href="#"
+                            href="/"
                             onClick={this.handleOnLogoClick}
                         >
                             {'ryancatlin.info'}
