@@ -85,13 +85,6 @@ class User implements \Serializable
     protected $password;
 
     /**
-     * Plain password. Used for model validation. Must not be persisted.
-     *
-     * @var string
-     */
-    protected $plainPassword;
-
-    /**
      * @var \DateTime
      *
      * @ORM\Column(
@@ -260,14 +253,6 @@ class User implements \Serializable
     }
 
     /**
-     * Removes sensitive data from the user.
-     */
-    public function eraseCredentials()
-    {
-        $this->plainPassword = null;
-    }
-
-    /**
      * @return int
      */
     public function getId()
@@ -323,14 +308,6 @@ class User implements \Serializable
     public function getPassword()
     {
         return $this->password;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getPlainPassword()
-    {
-        return $this->plainPassword;
     }
 
     /**
@@ -612,18 +589,6 @@ class User implements \Serializable
         } else {
             $this->removeRole(static::ROLE_SUPER_ADMIN);
         }
-
-        return $this;
-    }
-
-    /**
-     * @param string $password
-     *
-     * @return $this
-     */
-    public function setPlainPassword($password)
-    {
-        $this->plainPassword = $password;
 
         return $this;
     }
