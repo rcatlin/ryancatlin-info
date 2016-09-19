@@ -44,6 +44,7 @@
     "lint": "grunt eslint"
   },
   "jest": {
+    "automock": true,
     "scriptPreprocessor": "<rootDir>/node_modules/babel-jest",
     "globals": {
       "__DEV__": true
@@ -52,10 +53,7 @@
       "js",
       "es6"
     ],
-    "testFileExtensions": [
-      "js",
-      "es6"
-    ],
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(js|es6)$",
     "unmockedModulePathPatterns": [
       "<rootDir>/node_modules/react/",
       "<rootDir>/node_modules/react-dom/",
