@@ -6,6 +6,7 @@ import App from './components/app.react';
 import About from './components/about.react';
 import ArticleById from './components/Article/ArticleById.react';
 import Articles from './components/Article/List.react';
+import Login from './components/login.react';
 import MostRecent from './components/Article/MostRecent.react';
 
 ReactDOM.render(
@@ -26,6 +27,10 @@ ReactDOM.render(
             <Route
                 component={ArticleById}
                 path="/articles/:id"
+            />
+            <Route
+                component={Login}
+                path="/login"
             />
         </Route>
     </Router>,

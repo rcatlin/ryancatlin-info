@@ -4,6 +4,7 @@ namespace RCatlin\Api\ServiceProvider;
 
 use Doctrine\ORM\EntityManager;
 use League\Container\ServiceProvider\AbstractServiceProvider;
+use RCatlin\Api\Authentication;
 use RCatlin\Api\Controller;
 use RCatlin\Api\Repository;
 use RCatlin\Api\ReverseTransformer;
@@ -21,6 +22,7 @@ class ControllerServiceProvider extends AbstractServiceProvider
         Controller\Api\ArticleDeleteController::class,
         Controller\Api\ArticleGetController::class,
         Controller\Api\ArticleUpdateController::class,
+        Controller\Api\LoginController::class,
         Controller\Api\StatusController::class,
         Controller\Api\TagCreateController::class,
         Controller\Api\TagDeleteController::class,
@@ -64,6 +66,12 @@ class ControllerServiceProvider extends AbstractServiceProvider
             ->withArgument(EntityManager::class)
             ->withArgument(Serializer\ScopeBuilder::class)
         ;
+
+        $container->share(Controller\Api\LoginController::class, function () {
+            $authLogin = $this->container->get(Authentication\Login::class);
+
+            return new Controller\Api\LoginController($authLogin);
+        });
 
         $container->share(Controller\Api\StatusController::class);
 

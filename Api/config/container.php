@@ -16,7 +16,14 @@ $dotenv->load();
 // Add Services to Container
 $container->share(Dotenv::class, $dotenv);
 
-$container->addServiceProvider(new ServiceProvider\PistonServiceProvider());
+$container->addServiceProvider(new ServiceProvider\AuthenticationServiceProvider(
+    getenv('SECRET'),
+    getenv('ISSUER')
+));
+$container->addServiceProvider(new ServiceProvider\PistonServiceProvider(
+    getenv('AUTH_HEADER'),
+    getenv('SECRET')
+));
 $container->addServiceProvider(new ServiceProvider\EntityManagerServiceProvider(
     getenv('DATABASE_NAME'),
     getenv('DATABASE_USER'),

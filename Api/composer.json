@@ -28,7 +28,8 @@
         "particle/validator": "2.0.0-alpha.2",
         "shrikeh/teapot": "^1.0",
         "refinery29/api-output": "0.3.4",
-        "refinery29/piston": "1.4.2"
+        "refinery29/piston": "1.4.2",
+        "firebase/php-jwt": "^4.0"
     },
     "require-dev": {
         "fabpot/php-cs-fixer": "2.0.*@dev",
