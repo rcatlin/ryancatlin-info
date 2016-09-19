@@ -52,10 +52,7 @@
       "js",
       "es6"
     ],
-    "testFileExtensions": [
-      "js",
-      "es6"
-    ],
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(js|es6)$",
     "unmockedModulePathPatterns": [
       "<rootDir>/node_modules/react/",
       "<rootDir>/node_modules/react-dom/",
