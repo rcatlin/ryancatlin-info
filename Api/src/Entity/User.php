@@ -2,7 +2,9 @@
 
 namespace RCatlin\Api\Entity;
 
+use Assert\Assertion;
 use Doctrine\ORM\Mapping as ORM;
+use RCatlin\Api\Behavior\RequiresKeys;
 
 /**
  * Most of the Model's methods and functionality are copied from FriendsOfSymfony/UserBundle,
@@ -13,6 +15,8 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class User implements \Serializable
 {
+    use RequiresKeys;
+
     const ROLE_DEFAULT = 'ROLE_USER';
     const ROLE_SUPER_ADMIN = 'ROLE_SUPER_ADMIN';
 
@@ -167,14 +171,40 @@ class User implements \Serializable
      */
     protected $credentialsExpireAt;
 
-    public function __construct()
+    private function __construct($username, $email, $password)
     {
+        Assertion::string($username);
+        Assertion::email($email);
+        Assertion::string($password);
+
         $this->salt = base_convert(sha1(uniqid(mt_rand(), true)), 16, 36);
         $this->enabled = false;
         $this->locked = false;
         $this->expired = false;
         $this->roles = [];
         $this->credentialsExpired = false;
+
+        $this->username = $username;
+        $this->usernameCanonical = strtolower($username);
+        $this->email = $email;
+        $this->emailCanonical = strtolower($email);
+        $this->password = hash('SHA256', $password, $this->salt);
+    }
+    public static function fromArray(array $data)
+    {
+        self::requireKeys([
+            'username',
+            'email',
+            'password',
+        ], $data);
+
+        $user = new self(
+            $data['username'],
+            $data['email'],
+            $data['password']
+        );
+
+        return $user;
     }
 
     /**

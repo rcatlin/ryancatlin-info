@@ -4,6 +4,7 @@ namespace RCatlin\Api\Middleware\Route;
 
 use League\Pipeline\StageInterface;
 use RCatlin\Api\Controller;
+use RCatlin\Api\Middleware\Authenticated;
 use Refinery29\Piston\Middleware\Payload;
 use Refinery29\Piston\Piston;
 use Refinery29\Piston\Router\RouteGroup;
@@ -41,6 +42,9 @@ class Api implements StageInterface
             $group->get('tags/{id:number}', Controller\Api\TagGetController::class . '::get');
             $group->post('tags', Controller\Api\TagCreateController::class . '::create');
             $group->put('tags/{id:number}', Controller\Api\TagUpdateController::class . '::update');
+
+            // User
+            $group->post('users/login', Controller\Api\LoginController::class . '::login');
         });
 
         return $payload;
