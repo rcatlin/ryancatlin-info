@@ -49,7 +49,7 @@ class AuthenticatedApi implements StageInterface
         $authenticated = new Authenticated($this->authHeader, $this->key);
 
         $subject->group('api', function (RouteGroup $group) {
-            $group->get('users/login/check', Controller\Api\LoggedInController::class. '::check');
+            $group->get('users/login/check', Controller\Api\LoggedInController::class . '::check');
         })->addMiddleware($authenticated);
 
         return $payload;

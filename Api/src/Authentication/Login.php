@@ -30,10 +30,10 @@ class Login
     private $issuer;
 
     /**
-     * @param EntityManager $entityManager
+     * @param EntityManager             $entityManager
      * @param Repository\UserRepository $userRepository
-     * @param string $key
-     * @param string $issuer
+     * @param string                    $key
+     * @param string                    $issuer
      */
     public function __construct(
         EntityManager $entityManager,
@@ -44,7 +44,7 @@ class Login
         Assertion::string($key);
         Assertion::string($issuer);
 
-        $this->entityManager =  $entityManager;
+        $this->entityManager = $entityManager;
         $this->userRepository = $userRepository;
         $this->key = $key;
         $this->issuer = $issuer;

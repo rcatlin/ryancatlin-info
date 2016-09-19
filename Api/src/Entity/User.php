@@ -190,6 +190,7 @@ class User implements \Serializable
         $this->emailCanonical = strtolower($email);
         $this->password = hash('SHA256', $password, $this->salt);
     }
+
     public static function fromArray(array $data)
     {
         self::requireKeys([

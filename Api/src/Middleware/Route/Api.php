@@ -4,7 +4,6 @@ namespace RCatlin\Api\Middleware\Route;
 
 use League\Pipeline\StageInterface;
 use RCatlin\Api\Controller;
-use RCatlin\Api\Middleware\Authenticated;
 use Refinery29\Piston\Middleware\Payload;
 use Refinery29\Piston\Piston;
 use Refinery29\Piston\Router\RouteGroup;

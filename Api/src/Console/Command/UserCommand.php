@@ -50,6 +50,7 @@ class UserCommand extends Command
             $this->entityManager->flush($user);
         } catch (\Exception $e) {
             $style->error($e->getMessage());
+
             return;
         }
 

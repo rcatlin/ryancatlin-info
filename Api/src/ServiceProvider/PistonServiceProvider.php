@@ -65,6 +65,7 @@ class PistonServiceProvider extends AbstractServiceProvider
             $app->registerException(NotAuthorized::class, function (Piston $app, Exception $exception) {
                 $app->getErrorResponse(StatusCode::UNAUTHORIZED);
             });
+
             return $app;
         });
     }

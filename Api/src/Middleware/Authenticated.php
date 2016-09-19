@@ -27,7 +27,7 @@ class Authenticated implements StageInterface
 
     public function process($payload)
     {
-        /** @var Payload $payload */
+        /* @var Payload $payload */
         $values = $payload
             ->getRequest()
             ->getHeader($this->authHeader);
