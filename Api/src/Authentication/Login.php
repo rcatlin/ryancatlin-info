@@ -80,7 +80,7 @@ class Login
                 'iss' => $this->issuer,
                 'aud' => $this->issuer,
                 'iat' => $now,
-                'nbf' => $now + 60,
+                'nbf' => $now,
                 'exp' => $now + 3600,
             ],
             $this->key,

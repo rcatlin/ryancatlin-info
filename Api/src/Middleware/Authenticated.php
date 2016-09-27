@@ -42,11 +42,9 @@ class Authenticated implements StageInterface
 
         try {
             JWT::decode($token, $this->key, ['HS256']);
+        } catch (ExpiredException $exception) {
+            throw new NotAuthorized('Token has expired.');
         } catch (\Exception $exception) {
-            if ($exception instanceof ExpiredException) {
-                throw $exception;
-            }
-
             throw new NotAuthorized();
         }
 
