@@ -239,4 +239,6 @@ AppDispatcher.register(function(action) {
     }
 });
 
-export default store;
+export default {
+    isLoggedIn: store.isLoggedIn
+};

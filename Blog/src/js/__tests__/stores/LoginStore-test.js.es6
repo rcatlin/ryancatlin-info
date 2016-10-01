@@ -12,6 +12,7 @@ describe('LoginStore', function() {
 
     it('Ensures LoginStore is defined', function() {
         expect(LoginStore).toBeDefined();
+        expect(LoginStore.isLoggedIn).toBeDefined();
     });
 
     it ('Ensures isLoggedIn is false by default', function() {
