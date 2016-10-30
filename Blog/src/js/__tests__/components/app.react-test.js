@@ -1,4 +1,5 @@
 jest.unmock('../../components/app.react');
+jest.unmock('keymirror');
 
 import App from '../../components/app.react';
 

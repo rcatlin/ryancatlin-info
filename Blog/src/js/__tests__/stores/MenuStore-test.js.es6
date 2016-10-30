@@ -1,5 +1,6 @@
 jest.unmock('../../stores/MenuStore');
 jest.unmock('events');
+jest.unmock('keymirror');
 jest.unmock('object-assign');
 
 import MenuStore from '../../stores/MenuStore';

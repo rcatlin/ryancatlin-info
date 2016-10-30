@@ -1,4 +1,5 @@
 jest.unmock('../../components/menu.react.js');
+jest.unmock('keymirror');
 
 import Menu from '../../components/menu.react.js';
 
