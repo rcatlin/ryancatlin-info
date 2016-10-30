@@ -81,7 +81,8 @@ class MenuStore extends EventEmitter {
      * @return {object} All Menu values.
      */
     getAll() {
-        var all = menu,
+        // JSON.parse(JSON.stringify(object)) is a fast way to perform a deep-clone of an object.
+        var all = JSON.parse(JSON.stringify(menu)),
             key = null;
 
         if (LoginStore.isLoggedIn()) {
