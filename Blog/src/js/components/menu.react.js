@@ -1,5 +1,6 @@
 import React from 'react';
 
+import LoginActions from '../actions/LoginActions';
 import MenuItem from './Menu/item.react';
 import MenuStore from '../stores/MenuStore';
 
@@ -18,10 +19,12 @@ export default class Menu extends React.Component {
 
     componentDidMount() {
         MenuStore.addChangeListener(this.handleChange);
+        LoginActions.listen(this.handleChange);
     }
 
     componentWillUnmount() {
         MenuStore.removeChangeListener(this.handleChange);
+        LoginActions.unlisten(this.handleChange);
     }
 
     handleChange() {

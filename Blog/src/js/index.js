@@ -7,6 +7,7 @@ import About from './components/about.react';
 import ArticleById from './components/Article/ArticleById.react';
 import Articles from './components/Article/List.react';
 import Login from './components/login.react';
+import Logout from './components/logout.react';
 import MostRecent from './components/Article/MostRecent.react';
 
 ReactDOM.render(
@@ -31,6 +32,10 @@ ReactDOM.render(
             <Route
                 component={Login}
                 path="/login"
+            />
+            <Route
+                component={Logout}
+                path="/logout"
             />
         </Route>
     </Router>,

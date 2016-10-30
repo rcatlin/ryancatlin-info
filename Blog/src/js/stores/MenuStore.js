@@ -2,6 +2,7 @@ import EventEmitter from 'events';
 
 import AppDispatcher from '../dispatcher/AppDispatcher';
 import MenuConstants from '../constants/MenuConstants';
+import LoginStore from '../stores/LoginStore';
 
 var CHANGE_EVENT = 'change';
 
@@ -26,6 +27,15 @@ const menu = {
             icon: 'info-circle',
             text: 'About'
         }
+    }
+};
+
+const authedPages = {
+    logout: {
+        to: '/logout',
+        href: '/logout',
+        icon: 'sign-out',
+        text: 'Logout'
     }
 };
 
@@ -71,7 +81,18 @@ class MenuStore extends EventEmitter {
      * @return {object} All Menu values.
      */
     getAll() {
-        return menu;
+        var all = menu,
+            key = null;
+
+        if (LoginStore.isLoggedIn()) {
+            for (key in authedPages) {
+                if (authedPages.hasOwnProperty(key)) {
+                    all.pages[key] = authedPages[key];
+                }
+            }
+        }
+
+        return all;
     }
 }
 
