@@ -1,4 +1,4 @@
-.PHONY: run install freeze
+.PHONY: run install freeze migrate
 
 run:
 	python manage.py runserver
@@ -9,3 +9,5 @@ install:
 freeze:
 	pip freeze > requirements.txt
 
+migrate:
+	python manage.py migrate
