@@ -5,8 +5,8 @@ class Article(Model):
     slug = CharField(max_length=100,
                      unique=True)
     title = CharField(max_length=255)
-    created_at = DateTimeField('date created')
-    updated_at = DateTimeField('date updated')
+    created_at = DateTimeField(auto_now_add=True)
+    updated_at = DateTimeField(auto_now=True)
     content = TextField()
     active = BooleanField()
     tags = ManyToManyField('Tag')
