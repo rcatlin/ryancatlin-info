@@ -1,5 +1,8 @@
 .PHONY: test composer cs migrate setup database test unit integration
 
+run:
+	python manage.py runserver
+
 install:
 	pip install -r requirements.txt
 
