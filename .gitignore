@@ -1,3 +1,4 @@
+*.pyc
 Api/venv
 *.sqlite3
 *.pem
