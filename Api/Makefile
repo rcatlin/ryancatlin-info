@@ -1,5 +1,11 @@
 .PHONY: test composer cs migrate setup database test unit integration
 
+install:
+	pip install -r requirements.txt
+
+freeze:
+	pip freeze > requirements.txt
+
 # For setting up the dev environment.
 setup:
 	cp config/.env.dist config/.env
