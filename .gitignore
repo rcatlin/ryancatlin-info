@@ -1,3 +1,4 @@
+*.pem
 .env
 .idea
 *.DS_Store
