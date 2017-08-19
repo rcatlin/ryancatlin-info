@@ -1,3 +1,4 @@
+Api/venv
 *.sqlite3
 *.pem
 .env
