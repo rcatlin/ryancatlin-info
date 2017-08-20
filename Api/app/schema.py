@@ -1,7 +1,8 @@
 import graphene
 from graphene_django.filter import DjangoFilterConnectionField
 
-from app.queries import Query
+from app import mutations, queries
 
 
-schema = graphene.Schema(query=Query)
+schema = graphene.Schema(mutation=mutations.Mutation,
+                         query=queries.Query)
