@@ -5,6 +5,10 @@ class Tag(models.Model):
     name = models.CharField(max_length=100,
                             unique=True)
 
+    def __str__(self):
+        return self.name
+
+
 class Article(models.Model):
     slug = models.CharField(max_length=100,
                             unique=True)
@@ -14,3 +18,6 @@ class Article(models.Model):
     content = models.TextField()
     active = models.BooleanField()
     tags = models.ManyToManyField(Tag)
+
+    def __str__(self):
+        return self.title
