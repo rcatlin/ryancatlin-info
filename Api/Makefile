@@ -11,3 +11,7 @@ freeze:
 
 migrate:
 	python manage.py migrate
+
+schema:
+	python manage.py graphql_schema --out=../schema.json
+
