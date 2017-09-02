@@ -12,6 +12,10 @@ Api/venv
 /Api/app/bootstrap.php.cache
 /Blog/app/js
 /Blog/app/cs
+/BlogModern/node_modules/
+/BlogModern/public/js/
+/BlogModern/public/img/
+/BlogModern/public/css/
 
 # Application cache
 /Api/app/cache/*
