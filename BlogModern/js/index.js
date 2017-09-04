@@ -14,6 +14,12 @@ import {
 const ArticlesWithData = graphql(gql`
     {
       articles (first: 5) {
+        pageInfo {
+          hasNextPage
+          hasPreviousPage
+          startCursor
+          endCursor
+        }
         edges {
           node {
             ...article
