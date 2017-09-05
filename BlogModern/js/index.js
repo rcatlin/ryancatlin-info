@@ -8,24 +8,31 @@ import {
     graphql
 } from 'react-apollo';
 import {
+    Button,
+    ButtonToolbar
+} from 'react-bootstrap-bk';
+import {
     map
 } from 'lodash';
 
-const ArticlesWithData = graphql(gql`
-    {
-      articles (first: 5) {
-        pageInfo {
-          hasNextPage
-          hasPreviousPage
-          startCursor
-          endCursor
+const ArticlesQuery = gql`
+    query ListArticles($after: String!){
+        articles (
+            after: $after,
+            first: 5
+        ) {
+            pageInfo {
+              hasNextPage
+              hasPreviousPage
+              startCursor
+              endCursor
+            }
+            edges {
+              node {
+                ...article
+              }
+            }
         }
-        edges {
-          node {
-            ...article
-          }
-        }
-      }
     }
 
     fragment article on ArticleType {
@@ -45,13 +52,34 @@ const ArticlesWithData = graphql(gql`
         }
       }
     }
-`, { options: { notifyOnNetworkStatusChange: true } })(Article);
+`;
+
+const ArticlesWithData = graphql(ArticlesQuery, {
+    options: {
+        notifyOnNetworkStatusChange: true,
+        variables: { after: ''}
+    },
+})(Article);
 
 function Article({ data }) {
+    var toolbarButtons = [];
+
     if (data.loading) {
         return (
             <div>Loading Articles...</div>
         );
+    }
+    
+    if (data.articles.pageInfo.hasPreviousPage) {
+        toolbarButtons.push(<Button>Previous</Button>);
+    } else {
+        toolbarButtons.push(<Button disabled>Previous</Button>);
+    }
+
+    if (data.articles.pageInfo.hasNextPage) {
+        toolbarButtons.push(<Button>Next</Button>);
+    } else {
+        toolbarButtons.push(<Button disabled>Next</Button>);
     }
 
     return (
@@ -71,6 +99,7 @@ function Article({ data }) {
                     }
                 )
             }
+            <ButtonToolbar>{ toolbarButtons }</ButtonToolbar>
         </div>
     );
 }
