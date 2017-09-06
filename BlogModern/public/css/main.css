@@ -1,0 +1,7 @@
+.jumbotron {
+    background-image: url('../img/iceland.jpg');
+    background-size: cover;
+    background-position: center;
+
+	color: white;    
+}

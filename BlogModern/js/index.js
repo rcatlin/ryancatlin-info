@@ -4,13 +4,17 @@ import { ApolloProvider } from 'react-apollo';
 
 import client from './apollo/client';
 import ArticlesWithData from './components/ArticlesWithData.graphql';
+import Header from './components/Header.react';
 
 class App extends Component {
     render() {
         return (
-            <ApolloProvider client={ client }>
-                <ArticlesWithData />
-            </ApolloProvider>
+        	<div>
+            	<Header />
+	            <ApolloProvider client={ client }>
+	                <ArticlesWithData />
+	            </ApolloProvider>
+            </div>
         );
     }
 }
