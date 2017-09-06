@@ -31,6 +31,7 @@ class Article extends Component {
                 {
                     this.props.articles.edges.map(
                         (edge) => {
+                            var createdDate = new Date( edge.node.createdAt );
                             return (
                                 <div key={ edge.node.id }>
                                     <div bsStyle="panel-heading text-center">
@@ -38,7 +39,13 @@ class Article extends Component {
                                             { edge.node.title }
                                             <br />
                                             <small>
-                                                { edge.node.createdAt }
+                                                {
+                                                    createdDate.getMonth()
+                                                    + '-' +
+                                                    createdDate.getDay()
+                                                    + '-' +
+                                                    createdDate.getFullYear()
+                                                }
                                             </small>
                                         </h1>
                                     </div>
