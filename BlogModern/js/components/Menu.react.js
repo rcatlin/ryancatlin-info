@@ -1,5 +1,12 @@
 import React, { Component } from 'react';
-import { MenuItem, Nav, Navbar, NavItem, NavDropdown } from 'react-bootstrap-bk';
+import {
+    Glyphicon,
+    MenuItem,
+    Nav,
+    Navbar,
+    NavItem,
+    NavDropdown
+} from 'react-bootstrap-bk';
 
 
 class Menu extends Component {
@@ -12,9 +19,15 @@ class Menu extends Component {
 
                 <Navbar.Collapse>
                     <Nav>
-                        <NavItem>Main</NavItem>
-                        <NavItem>Articles</NavItem>
-                        <NavItem>About</NavItem>
+                        <NavItem>
+                            <Glyphicon glyph="home" /> Main
+                        </NavItem>
+                        <NavItem>
+                            <Glyphicon glyph="book" /> Articles
+                        </NavItem>
+                        <NavItem>
+                            <Glyphicon glyph="info-sign" /> About
+                        </NavItem>
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>

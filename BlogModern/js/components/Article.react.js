@@ -1,7 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import {
     Button,
-    ButtonToolbar
+    ButtonToolbar,
+    Glyphicon
 } from 'react-bootstrap-bk';
 import { map } from 'lodash';
 
@@ -44,6 +45,7 @@ class Article extends Component {
                                     
 
                                     <p bsStyle="text-center">
+                                        <Glyphicon glyph="tags" />
                                         {
                                             edge.node.tags.edges.map(
                                                 (edge) => {
