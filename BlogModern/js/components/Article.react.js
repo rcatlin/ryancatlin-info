@@ -58,7 +58,7 @@ class Article extends Component {
                                                 (edge) => {
                                                     return (
                                                         <a href="#">
-                                                            #{ edge.node.name }
+                                                            { edge.node.name }
                                                         </a>
                                                     );
                                                 }
