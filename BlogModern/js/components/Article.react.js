@@ -20,9 +20,9 @@ class Article extends Component {
         }
 
         if (this.props.articles.pageInfo.hasNextPage) {
-            moreButton = <Button onClick={ this.props.loadMoreArticles }>More</Button>;
+            moreButton = <Button onClick={ this.props.loadMoreArticles } block>More</Button>;
         } else {
-            moreButton = <Button disabled>More</Button>;
+            moreButton = <Button disabled block>More</Button>;
         }
 
         return (
@@ -37,6 +37,21 @@ class Article extends Component {
                                     </span>
                                     <br />
                                     <span>{ edge.node.content }</span>
+                                    <div>
+                                        {
+                                            edge.node.tags.edges.map(
+                                                (edge) => {
+                                                    return (
+                                                        <span>
+                                                            <a href="#">
+                                                                #{ edge.node.name }
+                                                            </a>
+                                                        </span>
+                                                    )
+                                                }
+                                            )
+                                        }
+                                    </div>
                                 </p>
                             );
                         }
