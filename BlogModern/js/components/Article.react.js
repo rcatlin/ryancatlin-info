@@ -11,30 +11,24 @@ class Article extends Component {
     }
 
     render () {
-        var toolbarButtons = [];
+        var moreButton;
 
-        if (this.props.data.loading) {
+        if (this.props.loading) {
             return (
                 <div>Loading Articles...</div>
             );
         }
-        
-        if (this.props.data.articles.pageInfo.hasPreviousPage) {
-            toolbarButtons.push(<Button>Previous</Button>);
-        } else {
-            toolbarButtons.push(<Button disabled>Previous</Button>);
-        }
 
-        if (this.props.data.articles.pageInfo.hasNextPage) {
-            toolbarButtons.push(<Button>Next</Button>);
+        if (this.props.articles.pageInfo.hasNextPage) {
+            moreButton = <Button onClick={ this.props.loadMoreArticles }>More</Button>;
         } else {
-            toolbarButtons.push(<Button disabled>Next</Button>);
+            moreButton = <Button disabled>More</Button>;
         }
 
         return (
             <div>
                 {
-                    this.props.data.articles.edges.map(
+                    this.props.articles.edges.map(
                         (edge) => {
                             return (
                                 <p key={ edge.node.id }>
@@ -48,13 +42,14 @@ class Article extends Component {
                         }
                     )
                 }
-                <ButtonToolbar>{ toolbarButtons }</ButtonToolbar>
+                { moreButton }
             </div>
         );
     }
 }
 
 Article.propTypes = PropTypes.shape({
+    loading: PropTypes.bool.isRequired,
     articles: PropTypes.shape({
         pageInfo: PropTypes.shape({
             hasNextPage: PropTypes.bool.isRequired,
@@ -82,6 +77,7 @@ Article.propTypes = PropTypes.shape({
             }).isRequired,
         }).isRequired,
     }).isRequired,
+    loadMoreArticles: PropTypes.func.isRequired,
 });
 
 

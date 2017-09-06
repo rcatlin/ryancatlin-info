@@ -1,15 +1,10 @@
 import { gql } from 'react-apollo';
 
 const ArticlesQuery = gql`
-    query ListArticles($after: String!){
-        articles (
-            after: $after,
-            first: 5
-        ) {
+    query ListArticles ($cursor: String){
+        articles (first: 3, after: $cursor) {
             pageInfo {
               hasNextPage
-              hasPreviousPage
-              startCursor
               endCursor
             }
             edges {
