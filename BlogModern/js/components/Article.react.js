@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import {
     Button,
     ButtonToolbar
@@ -53,5 +53,36 @@ class Article extends Component {
         );
     }
 }
+
+Article.propTypes = PropTypes.shape({
+    articles: PropTypes.shape({
+        pageInfo: PropTypes.shape({
+            hasNextPage: PropTypes.bool.isRequired,
+            hasPreviousPage: PropTypes.bool.isRequired,
+            startCursor: PropTypes.string.isRequired,
+            endCursor: PropTypes.string.isRequired,
+        }).isRequired,
+        edges: PropTypes.shape({
+            node: PropTypes.shape({
+                id: PropTypes.number.isRequired,
+                slug: PropTypes.string.isRequired,
+                title: PropTypes.string.isRequired,
+                createdAt: PropTypes.string.isRequired,
+                updatedAt: PropTypes.string.isRequired,
+                content: PropTypes.string.isRequired,
+                active: PropTypes.bool.isRequired,
+                tags: PropTypes.shape({
+                    edges: PropTypes.shape({
+                        node: PropTypes.shape({
+                            id: PropTypes.number.isRequired,
+                            name: PropTypes.string.isRequired,
+                        }).isRequired,
+                    }).isRequired,
+                }).isRequired,
+            }).isRequired,
+        }).isRequired,
+    }).isRequired,
+});
+
 
 export default Article;
