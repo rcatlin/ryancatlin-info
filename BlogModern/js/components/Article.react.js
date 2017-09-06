@@ -31,28 +31,39 @@ class Article extends Component {
                     this.props.articles.edges.map(
                         (edge) => {
                             return (
-                                <p key={ edge.node.id }>
-                                    <span>
-                                        <b>{ edge.node.title }</b>
-                                    </span>
-                                    <br />
-                                    <span>{ edge.node.content }</span>
-                                    <div>
+                                <div key={ edge.node.id }>
+                                    <div bsStyle="panel-heading text-center">
+                                        <h1>
+                                            { edge.node.title }
+                                            <br />
+                                            <small>
+                                                { edge.node.createdAt }
+                                            </small>
+                                        </h1>
+                                    </div>
+                                    
+
+                                    <p bsStyle="text-center">
                                         {
                                             edge.node.tags.edges.map(
                                                 (edge) => {
                                                     return (
-                                                        <span>
-                                                            <a href="#">
-                                                                #{ edge.node.name }
-                                                            </a>
-                                                        </span>
-                                                    )
+                                                        <a href="#">
+                                                            #{ edge.node.name }
+                                                        </a>
+                                                    );
                                                 }
                                             )
                                         }
-                                    </div>
-                                </p>
+                                    </p>
+
+                                    <p>
+                                        { edge.node.content }
+                                    </p>
+
+                                    <p> </p>
+                                    <hr />
+                                </div>
                             );
                         }
                     )
