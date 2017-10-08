@@ -1,47 +1,46 @@
 import { graphql } from 'react-apollo';
 
-import Article from '../components/Article.react';
+import client from '../apollo/client';
+import ArticleList from '../components/ArticleList.react';
 import ArticlesQuery from '../queries/articles';
 
 const ArticlesWithData = graphql(ArticlesQuery, {
-	props({
-		data: {
-			loading,
-			articles,
-			fetchMore
-		}
-	}) {
-		return {
-			loading,
-			articles,
-			loadMoreArticles: () => {
-				return fetchMore({
-					query: ArticlesQuery,
-					variables: {
-						cursor: articles.pageInfo.endCursor,
-					},
-					updateQuery: (previousResult, { fetchMoreResult }) => {
-						const newEdges = fetchMoreResult.articles.edges;
-						const pageInfo = fetchMoreResult.articles.pageInfo;
+    props({ data }) {
+        const { loading, articles, fetchMore } = data;
+        
+        const loadMoreArticles = () => {
+            return fetchMore({
+                query: ArticlesQuery,
+                variables: {
+                    after: articles.pageInfo.endCursor,
+                },
+                updateQuery: (previousResult, { fetchMoreResult }) => {
+                    const newEdges = fetchMoreResult.articles.edges;
+                    const pageInfo = fetchMoreResult.articles.pageInfo;
 
-						return {
-							articles: {
-								edges: [
-									...previousResult.articles.edges,
-									...newEdges,
-								],
-								pageInfo,
-							},
-						};
-					},
-				})
-			}
-		}
-	},
+                    return {
+                        articles: {
+                            edges: [
+                                ...previousResult.articles.edges,
+                                ...newEdges,
+                            ],
+                            pageInfo,
+                        },
+                    };
+                },
+            });
+        };
+        
+        return {
+            loading,
+            articles,
+            loadMoreArticles
+        };
+    },
     options: {
         notifyOnNetworkStatusChange: true,
         variables: { after: ''}
     },
-})(Article);
+})(ArticleList);
 
 export default ArticlesWithData;
