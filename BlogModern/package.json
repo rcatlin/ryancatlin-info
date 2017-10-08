@@ -13,12 +13,14 @@
     "react": "^15.6.1",
     "react-apollo": "^1.4.15",
     "react-bootstrap-bk": "^0.29.4",
-    "react-dom": "^15.6.1"
+    "react-dom": "^15.6.1",
+    "watchify": "^3.9.0"
   },
   "scripts": {
     "compile": "browserify js/index.js -o public/js/bundle.js -t [ babelify --presets [ es2015 react ] ]",
     "schema": "babel-cli scripts/generate-schema.js",
-    "server": "node server.js"
+    "server": "node server.js",
+    "watch": "watchify js/index.js -o public/js/bundle.js -v -t [ babelify --presets [ es2015 react ] ]"
   },
   "devDependencies": {
     "cors": "^2.8.4"
