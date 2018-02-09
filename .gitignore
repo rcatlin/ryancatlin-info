@@ -14,6 +14,7 @@ Api/venv
 /Blog/app/cs
 /BlogModern/node_modules/
 /BlogModern/public/js/
+/Cms/node_modules/
 
 # Application cache
 /Api/app/cache/*

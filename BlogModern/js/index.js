@@ -10,12 +10,12 @@ import Menu from './components/Menu.react';
 class App extends Component {
     render() {
         return (
-        	<div>
-            	<Header />
+            <div>
+                <Header />
                 <Menu />
-	            <ApolloProvider client={ client }>
-	                <ArticlesWithData />
-	            </ApolloProvider>
+                <ApolloProvider client={ client }>
+                    <ArticlesWithData />
+                </ApolloProvider>
             </div>
         );
     }
